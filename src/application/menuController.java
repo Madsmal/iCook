@@ -2,9 +2,9 @@ package application;
 
 import javafx.event.ActionEvent;
 
-public class mainController {
+public class menuController {
 
-	public void onClick(ActionEvent event) {
+	public void onExit(ActionEvent event) {
 		System.out.println("Exit");
 		System.exit(0);
 	}
