@@ -18,6 +18,10 @@ public class Main extends Application {
 	
 	}
 	
+	// Raspberry pi 3 screen resolution 800x480	
+	
+	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
