@@ -7,13 +7,13 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.menuController">
    <children>
-      <Button layoutX="331.0" layoutY="196.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="137.0" text="Recipes" />
+      <Button layoutX="331.0" layoutY="196.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="35.0" prefWidth="137.0" text="Recipes" />
       <Text layoutX="332.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iCook" textAlignment="CENTER" wrappingWidth="136.99999952316284">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="137.0" text="Editor" />
+      <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" text="Editor" />
       <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" prefHeight="35.0" prefWidth="137.0" text="Quit" />
    </children>
 </AnchorPane>

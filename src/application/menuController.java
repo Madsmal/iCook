@@ -2,12 +2,31 @@ package application;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 public class menuController {
+	
+public void onRecipes(ActionEvent event) {
+	//Parent recipesPath = FXMLLoader.load(getClass().getResource("/application/recipesView.fxml"));
+	//Scene recipesScene = new Scene(recipesPath);
+	//primaryStage.getScene().setRoot(recipesScene);
+	
+	//RecipesController recipesController = new RecipesController(model);
+	//recipesScene.show();
+}
 
-	public void onExit(ActionEvent event) {
-		System.out.println("Exit");
-		Platform.exit();
-	}
+
+	
+public void onEditor(ActionEvent event) {
+	
+}
+	
+	
+public void onExit(ActionEvent event) {
+	System.out.println("Exit");
+	Platform.exit();
+}
 	
 }
