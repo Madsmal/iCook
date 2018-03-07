@@ -3,7 +3,7 @@ package application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
-public class recipesController {
+public class RecipesController {
 
 public void onHome(ActionEvent event) {
 		

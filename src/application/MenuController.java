@@ -9,9 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class menuController {
+public class MenuController {
 	
-	Stage primaryStage;
 	
 public void onRecipes(ActionEvent event) throws Exception {
 	//Parent recipesPath = FXMLLoader.load(getClass().getResource("/application/recipesView.fxml"));
