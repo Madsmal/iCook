@@ -13,12 +13,10 @@ public class MenuController {
 	
 	
 public void onRecipes(ActionEvent event) throws Exception {
-	//Parent recipesPath = FXMLLoader.load(getClass().getResource("/application/recipesView.fxml"));
-	//Scene recipesScene = new Scene(recipesPath);
-	//primaryStage.getScene().setRoot(recipesScene);
-	
-	//RecipesController recipesController = new RecipesController(model);
-	//recipesScene.show();
+	Parent recipesPath = FXMLLoader.load(getClass().getResource("/application/recipesView.fxml"));
+	Scene recipesScene = new Scene(recipesPath);
+	Model.primaryStage.setScene(recipesScene);		
+	Model.primaryStage.show();
 	
 	
 }

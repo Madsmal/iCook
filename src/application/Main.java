@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Model model = new Model(primaryStage);
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/application/menuView.fxml"));
 		Scene scene = new Scene(root);
