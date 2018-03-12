@@ -1,7 +1,7 @@
 package application;
 
 public class Recipe {
-	//klasse til opskrifter
+	//class for recipes
 	private int id;
 	private String name;
 	private int numberOfServes;
