@@ -70,19 +70,4 @@ public class Recipe {
 		this.notes = notes;
 	}
 	
-//	@Override
-//	public String toString() {
-//		return "\n Recipe{\n \t" + 
-//				"id: " + id + "\n \t" +
-//				"name: " + name + "\n \t" +
-//				"number of serves: " + numberOfServes + "\n \t" +
-//				"ingredients: " + ingredients + "\n \t" +
-//				"steps: " + steps + "\n \t" +
-//				"notes = " + notes + "}\n";
-//	}
-	
-//	@Override
-//	public boolean equals(Object obj) {
-//		return obj != null && obj instanceof Recipe && ((Recipe) obj).getId() == this.id;
-//	}
 }
