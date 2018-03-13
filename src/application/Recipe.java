@@ -2,6 +2,7 @@ package application;
 
 public class Recipe {
 	//class for recipes
+	//test
 	private int id;
 	private String name;
 	private int numberOfServes;
