@@ -9,7 +9,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
    <children>
       <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@home.css" text="Home" />
-      <Button layoutX="417.0" layoutY="320.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="169.0" stylesheets="@knap.css" text="Start" />
+      <Button layoutX="417.0" layoutY="320.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@knap.css" text="Start" />
       <ImageView fitHeight="150.0" fitWidth="354.0" layoutX="246.0" pickOnBounds="true">
          <image>
             <Image url="@Spaghetti-med-gloedsovs-01-800x400-web.png" />

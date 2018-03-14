@@ -14,7 +14,14 @@ public void onHome(ActionEvent event) throws Exception {
 	Scene Home = new Scene(home);
 	Model.primaryStage.setScene(Home);		
 	Model.primaryStage.show();
+	}
+
+public void onStart(ActionEvent event) throws Exception {
 	
+	Parent start = FXMLLoader.load(getClass().getResource("/application/CookingView.fxml"));
+	Scene Start = new Scene(start);
+	Model.primaryStage.setScene(Start);		
+	Model.primaryStage.show();
 	}
 	
 }
