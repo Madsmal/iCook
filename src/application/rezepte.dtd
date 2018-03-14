@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!ELEMENT recipe (title,ID,startdate?,changedate?,target,ingredients+,preparation+,
+variation*,remark*,technique*,sidedish*,privateremark*,duration*,source*,
+regionoforigin*)>
+<!ELEMENT title (#PCDATA|quote)*>
+<!ELEMENT ID (#PCDATA)>
+<!ELEMENT startdate (#PCDATA)>
+<!ELEMENT changedate (#PCDATA)>
+<!ELEMENT target (#PCDATA)>
+<!ELEMENT ingredients (ingredient*)>
+<!ATTLIST ingredients part CDATA #IMPLIED>
+<!ELEMENT ingredient (quantity,unit,iname)>
+<!ELEMENT quantity  (#PCDATA)>
+<!ELEMENT unit (#PCDATA)>
+<!ELEMENT iname   (#PCDATA |pagereference|quote|emph|bold|typewriter|italics )*>
+<!ELEMENT preparation (#PCDATA|citation|underline|texspecial|pagereference|reference|quote|indexentry|emph|bold|typewriter|italics|namefont|sansserif)*>
+<!ATTLIST preparation part CDATA #IMPLIED>
+<!ELEMENT variation (#PCDATA|citation|underline|namefont|texspecial|quote|pagereference|indexentry|jumptarget|emph|bold|typewriter|italics|sansserif)*>
+<!ELEMENT remark (#PCDATA |citation|texspecial|namefont|underline|indexentry|pagereference|quote|emph|bold|typewriter|italics|sansserif)*>
+<!ELEMENT privateremark (#PCDATA|texspecial|underline|namefont|quote|indexentry|emph|bold|typewriter|italics|sansserif)*>
+<!ELEMENT duration (durationspecial?,totaltime, worktime)>
+<!ELEMENT totaltime (#PCDATA|emph|bold|typewriter|italics)*>
+<!ELEMENT worktime (#PCDATA|emph|bold|typewriter|italics)*>
+<!ELEMENT durationspecial (#PCDATA|emph|bold|typewriter|italics)*>
+<!ELEMENT source (#PCDATA|citation|emph|typewriter|quote|indexentry)*>
+<!ELEMENT technique (#PCDATA)>
+<!ELEMENT sidedish (#PCDATA)>
+<!ELEMENT regionoforigin (#PCDATA)>
+<!ELEMENT frac (num,denom)>
+<!ELEMENT num (#PCDATA)>
+<!ELEMENT denom (#PCDATA)>
+<!ELEMENT range (from,to)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT refernce (#PCDATA)>
+<!ELEMENT citation (#PCDATA)>
+<!ELEMENT indexentry (#PCDATA)>
+<!ELEMENT reference (#PCDATA)>
+<!ELEMENT pagereference (#PCDATA)>
+<!ELEMENT bold (#PCDATA)>
+<!ELEMENT emph (#PCDATA)>
+<!ELEMENT typewriter (#PCDATA)>
+<!ELEMENT italics (#PCDATA)>
+<!ELEMENT underline (#PCDATA)>
+<!ELEMENT sansserif (#PCDATA)>
+<!ELEMENT namefont (#PCDATA)>
+<!ELEMENT quote (#PCDATA)>
+<!ELEMENT texspecial (#PCDATA)>
+<!ELEMENT jumptarget (#PCDATA)>
+<!ENTITY  deg "°">

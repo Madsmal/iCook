@@ -7,21 +7,28 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import com.sun.xml.internal.txw2.Document;
+//import com.sun.xml.internal.txw2.Document;
+
+//import com.sun.xml.internal.txw2.Document;
 
 import java.lang.Object;
 
+
+import javafx.application.Platform;
+
 public class Parser {
+	
 	private String filename;
 	private DocumentBuilder db;
 	public static Document readFileAndMakeDOM(String filename) {
 	     long time = - System.currentTimeMillis();
-	     org.w3c.dom.Document dom = null;
+	     Document dom = null;
 	       //get the factory
 	     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-	       try {
+	     try {
 	
 	           //Using factory get an instance of document builder
 	           DocumentBuilder db = dbf.newDocumentBuilder();
@@ -38,13 +45,10 @@ public class Parser {
 	           ioe.printStackTrace();
 	       }
 	       time += System.currentTimeMillis();
-	       Utilities.displayMsgLn("Time to read file and create DOM"+time+" msec.");
+	       System.out.println("Time to read file and create DOM"+time+" msec.");
 	      return(dom);
-	   }
-
-import javafx.application.Platform;
-
-public class Parser {
+	}
+	
 	/*
 	<?xml version="1.0" encoding="ISO-8859-1"?>
 	<!DOCTYPE cookbook SYSTEM "rezepte.dtd">
@@ -86,6 +90,5 @@ public class Parser {
 	    }
 	    return recipeLibraryList;
 	}
->>>>>>> b133558a71fe53f13793fc90656ac15748e23a36
-	
+
 }
