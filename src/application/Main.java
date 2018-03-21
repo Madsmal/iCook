@@ -1,5 +1,9 @@
 package application;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,11 +28,13 @@ public class Main extends Application {
 	
 	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ParserConfigurationException {
 
 		//launch(args);
-		Parser.readFileAndMakeDOM("asciuta.xml");
-		launch(args);
+		//Parser.readFileAndMakeDOM("asciuta.xml");
+		Parser domParser = new Parser();
+		domParser.readFileAndMakeDOM();
+		//launch(args);
 
 	}
 }

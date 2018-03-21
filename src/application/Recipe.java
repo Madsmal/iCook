@@ -9,13 +9,13 @@ public class Recipe {
 	private String steps;
 	private String notes;
 	
-	public Recipe(int id, String name, int numberOfServes, String ingredients, String steps, String remarks, String notes) {
+	public Recipe(int id, String name, int numberOfServes, String ingredients) {
 		this.id = id;
 		this.name = name;
 		this.numberOfServes = numberOfServes;
 		this.ingredients = ingredients;
-		this.steps = steps;
-		this.notes = notes;
+		//this.steps = steps;
+		//this.notes = notes;
 	}
 	
 	public int getId() {
