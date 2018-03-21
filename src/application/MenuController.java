@@ -28,8 +28,14 @@ public void onEditor(ActionEvent event) {
 	
 	
 public void onExit(ActionEvent event) {
-	System.out.println("Exit");
 	Platform.exit();
+}
+
+public void onSettings(ActionEvent event) throws IOException {
+	Parent settingsPath = FXMLLoader.load(getClass().getResource("/application/SettingsView.fxml"));
+	Scene settingScene = new Scene(settingsPath);
+	Model.primaryStage.setScene(settingScene);		
+	Model.primaryStage.show();
 }
 	
 }

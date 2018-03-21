@@ -15,5 +15,6 @@
       </Text>
       <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" text="Editor" />
       <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" prefHeight="35.0" prefWidth="137.0" text="Quit" />
+      <Button layoutX="662.0" layoutY="403.0" mnemonicParsing="false" onAction="#onSettings" prefHeight="48.0" prefWidth="93.0" text="Settings" />
    </children>
 </AnchorPane>
