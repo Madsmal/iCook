@@ -45,7 +45,7 @@ public class Parser {
 	           ioe.printStackTrace();
 	       }
 	       time += System.currentTimeMillis();
-	       System.out.println("Time to read file and create DOM"+time+" msec.");
+	       System.out.println("Time to read file and create DOM: "+time+" msec.");
 	      return(dom);
 	}
 	

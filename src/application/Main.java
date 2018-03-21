@@ -25,7 +25,7 @@ public class Main extends Application {
 	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
 	
 	public static void main(String[] args) {
-		launch(args);
-		//Parser.readFileAndMakeDOM("asciuta.xml");
+		//launch(args);
+		Parser.readFileAndMakeDOM("asciuta.xml");
 	}
 }
