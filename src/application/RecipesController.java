@@ -15,17 +15,17 @@ import javafx.scene.control.ListView;
 
 public class RecipesController implements Initializable {
 	
-	public static String[] recipeLibraryList;
-	
 	@FXML 
 	private ListView<String> listView;
 	
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		ObservableList<String> data = FXCollections.observableArrayList("Test1","Test2");
+		ObservableList<String> data = FXCollections.observableArrayList(Parser.recipeLibraryList);
 	//	ObservableList<String> data = recipeLibraryList
 		listView.setItems(data);
 	}
+	
 
 	public void onHome(ActionEvent event) throws Exception {
 

@@ -90,5 +90,29 @@ public class Parser {
 	    }
 	    return recipeLibraryList;
 	}
-
+	
+	
+	
+	/*
+	//arrayList instead of array
+	
+	public static ArrayList<String> recipeLibraryList;
+	
+	public static ArrayList<String> parseRecipeLibrary() {
+		File folder = new File("src\\application\\RecipeLibrary");
+		File[] listOfFiles = folder.listFiles();
+		
+		ArrayList<String> recipeLibraryList = new ArrayList<String>(); 
+		
+	    for (int i = 0; i < listOfFiles.length; i++) {
+	    	if (listOfFiles[i].isFile()) {
+	    		recipeLibraryList.add(listOfFiles[i].getName());
+	    	} else if (listOfFiles[i].isDirectory()) {
+	    		System.out.println("Error: RecipeLibraryList folder contains a folder.");
+	    		Platform.exit();
+	    	}
+	    }
+	    return recipeLibraryList;
+	}
+	*/
 }
