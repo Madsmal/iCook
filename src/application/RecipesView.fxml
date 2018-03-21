@@ -11,39 +11,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
    <children>
-      <SplitPane dividerPositions="0.3879598662207358" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.29197994987468673" prefHeight="480.0" prefWidth="800.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="listView" layoutY="47.0" prefHeight="350.0" prefWidth="230.0" />
+                  <ListView fx:id="listView" layoutY="47.0" prefHeight="431.0" prefWidth="232.0" />
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="168.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="168.0">
+               <children>
+                  <ImageView fitHeight="194.0" fitWidth="415.0" layoutX="148.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@Spaghetti-med-gloedsovs-01-800x400-web.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="366.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@knap.css" text="Start" />
+                  <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="487.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@timer%20watch.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="394.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaltime" wrappingWidth="68.3804931640625">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton layoutX="406.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Serves 2" textAlignment="CENTER">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Serves 4" />
+                      <MenuItem mnemonicParsing="false" text="Serves 6" />
+                    </items>
+                  </MenuButton>
+               </children></AnchorPane>
         </items>
       </SplitPane>
       <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@home.css" text="Home" />
-      <ImageView fitHeight="150.0" fitWidth="354.0" layoutX="246.0" pickOnBounds="true">
-         <image>
-            <Image url="@Spaghetti-med-gloedsovs-01-800x400-web.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="487.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaltime" wrappingWidth="68.3804931640625">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="442.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@timer%20watch.png" />
-         </image>
-      </ImageView>
-      <MenuButton layoutX="449.0" layoutY="224.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Serves 2" textAlignment="CENTER">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Serves 4" />
-          <MenuItem mnemonicParsing="false" text="Serves 6" />
-        </items>
-      </MenuButton>
-      <Button layoutX="417.0" layoutY="320.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@knap.css" text="Start" />
    </children>
 </AnchorPane>
