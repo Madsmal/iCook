@@ -1,8 +1,11 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+//import javax.xml.parsers.ParserConfigurationException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,12 +31,28 @@ public class Main extends Application {
 	
 	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
 	
-	public static void main(String[] args) throws IOException, ParserConfigurationException {
+	public static void main(String[] args) throws IOException, Exception {
 
 		//launch(args);
+		File file = new File("src\\application\\asciuta.xml");
+	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
+	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+	    System.setProperty("javax.xml.accessExternalDTD", "all");
+	    Recipe recipe = (Recipe) jaxbUnmarshaller.unmarshal(file);
+
+//		Parser asciuta = new Parser();
+//		asciuta.parseXMLFile();
+	    
+	    System.out.println(recipe.getID());
+        System.out.println(recipe.getTitle());
+        System.out.println(recipe.getStartdate());
+        System.out.println(recipe.getChangedate());
+        System.out.println(recipe.getTarget());
+        System.out.println(recipe.getIngredients().getIngredient().get(0).getIname());
+		
+		//Parser domParser = new Parser();
 		//Parser.readFileAndMakeDOM("asciuta.xml");
-		Parser domParser = new Parser();
-		domParser.readFileAndMakeDOM();
+		//domParser.readFileAndMakeDOM();
 		//launch(args);
 
 	}
