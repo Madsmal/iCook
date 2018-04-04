@@ -16,10 +16,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class RecipesController implements Initializable {
 	
+	// Defining labels
+	@FXML
+	Label totalTimeLabel;
 	
 	// Initialising the listview
 	@FXML 
@@ -30,6 +34,8 @@ public class RecipesController implements Initializable {
 		ObservableList<String> data = FXCollections.observableArrayList(Parser.recipeLibraryList);
 		listView.setItems(data);
 		
+		//myLabel.setText("start");
+		
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -37,8 +43,8 @@ public class RecipesController implements Initializable {
 		        /* Todo here:
 		         * update a selectedRecipe string variable
 		         * parse the selected recipe
-		         * update scene or labels
 		         */
+		        totalTimeLabel.setText(newValue);
 		    }
 		});
 	}

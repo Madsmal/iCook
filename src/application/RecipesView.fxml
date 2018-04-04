@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -32,7 +33,7 @@
                         <Image url="@timer%20watch.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="394.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaltime" wrappingWidth="68.3804931640625">
+                  <Text layoutX="372.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaltime" wrappingWidth="68.3804931640625">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -43,6 +44,7 @@
                       <MenuItem mnemonicParsing="false" text="Serves 6" />
                     </items>
                   </MenuButton>
+                  <Label fx:id="totalTimeLabel" layoutX="440.0" layoutY="229.0" prefHeight="19.0" prefWidth="40.0" text="N/S" />
                </children></AnchorPane>
         </items>
       </SplitPane>
