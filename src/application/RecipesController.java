@@ -15,18 +15,18 @@ import javafx.scene.control.ListView;
 
 public class RecipesController implements Initializable {
 	
+	
+	//initialising the listview
 	@FXML 
 	private ListView<String> listView;
-	
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		ObservableList<String> data = FXCollections.observableArrayList(Parser.recipeLibraryList);
-	//	ObservableList<String> data = recipeLibraryList
 		listView.setItems(data);
 	}
 	
-
+	//events
 	public void onHome(ActionEvent event) throws Exception {
 
 		Parent home = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));

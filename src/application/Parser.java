@@ -123,10 +123,6 @@ public class Parser {
 //	}
 	
 	/*
-	<?xml version="1.0" encoding="ISO-8859-1"?>
-	<!DOCTYPE cookbook SYSTEM "rezepte.dtd">
-	*/
-	//<recipe> wraps all the xml
 	String title;
 	String ID;
 	String startdate;
@@ -139,11 +135,8 @@ public class Parser {
 	String privateremark; //???
 	String duration; //contains String totaltime; and String worktime;
 	String source; //forfatter
+	*/
 	
-	
-//	public void parseRecipe(String recipeName) {
-//		
-//	}
 	
 	public static String[] recipeLibraryList;
 	
@@ -164,28 +157,4 @@ public class Parser {
 	    return recipeLibraryList;
 	}
 	
-	
-	
-	/*
-	//arrayList instead of array
-	
-	public static ArrayList<String> recipeLibraryList;
-	
-	public static ArrayList<String> parseRecipeLibrary() {
-		File folder = new File("src\\application\\RecipeLibrary");
-		File[] listOfFiles = folder.listFiles();
-		
-		ArrayList<String> recipeLibraryList = new ArrayList<String>(); 
-		
-	    for (int i = 0; i < listOfFiles.length; i++) {
-	    	if (listOfFiles[i].isFile()) {
-	    		recipeLibraryList.add(listOfFiles[i].getName());
-	    	} else if (listOfFiles[i].isDirectory()) {
-	    		System.out.println("Error: RecipeLibraryList folder contains a folder.");
-	    		Platform.exit();
-	    	}
-	    }
-	    return recipeLibraryList;
-	}
-	*/
 }
