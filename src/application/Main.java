@@ -33,7 +33,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws IOException, Exception {
 
-		//launch(args);
+		launch(args);
 		File file = new File("src\\application\\asciuta.xml");
 	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
