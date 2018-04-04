@@ -2,12 +2,11 @@ package application;
 
 import java.io.IOException;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MenuController {
 	
@@ -27,8 +26,8 @@ public void onEditor(ActionEvent event) {
 }
 	
 	
-public void onExit(ActionEvent event) {
-	Platform.exit();
+public void onExit(WindowEvent event) {
+	System.exit(0);
 }
 
 public void onSettings(ActionEvent event) throws IOException {
