@@ -1,2 +1,0 @@
-Erik:
-- RecipeLibrary parser skal slette .xml inden filnavnet indsættes i array, samt ignorere rezepte.dtd, og skal flyttes til recipescontroller

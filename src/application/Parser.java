@@ -124,24 +124,4 @@ public class Parser {
 	
 
 	
-	
-	public static String[] recipeLibraryList;
-	
-	public static String[] parseRecipeLibrary() {
-		File folder = new File("src\\application\\RecipeLibrary");
-		File[] listOfFiles = folder.listFiles();
-		
-		String[] recipeLibraryList = new String[listOfFiles.length]; 
-		
-	    for (int i = 0; i < listOfFiles.length; i++) {
-	    	if (listOfFiles[i].isFile()) {
-	    		recipeLibraryList[i] = listOfFiles[i].getName();
-	    	} else if (listOfFiles[i].isDirectory()) {
-	    		System.out.println("Error: RecipeLibraryList folder contains a folder.");
-	    		Platform.exit();
-	    	}
-	    }
-	    return recipeLibraryList;
-	}
-	
 }

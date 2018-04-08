@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -42,8 +43,21 @@ public class RecipesController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// Inserting values into listview
-		Parser.recipeLibraryList = Parser.parseRecipeLibrary();
-		ObservableList<String> data = FXCollections.observableArrayList(Parser.recipeLibraryList);
+		File folder = new File("src\\application\\RecipeLibrary");
+		File[] listOfFiles = folder.listFiles();
+		
+		String[] recipeLibraryList = new String[listOfFiles.length-1]; 
+		
+	    for (int i = 0; i < listOfFiles.length; i++) {
+	    	if (listOfFiles[i].isFile() && !"rezepte.dtd".equals(listOfFiles[i].getName()) ) {
+	    		recipeLibraryList[i] = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
+	    	} else if (listOfFiles[i].isDirectory()) {
+	    		System.out.println("Error: RecipeLibraryList folder contains a folder.");
+	    		Platform.exit();
+	    	}
+	    }
+		
+		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
 		
 		// Default label values
