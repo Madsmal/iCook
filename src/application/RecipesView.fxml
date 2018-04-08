@@ -24,10 +24,9 @@
                <children>
                   <ImageView fitHeight="194.0" fitWidth="415.0" layoutX="148.0" pickOnBounds="true">
                      <image>
-                        <Image url="@Spaghetti-med-gloedsovs-01-800x400-web.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="366.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@knap.css" text="Start" />
+                        <Image url="@Images/Spaghetti-med-gloedsovs-01-800x400-web.png" />
+                     </image></ImageView>
+                  <Button layoutX="366.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
                   <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="487.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@timer%20watch.png" />
@@ -44,10 +43,16 @@
                       <MenuItem mnemonicParsing="false" text="Serves 6" />
                     </items>
                   </MenuButton>
-                  <Label fx:id="totalTimeLabel" layoutX="440.0" layoutY="229.0" prefHeight="19.0" prefWidth="40.0" text="N/S" />
+                  <Label fx:id="title" layoutX="45.0" layoutY="201.0" text="Title" />
+                  <Label fx:id="ingredients" layoutX="45.0" layoutY="238.0" text="Ingredients" />
+                  <Label fx:id="totalTime" layoutX="43.0" layoutY="265.0" text="Total time" />
+                  <Label fx:id="worktime" layoutX="43.0" layoutY="288.0" text="Work time" />
+                  <Label fx:id="startdate" layoutX="43.0" layoutY="314.0" text="Start date" />
+                  <Label fx:id="changedate" layoutX="43.0" layoutY="342.0" text="Change date" />
+                  <Label fx:id="source" layoutX="43.0" layoutY="369.0" text="Source" />
                </children></AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@home.css" text="Home" />
+      <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@Stylesheets/home.css" text="Home" />
    </children>
 </AnchorPane>

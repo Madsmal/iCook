@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		//Model model = new Model(primaryStage);
 		Model.primaryStage = primaryStage;
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
@@ -34,7 +33,7 @@ public class Main extends Application {
 	public static void main(String[] args) throws IOException, Exception {
 
 		launch(args);
-		File file = new File("src\\application\\asciuta.xml");
+		File file = new File("src\\application\\RecipeLibrary\\asciuta.xml");
 	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
 	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 	    System.setProperty("javax.xml.accessExternalDTD", "all");

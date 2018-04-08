@@ -122,20 +122,7 @@ public class Parser {
 //        }
 //	}
 	
-	/*
-	String title;
-	String ID;
-	String startdate;
-	String changedate;
-	String target; //amount of people, default should be based on setting value. 
-	String ingredients; //contains String ingredient; //contains String quantity; and String unit; and String iname;
-	String preparation;
-	String variation; //what you can change from the recipe
-	String remark; //???
-	String privateremark; //???
-	String duration; //contains String totaltime; and String worktime;
-	String source; //forfatter
-	*/
+
 	
 	
 	public static String[] recipeLibraryList;

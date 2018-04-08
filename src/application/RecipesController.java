@@ -1,10 +1,13 @@
 package application;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sun.glass.events.MouseEvent;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,12 +21,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
 
 public class RecipesController implements Initializable {
 	
-	// Defining labels
-	@FXML
-	Label totalTimeLabel;
+	// Defining fxml elements
+	@FXML Label title;
+	@FXML Label totalTime;
+	@FXML Label worktime;
+	@FXML Label startdate;
+	@FXML Label changedate;
+	@FXML Label ingredients;
+	@FXML Label source;
 	
 	// Initialising the listview
 	@FXML 
@@ -31,25 +41,49 @@ public class RecipesController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		// Inserting values into listview
+		Parser.recipeLibraryList = Parser.parseRecipeLibrary();
 		ObservableList<String> data = FXCollections.observableArrayList(Parser.recipeLibraryList);
 		listView.setItems(data);
 		
-		//myLabel.setText("start");
+		// Default label values
+		title.setText("Please select a recipe");
+		totalTime.setText("Total Time: N/A");
+		worktime.setText("Work time: N/A");
+		startdate.setText("Start date: N/A");
+		changedate.setText("Change date: N/A");
+		ingredients.setText("Ingredients: N/A");
+		source.setText("Source: N/A");
 		
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-		        System.out.println("Selected item: " + newValue);
+		    	
+		        System.out.println("Selected item: " + newValue); // test - remove when finished
+		        
 		        /* Todo here:
-		         * update a selectedRecipe string variable
+		         * update a selectedRecipe string variable (perhaps)
 		         * parse the selected recipe
+		         * update labels
+		         * 
+		         * update image
 		         */
-		        totalTimeLabel.setText(newValue);
+		        
+		        // Updated label values
+		        /*
+		        title.setText();
+				totalTime.setText("Total Time: " +);
+				worktime.setText("Work time: " +);
+				startdate.setText("Start date: " + );
+				changedate.setText("Change date: " +);
+				ingredients.setText("Ingredients: " +);
+				source.setText("Source: " + );
+				*/
 		    }
 		});
 	}
 	
-	//events
+	// Events
 	public void onHome(ActionEvent event) throws Exception {
 		Parent home = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
 		Scene Home = new Scene(home);
