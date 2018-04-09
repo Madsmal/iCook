@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -20,16 +19,8 @@
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="168.0">
                <children>
-                  <ImageView fitHeight="194.0" fitWidth="415.0" layoutX="148.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@Images/Spaghetti-med-gloedsovs-01-800x400-web.png" />
-                     </image></ImageView>
+                  <ImageView fx:id="RecipeImageView" fitHeight="194.0" fitWidth="415.0" layoutX="148.0" pickOnBounds="true" />
                   <Button layoutX="366.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
-                  <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="487.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@timer%20watch.png" />
-                     </image>
-                  </ImageView>
                   <MenuButton layoutX="423.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Serves 2" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Serves 4" />

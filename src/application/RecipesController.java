@@ -2,13 +2,8 @@ package application;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,12 +17,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class RecipesController implements Initializable {
 	
-	// Defining fxml elements
+	// Defining FXML elements
 	@FXML Label title;
 	@FXML Label totalTime;
 	@FXML Label worktime;
@@ -35,6 +30,7 @@ public class RecipesController implements Initializable {
 	@FXML Label changedate;
 	@FXML Label ingredients;
 	@FXML Label source;
+	@FXML ImageView RecipeImageView;
 	
 	// Initialising the listview
 	@FXML 
@@ -60,7 +56,7 @@ public class RecipesController implements Initializable {
 		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
 		
-		// Default label values
+		// Default FXML elements values
 		title.setText("Please select a recipe");
 		totalTime.setText("Total Time: N/A");
 		worktime.setText("Work time: N/A");
@@ -101,6 +97,37 @@ public class RecipesController implements Initializable {
 				startdate.setText("Start date: " + Model.recipe.getStartdate());
 				changedate.setText("Change date: " + Model.recipe.getChangedate());
 				source.setText("Source: " + Model.recipe.getSource());
+				
+				// Update recipe image
+				
+				/* Recipe images supported formats are PNG, JPEG, GIF, BMP, and JPG
+				 * 
+				 * The image associated with a recipe must have the same name as the recipe,
+				 * and must be placed in "src\\application\\Images\\"
+				 */
+				
+				File filePNG = new File("src\\application\\Images\\" + newValue + ".png");
+				File fileJPEG = new File("src\\application\\Images\\" + newValue + ".jpeg");
+				File fileGIF = new File("src\\application\\Images\\" + newValue + ".gif");
+				File fileBMP = new File("src\\application\\Images\\" + newValue + ".bmp");
+				File fileJPG = new File("src\\application\\Images\\" + newValue + ".jpg");
+				
+				Image image = null;
+				if (filePNG.exists()) {
+					image = new Image(filePNG.toURI().toString());
+				} else if (fileJPEG.exists()) {
+					image = new Image(fileJPEG.toURI().toString());
+				} else if (fileGIF.exists()) {
+					image = new Image(fileGIF.toURI().toString());
+				} else if (fileBMP.exists()) {
+					image = new Image(fileBMP.toURI().toString());
+				} else if (fileJPG.exists()) {
+					image = new Image(fileJPG.toURI().toString());
+				} else {
+					System.out.println("ERROR: The recipe \""+newValue+"\" is missing an associated image");
+				}
+				
+				RecipeImageView.setImage(image);
 		    }
 		});
 	}
