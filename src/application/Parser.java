@@ -25,15 +25,11 @@ import java.lang.Object;
 
 import javafx.application.Platform;
 
-public class Parser {
-	public void parseXMLFile() throws Exception {
-		File file = new File("src\\application\\asciuta.xml");
-	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
-	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-	    System.setProperty("javax.xml.accessExternalDTD", "all");
-	    Recipe recipe = (Recipe) jaxbUnmarshaller.unmarshal(file);
 
-	}
+
+public class Parser {
+	
+	
 	
 	
 //	private File filename;

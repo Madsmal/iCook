@@ -71,28 +71,36 @@ public class RecipesController implements Initializable {
 		
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 		    	
-		        System.out.println("Selected item: " + newValue); // test - remove when finished
+		        //parse selected recipe
+				try {
+					Model.parseXMLFile("src\\application\\RecipeLibrary\\"+newValue+".xml");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				//update labels
+		        String ingredientsList = "Ingredients:\n";
+				
+		        for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+		        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
+		        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
+		        	}
+		        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
+		        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
+		        	}
+		        	ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
+		        }
 		        
-		        /* Todo here:
-		         * update a selectedRecipe string variable (perhaps)
-		         * parse the selected recipe
-		         * update labels
-		         * 
-		         * update image
-		         */
+		        ingredients.setText(ingredientsList);
 		        
-		        // Updated label values
-		        /*
-		        title.setText();
-				totalTime.setText("Total Time: " +);
-				worktime.setText("Work time: " +);
-				startdate.setText("Start date: " + );
-				changedate.setText("Change date: " +);
-				ingredients.setText("Ingredients: " +);
-				source.setText("Source: " + );
-				*/
+		        title.setText(Model.recipe.getTitle());
+		        totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
+				worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
+				startdate.setText("Start date: " + Model.recipe.getStartdate());
+				changedate.setText("Change date: " + Model.recipe.getChangedate());
+				source.setText("Source: " + Model.recipe.getSource());
 		    }
 		});
 	}

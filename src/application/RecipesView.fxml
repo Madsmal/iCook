@@ -9,8 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
    <children>
@@ -32,12 +30,7 @@
                         <Image url="@timer%20watch.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="372.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totaltime" wrappingWidth="68.3804931640625">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <MenuButton layoutX="406.0" layoutY="296.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Serves 2" textAlignment="CENTER">
+                  <MenuButton layoutX="423.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Serves 2" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Serves 4" />
                       <MenuItem mnemonicParsing="false" text="Serves 6" />
@@ -45,11 +38,11 @@
                   </MenuButton>
                   <Label fx:id="title" layoutX="45.0" layoutY="201.0" text="Title" />
                   <Label fx:id="ingredients" layoutX="45.0" layoutY="238.0" text="Ingredients" />
-                  <Label fx:id="totalTime" layoutX="43.0" layoutY="265.0" text="Total time" />
-                  <Label fx:id="worktime" layoutX="43.0" layoutY="288.0" text="Work time" />
-                  <Label fx:id="startdate" layoutX="43.0" layoutY="314.0" text="Start date" />
-                  <Label fx:id="changedate" layoutX="43.0" layoutY="342.0" text="Change date" />
-                  <Label fx:id="source" layoutX="43.0" layoutY="369.0" text="Source" />
+                  <Label fx:id="totalTime" layoutX="345.0" layoutY="247.0" text="Total time" />
+                  <Label fx:id="worktime" layoutX="345.0" layoutY="270.0" text="Work time" />
+                  <Label fx:id="startdate" layoutX="345.0" layoutY="296.0" text="Start date" />
+                  <Label fx:id="changedate" layoutX="345.0" layoutY="324.0" text="Change date" />
+                  <Label fx:id="source" layoutX="345.0" layoutY="351.0" text="Source" />
                </children></AnchorPane>
         </items>
       </SplitPane>
