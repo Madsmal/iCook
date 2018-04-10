@@ -11,9 +11,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Model.primaryStage = primaryStage;
@@ -23,15 +25,15 @@ public class Main extends Application {
 		primaryStage.setTitle("iCook");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
-	
+
 	}
 	
 	// Raspberry pi 3 screen resolution 800x480	
 	
 	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
-	
+		
 	public static void main(String[] args) throws IOException, Exception {
-
+		
 		launch(args);
 		File file = new File("src\\application\\RecipeLibrary\\asciuta.xml");
 	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);

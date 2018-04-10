@@ -24,7 +24,7 @@ public void onEditor(ActionEvent event) {
 }
 	
 	
-public void onExit(WindowEvent event) {
+public void onExit(ActionEvent event) {
 	System.exit(0);
 }
 

@@ -23,7 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class RecipesController implements Initializable {
-	
+
 	// Defining FXML elements
 	@FXML Label title;
 	@FXML Label totalTime;
@@ -37,33 +37,33 @@ public class RecipesController implements Initializable {
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
 	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2);
-	*/
-	
-	
+	 */
+
+
 	// Initialising the listview
 	@FXML 
 	private ListView<String> listView;
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// Inserting values into listview
 		File folder = new File("src\\application\\RecipeLibrary");
 		File[] listOfFiles = folder.listFiles();
-		
+
 		String[] recipeLibraryList = new String[listOfFiles.length-1]; 
-		
-	    for (int i = 0; i < listOfFiles.length; i++) {
-	    	if (listOfFiles[i].isFile() && !"rezepte.dtd".equals(listOfFiles[i].getName()) ) {
-	    		recipeLibraryList[i] = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
-	    	} else if (listOfFiles[i].isDirectory()) {
-	    		System.out.println("Error: RecipeLibraryList folder contains a folder.");
-	    		Platform.exit();
-	    	}
-	    }
-		
+
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].isFile() && !"rezepte.dtd".equals(listOfFiles[i].getName()) ) {
+				recipeLibraryList[i] = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
+			} else if (listOfFiles[i].isDirectory()) {
+				System.out.println("Error: RecipeLibraryList folder contains a folder.");
+				Platform.exit();
+			}
+		}
+
 		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
-		
+
 		// Default FXML elements values
 		title.setText("Please select a recipe");
 		totalTime.setText("Total Time: N/A");
@@ -72,54 +72,54 @@ public class RecipesController implements Initializable {
 		changedate.setText("Change date: N/A");
 		ingredients.setText("Ingredients: N/A");
 		source.setText("Source: N/A");
-		
+
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-		    	
-		        //parse selected recipe
+
+				//parse selected recipe
 				try {
 					Model.parseXMLFile("src\\application\\RecipeLibrary\\"+newValue+".xml");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 				//update labels
-		        String ingredientsList = "Ingredients:\n";
-				
-		        for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
-		        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
-		        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
-		        	}
-		        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
-		        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
-		        	}
-		        	ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
-		        }
-		        
-		        ingredients.setText(ingredientsList);
-		        
-		        title.setText(Model.recipe.getTitle());
-		        totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
+				String ingredientsList = "Ingredients:\n";
+
+				for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+					if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
+						ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
+					}
+					if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
+						ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
+					}
+					ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
+				}
+
+				ingredients.setText(ingredientsList);
+
+				title.setText(Model.recipe.getTitle());
+				totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
 				worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
 				startdate.setText("Start date: " + Model.recipe.getStartdate());
 				changedate.setText("Change date: " + Model.recipe.getChangedate());
 				source.setText("Source: " + Model.recipe.getSource());
-				
+
 				// Update recipe image
-				
+
 				/* Recipe images supported formats are PNG, JPEG, GIF, BMP, and JPG
 				 * 
 				 * The image associated with a recipe must have the same name as the recipe,
 				 * and must be placed in "src\\application\\Images\\"
 				 */
-				
+
 				File filePNG = new File("src\\application\\Images\\" + newValue + ".png");
 				File fileJPEG = new File("src\\application\\Images\\" + newValue + ".jpeg");
 				File fileGIF = new File("src\\application\\Images\\" + newValue + ".gif");
 				File fileBMP = new File("src\\application\\Images\\" + newValue + ".bmp");
 				File fileJPG = new File("src\\application\\Images\\" + newValue + ".jpg");
-				
+
 				Image image = null;
 				if (filePNG.exists()) {
 					image = new Image(filePNG.toURI().toString());
@@ -134,9 +134,9 @@ public class RecipesController implements Initializable {
 				} else {
 					System.out.println("ERROR: The recipe \""+newValue+"\" is missing an associated image");
 				}
-				
+
 				RecipeImageView.setImage(image);
-		    }
+			}
 		});
 		/*
 		serving1.setOnAction(event -> {
@@ -145,13 +145,13 @@ public class RecipesController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		    System.out.println("Option 1 selected via Lambda");
 		    Model.recipe.getIngredients().getIngredient().get(0).setQuantity(Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(0).getQuantity())*2));
-		    
+
 		  //update labels
 	        String ingredientsList = "Ingredients:\n";
-			
+
 	        for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
 	        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
 	        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
@@ -161,24 +161,24 @@ public class RecipesController implements Initializable {
 	        	}
 	        	ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
 	        }
-	        
+
 	        ingredients.setText(ingredientsList);
-	        
+
 	        title.setText(Model.recipe.getTitle());
 	        totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
 			worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
 			startdate.setText("Start date: " + Model.recipe.getStartdate());
 			changedate.setText("Change date: " + Model.recipe.getChangedate());
 			source.setText("Source: " + Model.recipe.getSource());
-			
+
 		});
 		serving2.setOnAction(event -> {
 		    System.out.println("Option 2 selected via Lambda");
 		});
-		*/
-		
+		 */
+
 	}
-	
+
 	// Events
 	public void onHome(ActionEvent event) throws Exception {
 		Parent home = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
@@ -189,11 +189,17 @@ public class RecipesController implements Initializable {
 
 	public void onStart(ActionEvent event) throws Exception {
 
-		Parent start = FXMLLoader.load(getClass().getResource("/application/CookingView.fxml"));
-		Scene Start = new Scene(start);
-		Model.primaryStage.setScene(Start);		
-		Model.primaryStage.show();
+		// Checks if a listview element is selected. 
+		
+		if (listView.getSelectionModel().getSelectedItem() != null) {
+			Parent start = FXMLLoader.load(getClass().getResource("/application/CookingView.fxml"));
+			Scene Start = new Scene(start);
+			Model.primaryStage.setScene(Start);		
+			Model.primaryStage.show();
+			
+		} 
 	}
-	
-	
+
+
+
 }
