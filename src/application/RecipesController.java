@@ -17,6 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -31,6 +33,12 @@ public class RecipesController implements Initializable {
 	@FXML Label ingredients;
 	@FXML Label source;
 	@FXML ImageView RecipeImageView;
+	/*
+	@FXML MenuItem serving1 = new MenuItem("Option 1");
+	@FXML MenuItem serving2 = new MenuItem("Option 2");
+	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2);
+	*/
+	
 	
 	// Initialising the listview
 	@FXML 
@@ -130,6 +138,45 @@ public class RecipesController implements Initializable {
 				RecipeImageView.setImage(image);
 		    }
 		});
+		/*
+		serving1.setOnAction(event -> {
+			try {
+				Model.parseXMLFile("src\\application\\RecipeLibrary\\"+"Lorem ipsum"+".xml");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		    System.out.println("Option 1 selected via Lambda");
+		    Model.recipe.getIngredients().getIngredient().get(0).setQuantity(Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(0).getQuantity())*2));
+		    
+		  //update labels
+	        String ingredientsList = "Ingredients:\n";
+			
+	        for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+	        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
+	        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
+	        	}
+	        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
+	        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
+	        	}
+	        	ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
+	        }
+	        
+	        ingredients.setText(ingredientsList);
+	        
+	        title.setText(Model.recipe.getTitle());
+	        totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
+			worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
+			startdate.setText("Start date: " + Model.recipe.getStartdate());
+			changedate.setText("Change date: " + Model.recipe.getChangedate());
+			source.setText("Source: " + Model.recipe.getSource());
+			
+		});
+		serving2.setOnAction(event -> {
+		    System.out.println("Option 2 selected via Lambda");
+		});
+		*/
+		
 	}
 	
 	// Events
@@ -147,5 +194,6 @@ public class RecipesController implements Initializable {
 		Model.primaryStage.setScene(Start);		
 		Model.primaryStage.show();
 	}
-
+	
+	
 }
