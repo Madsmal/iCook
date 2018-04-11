@@ -1,0 +1,13 @@
+I Recipe class skal der implementeres tasks med underclassen task med underværdiererne:
+String taskString - String ID - String prereq - String time - Boolean attentionRequired
+
+Importer pakke der kan tælle sekunder:
+public static long currentTimeMillis()
+System.currentTimeMillis()
+returns value in Long type
+
+Fjern linjeseperator i recipeView.
+
+
+
+

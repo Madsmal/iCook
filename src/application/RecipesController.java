@@ -47,7 +47,7 @@ public class RecipesController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// Inserting values into listview
-		File folder = new File("src\\application\\RecipeLibrary");
+		File folder = new File("src/application/RecipeLibrary");
 		File[] listOfFiles = folder.listFiles();
 
 		String[] recipeLibraryList = new String[listOfFiles.length-1]; 
