@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,7 @@ public void onEditor(ActionEvent event) {
 	
 	
 public void onExit(ActionEvent event) {
-	System.exit(0);
+	Model.primaryStage.setOnCloseRequest(e -> Platform.exit());
 }
 
 public void onSettings(ActionEvent event) throws IOException {
