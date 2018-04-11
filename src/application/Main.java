@@ -34,27 +34,5 @@ public class Main extends Application {
 		
 	public static void main(String[] args) throws IOException, Exception {
 		
-		launch(args);
-		File file = new File("src\\application\\RecipeLibrary\\asciuta.xml");
-	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
-	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-	    System.setProperty("javax.xml.accessExternalDTD", "all");
-	    Recipe recipe = (Recipe) jaxbUnmarshaller.unmarshal(file);
-
-//		Parser asciuta = new Parser();
-//		asciuta.parseXMLFile();
-	    
-	    System.out.println(recipe.getID());
-        System.out.println(recipe.getTitle());
-        System.out.println(recipe.getStartdate());
-        System.out.println(recipe.getChangedate());
-        System.out.println(recipe.getTarget());
-        System.out.println(recipe.getIngredients().getIngredient().get(0).getIname());
-		
-		//Parser domParser = new Parser();
-		//Parser.readFileAndMakeDOM("asciuta.xml");
-		//domParser.readFileAndMakeDOM();
-		//launch(args);
-
 	}
 }
