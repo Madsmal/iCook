@@ -13,7 +13,7 @@
       <Line endX="530.0" layoutX="270.0" layoutY="90.0" startX="-38.0" strokeWidth="2.0" />
       <Button layoutX="-1.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@Stylesheets/home.css" text="Back" />
       <Button layoutX="632.0" layoutY="404.0" mnemonicParsing="false" onAction="#onNext" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Next" />
-      <Button layoutX="263.0" layoutY="404.0" mnemonicParsing="false" onAction="#onPrevious" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Previous" />
+      <Button fx:id="previous" layoutX="263.0" layoutY="404.0" mnemonicParsing="false" onAction="#onPrevious" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Previous" />
       <Button layoutX="449.0" layoutY="404.0" mnemonicParsing="false" onAction="#onPause" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Pause" />
       <ProgressBar layoutX="235.0" prefHeight="29.0" prefWidth="563.0" progress="0.0" />
       <Label fx:id="currentTime" layoutX="701.0" layoutY="42.0" prefHeight="17.0" prefWidth="28.0" text="Label" />
