@@ -26,10 +26,10 @@ public class CookingController implements Initializable {
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		
-		taskSequence = calculateTaskSequence();
+		//taskSequence = calculateTaskSequence();
 	
 		// Default FXML elements values
-		task.setText("Get all your ingredients ready:\n"); //TODO: insert ingredients
+		//task.setText("Get all your ingredients ready:\n"); //TODO: insert ingredients
 		
 	}
 	
@@ -60,12 +60,12 @@ public class CookingController implements Initializable {
 	
 	
 	
-	
+	/*
 	// Methods
 	public static int[] calculateTaskSequence() {
 		int[] taskSequence = new int[Model.recipe.getTasks().getTask().size()];
 		
 		return taskSequence;
 	}
-
+	*/
 }
