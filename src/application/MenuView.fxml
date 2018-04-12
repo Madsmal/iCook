@@ -21,7 +21,7 @@
          </font>
       </Text>
       <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
-      <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
+      <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
       <Button layoutX="618.0" layoutY="403.0" mnemonicParsing="false" onAction="#onSettings" prefHeight="48.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Settings" />
    </children>
 </AnchorPane>

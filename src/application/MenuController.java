@@ -7,10 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.WindowEvent;
 
 public class MenuController {
-	
 	
 public void onRecipes(ActionEvent event) throws Exception {
 	Parent recipesPath = FXMLLoader.load(getClass().getResource("/application/RecipesView.fxml"));
@@ -19,14 +17,13 @@ public void onRecipes(ActionEvent event) throws Exception {
 	Model.primaryStage.show();
 }
 
-
 public void onEditor(ActionEvent event) {
 	
 }
 	
 	
 public void onExit(ActionEvent event) {
-	Model.primaryStage.setOnCloseRequest(e -> Platform.exit());
+	Platform.exit();
 }
 
 public void onSettings(ActionEvent event) throws IOException {
