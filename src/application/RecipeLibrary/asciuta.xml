@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE cookbook SYSTEM "rezepte.dtd">
 <recipe>
-<title>Nudeln mit Bologneser Sauce</title>
+<title>Spaghetti with Bolognese sauce</title>
 <ID>36</ID>
 <startdate>01.01.1995</startdate>
 <changedate>04.08.1997</changedate>
 <target>
-Für 4-6 Personen (für 6-10 als Vorspeise)
+For 4-6 Person(s)
 </target>
 <ingredients>
 <ingredient>
 <quantity>1000</quantity>
 <unit>g</unit>
-<iname>Hackfleisch</iname>
+<iname>minced meat</iname>
 </ingredient>
 <ingredient>
 <quantity>200</quantity>
 <unit>g</unit>
-<iname>durchwachsenen Speck</iname>
+<iname>streaky bacon</iname>
 </ingredient>
 <ingredient>
 <quantity>2-3</quantity>
 <unit></unit>
-<iname>Zwiebeln</iname>
+<iname>onion(s)</iname>
 </ingredient>
 <ingredient>
 <quantity>2-3</quantity>
 <unit></unit>
-<iname>Knoblauchzehen</iname>
+<iname>garlic clove(s)</iname>
 </ingredient>
 <ingredient>
 <quantity>1</quantity>
 <unit></unit>
-<iname>Dose Tomaten (850 ml)</iname>
+<iname>can of tomatoes (850 ml)</iname>
 </ingredient>
 <ingredient>
 <quantity>2</quantity>
-<unit>EL</unit>
-<iname>Tomatenmark</iname>
+<unit>tablespoon</unit>
+<iname>Tomato paste</iname>
 </ingredient>
 <ingredient>
 <quantity></quantity>
 <unit></unit>
-<iname>Salz, Pfeffer</iname>
+<iname>Salt, Pepper</iname>
 </ingredient>
 <ingredient>
 <quantity></quantity>
@@ -52,15 +52,68 @@ Für 4-6 Personen (für 6-10 als Vorspeise)
 <ingredient>
 <quantity>500-750</quantity>
 <unit>g</unit>
-<iname>Nudeln, z.B. Spaghetti</iname>
+<iname>Spaghetti</iname>
 </ingredient>
 <ingredient>
 <quantity>100</quantity>
 <unit>g</unit>
-<iname>Parmesan, frisch gerieben</iname>
+<iname>Parmesan, freshly grated</iname>
 </ingredient>
 
 </ingredients>
+
+<tasks>
+<task>
+<ID>1</ID>
+<prereq></prereq>
+<time>0:10:00</time>
+<attentionRequired>true</attentionRequired>
+<taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
+</task>
+<task>
+<ID>2</ID>
+<prereq></prereq>
+<time>0:05:00</time>
+<attentionRequired>true</attentionRequired>
+<taskString>Roast minced meat as well as possible finely divide.</taskString>
+</task>
+<task>
+<ID>3</ID>
+<prereq></prereq>
+<time>0:10:00</time>
+<attentionRequired>true</attentionRequired>
+<taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
+</task>
+<task>
+<ID>4</ID>
+<prereq></prereq>
+<time>1:00:00</time>
+<attentionRequired>false</attentionRequired>
+<taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
+</task>
+<task>
+<ID>5</ID>
+<prereq></prereq>
+<time>0:10:00</time>
+<attentionRequired>false</attentionRequired>
+<taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
+</task>
+<task>
+<ID>6</ID>
+<prereq></prereq>
+<time>0:10:00</time>
+<attentionRequired>false</attentionRequired>
+<taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
+</task>
+<task>
+<ID>7</ID>
+<prereq></prereq>
+<time>0:05:00</time>
+<attentionRequired>true</attentionRequired>
+<taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
+</task>
+</tasks>
+
 <preparation>
 Den Speck und die Zwiebeln fein würfeln 
 und anbraten, aber nicht bräunen. Das 
@@ -92,5 +145,7 @@ BOSCH Küchenmaschine  zu drehen.
 <worktime>1 h</worktime>
 
 </duration>
-<source>Herbert Fischer</source>
+<source>
+Herbert Fischer.
+</source>
 </recipe>
