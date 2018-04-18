@@ -753,11 +753,11 @@ public class Recipe {
             	this.attentionRequired = attentionRequired;
             }
             
-            public String taskString() {
+            public String getTaskString() {
             	return taskString;
             }
             
-            public void taskString(String taskString) {
+            public void setTaskString(String taskString) {
             	this.taskString = taskString;
             }
 
@@ -765,7 +765,7 @@ public class Recipe {
         	
         	
         }
-    	     }
+    }
 
     /**
      * <p>Java class for anonymous complex type.
