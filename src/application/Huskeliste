@@ -6,8 +6,6 @@ public static long currentTimeMillis()
 System.currentTimeMillis()
 returns value in Long type
 
-Fjern linjeseperator i recipeView.
-
 Fjern et JavaFX element med elementNavn.setManaged(false);
 
 
