@@ -94,6 +94,7 @@ import javax.xml.bind.annotation.XmlType;
     "changedate",
     "target",
     "ingredients",
+    "tasks",
     "preparation",
     "variation",
     "remark",
@@ -116,6 +117,8 @@ public class Recipe {
     protected String target;
     @XmlElement(required = true)
     protected Recipe.Ingredients ingredients;
+    @XmlElement(required = true)
+    protected Recipe.Tasks tasks;
     @XmlElement(required = true)
     protected String preparation;
     @XmlElement(required = true)
@@ -263,6 +266,14 @@ public class Recipe {
      */
     public void setIngredients(Recipe.Ingredients value) {
         this.ingredients = value;
+    }
+    
+    public Recipe.Tasks getTasks() {
+    	return tasks;
+    }
+    
+    public void setTasks(Recipe.Tasks tasks) {
+    	this.tasks = tasks;
     }
 
     /**
@@ -673,7 +684,88 @@ public class Recipe {
         }
 
     }
+    
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "task"
+    })
+    
+    public static class Tasks {
+    	protected List<Recipe.Tasks.Task> task;
+    	
+    	public List<Recipe.Tasks.Task> getTask() {
+            if (task == null) {
+                task = new ArrayList<Recipe.Tasks.Task>();
+            }
+            return this.task;
+        }
+    	
+    	@XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "ID",
+            "prereq",
+            "time",
+            "attentionRequired",
+            "taskString"
+        })
+    	public static class Task {
+        	
+    		@XmlElement(required = true)
+            protected int ID;
+            @XmlElement(required = true)
+            protected String prereq;
+            @XmlElement(required = true)
+            protected String time;
+            @XmlElement(required = true)
+            protected boolean attentionRequired;
+            @XmlElement(required = true)
+            protected String taskString;
+            
+            public int getID() {
+            	return ID;
+            }
+            
+            public void setID(int ID) {
+            	this.ID = ID;
+            }
+            
+            public String getPrereq() {
+            	return prereq;
+            }
+            
+            public void setPrereq(String prereq) {
+            	this.prereq = prereq;
+            }
+            
+            public String getTime() {
+            	return time;
+            }
+            
+            public void setTime(String time ) {
+            	this.time = time;
+            }
+            
+            public boolean getAttentionRequired() {
+            	return attentionRequired;
+            }
+            
+            public void setAttentionRequired(boolean attentionRequired) {
+            	this.attentionRequired = attentionRequired;
+            }
+            
+            public String taskString() {
+            	return taskString;
+            }
+            
+            public void taskString(String taskString) {
+            	this.taskString = taskString;
+            }
 
+        	
+        	
+        	
+        }
+    	     }
 
     /**
      * <p>Java class for anonymous complex type.

@@ -48,6 +48,10 @@ public class ObjectFactory {
     public Recipe.Ingredients createRecipeIngredients() {
         return new Recipe.Ingredients();
     }
+    
+    public Recipe.Tasks createRecipeTasks() {
+    	return new Recipe.Tasks();
+    }
 
     /**
      * Create an instance of {@link Recipe.Remark }
