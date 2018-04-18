@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!ELEMENT recipe (title,ID,startdate?,changedate?,target,ingredients+,preparation+,
+<!ELEMENT recipe (title,ID,startdate?,changedate?,target,ingredients+,tasks+,preparation+,
 variation*,remark*,technique*,sidedish*,privateremark*,duration*,source*,
 regionoforigin*)>
 <!ELEMENT title (#PCDATA|quote)*>
@@ -12,7 +12,7 @@ regionoforigin*)>
 <!ELEMENT ingredient (quantity,unit,iname)>
 <!ELEMENT tasks (task*)>
 <!ATTLIST tasks part CDATA #IMPLIED>
-<!ELEMENT task(ID, prereq, time, attentionRequired, taskString)>
+<!ELEMENT task (ID,prereq,time,attentionRequired,taskString)>
 <!ELEMENT ID (#PCDATA)>
 <!ELEMENT prereq (#PCDATA |pagereference|quote|emph|bold|typewriter|italics )*>
 <!ELEMENT time (#PCDATA)>
