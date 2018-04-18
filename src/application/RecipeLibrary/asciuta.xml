@@ -66,49 +66,49 @@ For 4-6 Person(s)
 <task>
 <ID>1</ID>
 <prereq></prereq>
-<time>0:10:00</time>
+<time>10</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
 </task>
 <task>
 <ID>2</ID>
 <prereq></prereq>
-<time>0:05:00</time>
+<time>5</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Roast minced meat as well as possible finely divide.</taskString>
 </task>
 <task>
 <ID>3</ID>
 <prereq></prereq>
-<time>0:10:00</time>
+<time>10</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
 </task>
 <task>
 <ID>4</ID>
 <prereq></prereq>
-<time>1:00:00</time>
+<time>60</time>
 <attentionRequired>false</attentionRequired>
 <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
 </task>
 <task>
 <ID>5</ID>
 <prereq></prereq>
-<time>0:10:00</time>
+<time>10</time>
 <attentionRequired>false</attentionRequired>
 <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
 </task>
 <task>
 <ID>6</ID>
 <prereq></prereq>
-<time>0:10:00</time>
+<time>10</time>
 <attentionRequired>false</attentionRequired>
 <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
 </task>
 <task>
 <ID>7</ID>
 <prereq></prereq>
-<time>0:05:00</time>
+<time>5</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
 </task>
@@ -141,8 +141,8 @@ durch die grobe (6 mm) Scheibe des Fleischwolfs der
 BOSCH Küchenmaschine  zu drehen.
 </privateremark>
 <duration>
-<totaltime>2:30</totaltime>
-<worktime>1 h</worktime>
+<totaltime>110</totaltime>
+<worktime>60</worktime>
 
 </duration>
 <source>

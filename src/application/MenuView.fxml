@@ -9,9 +9,9 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
-      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true">
          <image>
-            <Image url="@Images/orange.jpg" />
+            <Image url="@Images/cuttingboard1.jpg" />
          </image>
       </ImageView>
       <Button layoutX="331.0" layoutY="196.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Recipes" />

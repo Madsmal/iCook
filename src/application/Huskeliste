@@ -1,5 +1,16 @@
-I Recipe class skal der implementeres tasks med underclassen task med underværdiererne:
-String taskString - String ID - String prereq - String time - Boolean attentionRequired
+TODO:
+Prioritet:
+taskSequence algoritme
+
+
+
+
+
+
+
+
+
+Huskeliste:
 
 Importer pakke der kan tælle sekunder:
 public static long currentTimeMillis()
@@ -7,6 +18,9 @@ System.currentTimeMillis()
 returns value in Long type
 
 Fjern et JavaFX element med elementNavn.setManaged(false);
+Gør usynlig med Node.setVisible(boolean);
+
+
 
 
 

@@ -17,9 +17,9 @@ import javafx.scene.control.ProgressBar;
 public class CookingController implements Initializable {
 	
 	// Defining variables
-	int[] taskSequence = new int[5];//the 5 length is temporary, when final no init is needed 
+	int[] taskSequence = new int[7];//the 5 length is temporary, when final no init is needed 
 	int currentTask = 0;
-	int timePassed = 0;
+	double timePassed = 0;
 	
 	
 	
@@ -32,11 +32,13 @@ public class CookingController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		//TEMPORARY START
-		taskSequence[0] = 1;
-		taskSequence[1] = 2;
-		taskSequence[2] = 3;
-		taskSequence[3] = 4;
-		taskSequence[4] = 5;
+		taskSequence[0] = 0;
+		taskSequence[1] = 1;
+		taskSequence[2] = 2;
+		taskSequence[3] = 3;
+		taskSequence[4] = 4;
+		taskSequence[5] = 5;
+		taskSequence[6] = 6;
 		//TEMPORARY END
 		
 		
@@ -62,25 +64,21 @@ public class CookingController implements Initializable {
 	public void onNext(ActionEvent event) throws Exception {
 		if (currentTask != taskSequence.length-1) {
 			currentTask++;
-			//timePassed = timePassed +
-			//pb.setProgress(7/(currentTask+2)); todo: update based on tasktime and totaltime
+			timePassed = timePassed + Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime());
+			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 		}
-		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);
+		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 	}
 	
 	public void onPrevious(ActionEvent event) throws Exception {
 		if (currentTask != 0) {
 			currentTask--;
-			//timePassed = timePassed - task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime());
+			timePassed = timePassed - Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime());
+			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 		} 
-		
-		
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
-		
-		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);
-		
-		//pb.setProgress(7/(currentTask+2)); todo: update based on tasktime and totaltime
+		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
 	
 	public void onPause(ActionEvent event) throws Exception {

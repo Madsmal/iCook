@@ -114,11 +114,11 @@ public class RecipesController implements Initializable {
 				 * and must be placed in "src\\application\\Images\\"
 				 */
 
-				File filePNG = new File("src/application/Images/" + newValue + ".png");
-				File fileJPEG = new File("src/application/Images/" + newValue + ".jpeg");
-				File fileGIF = new File("src/application/Images/" + newValue + ".gif");
-				File fileBMP = new File("src/application/Images/" + newValue + ".bmp");
-				File fileJPG = new File("src/application/Images/" + newValue + ".jpg");
+				File filePNG = new File("src/application/RecipeImages/" + newValue + ".png");
+				File fileJPEG = new File("src/application/RecipeImages/" + newValue + ".jpeg");
+				File fileGIF = new File("src/application/RecipeImages/" + newValue + ".gif");
+				File fileBMP = new File("src/application/RecipeImages/" + newValue + ".bmp");
+				File fileJPG = new File("src/application/RecipeImages/" + newValue + ".jpg");
 
 				Image image = null;
 				if (filePNG.exists()) {
