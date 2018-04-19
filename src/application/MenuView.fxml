@@ -15,13 +15,18 @@
          </image>
       </ImageView>
       <Button layoutX="331.0" layoutY="196.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Recipes" />
-      <Text layoutX="332.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iCook" textAlignment="CENTER" wrappingWidth="136.99999952316284">
+      <Text layoutX="332.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iCook" textAlignment="CENTER" wrappingWidth="136.99999952316284">
          <font>
-            <Font size="36.0" />
+            <Font name="Pristina" size="77.0" />
          </font>
       </Text>
       <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
       <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
-      <Button layoutX="618.0" layoutY="403.0" mnemonicParsing="false" onAction="#onSettings" prefHeight="48.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Settings" />
+      <Button layoutX="41.0" layoutY="389.0" mnemonicParsing="false" onAction="#onSettings" prefHeight="48.0" prefWidth="126.0" stylesheets="@Stylesheets/home.css" text="Settings" />
+      <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="26.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/settingsCog.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
