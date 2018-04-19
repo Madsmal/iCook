@@ -63,15 +63,7 @@ public class RecipesController implements Initializable {
 
 		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
-
-		// Default FXML elements values
-		title.setText("Please select a recipe");
-		totalTime.setText("Total Time: N/A");
-		worktime.setText("Work time: N/A");
-		startdate.setText("Start date: N/A");
-		changedate.setText("Change date: N/A");
-		ingredients.setText("Ingredients: N/A");
-		source.setText("Source: N/A");
+		
 
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -138,6 +130,11 @@ public class RecipesController implements Initializable {
 				RecipeImageView.setImage(image);
 			}
 		});
+		
+		//selects the first recipe in the listView as default
+		listView.getSelectionModel().select(0);
+		
+		
 		/*
 		serving1.setOnAction(event -> {
 			try {

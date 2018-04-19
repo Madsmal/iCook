@@ -17,7 +17,7 @@ import javafx.scene.control.ProgressBar;
 public class CookingController implements Initializable {
 	
 	// Defining variables
-	int[] taskSequence = new int[7];//the 5 length is temporary, when final no init is needed 
+	int[] taskSequence = new int[7];//the 7 length is temporary, when final no init is needed 
 	int currentTask = 0;
 	double timePassed = 0;
 	
@@ -26,6 +26,8 @@ public class CookingController implements Initializable {
 	// Defining FXML elements
 	@FXML ProgressBar pb;
 	@FXML Button previous;
+	@FXML Button pause;
+	@FXML Button next;
 	@FXML Label currentTime;
 	@FXML Label task;
 	
@@ -62,13 +64,20 @@ public class CookingController implements Initializable {
 	}
 	
 	public void onNext(ActionEvent event) throws Exception {
-		if (currentTask != taskSequence.length-1) {
+		if (currentTask != taskSequence.length) {
 			currentTask++;
 			timePassed = timePassed + Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime());
 			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+			if (currentTask != taskSequence.length) {
+				task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
+			} else {
+				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
+				pause.setVisible(false);
+				next.setVisible(false);
+			}
 		}
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
-		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
+		
 	}
 	
 	public void onPrevious(ActionEvent event) throws Exception {
@@ -76,8 +85,12 @@ public class CookingController implements Initializable {
 			currentTask--;
 			timePassed = timePassed - Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime());
 			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
+			if (currentTask == taskSequence.length-1) {
+				pause.setVisible(true);
+				next.setVisible(true);
+			}
 		} 
-		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
 	
