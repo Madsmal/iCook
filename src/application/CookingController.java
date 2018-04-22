@@ -45,11 +45,11 @@ public class CookingController implements Initializable {
 		
 		
 		//taskSequence = calculateTaskSequence();
-		
 	
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 		
+		//CountdownTimer asd = new CountdownTimer(5); //TEMP test
 	}
 	
 	
@@ -109,6 +109,9 @@ public class CookingController implements Initializable {
 	}
 	*/
 	
+	public void updateCountdownTimer(String labelText) {
+		currentTime.setText(labelText);
+	}
 	
 	
 }
