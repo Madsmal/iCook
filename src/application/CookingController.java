@@ -1,9 +1,16 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.util.Duration;
 
 
 public class CookingController implements Initializable {
@@ -20,16 +28,16 @@ public class CookingController implements Initializable {
 	int[] taskSequence = new int[7];//the 7 length is temporary, when final no init is needed 
 	int currentTask = 0;
 	double timePassed = 0;
-	
-	
+	ArrayList<CountdownTimer> countdownTimerArray = new ArrayList<CountdownTimer>();
 	
 	// Defining FXML elements
 	@FXML ProgressBar pb;
 	@FXML Button previous;
 	@FXML Button pause;
 	@FXML Button next;
-	@FXML Label currentTime;
 	@FXML Label task;
+	@FXML Label countdownLabel;
+	
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		
@@ -49,7 +57,30 @@ public class CookingController implements Initializable {
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 		
-		//CountdownTimer asd = new CountdownTimer(5); //TEMP test
+		
+		
+		CountdownTimer asd = new CountdownTimer(30); //TEMP test
+		
+		Timeline timeline = new Timeline( // Stop with timeline.stop();
+			new KeyFrame(Duration.millis(1000), 
+				new EventHandler<ActionEvent>() {
+		        	@Override public void handle(ActionEvent actionEvent) {
+		        		/*
+		        		String text = "";
+		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
+		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
+		        		}
+		        		countdownLabel.setText(text);
+		        		*/
+		        		countdownLabel.setText(Integer.toString(asd.getTimeLeft()));
+		        	}
+		        }
+			)
+		);
+		timeline.setCycleCount(Animation.INDEFINITE);
+		timeline.play();
+		
+		
 	}
 	
 	
@@ -75,6 +106,14 @@ public class CookingController implements Initializable {
 				pause.setVisible(false);
 				next.setVisible(false);
 			}
+			
+			//countdownTimer
+			/*
+			if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getAttentionRequired() == false) {
+				CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime()));
+				countdownTimerArray.add(countdownTimer);
+			}
+			*/
 		}
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 		
@@ -109,9 +148,6 @@ public class CookingController implements Initializable {
 	}
 	*/
 	
-	public void updateCountdownTimer(String labelText) {
-		currentTime.setText(labelText);
-	}
 	
 	
 }

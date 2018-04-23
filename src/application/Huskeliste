@@ -1,9 +1,12 @@
 TODO:
 Prioritet:
-taskSequence algoritme(r)
-timer implementation
+* taskSequence algoritme(r)
 
 
+* timer implementation
+	- tasks should have a timerString and alertString 
+	- "start timer" button or "next" button?
+	- how does it work with timePassed?
 
 
 

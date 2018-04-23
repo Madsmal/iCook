@@ -5,7 +5,6 @@ import java.util.TimerTask;
 
 public class CountdownTimer {
 	int totalTime; //in minutes
-	
 	int timeLeft;
 	Timer timer;
 	
@@ -36,6 +35,14 @@ public class CountdownTimer {
 			    }
 			  }
 			}, 1000, 1000);
+	}
+	
+	
+	
+	//get & set methods
+	
+	public int getTimeLeft() {
+		return timeLeft;
 	}
 	
 }
