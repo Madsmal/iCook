@@ -25,10 +25,11 @@ import javafx.util.Duration;
 public class CookingController implements Initializable {
 	
 	// Defining variables
-	int[] taskSequence = new int[7];//the 7 length is temporary, when final no init is needed 
+	int[] taskSequence = new int[Model.recipe.tasks.task.size()];//the 7 length is temporary, when final no init is needed 
 	int currentTask = 0;
 	double timePassed = 0;
 	ArrayList<CountdownTimer> countdownTimerArray = new ArrayList<CountdownTimer>();
+	CountdownTimer countdownTimer2;
 	
 	// Defining FXML elements
 	@FXML ProgressBar pb;
@@ -37,6 +38,7 @@ public class CookingController implements Initializable {
 	@FXML Button next;
 	@FXML Label task;
 	@FXML Label countdownLabel;
+	@FXML Label countdownLabel2;
 	
 	
 	public void initialize(URL url, ResourceBundle rb) {
@@ -57,22 +59,28 @@ public class CookingController implements Initializable {
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 		
+		//if first task is attentionRequired == true
+		updateCountdownTimer2();
 		
-		
-		CountdownTimer asd = new CountdownTimer(30); //TEMP test
-		
+		// Continously updating timeline
 		Timeline timeline = new Timeline( // Stop with timeline.stop();
-			new KeyFrame(Duration.millis(1000), 
+			new KeyFrame(Duration.millis(100), 
 				new EventHandler<ActionEvent>() {
 		        	@Override public void handle(ActionEvent actionEvent) {
-		        		/*
+		        		
+		        		// countdownTimer
 		        		String text = "";
 		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
 		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
 		        		}
 		        		countdownLabel.setText(text);
-		        		*/
-		        		countdownLabel.setText(Integer.toString(asd.getTimeLeft()));
+		        		
+		        		// countdownTimer2
+		        		if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
+		        			countdownLabel2.setText("");
+		        		} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
+		        			countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
+		        		}
 		        	}
 		        }
 			)
@@ -107,13 +115,14 @@ public class CookingController implements Initializable {
 				next.setVisible(false);
 			}
 			
-			//countdownTimer
-			/*
+			//countdownTimer attentionRequired==false
 			if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getAttentionRequired() == false) {
-				CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime()));
-				countdownTimerArray.add(countdownTimer);
+				CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getID());
+				countdownTimerArray.add(countdownTimer);		
 			}
-			*/
+			
+			updateCountdownTimer2();
+			
 		}
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 		
@@ -129,6 +138,8 @@ public class CookingController implements Initializable {
 				pause.setVisible(true);
 				next.setVisible(true);
 			}
+			
+			updateCountdownTimer2();
 		} 
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
@@ -139,14 +150,20 @@ public class CookingController implements Initializable {
 	
 	
 	
-	/*
+	
+	
+	
+	
 	// Methods
-	public static int[] calculateTaskSequence() {
-		int[] taskSequence = new int[Model.recipe.getTasks().getTask().size()];
-		
-		return taskSequence;
+	public void updateCountdownTimer2() {
+		if (currentTask == taskSequence.length) {
+			countdownTimer2 = null;
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			countdownTimer2 = null;
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+			countdownTimer2 = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());	
+		}
 	}
-	*/
 	
 	
 	

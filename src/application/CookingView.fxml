@@ -13,8 +13,9 @@
       <Button fx:id="previous" layoutX="263.0" layoutY="404.0" mnemonicParsing="false" onAction="#onPrevious" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Previous" />
       <Button fx:id="pause" layoutX="449.0" layoutY="404.0" mnemonicParsing="false" onAction="#onPause" prefHeight="51.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Pause" />
       <ProgressBar fx:id="pb" layoutX="235.0" prefHeight="29.0" prefWidth="563.0" progress="0.0" />
-      <Label fx:id="countdownLabel" layoutX="701.0" layoutY="42.0" prefHeight="17.0" prefWidth="28.0" text="Label" />
+      <Label fx:id="countdownLabel" layoutX="701.0" layoutY="42.0" prefHeight="193.0" prefWidth="28.0" text="Label" />
       <Label fx:id="task" layoutX="271.0" layoutY="157.0" text="Label" />
       <ListView layoutY="51.0" prefHeight="429.0" prefWidth="232.0" />
+      <Label fx:id="countdownLabel2" layoutX="503.0" layoutY="373.0" text="Label" />
    </children>
 </AnchorPane>

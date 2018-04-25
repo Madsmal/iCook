@@ -6,10 +6,13 @@ import java.util.TimerTask;
 public class CountdownTimer {
 	int totalTime; //in minutes
 	int timeLeft;
+	int ID;
+	int timePassed = 0;
 	Timer timer;
 	
-	public CountdownTimer(int totalTime) {
+	public CountdownTimer(int totalTime, int ID) {
 		this.totalTime = totalTime;
+		this.ID = ID;
 		startCountdownTimer();
 	}
 	
@@ -24,11 +27,10 @@ public class CountdownTimer {
 	
 	public void continueCountdownTimer() {
 		timer = new Timer();
-		//CookingController.updateCountdownTimer(Integer.toString(timeLeft));
 		timer.scheduleAtFixedRate(new TimerTask() {
 			  public void run() {
 			    timeLeft--;
-			    //CookingController.updateCountdownTimer(Integer.toString(timeLeft));
+			    timePassed = timeLeft - totalTime;
 			    if (timeLeft == 0) {
 			    	timer.cancel();	
 			    	//TODO pop-up
@@ -43,6 +45,14 @@ public class CountdownTimer {
 	
 	public int getTimeLeft() {
 		return timeLeft;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public int getTimePassed() {
+		return timePassed;
 	}
 	
 }
