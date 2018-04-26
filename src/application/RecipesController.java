@@ -100,10 +100,10 @@ public class RecipesController implements Initializable {
 
 				// Update recipe image
 
-				/* Recipe images supported formats are PNG, JPEG, GIF, BMP, and JPG
-				 * 
+				/* 
+				 * Recipe images supported formats are PNG, JPEG, GIF, BMP, and JPG
 				 * The image associated with a recipe must have the same name as the recipe,
-				 * and must be placed in "src\\application\\Images\\"
+				 * and must be placed in "src/application/Images/"
 				 */
 
 				File filePNG = new File("src/application/RecipeImages/" + newValue + ".png");

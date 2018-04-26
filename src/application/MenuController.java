@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 
 public class MenuController {
 	
@@ -26,7 +27,7 @@ public void onExit(ActionEvent event) {
 	Platform.exit();
 }
 
-public void onSettings(ActionEvent event) throws IOException {
+public void onSettings(MouseEvent event) throws IOException {
 	Parent settingsPath = FXMLLoader.load(getClass().getResource("/application/SettingsView.fxml"));
 	Scene settingScene = new Scene(settingsPath);
 	Model.primaryStage.setScene(settingScene);		
