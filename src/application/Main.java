@@ -15,6 +15,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Model.primaryStage = primaryStage;
+		Model.parseIni();
+		
+		//System.out.println(Model.settings.get("happy"));
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
 		Scene scene = new Scene(root);

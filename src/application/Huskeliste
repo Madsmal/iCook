@@ -26,3 +26,5 @@ Gør usynlig med Node.setVisible(boolean);
 Husk at slette timelines når man går til et andet view med timeline.stop();
 
 
+
+

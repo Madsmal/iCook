@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -107,9 +108,15 @@ public class CookingController implements Initializable {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 		
-		// 1000 millisecond timeline updater
+		// clock timeline
+		int updateFrequency;
+		if (Model.settings.get(Model.section, "clock").equals("hh:mm:ss.sss")) {
+			updateFrequency = 1;
+		} else {
+			updateFrequency = 1000;
+		}
 		timeline2 = new Timeline(
-				new KeyFrame(Duration.millis(1000), 
+				new KeyFrame(Duration.millis(updateFrequency), 
 					new EventHandler<ActionEvent>() {
 			        	@Override public void handle(ActionEvent actionEvent) {
 			        		// clock update
