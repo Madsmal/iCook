@@ -27,6 +27,8 @@ public class CookingController implements Initializable {
 	double timePassed = 0; //does not include intermediate-task time
 	ArrayList<CountdownTimer> countdownTimerArray = new ArrayList<CountdownTimer>();
 	CountdownTimer countdownTimer2;
+	Timeline timeline;
+	Timeline timeline2;
 	
 	// Defining FXML elements
 	@FXML ProgressBar pb;
@@ -36,6 +38,7 @@ public class CookingController implements Initializable {
 	@FXML Label task;
 	@FXML Label countdownLabel;
 	@FXML Label countdownLabel2;
+	@FXML Label clock;
 	
 	
 	public void initialize(URL url, ResourceBundle rb) {
@@ -60,7 +63,7 @@ public class CookingController implements Initializable {
 		updateCountdownTimer2();
 		
 		// Continuously updating timeline
-		Timeline timeline = new Timeline( // Stop with timeline.stop();
+		timeline = new Timeline(
 			new KeyFrame(Duration.millis(100), 
 				new EventHandler<ActionEvent>() {
 		        	@Override public void handle(ActionEvent actionEvent) {
@@ -96,6 +99,7 @@ public class CookingController implements Initializable {
 		        		if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
 		        			pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 		        		}
+		        		
 		        	}
 		        }
 			)
@@ -103,7 +107,19 @@ public class CookingController implements Initializable {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 		
-		
+		// 1000 millisecond timeline updater
+		timeline2 = new Timeline(
+				new KeyFrame(Duration.millis(1000), 
+					new EventHandler<ActionEvent>() {
+			        	@Override public void handle(ActionEvent actionEvent) {
+			        		// clock update
+			        		clock.setText(Model.getTime());
+			        	}
+			        }
+				)
+			);
+			timeline2.setCycleCount(Animation.INDEFINITE);
+			timeline2.play();
 	}
 	
 	
@@ -111,6 +127,9 @@ public class CookingController implements Initializable {
 	
 	// Button events
 	public void onHome(ActionEvent event) throws Exception {
+		timeline.stop();
+		timeline2.stop();
+		
 		Parent home = FXMLLoader.load(getClass().getResource("/application/RecipesView.fxml"));
 		Scene Home = new Scene(home);
 		Model.primaryStage.setScene(Home);		

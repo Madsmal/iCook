@@ -23,8 +23,6 @@ returns value in Long type
 Fjern et JavaFX element med elementNavn.setManaged(false);
 Gør usynlig med Node.setVisible(boolean);
 
-Alt fonts: poor richard, chiller
-
-
+Husk at slette timelines når man går til et andet view med timeline.stop();
 
 

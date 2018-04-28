@@ -17,5 +17,6 @@
       <Label fx:id="task" layoutX="271.0" layoutY="157.0" text="Label" />
       <ListView layoutY="51.0" prefHeight="429.0" prefWidth="232.0" />
       <Label fx:id="countdownLabel2" layoutX="503.0" layoutY="373.0" text="Label" />
+      <Label fx:id="clock" layoutX="14.0" layoutY="447.0" text="Label" />
    </children>
 </AnchorPane>
