@@ -28,7 +28,6 @@ public class Model {
 	
 	public static void parseIni() throws IOException {
 		settings = new Ini(new FileReader("src/application/settings.ini"));
-		System.out.print(Model.settings.get(Model.section, "clock"));
 	}
 	
 	public static void storeIni() throws IOException {

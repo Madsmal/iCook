@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
    <children>
@@ -21,12 +22,15 @@
       </MenuButton>
       <ListView fx:id="listView" layoutY="43.0" prefHeight="437.0" prefWidth="232.0" />
       <Button layoutX="602.0" layoutY="388.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
-      <Label fx:id="totalTime" layoutX="522.0" layoutY="215.0" text="Total time" />
-      <Label fx:id="worktime" layoutX="522.0" layoutY="244.0" text="Work time" />
-      <Label fx:id="startdate" layoutX="522.0" layoutY="272.0" text="Start date" />
-      <Label fx:id="changedate" layoutX="523.0" layoutY="300.0" text="Change date" />
-      <Label fx:id="source" layoutX="522.0" layoutY="328.0" text="Source" />
-      <Label fx:id="title" layoutX="270.0" layoutY="205.0" text="Title" />
+      <Label fx:id="totalTime" layoutX="517.0" layoutY="235.0" text="Total time" />
+      <Label fx:id="worktime" layoutX="517.0" layoutY="264.0" text="Work time" />
+      <Label fx:id="startdate" layoutX="517.0" layoutY="292.0" text="Start date" />
+      <Label fx:id="changedate" layoutX="518.0" layoutY="320.0" text="Change date" />
+      <Label fx:id="source" layoutX="517.0" layoutY="348.0" text="Source" />
+      <Label fx:id="title" layoutX="263.0" layoutY="206.0" text="Title">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
       <Label fx:id="ingredients" layoutX="263.0" layoutY="235.0" text="Ingredients" />
       <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="475.0" layoutX="279.0" layoutY="14.0" pickOnBounds="true" />
       <Separator layoutX="227.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="15.0" />

@@ -62,6 +62,7 @@ public class CookingController implements Initializable {
 		
 		//if first task is attentionRequired == true
 		updateCountdownTimer2();
+		updateButtonVisibility();
 		
 		// Continuously updating timeline
 		timeline = new Timeline(
@@ -101,6 +102,11 @@ public class CookingController implements Initializable {
 		        			pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 		        		}
 		        		
+		        		// Update 'next' setDisable() value on second last page
+		        		// TODO Can be moved to alert 'OK' button when it is written to lower resources 
+		        		if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
+		        			next.setDisable(false);
+		        		}
 		        	}
 		        }
 			)
@@ -150,12 +156,11 @@ public class CookingController implements Initializable {
 			pause.setText("Pause");
 			updateCountdownTimer2();
 			updateProgressBar();
+			updateButtonVisibility();
 			if (currentTask != taskSequence.length) {
 				task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 			} else {
 				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
-				pause.setVisible(false);
-				next.setVisible(false);
 			}
 		}
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
@@ -168,11 +173,9 @@ public class CookingController implements Initializable {
 			pause.setText("Pause");
 			updateCountdownTimer2();
 			updateProgressBar();
+			updateButtonVisibility();
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
-			if (currentTask == taskSequence.length-1) {
-				pause.setVisible(true);
-				next.setVisible(true);
-			}
+			
 		} 
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
@@ -194,14 +197,14 @@ public class CookingController implements Initializable {
 	
 	
 	// Methods
-	public void updateCountdownTimer() {
+	private void updateCountdownTimer() { //TODO make it a button rather than when clicking 'next'
 		if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
 			CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
 			countdownTimerArray.add(countdownTimer);		
 		}
 	}
 	
-	public void updateCountdownTimer2() {
+	private void updateCountdownTimer2() {
 		if (currentTask == taskSequence.length) {
 			countdownTimer2 = null;
 		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
@@ -211,7 +214,7 @@ public class CookingController implements Initializable {
 		}
 	}
 	
-	public void updateProgressBar() {
+	private void updateProgressBar() { //TODO attentionrequired false kun tælle med som det sidste
 		timePassed = 0;
 		for (int i = 0 ; i < currentTask ; i++) {
 			timePassed = timePassed + Double.parseDouble(Model.recipe.tasks.task.get(i).getTime());
@@ -219,6 +222,31 @@ public class CookingController implements Initializable {
 		pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 	}
 	
+	private void updateButtonVisibility() {
+		// previous
+		if (currentTask == 0) {
+			previous.setDisable(true);
+		} else {
+			previous.setDisable(false);
+		}
+		// pause
+		if (currentTask == taskSequence.length) {
+			pause.setDisable(true);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+			pause.setDisable(false);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			pause.setDisable(true);
+		}
+		// next
+		if (currentTask == taskSequence.length) {
+			next.setDisable(true);
+		} else if (currentTask == taskSequence.length - 1 && (!countdownTimerArray.isEmpty() || Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false)) {
+			next.setDisable(true);
+		} else {
+			next.setDisable(false);
+		}
+		
+	}
 	
 	
 }
