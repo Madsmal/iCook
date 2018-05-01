@@ -1,11 +1,9 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -25,10 +23,13 @@ import javafx.util.Duration;
 public class CookingController implements Initializable {
 	
 	// Defining variables
-	int[] taskSequence = new int[7];//the 7 length is temporary, when final no init is needed 
+	int[] taskSequence = new int[Model.recipe.tasks.task.size()];
 	int currentTask = 0;
-	double timePassed = 0;
+	double timePassed = 0; //does not include intermediate-task time
 	ArrayList<CountdownTimer> countdownTimerArray = new ArrayList<CountdownTimer>();
+	CountdownTimer countdownTimer2;
+	Timeline timeline;
+	Timeline timeline2;
 	
 	// Defining FXML elements
 	@FXML ProgressBar pb;
@@ -37,6 +38,8 @@ public class CookingController implements Initializable {
 	@FXML Button next;
 	@FXML Label task;
 	@FXML Label countdownLabel;
+	@FXML Label countdownLabel2;
+	@FXML Label clock;
 	
 	
 	public void initialize(URL url, ResourceBundle rb) {
@@ -57,22 +60,53 @@ public class CookingController implements Initializable {
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 		
+		//if first task is attentionRequired == true
+		updateCountdownTimer2();
+		updateButtonVisibility();
 		
-		
-		CountdownTimer asd = new CountdownTimer(30); //TEMP test
-		
-		Timeline timeline = new Timeline( // Stop with timeline.stop();
-			new KeyFrame(Duration.millis(1000), 
+		// Continuously updating timeline
+		timeline = new Timeline(
+			new KeyFrame(Duration.millis(100), 
 				new EventHandler<ActionEvent>() {
 		        	@Override public void handle(ActionEvent actionEvent) {
-		        		/*
+		        		
+		        		// CountdownTimer
+		        		// Alert if countdownTimer == 0 TODO
+		        		
+		        		
+		        		// Remove from array if countdownTimer == 0
+		        		for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+			        		if (countdownTimerArray.get(i).getTimeLeft() == 0) {
+		        				countdownTimerArray.remove(i);
+		        				i--;
+		        			}
+		        		}
+		        		
+		        		
+		        		// Create label
 		        		String text = "";
 		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
 		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
 		        		}
 		        		countdownLabel.setText(text);
-		        		*/
-		        		countdownLabel.setText(Integer.toString(asd.getTimeLeft()));
+		        		
+		        		// countdownTimer2
+		        		if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
+		        			countdownLabel2.setText("");
+		        		} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
+		        			countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
+		        		}
+		        		
+		        		// Intermediate-task progress bar update
+		        		if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
+		        			pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+		        		}
+		        		
+		        		// Update 'next' setDisable() value on second last page
+		        		// TODO Can be moved to alert 'OK' button when it is written to lower resources 
+		        		if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
+		        			next.setDisable(false);
+		        		}
 		        	}
 		        }
 			)
@@ -80,7 +114,25 @@ public class CookingController implements Initializable {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 		
-		
+		// clock timeline
+		int updateFrequency;
+		if (Model.settings.get(Model.section, "clock").equals("hh:mm:ss.sss")) {
+			updateFrequency = 1;
+		} else {
+			updateFrequency = 1000;
+		}
+		timeline2 = new Timeline(
+				new KeyFrame(Duration.millis(updateFrequency), 
+					new EventHandler<ActionEvent>() {
+			        	@Override public void handle(ActionEvent actionEvent) {
+			        		// clock update
+			        		clock.setText(Model.getTime());
+			        	}
+			        }
+				)
+			);
+			timeline2.setCycleCount(Animation.INDEFINITE);
+			timeline2.play();
 	}
 	
 	
@@ -88,6 +140,9 @@ public class CookingController implements Initializable {
 	
 	// Button events
 	public void onHome(ActionEvent event) throws Exception {
+		timeline.stop();
+		timeline2.stop();
+		
 		Parent home = FXMLLoader.load(getClass().getResource("/application/RecipesView.fxml"));
 		Scene Home = new Scene(home);
 		Model.primaryStage.setScene(Home);		
@@ -96,24 +151,17 @@ public class CookingController implements Initializable {
 	
 	public void onNext(ActionEvent event) throws Exception {
 		if (currentTask != taskSequence.length) {
+			updateCountdownTimer();
 			currentTask++;
-			timePassed = timePassed + Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime());
-			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+			pause.setText("Pause");
+			updateCountdownTimer2();
+			updateProgressBar();
+			updateButtonVisibility();
 			if (currentTask != taskSequence.length) {
 				task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 			} else {
 				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
-				pause.setVisible(false);
-				next.setVisible(false);
 			}
-			
-			//countdownTimer
-			/*
-			if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getAttentionRequired() == false) {
-				CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask-1]).getTime()));
-				countdownTimerArray.add(countdownTimer);
-			}
-			*/
 		}
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 		
@@ -122,32 +170,83 @@ public class CookingController implements Initializable {
 	public void onPrevious(ActionEvent event) throws Exception {
 		if (currentTask != 0) {
 			currentTask--;
-			timePassed = timePassed - Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime());
-			pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+			pause.setText("Pause");
+			updateCountdownTimer2();
+			updateProgressBar();
+			updateButtonVisibility();
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
-			if (currentTask == taskSequence.length-1) {
-				pause.setVisible(true);
-				next.setVisible(true);
-			}
+			
 		} 
 		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
 	
 	public void onPause(ActionEvent event) throws Exception {
-		//pause timers
+		if (pause.getText().equals("Pause")) {
+			countdownTimer2.pauseCountdownTimer();
+			pause.setText("Resume");
+		} else if (pause.getText().equals("Resume")) {
+			countdownTimer2.continueCountdownTimer();
+			pause.setText("Pause");
+		}
 	}
 	
 	
 	
-	/*
+	
+	
+	
+	
 	// Methods
-	public static int[] calculateTaskSequence() {
-		int[] taskSequence = new int[Model.recipe.getTasks().getTask().size()];
-		
-		return taskSequence;
+	private void updateCountdownTimer() { //TODO make it a button rather than when clicking 'next'
+		if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			CountdownTimer countdownTimer = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
+			countdownTimerArray.add(countdownTimer);		
+		}
 	}
-	*/
 	
+	private void updateCountdownTimer2() {
+		if (currentTask == taskSequence.length) {
+			countdownTimer2 = null;
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			countdownTimer2 = null;
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+			countdownTimer2 = new CountdownTimer(Integer.parseInt(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());	
+		}
+	}
+	
+	private void updateProgressBar() { //TODO attentionrequired false kun tælle med som det sidste
+		timePassed = 0;
+		for (int i = 0 ; i < currentTask ; i++) {
+			timePassed = timePassed + Double.parseDouble(Model.recipe.tasks.task.get(i).getTime());
+		}
+		pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+	}
+	
+	private void updateButtonVisibility() {
+		// previous
+		if (currentTask == 0) {
+			previous.setDisable(true);
+		} else {
+			previous.setDisable(false);
+		}
+		// pause
+		if (currentTask == taskSequence.length) {
+			pause.setDisable(true);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+			pause.setDisable(false);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			pause.setDisable(true);
+		}
+		// next
+		if (currentTask == taskSequence.length) {
+			next.setDisable(true);
+		} else if (currentTask == taskSequence.length - 1 && (!countdownTimerArray.isEmpty() || Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false)) {
+			next.setDisable(true);
+		} else {
+			next.setDisable(false);
+		}
+		
+	}
 	
 	
 }

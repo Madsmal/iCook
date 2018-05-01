@@ -22,10 +22,9 @@
       </Text>
       <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
       <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
-      <Button layoutX="41.0" layoutY="389.0" mnemonicParsing="false" onAction="#onSettings" prefHeight="48.0" prefWidth="126.0" stylesheets="@Stylesheets/home.css" text="Settings" />
-      <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="26.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="26.0" layoutY="25.0" onMouseClicked="#onSettings" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/settingsCog.png" />
+            <Image url="@Images/settings-cog2.png" />
          </image>
       </ImageView>
    </children>

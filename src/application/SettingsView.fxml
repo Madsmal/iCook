@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
    <children>
       <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onHome" prefHeight="35.0" prefWidth="137.0" text="Home" />
-      <Slider layoutX="332.0" layoutY="74.0" orientation="VERTICAL" />
-      <ChoiceBox layoutX="88.0" layoutY="131.0" prefWidth="150.0" />
-      <Button layoutX="212.0" layoutY="266.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="179.0" layoutY="166.0" text="Indtil frontend er på plads kan indstillinger ændres manuelt i settings.ini">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

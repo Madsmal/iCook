@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 TODO:
 Prioritet:
 * taskSequence algoritme(r)
@@ -41,3 +42,36 @@ Features:
 - Kalorietælling
 - 
 
+=======
+TODO:
+Prioritet:
+* taskSequence algoritme(r)
+
+
+* timer implementation
+	- tasks should have a timerString and alertString 
+	- "start timer" button or "next" button?
+	- how does it work with timePassed?
+
+
+
+
+
+
+Huskeliste:
+
+Importer pakke der kan tælle sekunder:
+public static long currentTimeMillis()
+System.currentTimeMillis()
+returns value in Long type
+
+Fjern et JavaFX element med elementNavn.setManaged(false);
+Gør usynlig med Node.setVisible(boolean);
+
+Husk at slette timelines når man går til et andet view med timeline.stop();
+
+Characters for pause and resume timers:
+http://www.fileformat.info/info/unicode/char/25B6/index.htm
+https://www.fileformat.info/info/unicode/char/25a0/index.htm
+
+>>>>>>> branch 'master' of https://github.com/Madsmal/iCook
