@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import application.Recipe.Tasks.Task;
+
 
 /**
  * This object contains factory methods for each 
@@ -52,6 +54,10 @@ public class ObjectFactory {
     public Recipe.Tasks createRecipeTasks() {
     	return new Recipe.Tasks();
     }
+    
+    public Recipe.Tasks.Task createRecipeTasksTask() {
+    	return new Recipe.Tasks.Task();
+    }
 
     /**
      * Create an instance of {@link Recipe.Remark }
@@ -68,6 +74,7 @@ public class ObjectFactory {
     public Recipe.Duration createRecipeDuration() {
         return new Recipe.Duration();
     }
+    
 
     /**
      * Create an instance of {@link Recipe.Ingredients.Ingredient }

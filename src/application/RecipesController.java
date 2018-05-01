@@ -88,12 +88,26 @@ public class RecipesController implements Initializable {
 					}
 					ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
 				}
+				
+				Model timeConverterTT = new Model();
+				
+				timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
+				int tthours = timeConverterTT.getHours();
+				int ttminutes = timeConverterTT.getMinutes();
+				
+				Model timeConverterWT = new Model();
+				timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
 
+				int wthours = timeConverterWT.getHours();
+				int wtminutes = timeConverterWT.getMinutes();
+				
 				ingredients.setText(ingredientsList);
 
 				title.setText(Model.recipe.getTitle());
-				totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
-				worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
+				//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
+				totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
+				//worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
+				worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
 				startdate.setText("Start date: " + Model.recipe.getStartdate());
 				changedate.setText("Change date: " + Model.recipe.getChangedate());
 				source.setText("Source: " + Model.recipe.getSource());

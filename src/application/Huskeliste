@@ -26,5 +26,18 @@ Gør usynlig med Node.setVisible(boolean);
 Alt fonts: poor richard, chiller
 
 
-
+Features:
+- Bedømmelser
+- Task-type (måske)
+- Serving amount
+- Kategorier
+- Antal hænder algoritme (måske)
+- Algoritme optimeret mht. tid
+- Visuel tasksequence (gifs/billeder)
+- Brugerprofiler (måske) 
+- Næringsindhold
+- Indkøbsliste, upload til cloudtjeneste
+- Voice recognition
+- Kalorietælling
+- 
 

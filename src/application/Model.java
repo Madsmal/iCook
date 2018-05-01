@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 public class Model {
 	static Stage primaryStage;
 	static Recipe recipe;
+	private int hours;
+	private int minutes;
 	
 	
 	public static void parseXMLFile(String path) throws Exception {
@@ -20,4 +22,20 @@ public class Model {
 	    recipe = (Recipe) jaxbUnmarshaller.unmarshal(file);
 
 	}
+	
+	public void convertMinToHHMM(String totalMinutes) {
+		this.hours = Integer.parseInt(totalMinutes)/60;
+		this.minutes = Integer.parseInt(totalMinutes)-hours*60;
+		
+	}
+	
+	public int getHours() {
+		return this.hours;
+	}
+	
+	public int getMinutes() {
+		return this.minutes;
+	}
+	
+	
 }

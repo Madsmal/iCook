@@ -741,7 +741,7 @@ public class Recipe {
             	return time;
             }
             
-            public void setTime(String time ) {
+            public void setTime(String time) {
             	this.time = time;
             }
             
@@ -760,10 +760,6 @@ public class Recipe {
             public void setTaskString(String taskString) {
             	this.taskString = taskString;
             }
-
-        	
-        	
-        	
         }
     }
 
