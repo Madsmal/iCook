@@ -18,8 +18,11 @@ public void onRecipes(ActionEvent event) throws Exception {
 	Model.primaryStage.show();
 }
 
-public void onEditor(ActionEvent event) {
-	
+public void onEditor(ActionEvent event) throws Exception {
+	Parent editorPath = FXMLLoader.load(getClass().getResource("/application/EditorView.fxml"));
+	Scene editorScene = new Scene(editorPath);
+	Model.primaryStage.setScene(editorScene);
+	Model.primaryStage.show();
 }
 	
 	
