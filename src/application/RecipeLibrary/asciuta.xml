@@ -64,28 +64,28 @@ For 4-6 Person(s)
 
 <tasks>
 <task>
-<ID>1</ID>
+<ID>0</ID>
 <prereq></prereq>
 <time>10</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
 </task>
 <task>
-<ID>2</ID>
+<ID>1</ID>
 <prereq></prereq>
 <time>15</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Roast minced meat as well as possible finely divide.</taskString>
 </task>
 <task>
-<ID>3</ID>
+<ID>2</ID>
 <prereq></prereq>
 <time>20</time>
 <attentionRequired>true</attentionRequired>
 <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
 </task>
 <task>
-<ID>4</ID>
+<ID>3</ID>
 <prereq></prereq>
 <time>60</time>
 <attentionRequired>false</attentionRequired>
@@ -94,7 +94,7 @@ For 4-6 Person(s)
 <timerString>Sauce is simmering</timerString>
 </task>
 <task>
-<ID>5</ID>
+<ID>4</ID>
 <prereq></prereq>
 <time>10</time>
 <attentionRequired>false</attentionRequired>
@@ -103,14 +103,15 @@ For 4-6 Person(s)
 <timerString>Cooking pasta</timerString>
 </task>
 <task>
-<ID>6</ID>
+<ID>5</ID>
 <prereq></prereq>
 <time>10</time>
 <attentionRequired>false</attentionRequired>
 <taskString>Check whether the pasta is done.</taskString>
+	<timerString>Lorem Ipsum 1</timerString>
 </task>
 <task>
-<ID>7</ID>
+<ID>6</ID>
 <prereq></prereq>
 <time>60</time>
 <attentionRequired>true</attentionRequired>

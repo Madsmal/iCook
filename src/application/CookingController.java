@@ -101,7 +101,7 @@ public class CookingController implements Initializable {
 		        		// Create label
 		        		String text = "";
 		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
-		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
+		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + ": " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
 		        		}
 		        		countdownLabel.setText(text);
 		        		
@@ -123,30 +123,6 @@ public class CookingController implements Initializable {
 		        		if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
 		        			next.setDisable(false);
 		        		}
-		        		
-		        		// Rating system TODO save recipe to file when exiting cookingView to save rating
-		        		if (currentTask == taskSequence.length) {
-		        			if (Model.recipe.rating >= 2) {
-		        				star2.setImage(starFull);
-		        			} else {
-		        				star2.setImage(starEmpty);
-		        			}
-		        			if (Model.recipe.rating >= 3) {
-		        				star3.setImage(starFull);
-		        			} else {
-		        				star3.setImage(starEmpty);
-		        			}
-		        			if (Model.recipe.rating >= 4) {
-		        				star4.setImage(starFull);
-		        			} else {
-		        				star4.setImage(starEmpty);
-		        			}
-		        			if (Model.recipe.rating == 5) {
-		        				star5.setImage(starFull);
-		        			} else {
-		        				star5.setImage(starEmpty);
-		        			}
-		        		} 
 		        	}
 		        }
 			)
@@ -279,13 +255,13 @@ public class CookingController implements Initializable {
 	}
 	
 	private void updateButtonVisibility() {
-		// previous
+		// previous button
 		if (currentTask == 0) {
 			previous.setDisable(true);
 		} else {
 			previous.setDisable(false);
 		}
-		// pause
+		// pause button
 		if (currentTask == taskSequence.length) {
 			pause.setDisable(true);
 		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
@@ -293,7 +269,7 @@ public class CookingController implements Initializable {
 		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
 			pause.setDisable(true);
 		}
-		// next
+		// next button
 		if (currentTask == taskSequence.length) {
 			next.setDisable(true);
 		} else if (currentTask == taskSequence.length - 1 && (!countdownTimerArray.isEmpty() || Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) && Model.settings.get("dev", "nextAlwaysClickable").equals("false")) {
@@ -301,14 +277,14 @@ public class CookingController implements Initializable {
 		} else {
 			next.setDisable(false);
 		}
-		// rating stars
+		// rating star buttons
 		if (currentTask == taskSequence.length) {
 			star1.setVisible(true);
 			star2.setVisible(true);
 			star3.setVisible(true);
 			star4.setVisible(true);
 			star5.setVisible(true);
-			star1.setImage(starFull);
+			updateRating();
 		} else {
 			star1.setVisible(false);
 			star2.setVisible(false);
@@ -319,21 +295,49 @@ public class CookingController implements Initializable {
 	}
 	
 	
-	// Rating system
+	// Rating system TODO save recipe to file when clicking any star button
 	public void onStar1(MouseEvent event) throws Exception {
 		Model.recipe.rating = 1;
+		updateRating();
 	}
 	public void onStar2(MouseEvent event) throws Exception {
 		Model.recipe.rating = 2;
+		updateRating();
 	}
 	public void onStar3(MouseEvent event) throws Exception {
 		Model.recipe.rating = 3;
+		updateRating();
 	}
 	public void onStar4(MouseEvent event) throws Exception {
 		Model.recipe.rating = 4;
+		updateRating();
 	}
 	public void onStar5(MouseEvent event) throws Exception {
 		Model.recipe.rating = 5;
+		updateRating();
+	}
+	private void updateRating() {
+		star1.setImage(starFull);
+		if (Model.recipe.rating >= 2) {
+			star2.setImage(starFull);
+		} else {
+			star2.setImage(starEmpty);
+		}
+		if (Model.recipe.rating >= 3) {
+			star3.setImage(starFull);
+		} else {
+			star3.setImage(starEmpty);
+		}
+		if (Model.recipe.rating >= 4) {
+			star4.setImage(starFull);
+		} else {
+			star4.setImage(starEmpty);
+		}
+		if (Model.recipe.rating == 5) {
+			star5.setImage(starFull);
+		} else {
+			star5.setImage(starEmpty);
+		}
 	}
 	
 	
