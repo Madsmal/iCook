@@ -12,7 +12,7 @@ Prioritet:
 	- tasks should have a timerString and alertString
 
 * Recipe implementation
-	- Add Rating tag
+	- Add Rating tag to xml
 
 
 
