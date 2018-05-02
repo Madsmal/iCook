@@ -111,53 +111,6 @@ public class CookingController implements Initializable {
 		timeline = new Timeline(
 				new KeyFrame(Duration.millis(100), 
 						new EventHandler<ActionEvent>() {
-					@Override public void handle(ActionEvent actionEvent) {
-
-						// CountdownTimer
-						// Alert if countdownTimer == 0 TODO
-
-
-						// Remove from array if countdownTimer == 0
-						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
-							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-								countdownTimerArray.remove(i);
-								i--;
-							}
-						}
-
-
-						// Create label
-						String text = "";
-						for (int i = 0; i < countdownTimerArray.size() ; i++) {
-							text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
-						}
-						countdownLabel.setText(text);
-
-						// countdownTimer2
-						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
-							countdownLabel2.setText("");
-						} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
-							countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
-						}
-
-						// Intermediate-task progress bar update
-						if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
-							pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
-						}
-
-						// Update 'next' setDisable() value on second last page
-						// TODO Can be moved to alert 'OK' button when it is written to lower resources 
-						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
-							next.setDisable(false);
-						}
-					}
-				}
-						)
-				);
-
-		new KeyFrame(Duration.millis(100), 
-				new EventHandler<ActionEvent>() {
-<<<<<<< HEAD
 		        	@Override public void handle(ActionEvent actionEvent) {
 		        		
 		        		// CountdownTimer
@@ -202,75 +155,6 @@ public class CookingController implements Initializable {
 		        }
 			)
 		);
-=======
-			@Override public void handle(ActionEvent actionEvent) {
-
-				// CountdownTimer
-				// Alert if countdownTimer == 0 TODO
-
-
-				// Remove from array if countdownTimer == 0
-				for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
-					if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-						countdownTimerArray.remove(i);
-						i--;
-					}
-				}
-
-
-				// Create label
-				String text = "";
-				for (int i = 0; i < countdownTimerArray.size() ; i++) {
-					text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
-				}
-				countdownLabel.setText(text);
-
-				// countdownTimer2
-				if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
-					countdownLabel2.setText("");
-				} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
-					countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
-				}
-
-				// Intermediate-task progress bar update
-				if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
-					pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
-				}
-
-				// Update 'next' setDisable() value on second last page
-				// TODO Can be moved to alert 'OK' button when it is written to lower resources 
-
-				if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
-					next.setDisable(false);
-				}
-
-				// Rating system TODO save recipe to file when exiting cookingView to save rating
-				if (currentTask == taskSequence.length) {
-					if (Model.recipe.rating >= 2) {
-						star2.setImage(starFull);
-					} else {
-						star2.setImage(starEmpty);
-					}
-					if (Model.recipe.rating >= 3) {
-						star3.setImage(starFull);
-					} else {
-						star3.setImage(starEmpty);
-					}
-					if (Model.recipe.rating >= 4) {
-						star4.setImage(starFull);
-					} else {
-						star4.setImage(starEmpty);
-					}
-					if (Model.recipe.rating == 5) {
-						star5.setImage(starFull);
-					} else {
-						star5.setImage(starEmpty);
-					}
-				} 
-			}
-		}
-				);
->>>>>>> 37b78c94624ebf0dc04dcb1b1b29e598df53b44f
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
@@ -321,8 +205,6 @@ public class CookingController implements Initializable {
 				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
 			}
 		}
-		// System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
-
 	}
 
 	public void onPrevious(ActionEvent event) throws Exception {
@@ -334,8 +216,7 @@ public class CookingController implements Initializable {
 			updateButtonVisibility();
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 
-		} 
-		// System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
+		}
 	}
 
 	public void onPause(ActionEvent event) throws Exception {
@@ -419,16 +300,8 @@ public class CookingController implements Initializable {
 			star5.setVisible(false);
 		}
 	}
-<<<<<<< HEAD
-	
-	
+
 	// Rating system TODO save recipe to file when clicking any star button
-=======
-
-
-
-	// Rating system
->>>>>>> 37b78c94624ebf0dc04dcb1b1b29e598df53b44f
 	public void onStar1(MouseEvent event) throws Exception {
 		Model.recipe.rating = 1;
 		updateRating();
