@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import application.Recipe.Tasks;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -55,7 +57,7 @@ public class CookingController implements Initializable {
 		//TEMPORARY END
 		
 		
-		//taskSequence = calculateTaskSequence();
+		// taskSequence = calculateTaskSequence();
 	
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
@@ -138,6 +140,22 @@ public class CookingController implements Initializable {
 	
 	
 	
+	/* public int[] calculateTaskSequence() {
+		
+		int[] sequence;
+		
+		for(int i = 0; i <= Model.recipe.tasks.task.size(); i++) {
+			if() {
+				
+			}
+		}
+		
+		return null;
+	} */
+
+
+
+
 	// Button events
 	public void onHome(ActionEvent event) throws Exception {
 		timeline.stop();
@@ -163,7 +181,7 @@ public class CookingController implements Initializable {
 				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
 			}
 		}
-		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
+		// System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 		
 	}
 	
@@ -177,7 +195,7 @@ public class CookingController implements Initializable {
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 			
 		} 
-		System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
+		// System.out.println("currentTask = "+currentTask+" ; timePassed = "+timePassed);//TEMP
 	}
 	
 	public void onPause(ActionEvent event) throws Exception {
