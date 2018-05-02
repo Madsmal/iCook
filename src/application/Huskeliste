@@ -7,6 +7,12 @@ Prioritet:
 	- tasks should have a timerString and alertString 
 	- "start timer" button or "next" button?
 	- how does it work with timePassed?
+	
+* task implementation
+	- tasks should have a timerString and alertString
+
+* Recipe implementation
+	- Add Rating tag
 
 
 
