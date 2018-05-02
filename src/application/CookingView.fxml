@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CookingController">
@@ -18,5 +19,10 @@
       <ListView layoutY="51.0" prefHeight="429.0" prefWidth="232.0" />
       <Label fx:id="countdownLabel2" layoutX="503.0" layoutY="373.0" text="Label" />
       <Label fx:id="clock" layoutX="14.0" layoutY="447.0" text="Label" />
+      <ImageView fx:id="star1" fitHeight="51.0" fitWidth="76.0" layoutX="285.0" layoutY="266.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="star2" fitHeight="51.0" fitWidth="76.0" layoutX="370.0" layoutY="266.0" onMouseClicked="#onStar2" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="star3" fitHeight="51.0" fitWidth="76.0" layoutX="455.0" layoutY="266.0" onMouseClicked="#onStar3" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="star4" fitHeight="51.0" fitWidth="76.0" layoutX="540.0" layoutY="266.0" onMouseClicked="#onStar4" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="star5" fitHeight="51.0" fitWidth="76.0" layoutX="625.0" layoutY="266.0" onMouseClicked="#onStar5" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

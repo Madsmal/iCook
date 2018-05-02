@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!ELEMENT recipe (title,ID,startdate?,changedate?,target,ingredients+,tasks+,preparation+,
-variation*,remark*,technique*,sidedish*,privateremark*,duration*,source*,
+variation*,remark*,technique*,sidedish*,privateremark*,rating*,duration*,source*,
 regionoforigin*)>
 <!ELEMENT title (#PCDATA|quote)*>
 <!ELEMENT ID (#PCDATA)>
@@ -12,12 +12,14 @@ regionoforigin*)>
 <!ELEMENT ingredient (quantity,unit,iname)>
 <!ELEMENT tasks (task*)>
 <!ATTLIST tasks part CDATA #IMPLIED>
-<!ELEMENT task (ID,prereq,time,attentionRequired,taskString)>
+<!ELEMENT task (ID,prereq,time,attentionRequired,taskString,timerString,alertString)>
 <!ELEMENT ID (#PCDATA)>
-<!ELEMENT prereq (#PCDATA |pagereference|quote|emph|bold|typewriter|italics )*>
+<!ELEMENT prereq (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
 <!ELEMENT time (#PCDATA)>
 <!ELEMENT attentionRequired (#PCDATA)>
-<!ELEMENT taskString (#PCDATA |pagereference|quote|emph|bold|typewriter|italics )*>
+<!ELEMENT taskString (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
+<!ELEMENT timerString (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
+<!ELEMENT alertString (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
 <!ELEMENT quantity  (#PCDATA)>
 <!ELEMENT unit (#PCDATA)>
 <!ELEMENT iname   (#PCDATA |pagereference|quote|emph|bold|typewriter|italics )*>
@@ -26,6 +28,7 @@ regionoforigin*)>
 <!ELEMENT variation (#PCDATA|citation|underline|namefont|texspecial|quote|pagereference|indexentry|jumptarget|emph|bold|typewriter|italics|sansserif)*>
 <!ELEMENT remark (#PCDATA |citation|texspecial|namefont|underline|indexentry|pagereference|quote|emph|bold|typewriter|italics|sansserif)*>
 <!ELEMENT privateremark (#PCDATA|texspecial|underline|namefont|quote|indexentry|emph|bold|typewriter|italics|sansserif)*>
+<!ELEMENT rating (#PCDATA)>
 <!ELEMENT duration (durationspecial?,totaltime, worktime)>
 <!ELEMENT totaltime (#PCDATA|emph|bold|typewriter|italics)*>
 <!ELEMENT worktime (#PCDATA|emph|bold|typewriter|italics)*>

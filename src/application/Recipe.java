@@ -99,6 +99,7 @@ import javax.xml.bind.annotation.XmlType;
     "variation",
     "remark",
     "privateremark",
+    "rating",
     "duration",
     "source"
 })
@@ -127,6 +128,8 @@ public class Recipe {
     protected Recipe.Remark remark;
     @XmlElement(required = true)
     protected String privateremark;
+    @XmlElement (required = true)
+    protected int rating;
     @XmlElement(required = true)
     protected Recipe.Duration duration;
     @XmlElement(required = true)
@@ -370,6 +373,14 @@ public class Recipe {
      */
     public void setPrivateremark(String value) {
         this.privateremark = value;
+    }
+    
+    public int getRating() {
+    	return rating;
+    }
+    
+    public void setRating(int rating) {
+    	this.rating = rating;
     }
 
     /**
@@ -706,7 +717,9 @@ public class Recipe {
             "prereq",
             "time",
             "attentionRequired",
-            "taskString"
+            "taskString",
+            "timerString",
+            "alertString"
         })
     	public static class Task {
         	
@@ -720,6 +733,10 @@ public class Recipe {
             protected boolean attentionRequired;
             @XmlElement(required = true)
             protected String taskString;
+            @XmlElement(required = true)
+            protected String timerString;
+            @XmlElement(required = true)
+            protected String alertString;
             
             public int getID() {
             	return ID;
@@ -759,6 +776,22 @@ public class Recipe {
             
             public void setTaskString(String taskString) {
             	this.taskString = taskString;
+            }
+            
+            public String getTimerString() {
+            	return timerString;
+            }
+            
+            public void setTimerString(String timerString) {
+            	this.timerString = timerString;
+            }
+            
+            public String getAlertString() {
+            	return alertString;
+            }
+            
+            public void setAlertString(String alertString) {
+            	this.alertString = alertString;
             }
         }
     }

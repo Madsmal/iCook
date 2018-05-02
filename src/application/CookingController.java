@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 
@@ -33,7 +37,14 @@ public class CookingController implements Initializable {
 	CountdownTimer countdownTimer2;
 	Timeline timeline;
 	Timeline timeline2;
+<<<<<<< HEAD
 
+=======
+	Image starEmpty = new Image(new File("src/application/Images/starEmpty2.png").toURI().toString());
+	Image starFull = new Image(new File("src/application/Images/starFull2.png").toURI().toString());
+	
+	
+>>>>>>> refs/remotes/origin/master
 	// Defining FXML elements
 	@FXML ProgressBar pb;
 	@FXML Button previous;
@@ -43,6 +54,7 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel;
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
+<<<<<<< HEAD
 
 	/* public int[] calculateTaskSequence() {
 
@@ -68,6 +80,16 @@ public class CookingController implements Initializable {
 		return taskSequence;
 	} */
 
+=======
+	
+	@FXML ImageView star1;
+	@FXML ImageView star2;
+	@FXML ImageView star3;
+	@FXML ImageView star4;
+	@FXML ImageView star5;
+	
+	
+>>>>>>> refs/remotes/origin/master
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// taskSequence = calculateTaskSequence();
@@ -93,6 +115,7 @@ public class CookingController implements Initializable {
 
 		// Continuously updating timeline
 		timeline = new Timeline(
+<<<<<<< HEAD
 				new KeyFrame(Duration.millis(100), 
 						new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent actionEvent) {
@@ -138,6 +161,78 @@ public class CookingController implements Initializable {
 				}
 						)
 				);
+=======
+			new KeyFrame(Duration.millis(100), 
+				new EventHandler<ActionEvent>() {
+		        	@Override public void handle(ActionEvent actionEvent) {
+		        		
+		        		// CountdownTimer
+		        		// Alert if countdownTimer == 0 TODO
+		        		
+		        		
+		        		// Remove from array if countdownTimer == 0
+		        		for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+			        		if (countdownTimerArray.get(i).getTimeLeft() == 0) {
+		        				countdownTimerArray.remove(i);
+		        				i--;
+		        			}
+		        		}
+		        		
+		        		
+		        		// Create label
+		        		String text = "";
+		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
+		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + "\n";
+		        		}
+		        		countdownLabel.setText(text);
+		        		
+		        		// countdownTimer2
+		        		if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
+		        			countdownLabel2.setText("");
+		        		} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
+		        			countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
+		        		}
+		        		
+		        		// Intermediate-task progress bar update
+		        		if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
+		        			pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+		        		}
+		        		
+		        		// Update 'next' setDisable() value on second last page
+		        		// TODO Can be moved to alert 'OK' button when it is written to lower resources 
+		        		
+		        		if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
+		        			next.setDisable(false);
+		        		}
+		        		
+		        		// Rating system TODO save recipe to file when exiting cookingView to save rating
+		        		if (currentTask == taskSequence.length) {
+		        			if (Model.recipe.rating >= 2) {
+		        				star2.setImage(starFull);
+		        			} else {
+		        				star2.setImage(starEmpty);
+		        			}
+		        			if (Model.recipe.rating >= 3) {
+		        				star3.setImage(starFull);
+		        			} else {
+		        				star3.setImage(starEmpty);
+		        			}
+		        			if (Model.recipe.rating >= 4) {
+		        				star4.setImage(starFull);
+		        			} else {
+		        				star4.setImage(starEmpty);
+		        			}
+		        			if (Model.recipe.rating == 5) {
+		        				star5.setImage(starFull);
+		        			} else {
+		        				star5.setImage(starEmpty);
+		        			}
+		        		} 
+		        	}
+		        }
+			)
+		);
+>>>>>>> refs/remotes/origin/master
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
@@ -265,12 +360,52 @@ public class CookingController implements Initializable {
 		// next
 		if (currentTask == taskSequence.length) {
 			next.setDisable(true);
-		} else if (currentTask == taskSequence.length - 1 && (!countdownTimerArray.isEmpty() || Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false)) {
+		} else if (currentTask == taskSequence.length - 1 && (!countdownTimerArray.isEmpty() || Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) && Model.settings.get("dev", "nextAlwaysClickable").equals("false")) {
 			next.setDisable(true);
 		} else {
 			next.setDisable(false);
 		}
+		// rating stars
+		if (currentTask == taskSequence.length) {
+			star1.setVisible(true);
+			star2.setVisible(true);
+			star3.setVisible(true);
+			star4.setVisible(true);
+			star5.setVisible(true);
+			star1.setImage(starFull);
+		} else {
+			star1.setVisible(false);
+			star2.setVisible(false);
+			star3.setVisible(false);
+			star4.setVisible(false);
+			star5.setVisible(false);
+		}
 	}
+<<<<<<< HEAD
 
 
+=======
+	
+	
+	// Rating system
+	public void onStar1(MouseEvent event) throws Exception {
+		Model.recipe.rating = 1;
+	}
+	public void onStar2(MouseEvent event) throws Exception {
+		Model.recipe.rating = 2;
+	}
+	public void onStar3(MouseEvent event) throws Exception {
+		Model.recipe.rating = 3;
+	}
+	public void onStar4(MouseEvent event) throws Exception {
+		Model.recipe.rating = 4;
+	}
+	public void onStar5(MouseEvent event) throws Exception {
+		Model.recipe.rating = 5;
+	}
+	
+	
+	
+	
+>>>>>>> refs/remotes/origin/master
 }
