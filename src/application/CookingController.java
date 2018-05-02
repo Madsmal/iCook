@@ -245,7 +245,6 @@ public class CookingController implements Initializable {
 		} else {
 			next.setDisable(false);
 		}
-		
 	}
 	
 	

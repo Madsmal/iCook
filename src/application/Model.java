@@ -52,7 +52,7 @@ public class Model {
         	clock = clock + ":0" + Integer.toString(time.get(Calendar.MINUTE));
         }
         
-        if (Model.settings.get(Model.section, "clock").equals("hh:mm:ss")) {
+        if (Model.settings.get(Model.section, "clock").equals("hh:mm:ss") || Model.settings.get(Model.section, "clock").equals("hh:mm:ss.sss")) {
         	if (Integer.toString(time.get(Calendar.SECOND)).length() == 2) {
 		    	clock = clock + ":" + Integer.toString(time.get(Calendar.SECOND));
 		    } else {
