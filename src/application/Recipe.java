@@ -715,7 +715,7 @@ public class Recipe {
             @XmlElement(required = true)
             protected String prereq;
             @XmlElement(required = true)
-            protected String time;
+            protected int time;
             @XmlElement(required = true)
             protected boolean attentionRequired;
             @XmlElement(required = true)
@@ -737,11 +737,11 @@ public class Recipe {
             	this.prereq = prereq;
             }
             
-            public String getTime() {
+            public int getTime() {
             	return time;
             }
             
-            public void setTime(String time) {
+            public void setTime(int time) {
             	this.time = time;
             }
             
