@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!ELEMENT recipe (title,ID,startdate?,changedate?,target,ingredients+,tasks+,preparation+,
-variation*,remark*,technique*,sidedish*,privateremark*,duration*,source*,
+variation*,remark*,technique*,sidedish*,privateremark*,rating*,duration*,source*,
 regionoforigin*)>
 <!ELEMENT title (#PCDATA|quote)*>
 <!ELEMENT ID (#PCDATA)>
