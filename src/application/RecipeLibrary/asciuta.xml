@@ -90,6 +90,8 @@ For 4-6 Person(s)
 <time>60</time>
 <attentionRequired>false</attentionRequired>
 <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
+<alertString>Your sauce is done simmering</alertString>
+<timerString>Sauce is simmering</timerString>
 </task>
 <task>
 <ID>5</ID>
@@ -97,6 +99,8 @@ For 4-6 Person(s)
 <time>10</time>
 <attentionRequired>false</attentionRequired>
 <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
+<alertString>You're done cooking pasta</alertString>
+<timerString>Cooking pasta</timerString>
 </task>
 <task>
 <ID>6</ID>
