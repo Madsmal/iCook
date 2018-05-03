@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.xml.bind.JAXB;
+
 import application.Recipe.Tasks;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -301,26 +303,31 @@ public class CookingController implements Initializable {
 		}
 	}
 
-	// Rating system TODO save recipe to file when clicking any star button
+	// Rating system
 	public void onStar1(MouseEvent event) throws Exception {
 		Model.recipe.rating = 1;
 		updateRating();
+		Model.saveXMLFile();
 	}
 	public void onStar2(MouseEvent event) throws Exception {
 		Model.recipe.rating = 2;
 		updateRating();
+		Model.saveXMLFile();
 	}
 	public void onStar3(MouseEvent event) throws Exception {
 		Model.recipe.rating = 3;
 		updateRating();
+		Model.saveXMLFile();
 	}
 	public void onStar4(MouseEvent event) throws Exception {
 		Model.recipe.rating = 4;
 		updateRating();
+		Model.saveXMLFile();
 	}
 	public void onStar5(MouseEvent event) throws Exception {
 		Model.recipe.rating = 5;
 		updateRating();
+		Model.saveXMLFile();
 	}
 	private void updateRating() {
 		star1.setImage(starFull);

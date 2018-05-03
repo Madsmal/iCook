@@ -72,6 +72,7 @@ public class RecipesController implements Initializable {
 				//parse selected recipe
 				try {
 					Model.parseXMLFile("src/application/RecipeLibrary/"+newValue+".xml");
+					Model.parsedFileName = newValue;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

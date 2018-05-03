@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
 
+import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
@@ -15,6 +16,7 @@ import org.ini4j.Ini;
 public class Model {
 	static Stage primaryStage;
 	static Recipe recipe;
+	static String parsedFileName;
 	static Ini settings;
 	static String section = "default"; //Used with ini get and put methods
 	private int hours;
@@ -28,11 +30,15 @@ public class Model {
 	    recipe = (Recipe) jaxbUnmarshaller.unmarshal(file);
 	}
 	
+	public static void saveXMLFile() throws Exception {
+		JAXB.marshal(Model.recipe, new File("src/application/RecipeLibrary/"+parsedFileName+".xml"));
+	}
+	
 	public static void parseIni() throws IOException {
 		settings = new Ini(new FileReader("src/application/settings.ini"));
 	}
 	
-	public static void storeIni() throws IOException {
+	public static void saveIni() throws IOException {
 		settings.store(new File("src/application/settings.ini"));
 	}
 	

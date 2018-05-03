@@ -1,154 +1,150 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE cookbook SYSTEM "rezepte.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <recipe>
-<title>Spaghetti with Bolognese sauce</title>
-<ID>36</ID>
-<startdate>01.01.1995</startdate>
-<changedate>04.08.1997</changedate>
-<target>
+    <title>Spaghetti with Bolognese sauce</title>
+    <ID>36</ID>
+    <startdate>01.01.1995</startdate>
+    <changedate>04.08.1997</changedate>
+    <target>
 For 4-6 Person(s)
 </target>
-<ingredients>
-<ingredient>
-<quantity>1000</quantity>
-<unit>g</unit>
-<iname>minced meat</iname>
-</ingredient>
-<ingredient>
-<quantity>200</quantity>
-<unit>g</unit>
-<iname>streaky bacon</iname>
-</ingredient>
-<ingredient>
-<quantity>2-3</quantity>
-<unit></unit>
-<iname>onion(s)</iname>
-</ingredient>
-<ingredient>
-<quantity>2-3</quantity>
-<unit></unit>
-<iname>garlic clove(s)</iname>
-</ingredient>
-<ingredient>
-<quantity>1</quantity>
-<unit></unit>
-<iname>can of tomatoes (850 ml)</iname>
-</ingredient>
-<ingredient>
-<quantity>2</quantity>
-<unit>tablespoon</unit>
-<iname>Tomato paste</iname>
-</ingredient>
-<ingredient>
-<quantity></quantity>
-<unit></unit>
-<iname>Salt, Pepper</iname>
-</ingredient>
-<ingredient>
-<quantity></quantity>
-<unit></unit>
-<iname>Oregano</iname>
-</ingredient>
-<ingredient>
-<quantity>500-750</quantity>
-<unit>g</unit>
-<iname>Spaghetti</iname>
-</ingredient>
-<ingredient>
-<quantity>100</quantity>
-<unit>g</unit>
-<iname>Parmesan, freshly grated</iname>
-</ingredient>
-
-</ingredients>
-
-<tasks>
-<task>
-<ID>0</ID>
-<prereq></prereq>
-<time>10</time>
-<attentionRequired>true</attentionRequired>
-<taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
-</task>
-<task>
-<ID>1</ID>
-<prereq></prereq>
-<time>15</time>
-<attentionRequired>true</attentionRequired>
-<taskString>Roast minced meat as well as possible finely divide.</taskString>
-</task>
-<task>
-<ID>2</ID>
-<prereq></prereq>
-<time>20</time>
-<attentionRequired>true</attentionRequired>
-<taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
-</task>
-<task>
-<ID>3</ID>
-<prereq></prereq>
-<time>60</time>
-<attentionRequired>false</attentionRequired>
-<taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
-<timerString>Sauce is simmering</timerString>
-<alertString>Your sauce is done simmering</alertString>
-</task>
-<task>
-<ID>4</ID>
-<prereq></prereq>
-<time>10</time>
-<attentionRequired>false</attentionRequired>
-<taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
-<timerString>Cooking pasta</timerString>
-<alertString>You're done cooking pasta</alertString>
-</task>
-<task>
-<ID>5</ID>
-<prereq></prereq>
-<time>10</time>
-<attentionRequired>false</attentionRequired>
-<taskString>Check whether the pasta is done.</taskString>
-	<timerString>Lorem Ipsum 1</timerString>
-</task>
-<task>
-<ID>6</ID>
-<prereq></prereq>
-<time>60</time>
-<attentionRequired>true</attentionRequired>
-<taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
-</task>
-</tasks>
-
-<preparation>
-Den Speck und die Zwiebeln fein würfeln 
-und anbraten, aber nicht bräunen. Das 
-Hackfleisch ebenfalls anbraten und dabei möglichst
+    <ingredients>
+        <ingredient>
+            <quantity>1000</quantity>
+            <unit>g</unit>
+            <iname>minced meat</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>200</quantity>
+            <unit>g</unit>
+            <iname>streaky bacon</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2-3</quantity>
+            <unit></unit>
+            <iname>onion(s)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2-3</quantity>
+            <unit></unit>
+            <iname>garlic clove(s)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1</quantity>
+            <unit></unit>
+            <iname>can of tomatoes (850 ml)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2</quantity>
+            <unit>tablespoon</unit>
+            <iname>Tomato paste</iname>
+        </ingredient>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname>Salt, Pepper</iname>
+        </ingredient>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname>Oregano</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>500-750</quantity>
+            <unit>g</unit>
+            <iname>Spaghetti</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>100</quantity>
+            <unit>g</unit>
+            <iname>Parmesan, freshly grated</iname>
+        </ingredient>
+    </ingredients>
+    <tasks>
+        <task>
+            <ID>0</ID>
+            <prereq></prereq>
+            <time>10</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
+        </task>
+        <task>
+            <ID>1</ID>
+            <prereq></prereq>
+            <time>15</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Roast minced meat as well as possible finely divide.</taskString>
+        </task>
+        <task>
+            <ID>2</ID>
+            <prereq></prereq>
+            <time>20</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
+        </task>
+        <task>
+            <ID>3</ID>
+            <prereq></prereq>
+            <time>60</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
+            <timerString>Sauce is simmering</timerString>
+            <alertString>Your sauce is done simmering</alertString>
+        </task>
+        <task>
+            <ID>4</ID>
+            <prereq></prereq>
+            <time>10</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
+            <timerString>Cooking pasta</timerString>
+            <alertString>You're done cooking pasta</alertString>
+        </task>
+        <task>
+            <ID>5</ID>
+            <prereq></prereq>
+            <time>10</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Check whether the pasta is done.</taskString>
+            <timerString>Lorem Ipsum 1</timerString>
+        </task>
+        <task>
+            <ID>6</ID>
+            <prereq></prereq>
+            <time>60</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
+        </task>
+    </tasks>
+    <preparation>
+Den Speck und die Zwiebeln fein wÃ¼rfeln 
+und anbraten, aber nicht brÃ¤unen. Das 
+Hackfleisch ebenfalls anbraten und dabei mÃ¶glichst
 fein zerteilen. Alles mit den Tomaten in einen Topf
-geben und den Wein sowie die Gewürze hinzufügen. 
-Mindestens 1 h, besser 2 h, sanft köcheln lassen
-und dabei gelegentlich umrühren.
-Die Sauce muß dicklich werden, aber nicht fest. 
+geben und den Wein sowie die GewÃ¼rze hinzufÃ¼gen. 
+Mindestens 1 h, besser 2 h, sanft kÃ¶cheln lassen
+und dabei gelegentlich umrÃ¼hren.
+Die Sauce muÃŸ dicklich werden, aber nicht fest. 
 Die Nudeln in 2-3 l Salzwasser circa 8-12 min kochen.
 Entweder getrennt servieren oder die Sauce mit den
 abgegossenen Nudeln mischen. Dazu den Parmesan reichen.
 </preparation>
-<variation>
-Feingehackte Paprika und Möhren zugeben. 
+    <variation>
+Feingehackte Paprika und MÃ¶hren zugeben. 
 </variation>
-<remark>
-Wenn kein Speck verwendet wird, sollte man möglichst 
+    <remark>
+Wenn kein Speck verwendet wird, sollte man mÃ¶glichst 
 Hackfleisch <quote>halb und halb</quote> oder reines Schweinehack
 verwenden, weil das Gericht dann herzhafter und saftiger wird.
 </remark>
-<privateremark>
+    <privateremark>
 Am einfachsten ist es, den Speck und die Zwiebeln
 durch die grobe (6 mm) Scheibe des Fleischwolfs der
-BOSCH Küchenmaschine  zu drehen.
+BOSCH KÃ¼chenmaschine  zu drehen.
 </privateremark>
-<duration>
-<totaltime>185</totaltime>
-<worktime>60</worktime>
-</duration>
-<rating>5</rating>
-<source>Herbert Fischer</source>
+    <rating>4</rating>
+    <duration>
+        <totaltime>185</totaltime>
+        <worktime>60</worktime>
+    </duration>
+    <source>Herbert Fischer</source>
 </recipe>
