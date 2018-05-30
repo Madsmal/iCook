@@ -56,23 +56,33 @@ public class CookingController implements Initializable {
 
 	/* public int[] calculateTaskSequence() {
 
+		// Compares the time for each element to the other elements and if the prereg for the element is empty - 
+		// if so then add it to the front of the array.
+
+		// Here it is added to the front of the array, since it doesn't require other tasks to be made.
+
+		// To make a longest path tree (a way to optimize the algorhitm) use preReg. 
+		// if a tree contains more preRegs than another, then it should prioritize this tree.
+
+		// Better solution: add elements with no preReg to front of array and make those first.
+		
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if(i == Model.recipe.tasks.task.size()-1) {
-				sequence.add(Model.recipe.tasks.task.get(i).time);
-				break;
+			if(i != Model.recipe.tasks.task.size()-1) {
+				if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
+						&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
+					sequence.add(0, Model.recipe.tasks.task.get(i).time);}
+				else {
+					sequence.add(Model.recipe.tasks.task.get(i).time);	
+				}
 			}
-			if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
-					&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
-				//
-				sequence.add(0, Model.recipe.tasks.task.get(i).time);
-			} else {
+			else {
 				sequence.add(Model.recipe.tasks.task.get(i).time);
 			}
 			System.out.println(Model.recipe.tasks.task.get(i).time);
 		}
-		// This next line: how-to-convert-listinteger-to-int-in-java (added in Java 8)
+		// Stream converts List<integer> to int[]. 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
@@ -88,8 +98,7 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		// taskSequence = calculateTaskSequence();
-
+	//	taskSequence = calculateTaskSequence();
 		//TEMPORARY START
 		taskSequence[0] = 0;
 		taskSequence[1] = 1;
@@ -113,50 +122,50 @@ public class CookingController implements Initializable {
 		timeline = new Timeline(
 				new KeyFrame(Duration.millis(100), 
 						new EventHandler<ActionEvent>() {
-		        	@Override public void handle(ActionEvent actionEvent) {
-		        		
-		        		// CountdownTimer
-		        		// Alert if countdownTimer == 0 TODO
-		        		
-		        		
-		        		// Remove from array if countdownTimer == 0
-		        		for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
-			        		if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-		        				countdownTimerArray.remove(i);
-		        				i--;
-		        			}
-		        		}
-		        		
-		        		
-		        		// Create label
-		        		String text = "";
-		        		for (int i = 0; i < countdownTimerArray.size() ; i++) {
-		        			text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + ": " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
-		        		}
-		        		countdownLabel.setText(text);
-		        		
-		        		// countdownTimer2
-		        		if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
-		        			countdownLabel2.setText("");
-		        		} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
-		        			countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
-		        		}
-		        		
-		        		// Intermediate-task progress bar update
-		        		if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
-		        			pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
-		        		}
-		        		
-		        		// Update 'next' setDisable() value on second last page
-		        		// TODO Can be moved to alert 'OK' button when it is written to lower resources 
-		        		
-		        		if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
-		        			next.setDisable(false);
-		        		}
-		        	}
-		        }
-			)
-		);
+					@Override public void handle(ActionEvent actionEvent) {
+
+						// CountdownTimer
+						// Alert if countdownTimer == 0 TODO
+
+
+						// Remove from array if countdownTimer == 0
+						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
+								countdownTimerArray.remove(i);
+								i--;
+							}
+						}
+
+
+						// Create label
+						String text = "";
+						for (int i = 0; i < countdownTimerArray.size() ; i++) {
+							text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + ": " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
+						}
+						countdownLabel.setText(text);
+
+						// countdownTimer2
+						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
+							countdownLabel2.setText("");
+						} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
+							countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
+						}
+
+						// Intermediate-task progress bar update
+						if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
+							pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+						}
+
+						// Update 'next' setDisable() value on second last page
+						// TODO Can be moved to alert 'OK' button when it is written to lower resources 
+
+						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
+							next.setDisable(false);
+						}
+					}
+				}
+						)
+				);
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
