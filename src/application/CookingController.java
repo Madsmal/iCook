@@ -6,6 +6,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.lang.Object;
+import org.apache.commons.*;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.xml.bind.JAXB;
 
@@ -54,7 +57,7 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
 
-	/* public int[] calculateTaskSequence() {
+	public int[] calculateTaskSequence() {
 
 		// Compares the time for each element to the other elements and if the prereg for the element is empty - 
 		// if so then add it to the front of the array.
@@ -66,15 +69,16 @@ public class CookingController implements Initializable {
 
 
 		// Better solution: add elements with no preReg to front of array and make those first.
-		
+
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(i != Model.recipe.tasks.task.size()-1) {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && Model.recipe.tasks.task.get(i).prereq.isEmpty()){
-				// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
-				//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
-					sequence.add(0, Model.recipe.tasks.task.get(i).ID);}
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.isEmpty(Model.recipe.tasks.task.get(i).children) == true ){
+					// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
+					//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
+					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				} 
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
 				}
@@ -82,12 +86,13 @@ public class CookingController implements Initializable {
 			else {
 				sequence.add(Model.recipe.tasks.task.get(i).ID);
 			}
+			System.out.println(java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
 		}
 		// Stream converts List<integer> to int[]. 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
-	} */
+	} 
 
 
 	@FXML ImageView star1;
@@ -99,15 +104,15 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		//taskSequence = calculateTaskSequence();
+		taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-		taskSequence[0] = 0;
-		taskSequence[1] = 1;
-		taskSequence[2] = 2;
-		taskSequence[3] = 3;
-		taskSequence[4] = 4;
-		taskSequence[5] = 5;
-		taskSequence[6] = 6;
+		//		taskSequence[0] = 0;
+		//		taskSequence[1] = 1;
+		//		taskSequence[2] = 2;
+		//		taskSequence[3] = 3;
+		//		taskSequence[4] = 4;
+		//		taskSequence[5] = 5;
+		//		taskSequence[6] = 6;
 		//TEMPORARY END
 
 
