@@ -12,10 +12,11 @@ regionoforigin*)>
 <!ELEMENT ingredient (quantity,unit,iname)>
 <!ELEMENT tasks (task*)>
 <!ATTLIST tasks part CDATA #IMPLIED>
-<!ELEMENT task (taskTitle,ID,prereq,time,attentionRequired,taskString,timerString,alertString,dummy1)>
+<!ELEMENT task (taskTitle,ID,parents,children,time,attentionRequired,taskString,timerString,alertString,dummy1)>
 <!ELEMENT taskTitle (#PCDATA |pagereference|emph|bold|typewriter)*>
 <!ELEMENT ID (#PCDATA)>
-<!ELEMENT prereq (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
+<!ELEMENT parents (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
+<!ELEMENT children (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>
 <!ELEMENT time (#PCDATA)>
 <!ELEMENT attentionRequired (#PCDATA)>
 <!ELEMENT taskString (#PCDATA |pagereference|quote|emph|bold|typewriter|italics)*>

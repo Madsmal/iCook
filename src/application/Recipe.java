@@ -714,7 +714,8 @@ public class Recipe {
     	@XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
             "ID",
-            "prereq",
+            "parents",
+            "children",
             "time",
             "attentionRequired",
             "taskString",
@@ -727,7 +728,9 @@ public class Recipe {
     		@XmlElement(required = true)
             protected int ID;
             @XmlElement(required = true)
-            protected String prereq;
+            protected int[] parents;
+            @XmlElement(required = true)
+            protected int[] children;
             @XmlElement(required = true)
             protected int time;
             @XmlElement(required = true)
@@ -749,12 +752,20 @@ public class Recipe {
             	this.ID = ID;
             }
             
-            public String getPrereq() {
-            	return prereq;
+            public int[] getParents() {
+            	return parents;
             }
             
-            public void setPrereq(String prereq) {
-            	this.prereq = prereq;
+            public void setParents(int[] parents) {
+            	this.parents = parents;
+            }
+            
+            public int[] getChildren() {
+            	return children;
+            }
+            
+            public void setChildren(int[] children) {
+            	this.children = children;
             }
             
             public int getTime() {
