@@ -34,5 +34,6 @@
       <Label fx:id="ingredients" layoutX="263.0" layoutY="235.0" text="Ingredients" />
       <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="475.0" layoutX="279.0" layoutY="14.0" pickOnBounds="true" />
       <Separator layoutX="227.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="15.0" />
+      <Label fx:id="rating" layoutX="518.0" layoutY="210.0" text="Rating" />
    </children>
 </AnchorPane>

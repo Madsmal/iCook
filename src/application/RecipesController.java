@@ -32,6 +32,7 @@ public class RecipesController implements Initializable {
 	@FXML Label changedate;
 	@FXML Label ingredients;
 	@FXML Label source;
+	@FXML Label rating;
 	@FXML ImageView RecipeImageView;
 	/*
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
@@ -112,6 +113,7 @@ public class RecipesController implements Initializable {
 				startdate.setText("Start date: " + Model.recipe.getStartdate());
 				changedate.setText("Change date: " + Model.recipe.getChangedate());
 				source.setText("Source: " + Model.recipe.getSource());
+				rating.setText("Rating: " + Model.recipe.getRating());
 
 				// Update recipe image
 
