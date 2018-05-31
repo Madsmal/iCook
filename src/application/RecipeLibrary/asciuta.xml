@@ -62,8 +62,8 @@ For 4-6 Person(s)
     <tasks>
         <task>
             <ID>0</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>10</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
@@ -71,8 +71,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>1</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>15</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Roast minced meat as well as possible finely divide.</taskString>
@@ -80,8 +80,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>2</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>20</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
@@ -89,8 +89,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>3</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>60</time>
             <attentionRequired>false</attentionRequired>
             <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
@@ -100,8 +100,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>4</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>10</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
@@ -111,8 +111,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>5</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>10</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Check whether the pasta is done.</taskString>
@@ -121,8 +121,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>6</ID>
-            <parents>0</parents>
-            <children>0</children>
+            <parents></parents>
+            <children></children>
             <time>60</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
