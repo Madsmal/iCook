@@ -114,7 +114,7 @@ For 4-6 Person(s)
             <timerString>Lorem Ipsum 1</timerString>
         </task>
         <task>
-			<taskTitle>Serving</taskTitle>
+			<taskTitle>Serving the dish</taskTitle>
             <ID>6</ID>
             <prereq></prereq>
             <time>60</time>
