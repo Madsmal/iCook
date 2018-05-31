@@ -800,7 +800,7 @@ public class Recipe {
             public String getTaskTitle() {
             	return taskTitle;
             }
-            
+            //added taskTitle
             public void setTaskTitle(String taskTitle) {
             	this.taskTitle = taskTitle;
             }
