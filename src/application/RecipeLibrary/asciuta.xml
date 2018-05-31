@@ -61,6 +61,7 @@ For 4-6 Person(s)
     </ingredients>
     <tasks>
         <task>
+			<taskTitle>Dicing of bacon and onions + saute</taskTitle>
             <ID>0</ID>
             <prereq></prereq>
             <time>10</time>
@@ -68,6 +69,7 @@ For 4-6 Person(s)
             <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
         </task>
         <task>
+			<taskTitle>Roast minced meat</taskTitle>
             <ID>1</ID>
             <prereq></prereq>
             <time>15</time>
@@ -75,6 +77,7 @@ For 4-6 Person(s)
             <taskString>Roast minced meat as well as possible finely divide.</taskString>
         </task>
         <task>
+			<taskTitle>Add everything to pot</taskTitle>
             <ID>2</ID>
             <prereq></prereq>
             <time>20</time>
@@ -82,6 +85,7 @@ For 4-6 Person(s)
             <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
         </task>
         <task>
+			<taskTitle>Simmer</taskTitle>
             <ID>3</ID>
             <prereq></prereq>
             <time>60</time>
@@ -91,6 +95,7 @@ For 4-6 Person(s)
             <alertString>Your sauce is done simmering</alertString>
         </task>
         <task>
+			<taskTitle>Done cooking</taskTitle>
             <ID>4</ID>
             <prereq></prereq>
             <time>10</time>
@@ -100,6 +105,7 @@ For 4-6 Person(s)
             <alertString>You're done cooking pasta</alertString>
         </task>
         <task>
+			<taskTitle>Check if pasta is done</taskTitle>
             <ID>5</ID>
             <prereq></prereq>
             <time>10</time>
@@ -108,6 +114,7 @@ For 4-6 Person(s)
             <timerString>Lorem Ipsum 1</timerString>
         </task>
         <task>
+			<taskTitle>Serving</taskTitle>
             <ID>6</ID>
             <prereq></prereq>
             <time>60</time>
