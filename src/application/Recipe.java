@@ -719,7 +719,8 @@ public class Recipe {
             "attentionRequired",
             "taskString",
             "timerString",
-            "alertString"
+            "alertString",
+            "taskTitle"
         })
     	public static class Task {
         	
@@ -737,6 +738,8 @@ public class Recipe {
             protected String timerString;
             @XmlElement(required = true)
             protected String alertString;
+            @XmlElement(required = true)
+            protected String taskTitle;
             
             public int getID() {
             	return ID;
@@ -792,6 +795,14 @@ public class Recipe {
             
             public void setAlertString(String alertString) {
             	this.alertString = alertString;
+            }
+            
+            public String getTaskTitle() {
+            	return taskTitle;
+            }
+            
+            public void setTaskTitle(String taskTitle) {
+            	this.taskTitle = taskTitle;
             }
         }
     }
