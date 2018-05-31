@@ -213,7 +213,10 @@ public class RecipesController implements Initializable {
 			
 		} 
 	}
-
+	
+	public void onSwipe(ActionEvent event) throws Exception {
+		System.out.println("test");
+	}
 
 
 }
