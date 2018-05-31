@@ -728,9 +728,9 @@ public class Recipe {
     		@XmlElement(required = true)
             protected int ID;
             @XmlElement(required = true)
-            protected int[] parents = null;
+            protected int[] parents;
             @XmlElement(required = true)
-            protected int[] children = null;
+            protected int children[];
             @XmlElement(required = true)
             protected int time;
             @XmlElement(required = true)

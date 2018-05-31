@@ -74,7 +74,7 @@ public class CookingController implements Initializable {
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(i != Model.recipe.tasks.task.size()-1) {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.isEmpty(Model.recipe.tasks.task.get(i).children) ){
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0) ){
 					// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
 					//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
