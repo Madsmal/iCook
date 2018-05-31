@@ -71,17 +71,17 @@ public class CookingController implements Initializable {
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(i != Model.recipe.tasks.task.size()-1) {
-				if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
-						&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
-					sequence.add(0, Model.recipe.tasks.task.get(i).time);}
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && Model.recipe.tasks.task.get(i).prereq.isEmpty()){
+				// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
+				//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
+					sequence.add(0, Model.recipe.tasks.task.get(i).ID);}
 				else {
-					sequence.add(Model.recipe.tasks.task.get(i).time);	
+					sequence.add(Model.recipe.tasks.task.get(i).ID);	
 				}
 			}
 			else {
-				sequence.add(Model.recipe.tasks.task.get(i).time);
+				sequence.add(Model.recipe.tasks.task.get(i).ID);
 			}
-			System.out.println(Model.recipe.tasks.task.get(i).time);
 		}
 		// Stream converts List<integer> to int[]. 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
@@ -99,12 +99,12 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-	//	taskSequence = calculateTaskSequence();
+		//taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-		taskSequence[0] = 3;
-		taskSequence[1] = 0;
-		taskSequence[2] = 1;
-		taskSequence[3] = 2;
+		taskSequence[0] = 0;
+		taskSequence[1] = 1;
+		taskSequence[2] = 2;
+		taskSequence[3] = 3;
 		taskSequence[4] = 4;
 		taskSequence[5] = 5;
 		taskSequence[6] = 6;
