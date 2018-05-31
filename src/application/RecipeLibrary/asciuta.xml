@@ -61,72 +61,72 @@ For 4-6 Person(s)
     </ingredients>
     <tasks>
         <task>
-			<taskTitle>Dicing of bacon and onions + saute</taskTitle>
             <ID>0</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>10</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
+            <taskTitle>Dicing of bacon and onions + saute</taskTitle>
         </task>
         <task>
-			<taskTitle>Roast minced meat</taskTitle>
             <ID>1</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>15</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Roast minced meat as well as possible finely divide.</taskString>
+            <taskTitle>Roast minced meat</taskTitle>
         </task>
         <task>
-			<taskTitle>Add everything to pot</taskTitle>
             <ID>2</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>20</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
+            <taskTitle>Add everything to pot</taskTitle>
         </task>
         <task>
-			<taskTitle>Simmer</taskTitle>
             <ID>3</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>60</time>
             <attentionRequired>false</attentionRequired>
             <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
             <timerString>Sauce is simmering</timerString>
             <alertString>Your sauce is done simmering</alertString>
+            <taskTitle>Simmer</taskTitle>
         </task>
         <task>
-			<taskTitle>Done cooking</taskTitle>
             <ID>4</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>10</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
             <timerString>Cooking pasta</timerString>
             <alertString>You're done cooking pasta</alertString>
+            <taskTitle>Done cooking</taskTitle>
         </task>
         <task>
-			<taskTitle>Check if pasta is done</taskTitle>
             <ID>5</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>10</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Check whether the pasta is done.</taskString>
             <timerString>Lorem Ipsum 1</timerString>
+            <taskTitle>Check if pasta is done</taskTitle>
         </task>
         <task>
-			<taskTitle>Serving the dish</taskTitle>
             <ID>6</ID>
-            <parents></parents>
-			<children></children>
+            <parents>0</parents>
+            <children>0</children>
             <time>60</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
+            <taskTitle>Serving the dish</taskTitle>
         </task>
     </tasks>
     <preparation>
@@ -155,7 +155,7 @@ Am einfachsten ist es, den Speck und die Zwiebeln
 durch die grobe (6 mm) Scheibe des Fleischwolfs der
 BOSCH Küchenmaschine  zu drehen.
 </privateremark>
-    <rating>1</rating>
+    <rating>4</rating>
     <duration>
         <totaltime>185</totaltime>
         <worktime>60</worktime>
