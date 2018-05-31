@@ -61,7 +61,7 @@ For 4-6 Person(s)
     </ingredients>
     <tasks>
         <task>
-            <ID>0</ID>
+            <ID>1</ID>
             <parents>0</parents>
             <children>0</children>
             <time>10</time>
@@ -70,7 +70,7 @@ For 4-6 Person(s)
             <taskTitle>Dicing of bacon and onions + saute</taskTitle>
         </task>
         <task>
-            <ID>1</ID>
+            <ID>2</ID>
             <parents>0</parents>
             <children>0</children>
             <time>15</time>
@@ -79,7 +79,7 @@ For 4-6 Person(s)
             <taskTitle>Roast minced meat</taskTitle>
         </task>
         <task>
-            <ID>2</ID>
+            <ID>3</ID>
             <parents>0</parents>
             <children>0</children>
             <time>20</time>
@@ -88,7 +88,7 @@ For 4-6 Person(s)
             <taskTitle>Add everything to pot</taskTitle>
         </task>
         <task>
-            <ID>3</ID>
+            <ID>4</ID>
             <parents>0</parents>
             <children>0</children>
             <time>60</time>
@@ -99,7 +99,7 @@ For 4-6 Person(s)
             <taskTitle>Simmer</taskTitle>
         </task>
         <task>
-            <ID>4</ID>
+            <ID>5</ID>
             <parents>0</parents>
             <children>0</children>
             <time>10</time>
@@ -110,7 +110,7 @@ For 4-6 Person(s)
             <taskTitle>Done cooking</taskTitle>
         </task>
         <task>
-            <ID>5</ID>
+            <ID>6</ID>
             <parents>0</parents>
             <children>0</children>
             <time>10</time>
@@ -120,7 +120,7 @@ For 4-6 Person(s)
             <taskTitle>Check if pasta is done</taskTitle>
         </task>
         <task>
-            <ID>6</ID>
+            <ID>7</ID>
             <parents>0</parents>
             <children>0</children>
             <time>60</time>
