@@ -64,6 +64,7 @@ public class CookingController implements Initializable {
 		// To make a longest path tree (a way to optimize the algorhitm) use preReg. 
 		// if a tree contains more preRegs than another, then it should prioritize this tree.
 
+
 		// Better solution: add elements with no preReg to front of array and make those first.
 		
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
@@ -100,10 +101,10 @@ public class CookingController implements Initializable {
 
 	//	taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-		taskSequence[0] = 0;
-		taskSequence[1] = 1;
-		taskSequence[2] = 2;
-		taskSequence[3] = 3;
+		taskSequence[0] = 3;
+		taskSequence[1] = 0;
+		taskSequence[2] = 1;
+		taskSequence[3] = 2;
 		taskSequence[4] = 4;
 		taskSequence[5] = 5;
 		taskSequence[6] = 6;
@@ -145,9 +146,9 @@ public class CookingController implements Initializable {
 						countdownLabel.setText(text);
 
 						// countdownTimer2
-						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(currentTask).attentionRequired==false) {
+						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==false) {
 							countdownLabel2.setText("");
-						} else if (Model.recipe.tasks.getTask().get(currentTask).attentionRequired==true) {
+						} else if (Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==true) {
 							countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
 						}
 
