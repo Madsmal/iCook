@@ -21,6 +21,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.SwipeEvent;
 
 public class RecipesController implements Initializable {
 
@@ -214,7 +215,7 @@ public class RecipesController implements Initializable {
 		} 
 	}
 	
-	public void onSwipe(ActionEvent event) throws Exception {
+	public void onSwipe(SwipeEvent event) throws Exception {
 		System.out.println("test");
 	}
 
