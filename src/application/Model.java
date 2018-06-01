@@ -87,5 +87,60 @@ public class Model {
 		return this.minutes;
 	}
 	
+	public static String secondsToHHMMSS(int seconds) {
+		String string = "";
+		if (Integer.toString(seconds/3600).length() >= 2) {
+			string = string + seconds/3600;
+		} else {
+			string = string + "0" + seconds/3600;
+		}
+		
+		if (Integer.toString((seconds%3600)/60).length() == 2) {
+			string = string + ":" + (seconds%3600)/60;
+		} else {
+			string = string + ":0" + (seconds%3600)/60;
+		}
+		
+		if (Integer.toString((seconds%3600)%60).length() == 2) {
+			string = string + ":" + (seconds%3600)%60;
+		} else {
+			string = string + ":0" + (seconds%3600)%60;
+		}
+		return string;
+	}
+	
+	public static String secondsToCollapsingHHMMSS(int seconds) {
+		String string = "";
+		boolean HH = false;
+		boolean MM = false;
+		
+		if (Integer.toString(seconds/3600).length() >= 2) {
+			string = string + seconds/3600 + ":";
+			HH = true;
+		} else if (Integer.toString(seconds/3600).length() == 1 && seconds/3600 != 0){
+			string = string + seconds/3600 + ":";
+			HH = true;
+		}
+		
+		if (Integer.toString((seconds%3600)/60).length() == 2) {
+			string = string + (seconds%3600)/60 + ":";
+			MM = true;
+		} else if (Integer.toString((seconds%3600)/60).length() == 1 && HH == true) {
+			string = string + "0" + (seconds%3600)/60 + ":";
+			MM = true;
+		} else if ((seconds%3600)/60 != 0) {
+			string = string + (seconds%3600)/60 + ":";
+			MM = true;
+		}
+		
+		if (Integer.toString((seconds%3600)%60).length() == 2) {
+			string = string + (seconds%3600)%60;
+		} else if (Integer.toString((seconds%3600)%60).length() == 1 && MM == true){
+			string = string + "0" + (seconds%3600)%60;
+		} else {
+			string = string + (seconds%3600)%60;
+		}
+		return string;
+	}
 }
 

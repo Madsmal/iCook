@@ -24,7 +24,6 @@ public class Main extends Application {
 		primaryStage.setTitle("iCook");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
-
 	}
 	
 	// Raspberry pi 3 screen resolution 800x480	

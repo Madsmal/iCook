@@ -91,7 +91,7 @@ For 4-6 Person(s)
             <ID>4</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>60</time>
+            <time>3605</time>
             <attentionRequired>false</attentionRequired>
             <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
             <timerString>Sauce is simmering</timerString>

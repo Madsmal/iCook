@@ -55,6 +55,7 @@ public class CookingController implements Initializable {
 	@FXML Button previous;
 	@FXML Button pause;
 	@FXML Button next;
+	@FXML Button timerButton;
 	@FXML Label task;
 	@FXML Label countdownLabel;
 	@FXML Label countdownLabel2;
@@ -156,10 +157,10 @@ public class CookingController implements Initializable {
 						}
 
 
-						// Create label
+						// Create countdownTimer label
 						String text = "";
 						for (int i = 0; i < countdownTimerArray.size() ; i++) {
-							text = text + Integer.toString(countdownTimerArray.get(i).getTimeLeft()) + ": " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
+							text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
 						}
 						countdownLabel.setText(text);
 
@@ -257,6 +258,10 @@ public class CookingController implements Initializable {
 			countdownTimer2.continueCountdownTimer();
 			pause.setText("Pause");
 		}
+	}
+	
+	public void onStartTimer(ActionEvent event) throws Exception {
+		
 	}
 
 
