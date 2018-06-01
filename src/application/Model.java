@@ -19,8 +19,7 @@ public class Model {
 	static String parsedFileName;
 	static Ini settings;
 	static String section = "default"; //Used with ini get and put methods
-	private int hours;
-	private int minutes;
+	
 	
 	public static void parseXMLFile(String path) throws Exception {
 		File file = new File(path);
@@ -72,6 +71,9 @@ public class Model {
         
         return clock;
 	}
+	
+	private int hours;
+	private int minutes;
 	
 	public void convertMinToHHMM(String totalMinutes) {
 		this.hours = Integer.parseInt(totalMinutes)/60;

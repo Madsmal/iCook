@@ -224,7 +224,6 @@ public class CookingController implements Initializable {
 
 	public void onNext(ActionEvent event) throws Exception {
 		if (currentTask != taskSequence.length) {
-			updateCountdownTimer();
 			currentTask++;
 			pause.setText("Pause");
 			updateCountdownTimer2();
@@ -261,7 +260,17 @@ public class CookingController implements Initializable {
 	}
 	
 	public void onStartTimer(ActionEvent event) throws Exception {
-		
+		if (timerButton.getText().equals("Start timer")) {
+			CountdownTimer countdownTimer = new CountdownTimer((Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
+			countdownTimerArray.add(countdownTimer);
+			updateButtonVisibility();
+		} else if (timerButton.getText().equals("Reset timer")) {
+			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
+					countdownTimerArray.get(i).resetCountdownTimer();
+				}
+			}
+		}
 	}
 
 
@@ -271,13 +280,6 @@ public class CookingController implements Initializable {
 
 
 	// Methods
-	private void updateCountdownTimer() { //TODO make it a button rather than when clicking 'next'
-		if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
-			CountdownTimer countdownTimer = new CountdownTimer((Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
-			countdownTimerArray.add(countdownTimer);		
-		}
-	}
-
 	private void updateCountdownTimer2() {
 		if (currentTask == taskSequence.length) {
 			countdownTimer2 = null;
@@ -288,7 +290,7 @@ public class CookingController implements Initializable {
 		}
 	}
 
-	private void updateProgressBar() { //TODO attentionrequired false kun tælle med som det sidste
+	private void updateProgressBar() { //TODO attentionRequired false kun tælle med som det sidste
 		timePassed = 0;
 		for (int i = 0 ; i < currentTask ; i++) {
 			timePassed = timePassed + (Model.recipe.tasks.task.get(i).getTime());
@@ -333,6 +335,21 @@ public class CookingController implements Initializable {
 			star3.setVisible(false);
 			star4.setVisible(false);
 			star5.setVisible(false);
+		}
+		// timer button
+		if (currentTask == taskSequence.length) {
+			timerButton.setVisible(false);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+			timerButton.setVisible(false);
+		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
+			timerButton.setVisible(true);
+			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
+					timerButton.setText("Reset timer");
+				} else {
+					timerButton.setText("Start timer");
+				}
+			}
 		}
 	}
 

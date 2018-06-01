@@ -16,7 +16,7 @@ public class CountdownTimer {
 		startCountdownTimer();
 	}
 	
-	public void startCountdownTimer() {
+	public void startCountdownTimer() { 
 		timeLeft = totalTime;
 		continueCountdownTimer();
 	}
@@ -40,7 +40,10 @@ public class CountdownTimer {
 		}
 	}
 	
-	
+	public void resetCountdownTimer() {
+		timer.cancel();
+		startCountdownTimer();
+	}
 	
 	//get & set methods
 	
