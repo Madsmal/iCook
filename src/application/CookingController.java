@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +24,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -105,15 +108,15 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		taskSequence = calculateTaskSequence();
+		//taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-		//		taskSequence[0] = 0;
-		//		taskSequence[1] = 1;
-		//		taskSequence[2] = 2;
-		//		taskSequence[3] = 3;
-		//		taskSequence[4] = 4;
-		//		taskSequence[5] = 5;
-		//		taskSequence[6] = 6;
+				taskSequence[0] = 0;
+				taskSequence[1] = 1;
+				taskSequence[2] = 2;
+				taskSequence[3] = 3;
+				taskSequence[4] = 4;
+				taskSequence[5] = 5;
+				taskSequence[6] = 6;
 		//TEMPORARY END
 
 
@@ -132,12 +135,21 @@ public class CookingController implements Initializable {
 					@Override public void handle(ActionEvent actionEvent) {
 
 						// CountdownTimer
-						// Alert if countdownTimer == 0 TODO
-
-
-						// Remove from array if countdownTimer == 0
 						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
+	
+								// Alert if countdownTimer == 0
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Timer Alert");
+								alert.setHeaderText(null);
+								for (int n = 0 ; n < Model.recipe.tasks.task.size() ; n++) {
+									if (Model.recipe.tasks.task.get(n).getID() == countdownTimerArray.get(i).getID()) {
+										alert.setContentText(Model.recipe.tasks.task.get(n).getAlertString());
+									}
+								}
+								alert.show();
+								
+								// Remove from array if countdownTimer == 0
 								countdownTimerArray.remove(i);
 								i--;
 							}
