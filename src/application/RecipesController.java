@@ -35,11 +35,13 @@ public class RecipesController implements Initializable {
 	@FXML Label source;
 	@FXML Label rating;
 	@FXML ImageView RecipeImageView;
-	/*
+	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
-	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2);
-	 */
+	@FXML MenuItem serving3 = new MenuItem("Option 3");
+	@FXML MenuItem serving4 = new MenuItem("Option 4");
+	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2, serving3, serving4);
+	
 
 
 	// Initialising the listview
@@ -70,55 +72,15 @@ public class RecipesController implements Initializable {
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-
+				
+				Model.parsedFileName = newValue;
 				//parse selected recipe
-				try {
-					Model.parseXMLFile("src/application/RecipeLibrary/"+newValue+".xml");
-					Model.parsedFileName = newValue;
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				parseXML();
 
 				//update labels
-				String ingredientsList = "Ingredients:\n";
+				updateLabels();
 
-				for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
-					if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
-						ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
-					}
-					if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
-						ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
-					}
-					ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
-				}
-				
-				Model timeConverterTT = new Model();
-				
-				timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
-				int tthours = timeConverterTT.getHours();
-				int ttminutes = timeConverterTT.getMinutes();
-				
-				Model timeConverterWT = new Model();
-				timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
-
-				int wthours = timeConverterWT.getHours();
-				int wtminutes = timeConverterWT.getMinutes();
-				
-				ingredients.setText(ingredientsList);
-
-				title.setText(Model.recipe.getTitle());
-				//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
-				totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
-				//worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
-				worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
-				startdate.setText("Start date: " + Model.recipe.getStartdate());
-				changedate.setText("Change date: " + Model.recipe.getChangedate());
-				source.setText("Source: " + Model.recipe.getSource());
-				rating.setText("Rating: " + Model.recipe.getRating());
-
-				// Update recipe image
-
-				/* 
+				/* Update recipe image
 				 * Recipe images supported formats are PNG, JPEG, GIF, BMP, and JPG
 				 * The image associated with a recipe must have the same name as the recipe,
 				 * and must be placed in "src/application/Images/"
@@ -152,45 +114,32 @@ public class RecipesController implements Initializable {
 		//selects the first recipe in the listView as default
 		listView.getSelectionModel().select(0);
 		
-		
-		/*
+		//serving amount menu
 		serving1.setOnAction(event -> {
-			try {
-				Model.parseXMLFile("src\\application\\RecipeLibrary\\"+"Lorem ipsum"+".xml");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		    System.out.println("Option 1 selected via Lambda");
-		    Model.recipe.getIngredients().getIngredient().get(0).setQuantity(Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(0).getQuantity())*2));
-
-		  //update labels
-	        String ingredientsList = "Ingredients:\n";
-
-	        for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
-	        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
-	        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
-	        	}
-	        	if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
-	        		ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
-	        	}
-	        	ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
-	        }
-
-	        ingredients.setText(ingredientsList);
-
-	        title.setText(Model.recipe.getTitle());
-	        totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
-			worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
-			startdate.setText("Start date: " + Model.recipe.getStartdate());
-			changedate.setText("Change date: " + Model.recipe.getChangedate());
-			source.setText("Source: " + Model.recipe.getSource());
-
+			parseXML();
+			ingredientsQuantityMultiplier(1);
+		    updateLabels();
+		    servingAmount.setText("Servings: 1");
 		});
 		serving2.setOnAction(event -> {
-		    System.out.println("Option 2 selected via Lambda");
+			parseXML();
+			ingredientsQuantityMultiplier(2);
+		    updateLabels();
+		    servingAmount.setText("Servings: 2");
 		});
-		 */
+		serving3.setOnAction(event -> {
+			parseXML();
+			ingredientsQuantityMultiplier(3);
+		    updateLabels();
+		    servingAmount.setText("Servings: 3");
+		});
+		serving4.setOnAction(event -> {
+			parseXML();
+			ingredientsQuantityMultiplier(4);
+		    updateLabels();
+		    servingAmount.setText("Servings: 4");
+		});
+		
 
 	}
 
@@ -219,5 +168,63 @@ public class RecipesController implements Initializable {
 		System.out.println("test");
 	}
 
+	// methods
+	private void parseXML() {
+		try {
+			Model.parseXMLFile("src/application/RecipeLibrary/"+Model.parsedFileName+".xml");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void updateLabels() {
+		String ingredientsList = "Ingredients:\n";
 
+		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+			if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())) {
+				ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getQuantity()+" ";
+			}
+			if (!"".equals(Model.recipe.getIngredients().getIngredient().get(i).getUnit())) {
+				ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getUnit()+" ";
+			}
+			ingredientsList = ingredientsList+Model.recipe.getIngredients().getIngredient().get(i).getIname()+"    \n";
+		}
+		
+		Model timeConverterTT = new Model();
+		
+		timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
+		int tthours = timeConverterTT.getHours();
+		int ttminutes = timeConverterTT.getMinutes();
+		
+		Model timeConverterWT = new Model();
+		timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
+
+		int wthours = timeConverterWT.getHours();
+		int wtminutes = timeConverterWT.getMinutes();
+		
+		ingredients.setText(ingredientsList);
+
+		title.setText(Model.recipe.getTitle());
+		//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
+		totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
+		//worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
+		worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
+		startdate.setText("Start date: " + Model.recipe.getStartdate());
+		changedate.setText("Change date: " + Model.recipe.getChangedate());
+		source.setText("Source: " + Model.recipe.getSource());
+		rating.setText("Rating: " + Model.recipe.getRating());
+	}
+	
+	private void ingredientsQuantityMultiplier(int multiplier) {
+		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+			if (Model.recipe.getIngredients().getIngredient().get(i).getQuantity().length() > 0) {
+				String string1 = Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())*multiplier);
+				if (string1.endsWith(".0")) {
+					string1 = string1.substring(0, string1.length() - 2);
+				}
+				Model.recipe.getIngredients().getIngredient().get(i).setQuantity(string1);
+			}
+		}
+	}
+	
 }

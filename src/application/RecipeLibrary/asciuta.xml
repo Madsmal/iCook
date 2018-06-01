@@ -19,12 +19,12 @@ For 4-6 Person(s)
             <iname>streaky bacon</iname>
         </ingredient>
         <ingredient>
-            <quantity>2-3</quantity>
+            <quantity>3</quantity>
             <unit></unit>
             <iname>onion(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>2-3</quantity>
+            <quantity>2</quantity>
             <unit></unit>
             <iname>garlic clove(s)</iname>
         </ingredient>
@@ -49,7 +49,7 @@ For 4-6 Person(s)
             <iname>Oregano</iname>
         </ingredient>
         <ingredient>
-            <quantity>500-750</quantity>
+            <quantity>500</quantity>
             <unit>g</unit>
             <iname>Spaghetti</iname>
         </ingredient>
