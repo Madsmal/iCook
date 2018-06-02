@@ -150,10 +150,10 @@ public class CookingController implements Initializable {
 						new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent actionEvent) {
 
-						// CountdownTimer
+						// CountdownTimer //TODO fix ghost-code
+						System.out.println("into loop");
 						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-
 								// Alert if countdownTimer == 0
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Timer Alert");
@@ -166,16 +166,31 @@ public class CookingController implements Initializable {
 								alert.show();
 
 								// Remove from array if countdownTimer == 0
-								countdownTimerArray.remove(i);
-								i--;
+								
+								System.out.println("1: "+countdownTimerArray.size());
+								countdownTimerArray.remove(i);/*
+								if (countdownTimerArray.size() != 1) {
+									i--;
+								}*/
+								System.out.println("2: "+countdownTimerArray.size());
+								
+								// Updates timerStart button
+								updateButtonVisibility();
+								System.out.println("break");
+								break;
 							}
 						}
-
+						System.out.println("out of loop");
 
 						// Create countdownTimer label
 						String text = "";
 						for (int i = 0; i < countdownTimerArray.size() ; i++) {
-							text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
+							String timerString = "";
+							for (int n = 0 ; n < Model.recipe.tasks.task.size() ; n++) {
+								if (countdownTimerArray.get(i).getID() == Model.recipe.tasks.task.get(n).getID()) {
+									text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(n).getTimerString() + "\n";
+								}
+							}
 						}
 						countdownLabel.setText(text);
 
@@ -279,10 +294,12 @@ public class CookingController implements Initializable {
 			CountdownTimer countdownTimer = new CountdownTimer((Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
 			countdownTimerArray.add(countdownTimer);
 			updateButtonVisibility();
-		} else if (timerButton.getText().equals("Reset timer")) {
+		} else if (timerButton.getText().equals("Delete timer")) {
 			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
-					countdownTimerArray.get(i).resetCountdownTimer();
+					countdownTimerArray.get(i).pauseCountdownTimer();
+					countdownTimerArray.remove(i);
+					updateButtonVisibility();
 				}
 			}
 		}
@@ -360,10 +377,14 @@ public class CookingController implements Initializable {
 			timerButton.setVisible(true);
 			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
-					timerButton.setText("Reset timer");
+					timerButton.setText("Delete timer");
+					break;
 				} else {
 					timerButton.setText("Start timer");
 				}
+			}
+			if (countdownTimerArray.size() == 0) {
+				timerButton.setText("Start timer");
 			}
 		}
 	}
