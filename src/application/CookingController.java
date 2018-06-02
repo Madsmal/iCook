@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.lang.Object;
@@ -80,10 +82,11 @@ public class CookingController implements Initializable {
 			if(i != Model.recipe.tasks.task.size()-1) {
 				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
 						&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)){
+
 					// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
 					//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-				} 
+				}
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
 				}
@@ -91,7 +94,15 @@ public class CookingController implements Initializable {
 			else {
 				sequence.add(Model.recipe.tasks.task.get(i).ID);
 			}
+
 			System.out.println(java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
+		}
+		// Checks if element has a child. If that's the case then it should have a higher priority than other elements. 
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {
+				sequence.remove(Model.recipe.tasks.task.get(i).ID);
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);			
+			}	
 		}
 		// Stream converts List<integer> to int[]. 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
@@ -109,15 +120,15 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		//taskSequence = calculateTaskSequence();
+		taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-				taskSequence[0] = 0;
-				taskSequence[1] = 1;
-				taskSequence[2] = 2;
-				taskSequence[3] = 3;
-				taskSequence[4] = 4;
-				taskSequence[5] = 5;
-				taskSequence[6] = 6;
+		//				taskSequence[0] = 0;
+		//				taskSequence[1] = 1;
+		//				taskSequence[2] = 2;
+		//				taskSequence[3] = 3;
+		//				taskSequence[4] = 4;
+		//				taskSequence[5] = 5;
+		//				taskSequence[6] = 6;
 		//TEMPORARY END
 
 
@@ -138,7 +149,7 @@ public class CookingController implements Initializable {
 						// CountdownTimer
 						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-	
+
 								// Alert if countdownTimer == 0
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Timer Alert");
@@ -149,7 +160,7 @@ public class CookingController implements Initializable {
 									}
 								}
 								alert.show();
-								
+
 								// Remove from array if countdownTimer == 0
 								countdownTimerArray.remove(i);
 								i--;
@@ -258,7 +269,7 @@ public class CookingController implements Initializable {
 			pause.setText("Pause");
 		}
 	}
-	
+
 	public void onStartTimer(ActionEvent event) throws Exception {
 		if (timerButton.getText().equals("Start timer")) {
 			CountdownTimer countdownTimer = new CountdownTimer((Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
