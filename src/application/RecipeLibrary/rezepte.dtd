@@ -32,6 +32,7 @@ regionoforigin*)>
 <!ELEMENT remark (#PCDATA |citation|texspecial|namefont|underline|indexentry|pagereference|quote|emph|bold|typewriter|italics|sansserif)*>
 <!ELEMENT privateremark (#PCDATA|texspecial|underline|namefont|quote|indexentry|emph|bold|typewriter|italics|sansserif)*>
 <!ELEMENT rating (#PCDATA)>
+<!ELEMENT calories (#PCDATA)>
 <!ELEMENT duration (durationspecial?,totaltime, worktime)>
 <!ELEMENT totaltime (#PCDATA|emph|bold|typewriter|italics)*>
 <!ELEMENT worktime (#PCDATA|emph|bold|typewriter|italics)*>
