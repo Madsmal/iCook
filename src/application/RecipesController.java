@@ -16,12 +16,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.SwipeEvent;
+import javafx.util.Callback;
 
 public class RecipesController implements Initializable {
 
@@ -67,6 +69,7 @@ public class RecipesController implements Initializable {
 
 		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
+		
 		
 
 		// Action on listView selection
@@ -212,7 +215,17 @@ public class RecipesController implements Initializable {
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
 		changedate.setText("Change date: " + Model.recipe.getChangedate());
 		source.setText("Source: " + Model.recipe.getSource());
-		rating.setText("Rating: " + Model.recipe.getRating());
+		
+		// rating
+		String ratingString = "";
+		for (int i = 1 ; i < 6 ; i++) {
+			if (Model.recipe.getRating() >= i) {
+				ratingString = ratingString + "\u26ab"; //black star: 2605
+			} else {
+				ratingString = ratingString + "\u26aa"; //white star: 2606
+			}
+		}
+		rating.setText("Rating: " + ratingString);
 	}
 	
 	private void ingredientsQuantityMultiplier(int multiplier) {

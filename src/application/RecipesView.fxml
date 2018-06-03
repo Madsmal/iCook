@@ -16,7 +16,7 @@
       <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@Stylesheets/home.css" text="Home" />
       <MenuButton fx:id="servingAmount" layoutX="651.0" layoutY="201.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Servings: 1" textAlignment="CENTER">
          <items>
-            <MenuItem fx:id="serving1" mnemonicParsing="false" text="1" />
+            <MenuItem fx:id="serving1" mnemonicParsing="false" text="1                                " />
             <MenuItem fx:id="serving2" mnemonicParsing="false" text="2" />
             <MenuItem fx:id="serving3" mnemonicParsing="false" text="3" />
             <MenuItem fx:id="serving4" mnemonicParsing="false" text="4" />

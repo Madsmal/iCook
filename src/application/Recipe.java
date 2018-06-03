@@ -100,6 +100,7 @@ import javax.xml.bind.annotation.XmlType;
     "remark",
     "privateremark",
     "rating",
+    "calories",
     "duration",
     "source"
 })
@@ -134,6 +135,8 @@ public class Recipe {
     protected Recipe.Duration duration;
     @XmlElement(required = true)
     protected String source;
+    @XmlElement(required = true)
+    protected String calories;
 
     /**
      * Gets the value of the title property.
@@ -381,6 +384,14 @@ public class Recipe {
     
     public void setRating(int rating) {
     	this.rating = rating;
+    }
+    
+    public String getCalories() {
+    	return calories;
+    }
+    
+    public void setCalories(String calories) {
+    	this.calories = calories;
     }
 
     /**

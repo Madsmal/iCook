@@ -63,52 +63,56 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
 
-	public int[] calculateTaskSequence() {
+	/*	public int[] calculateTaskSequence() {
 
-		// Compares the time for each element to the other elements and if the prereg for the element is empty - 
-		// if so then add it to the front of the array.
+	// Compares the time for each element to the other elements and if the prereg for the element is empty - 
+	// if so then add it to the front of the array.
 
-		// Here it is added to the front of the array, since it doesn't require other tasks to be made.
+	// Here it is added to the front of the array, since it doesn't require other tasks to be made.
 
-		// To make a longest path tree (a way to optimize the algorhitm) use preReg. 
-		// if a tree contains more preRegs than another, then it should prioritize this tree.
+	// To make a longest path tree (a way to optimize the algorhitm) use preReg. 
+	// if a tree contains more preRegs than another, then it should prioritize this tree.
 
 
-		// Better solution: add elements with no preReg to front of array and make those first.
+	// Better solution: add elements with no preReg to front of array and make those first.
 
-		ArrayList<Integer> sequence = new ArrayList<Integer>();
+	ArrayList<Integer> sequence = new ArrayList<Integer>();
 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if(i != Model.recipe.tasks.task.size()-1) {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
-						&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)){
-
-					// if((Model.recipe.tasks.task.get(i).time > Model.recipe.tasks.task.get(i+1).time)
-					//		&& Model.recipe.tasks.task.get(i).prereq.isEmpty()) {
-					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-				}
-				else {
-					sequence.add(Model.recipe.tasks.task.get(i).ID);	
-				}
+	for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+		if(i != Model.recipe.tasks.task.size()-1) {
+			if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
+					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)){
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+			}
+			else {
+				sequence.add(Model.recipe.tasks.task.get(i).ID);	
+			}
+		}
+		else {
+			if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
+					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 			}
 			else {
 				sequence.add(Model.recipe.tasks.task.get(i).ID);
 			}
+		}		
+	}
+	System.out.println(sequence);
+	// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
+	for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+		if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {	
+			sequence.remove(Model.recipe.tasks.task.get(i).ID);
+			System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
+			sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 
-			System.out.println(java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
-		}
-		// Checks if element has a child. If that's the case then it should have a higher priority than other elements. 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {
-				sequence.remove(Model.recipe.tasks.task.get(i).ID);
-				sequence.add(0, Model.recipe.tasks.task.get(i).ID);			
-			}	
-		}
-		// Stream converts List<integer> to int[]. 
-		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		System.out.println(java.util.Arrays.toString(taskSequence));
-		return taskSequence;
-	} 
+		}	
+	}
+	// Stream converts List<integer> to int[]. 
+	int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
+	System.out.println(java.util.Arrays.toString(taskSequence));
+	return taskSequence;
+} */
 
 
 	@FXML ImageView star1;
@@ -120,15 +124,15 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		taskSequence = calculateTaskSequence();
+		//taskSequence = calculateTaskSequence();
 		//TEMPORARY START
-		//				taskSequence[0] = 0;
-		//				taskSequence[1] = 1;
-		//				taskSequence[2] = 2;
-		//				taskSequence[3] = 3;
-		//				taskSequence[4] = 4;
-		//				taskSequence[5] = 5;
-		//				taskSequence[6] = 6;
+						taskSequence[0] = 0;
+						taskSequence[1] = 1;
+						taskSequence[2] = 2;
+						taskSequence[3] = 3;
+						taskSequence[4] = 4;
+						taskSequence[5] = 5;
+						taskSequence[6] = 6;
 		//TEMPORARY END
 
 
@@ -142,14 +146,13 @@ public class CookingController implements Initializable {
 
 		// Continuously updating timeline
 		timeline = new Timeline(
-				new KeyFrame(Duration.millis(100), 
+				new KeyFrame(Duration.millis(200), 
 						new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent actionEvent) {
 
 						// CountdownTimer
 						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
-
 								// Alert if countdownTimer == 0
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Timer Alert");
@@ -163,15 +166,23 @@ public class CookingController implements Initializable {
 
 								// Remove from array if countdownTimer == 0
 								countdownTimerArray.remove(i);
-								i--;
+								if (countdownTimerArray.size() >= i+1) {
+									i--;
+								}
+								
+								// Updates timerStart button
+								updateButtonVisibility();
 							}
 						}
-
 
 						// Create countdownTimer label
 						String text = "";
 						for (int i = 0; i < countdownTimerArray.size() ; i++) {
-							text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(countdownTimerArray.get(i).getID()).getTimerString() + "\n";
+							for (int n = 0 ; n < Model.recipe.tasks.task.size() ; n++) {
+								if (countdownTimerArray.get(i).getID() == Model.recipe.tasks.task.get(n).getID()) {
+									text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(n).getTimerString() + "\n";
+								}
+							}
 						}
 						countdownLabel.setText(text);
 
@@ -275,10 +286,12 @@ public class CookingController implements Initializable {
 			CountdownTimer countdownTimer = new CountdownTimer((Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTime()),Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID());
 			countdownTimerArray.add(countdownTimer);
 			updateButtonVisibility();
-		} else if (timerButton.getText().equals("Reset timer")) {
+		} else if (timerButton.getText().equals("Delete timer")) {
 			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
-					countdownTimerArray.get(i).resetCountdownTimer();
+					countdownTimerArray.get(i).pauseCountdownTimer();
+					countdownTimerArray.remove(i);
+					updateButtonVisibility();
 				}
 			}
 		}
@@ -356,10 +369,14 @@ public class CookingController implements Initializable {
 			timerButton.setVisible(true);
 			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
-					timerButton.setText("Reset timer");
+					timerButton.setText("Delete timer");
+					break;
 				} else {
 					timerButton.setText("Start timer");
 				}
+			}
+			if (countdownTimerArray.size() == 0) {
+				timerButton.setText("Start timer");
 			}
 		}
 	}
