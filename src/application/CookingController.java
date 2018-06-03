@@ -142,12 +142,11 @@ public class CookingController implements Initializable {
 
 		// Continuously updating timeline
 		timeline = new Timeline(
-				new KeyFrame(Duration.millis(100), 
+				new KeyFrame(Duration.millis(200), 
 						new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent actionEvent) {
 
-						// CountdownTimer //TODO fix ghost-code
-						System.out.println("into loop");
+						// CountdownTimer
 						for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 							if (countdownTimerArray.get(i).getTimeLeft() == 0) {
 								// Alert if countdownTimer == 0
@@ -162,26 +161,19 @@ public class CookingController implements Initializable {
 								alert.show();
 
 								// Remove from array if countdownTimer == 0
-								
-								System.out.println("1: "+countdownTimerArray.size());
-								countdownTimerArray.remove(i);/*
-								if (countdownTimerArray.size() != 1) {
+								countdownTimerArray.remove(i);
+								if (countdownTimerArray.size() >= i+1) {
 									i--;
-								}*/
-								System.out.println("2: "+countdownTimerArray.size());
+								}
 								
 								// Updates timerStart button
 								updateButtonVisibility();
-								System.out.println("break");
-								break;
 							}
 						}
-						System.out.println("out of loop");
 
 						// Create countdownTimer label
 						String text = "";
 						for (int i = 0; i < countdownTimerArray.size() ; i++) {
-							String timerString = "";
 							for (int n = 0 ; n < Model.recipe.tasks.task.size() ; n++) {
 								if (countdownTimerArray.get(i).getID() == Model.recipe.tasks.task.get(n).getID()) {
 									text = text + Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(i).getTimeLeft()) + " - " + Model.recipe.tasks.task.get(n).getTimerString() + "\n";
