@@ -63,7 +63,7 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
 
-	/*	public int[] calculateTaskSequence() {
+	/* public int[] calculateTaskSequence() {
 
 	// Compares the time for each element to the other elements and if the prereg for the element is empty - 
 	// if so then add it to the front of the array.
@@ -102,11 +102,18 @@ public class CookingController implements Initializable {
 	// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 	for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 		if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {	
-			sequence.remove(Model.recipe.tasks.task.get(i).ID);
+			sequence.remove(i);
 			System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
 			sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-
 		}	
+		// Note: Not sure if this is necessary. Should the child to a parent be on the same index as before or should it be made right after the parent is done. 
+		// This statement moves the child to the index after the parent. 
+		if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
+			sequence.remove(i);
+			System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
+			sequence.add(1, Model.recipe.tasks.task.get(i).ID);
+		}
+		
 	}
 	// Stream converts List<integer> to int[]. 
 	int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
@@ -124,7 +131,7 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		//taskSequence = calculateTaskSequence();
+		// taskSequence = calculateTaskSequence();
 		//TEMPORARY START
 						taskSequence[0] = 0;
 						taskSequence[1] = 1;
