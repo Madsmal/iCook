@@ -36,6 +36,7 @@ public class RecipesController implements Initializable {
 	@FXML Label ingredients;
 	@FXML Label source;
 	@FXML Label rating;
+	@FXML Label calories;
 	@FXML ImageView RecipeImageView;
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
@@ -215,6 +216,8 @@ public class RecipesController implements Initializable {
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
 		changedate.setText("Change date: " + Model.recipe.getChangedate());
 		source.setText("Source: " + Model.recipe.getSource());
+		calories.setText("Calories: " + Model.recipe.getCalories() + " kcal");
+		
 		
 		// rating
 		String ratingString = "";
@@ -238,6 +241,8 @@ public class RecipesController implements Initializable {
 				Model.recipe.getIngredients().getIngredient().get(i).setQuantity(string1);
 			}
 		}
+		String string2 = Double.toString(Double.parseDouble(Model.recipe.getCalories())*multiplier);
+		Model.recipe.setCalories(string2);
 	}
 	
 }
