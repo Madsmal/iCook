@@ -18,12 +18,13 @@ public class Algorithm extends CookingController {
 
 		// Better solution: add elements with no preReg to front of array and make those first.
 
+		
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(i != Model.recipe.tasks.task.size()-1) {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
-						&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)){
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 				}
 				else {
@@ -31,8 +32,8 @@ public class Algorithm extends CookingController {
 				}
 			}
 			else {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
-						&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 				}
 				else {
@@ -43,22 +44,23 @@ public class Algorithm extends CookingController {
 		System.out.println(sequence);
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {	
+			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
 				sequence.remove(i);
-				System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
 				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 			}	
 			// Note: Not sure if this is necessary. Should the child to a parent be on the same index as before or should it be made right after the parent is done. 
 			// This statement moves the child to the index after the parent. 
-			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
+			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 				sequence.remove(i);
-				System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
-				sequence.add(1, Model.recipe.tasks.task.get(i).ID);
-			}
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);	
+			} 
+			System.out.println("ID " + Model.recipe.tasks.task.get(i).ID + " længde : " + Model.recipe.tasks.task.get(i).children.length + " Barn " + java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
 			
 		}
-		// Stream converts List<integer> to int[]. 
+		// Stream converts List<integer> to int[].
+		
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
+		
 		System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
 	} 

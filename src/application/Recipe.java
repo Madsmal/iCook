@@ -773,9 +773,9 @@ public class Recipe {
     		@XmlElement(required = true)
             protected int ID;
             @XmlElement(required = true)
-            protected int[] parents;
+            protected String[] parents;
             @XmlElement(required = true)
-            protected int children[];
+            protected String[] children;
             @XmlElement(required = true)
             protected int time;
             @XmlElement(required = true)
@@ -797,19 +797,19 @@ public class Recipe {
             	this.ID = ID;
             }
             
-            public int[] getParents() {
+            public String[] getParents() {
             	return parents;
             }
             
-            public void setParents(int[] parents) {
+            public void setParents(String[] parents) {
             	this.parents = parents;
             }
             
-            public int[] getChildren() {
+            public String[] getChildren() {
             	return children;
             }
             
-            public void setChildren(int[] children) {
+            public void setChildren(String[] children) {
             	this.children = children;
             }
             
