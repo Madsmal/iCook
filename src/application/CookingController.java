@@ -19,6 +19,10 @@ import application.Recipe.Tasks;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,11 +34,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import javafx.util.Callback;
 
 
 public class CookingController implements Initializable {
@@ -62,6 +69,7 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel;
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
+	@FXML private ListView<String> listView;
 
 	/* public int[] calculateTaskSequence() {
 
@@ -141,8 +149,31 @@ public class CookingController implements Initializable {
 						taskSequence[5] = 5;
 						taskSequence[6] = 6;
 		//TEMPORARY END
-
-
+						
+		// listview
+		String[] taskSequenceStringArray = new String[taskSequence.length];
+		for (int i = 0 ; i < taskSequence.length ; i++) {
+			taskSequenceStringArray[i] = Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle();
+		}
+		ObservableList<String> data = FXCollections.observableArrayList(taskSequenceStringArray);
+		listView.setItems(data);
+		
+		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				for (int i = 0 ; i < taskSequence.length ; i++) {
+					if (newValue.equals(Model.recipe.tasks.task.get(i).getTaskTitle())) {
+						currentTask = i;
+						pause.setText("Pause");
+						updateCountdownTimer2();
+						updateProgressBar();
+						updateButtonVisibility();
+						task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
+					}
+				}
+			}
+		});
+		
+		
 
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
@@ -211,6 +242,61 @@ public class CookingController implements Initializable {
 						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
 							next.setDisable(false);
 						}
+						
+						// listView cells
+						listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+				            @Override
+				            public ListCell<String> call(ListView<String> param) {
+				                return new ListCell<String>() {
+				                    @Override
+				                    protected void updateItem(String item, boolean empty) {
+				                        super.updateItem(item, empty);
+				                        
+				                        //setText and setStyle
+				                        for (int i = 0 ; i < taskSequence.length ; i++) {
+			                        		if (item == Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle()) {
+			                        			if (Model.recipe.tasks.task.get(taskSequence[i]).attentionRequired == false) {
+			                        				boolean timerActivated = false;
+			                        				for (int n = 0 ; n < countdownTimerArray.size() ; n++) {
+			                        					if (Model.recipe.tasks.task.get(taskSequence[i]).getID() == countdownTimerArray.get(n).getID()) {
+			                        						setText(Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
+			                        						if (i == currentTask) {
+								                                setStyle("-fx-control-inner-background: purple;");
+								                            } else {
+								                            	setStyle("-fx-control-inner-background: yellow;");
+								                            }
+			                        						timerActivated = true;
+			                        						break;
+			                        					}
+			                        				}
+			                        				if (timerActivated == false) {
+			                        					setText(item);
+			                        					if (i < currentTask) {
+							                            	setStyle("-fx-control-inner-background: green;");
+							                            } else if (i == currentTask) {
+							                                setStyle("-fx-control-inner-background: purple;");
+							                            } else {
+							                                setStyle("-fx-control-inner-background: red;");
+							                            }
+			                        					break;
+			                        				}
+			                        			} else {
+			                        				setText(item);
+			                        				if (i < currentTask) {
+						                            	setStyle("-fx-control-inner-background: green;");
+						                            } else if (i == currentTask) {
+						                                setStyle("-fx-control-inner-background: purple;");
+						                            } else {
+						                                setStyle("-fx-control-inner-background: red;");
+						                            }
+			                        				break;
+			                        			}
+			                        		}
+			                        	}
+				                    }
+				                };
+				            }
+				        });
 					}
 				}
 						)
@@ -237,6 +323,7 @@ public class CookingController implements Initializable {
 				);
 		timeline2.setCycleCount(Animation.INDEFINITE);
 		timeline2.play();
+	
 	}
 
 

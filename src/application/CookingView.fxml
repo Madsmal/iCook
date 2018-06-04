@@ -16,7 +16,7 @@
       <ProgressBar fx:id="pb" layoutX="235.0" prefHeight="29.0" prefWidth="563.0" progress="0.0" />
       <Label fx:id="countdownLabel" alignment="TOP_LEFT" layoutX="245.0" layoutY="51.0" prefHeight="107.0" prefWidth="543.0" text="Label" />
       <Label fx:id="task" layoutX="249.0" layoutY="186.0" text="Label" />
-      <ListView layoutY="51.0" prefHeight="429.0" prefWidth="232.0" />
+      <ListView fx:id="listView" layoutY="51.0" prefHeight="429.0" prefWidth="232.0" />
       <Label fx:id="countdownLabel2" layoutX="503.0" layoutY="373.0" text="Label" />
       <Label fx:id="clock" layoutX="14.0" layoutY="447.0" text="Label" />
       <ImageView fx:id="star1" fitHeight="51.0" fitWidth="76.0" layoutX="285.0" layoutY="266.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true" />
