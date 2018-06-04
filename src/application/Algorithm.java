@@ -53,8 +53,14 @@ public class Algorithm extends CookingController {
 			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 				sequence.remove(i);
 				sequence.add(0, Model.recipe.tasks.task.get(i).ID);	
-			} 
-			System.out.println("ID " + Model.recipe.tasks.task.get(i).ID + " længde : " + Model.recipe.tasks.task.get(i).children.length + " Barn " + java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
+			}
+			 
+			String x = Model.recipe.tasks.task.get(i).children[0];
+			String[] newChildren = x.replaceAll("\"", "").split(","); 
+			System.out.println("ID " + Model.recipe.tasks.task.get(i).ID + " længde : " +
+			Model.recipe.tasks.task.get(i).children.length + " Barn " + java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
+			System.out.println(newChildren.length);
+			
 			
 		}
 		// Stream converts List<integer> to int[].
