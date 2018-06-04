@@ -20,6 +20,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.SwipeEvent;
@@ -38,6 +39,7 @@ public class RecipesController implements Initializable {
 	@FXML Label rating;
 	@FXML Label calories;
 	@FXML ImageView RecipeImageView;
+	ScrollPane sp = new ScrollPane();
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
@@ -207,6 +209,8 @@ public class RecipesController implements Initializable {
 		int wtminutes = timeConverterWT.getMinutes();
 		
 		ingredients.setText(ingredientsList);
+		
+		//ingredients.maxWidthProperty().bind(sp.widthProperty());
 
 		title.setText(Model.recipe.getTitle());
 		//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
@@ -223,12 +227,12 @@ public class RecipesController implements Initializable {
 		String ratingString = "";
 		for (int i = 1 ; i < 6 ; i++) {
 			if (Model.recipe.getRating() >= i) {
-				ratingString = ratingString + "\u26ab"; //black star: 2605
+				ratingString = ratingString + "\u26ab"; //black star: 2605 - black circle: u26ab
 			} else {
-				ratingString = ratingString + "\u26aa"; //white star: 2606
+				ratingString = ratingString + "\u26aa"; //white star: 2606 - white circle: u26aa
 			}
 		}
-		rating.setText("Rating: " + ratingString);
+		rating.setText(ratingString);
 	}
 	
 	private void ingredientsQuantityMultiplier(int multiplier) {
@@ -242,6 +246,9 @@ public class RecipesController implements Initializable {
 			}
 		}
 		String string2 = Double.toString(Double.parseDouble(Model.recipe.getCalories())*multiplier);
+		if (string2.endsWith(".0")) {
+			string2 = string2.substring(0, string2.length() - 2);
+		}
 		Model.recipe.setCalories(string2);
 	}
 	

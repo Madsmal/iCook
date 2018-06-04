@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,9 +13,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecipesController">
    <children>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="168.0" />
       <Button layoutX="-2.0" layoutY="-3.0" mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="232.0" stylesheets="@Stylesheets/home.css" text="Home" />
-      <MenuButton fx:id="servingAmount" layoutX="651.0" layoutY="201.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Servings: 1" textAlignment="CENTER">
+      <MenuButton fx:id="servingAmount" layoutX="649.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Servings: 1" textAlignment="CENTER">
          <items>
             <MenuItem fx:id="serving1" mnemonicParsing="false" text="1                                " />
             <MenuItem fx:id="serving2" mnemonicParsing="false" text="2" />
@@ -24,19 +24,34 @@
       </MenuButton>
       <ListView fx:id="listView" layoutY="43.0" prefHeight="437.0" prefWidth="232.0" />
       <Button layoutX="602.0" layoutY="388.0" mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
-      <Label fx:id="totalTime" layoutX="517.0" layoutY="231.0" text="Total time" />
-      <Label fx:id="worktime" layoutX="517.0" layoutY="253.0" text="Work time" />
-      <Label fx:id="startdate" layoutX="517.0" layoutY="280.0" text="Start date" />
-      <Label fx:id="changedate" layoutX="517.0" layoutY="307.0" text="Change date" />
-      <Label fx:id="source" layoutX="517.0" layoutY="333.0" text="Source" />
-      <Label fx:id="title" layoutX="263.0" layoutY="206.0" text="Title">
+      <Label fx:id="totalTime" layoutX="517.0" layoutY="261.0" text="Total time" />
+      <Label fx:id="worktime" layoutX="517.0" layoutY="283.0" text="Work time" />
+      <Label fx:id="startdate" layoutX="517.0" layoutY="310.0" text="Start date" />
+      <Label fx:id="changedate" layoutX="517.0" layoutY="337.0" text="Change date" />
+      <Label fx:id="source" layoutX="517.0" layoutY="363.0" text="Source" />
+      <Label fx:id="title" layoutX="242.0" layoutY="188.0" text="Title">
          <font>
             <Font name="System Bold" size="16.0" />
-         </font></Label>
-      <Label fx:id="ingredients" layoutX="263.0" layoutY="235.0" text="Ingredients" />
-      <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="475.0" layoutX="279.0" layoutY="14.0" pickOnBounds="true" />
+         </font>
+      </Label>
       <Separator layoutX="227.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="15.0" />
-      <Label fx:id="rating" layoutX="518.0" layoutY="210.0" text="Rating" />
-      <Label fx:id="calories" layoutX="517.0" layoutY="359.0" text="Calories" />
+      <Label fx:id="rating" layoutX="672.0" layoutY="188.0" text="Rating">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="calories" layoutX="517.0" layoutY="389.0" text="Calories" />
+      <Separator layoutX="232.0" layoutY="177.0" prefHeight="0.0" prefWidth="568.0" />
+      <Separator layoutX="232.0" layoutY="220.0" prefHeight="0.0" prefWidth="568.0" />
+      <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" layoutX="233.0" pickOnBounds="true" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="293.0" layoutY="237.0" prefHeight="153.0" prefWidth="145.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="153.0">
+               <children>
+                  <Label fx:id="ingredients" text="Ingredients" wrapText="true" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

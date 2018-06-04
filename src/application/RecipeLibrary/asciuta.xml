@@ -11,7 +11,7 @@ For 4-6 Person(s)
         <ingredient>
             <quantity>1000</quantity>
             <unit>g</unit>
-            <iname>minced meat</iname>
+            <iname>minced meat bla bla bla bla bla bla bla bla bla bla vi tester wrapping bla bla bla</iname>
         </ingredient>
         <ingredient>
             <quantity>200</quantity>
@@ -91,7 +91,7 @@ For 4-6 Person(s)
             <ID>4</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>3605</time>
+            <time>120</time>
             <attentionRequired>false</attentionRequired>
             <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
             <timerString>Sauce is simmering</timerString>
@@ -102,7 +102,7 @@ For 4-6 Person(s)
             <ID>5</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>10</time>
+            <time>20</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
             <timerString>Cooking pasta</timerString>
@@ -159,7 +159,7 @@ BOSCH Küchenmaschine  zu drehen.
     <rating>1</rating>
     <calories>351</calories>
     <duration>
-        <totaltime>185</totaltime>
+        <totaltime>235</totaltime>
         <worktime>60</worktime>
     </duration>
     <source>Herbert Fischer</source>
