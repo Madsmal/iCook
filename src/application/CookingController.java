@@ -19,6 +19,10 @@ import application.Recipe.Tasks;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,11 +34,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import javafx.util.Callback;
 
 
 public class CookingController implements Initializable {
@@ -62,65 +69,8 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel;
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
-
-	/* public int[] calculateTaskSequence() {
-
-	// Compares the time for each element to the other elements and if the prereg for the element is empty - 
-	// if so then add it to the front of the array.
-
-	// Here it is added to the front of the array, since it doesn't require other tasks to be made.
-
-	// To make a longest path tree (a way to optimize the algorhitm) use preReg. 
-	// if a tree contains more preRegs than another, then it should prioritize this tree.
-
-
-	// Better solution: add elements with no preReg to front of array and make those first.
-
-	ArrayList<Integer> sequence = new ArrayList<Integer>();
-
-	for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-		if(i != Model.recipe.tasks.task.size()-1) {
-			if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
-					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)){
-				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-			}
-			else {
-				sequence.add(Model.recipe.tasks.task.get(i).ID);	
-			}
-		}
-		else {
-			if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)
-					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
-				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-			}
-			else {
-				sequence.add(Model.recipe.tasks.task.get(i).ID);
-			}
-		}		
-	}
-	System.out.println(sequence);
-	// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
-	for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-		if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, 0)) {	
-			sequence.remove(i);
-			System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
-			sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-		}	
-		// Note: Not sure if this is necessary. Should the child to a parent be on the same index as before or should it be made right after the parent is done. 
-		// This statement moves the child to the index after the parent. 
-		if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, 0)) {
-			sequence.remove(i);
-			System.out.println("Value:" + Model.recipe.tasks.task.get(i).ID);
-			sequence.add(1, Model.recipe.tasks.task.get(i).ID);
-		}
-		
-	}
-	// Stream converts List<integer> to int[]. 
-	int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
-	System.out.println(java.util.Arrays.toString(taskSequence));
-	return taskSequence;
-} */
-
+	@FXML private ListView<String> listView;
+	
 
 	@FXML ImageView star1;
 	@FXML ImageView star2;
@@ -131,7 +81,9 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		// taskSequence = calculateTaskSequence();
+		//Algorithm algorithm = new Algorithm(); 
+		//algorithm.calculateTaskSequence();
+		
 		//TEMPORARY START
 						taskSequence[0] = 0;
 						taskSequence[1] = 1;
@@ -141,8 +93,31 @@ public class CookingController implements Initializable {
 						taskSequence[5] = 5;
 						taskSequence[6] = 6;
 		//TEMPORARY END
-
-
+						
+		// listview
+		String[] taskSequenceStringArray = new String[taskSequence.length];
+		for (int i = 0 ; i < taskSequence.length ; i++) {
+			taskSequenceStringArray[i] = Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle();
+		}
+		ObservableList<String> data = FXCollections.observableArrayList(taskSequenceStringArray);
+		listView.setItems(data);
+		
+		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				for (int i = 0 ; i < taskSequence.length ; i++) {
+					if (newValue.equals(Model.recipe.tasks.task.get(i).getTaskTitle())) {
+						currentTask = i;
+						pause.setText("Pause");
+						updateCountdownTimer2();
+						updateProgressBar();
+						updateButtonVisibility();
+						task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
+					}
+				}
+			}
+		});
+		
+		
 
 		// Default FXML elements values
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
@@ -211,6 +186,61 @@ public class CookingController implements Initializable {
 						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
 							next.setDisable(false);
 						}
+						
+						// listView cells
+						listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+				            @Override
+				            public ListCell<String> call(ListView<String> param) {
+				                return new ListCell<String>() {
+				                    @Override
+				                    protected void updateItem(String item, boolean empty) {
+				                        super.updateItem(item, empty);
+				                        
+				                        //setText and setStyle
+				                        for (int i = 0 ; i < taskSequence.length ; i++) {
+			                        		if (item == Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle()) {
+			                        			if (Model.recipe.tasks.task.get(taskSequence[i]).attentionRequired == false) {
+			                        				boolean timerActivated = false;
+			                        				for (int n = 0 ; n < countdownTimerArray.size() ; n++) {
+			                        					if (Model.recipe.tasks.task.get(taskSequence[i]).getID() == countdownTimerArray.get(n).getID()) {
+			                        						setText(Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
+			                        						if (i == currentTask) {
+								                                setStyle("-fx-control-inner-background: purple;");
+								                            } else {
+								                            	setStyle("-fx-control-inner-background: yellow;");
+								                            }
+			                        						timerActivated = true;
+			                        						break;
+			                        					}
+			                        				}
+			                        				if (timerActivated == false) {
+			                        					setText(item);
+			                        					if (i < currentTask) {
+							                            	setStyle("-fx-control-inner-background: green;");
+							                            } else if (i == currentTask) {
+							                                setStyle("-fx-control-inner-background: purple;");
+							                            } else {
+							                                setStyle("-fx-control-inner-background: red;");
+							                            }
+			                        					break;
+			                        				}
+			                        			} else {
+			                        				setText(item);
+			                        				if (i < currentTask) {
+						                            	setStyle("-fx-control-inner-background: green;");
+						                            } else if (i == currentTask) {
+						                                setStyle("-fx-control-inner-background: purple;");
+						                            } else {
+						                                setStyle("-fx-control-inner-background: red;");
+						                            }
+			                        				break;
+			                        			}
+			                        		}
+			                        	}
+				                    }
+				                };
+				            }
+				        });
 					}
 				}
 						)
@@ -237,6 +267,7 @@ public class CookingController implements Initializable {
 				);
 		timeline2.setCycleCount(Animation.INDEFINITE);
 		timeline2.play();
+	
 	}
 
 
