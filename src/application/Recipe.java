@@ -101,6 +101,9 @@ import javax.xml.bind.annotation.XmlType;
     "privateremark",
     "rating",
     "calories",
+    "fat",
+    "carbohydrates",
+    "protein",
     "duration",
     "source"
 })
@@ -137,6 +140,13 @@ public class Recipe {
     protected String source;
     @XmlElement(required = true)
     protected String calories;
+    @XmlElement(required = true)
+    protected float fat;
+    @XmlElement(required = true)
+    protected float carbohydrates;
+    @XmlElement(required = true)
+    protected float protein;
+    
 
     /**
      * Gets the value of the title property.
@@ -392,6 +402,30 @@ public class Recipe {
     
     public void setCalories(String calories) {
     	this.calories = calories;
+    }
+    
+    public float getFat() {
+    	return fat;
+    }
+    
+    public void setFat(float fat) {
+    	this.fat = fat;
+    }
+    
+    public float getCarbohydrates() {
+    	return carbohydrates;
+    }
+    
+    public void setCarbohydrates(float carbohydrates) {
+    	this.carbohydrates = carbohydrates;
+    }
+    
+    public float getProtein() {
+    	return protein;
+    }
+    
+    public void setProtein(float protein) {
+    	this.protein = protein;
     }
 
     /**
@@ -739,9 +773,9 @@ public class Recipe {
     		@XmlElement(required = true)
             protected int ID;
             @XmlElement(required = true)
-            protected int[] parents;
+            protected String[] parents;
             @XmlElement(required = true)
-            protected int children[];
+            protected String[] children;
             @XmlElement(required = true)
             protected int time;
             @XmlElement(required = true)
@@ -763,19 +797,19 @@ public class Recipe {
             	this.ID = ID;
             }
             
-            public int[] getParents() {
+            public String[] getParents() {
             	return parents;
             }
             
-            public void setParents(int[] parents) {
+            public void setParents(String[] parents) {
             	this.parents = parents;
             }
             
-            public int[] getChildren() {
+            public String[] getChildren() {
             	return children;
             }
             
-            public void setChildren(int[] children) {
+            public void setChildren(String[] children) {
             	this.children = children;
             }
             

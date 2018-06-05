@@ -260,4 +260,10 @@ public class RecipesController implements Initializable {
 		Model.recipe.setCalories(string2);
 	}
 	
+	//ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+	
+	/*private calculateFat(float fat) {
+		
+	}*/
+	
 }
