@@ -9,32 +9,32 @@ For 4-6 Person(s)
 </target>
     <ingredients>
         <ingredient>
-            <quantity>1000</quantity>
+            <quantity>4096000</quantity>
             <unit>g</unit>
             <iname>minced meat bla bla bla bla bla bla bla bla bla bla vi tester wrapping bla bla bla</iname>
         </ingredient>
         <ingredient>
-            <quantity>200</quantity>
+            <quantity>819200</quantity>
             <unit>g</unit>
             <iname>streaky bacon</iname>
         </ingredient>
         <ingredient>
-            <quantity>3</quantity>
+            <quantity>12288</quantity>
             <unit></unit>
             <iname>onion(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>2</quantity>
+            <quantity>8192</quantity>
             <unit></unit>
             <iname>garlic clove(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>1</quantity>
+            <quantity>4096</quantity>
             <unit></unit>
             <iname>can of tomatoes (850 ml)</iname>
         </ingredient>
         <ingredient>
-            <quantity>2</quantity>
+            <quantity>8192</quantity>
             <unit>tablespoon</unit>
             <iname>Tomato paste</iname>
         </ingredient>
@@ -49,12 +49,12 @@ For 4-6 Person(s)
             <iname>Oregano</iname>
         </ingredient>
         <ingredient>
-            <quantity>500</quantity>
+            <quantity>2048000</quantity>
             <unit>g</unit>
             <iname>Spaghetti</iname>
         </ingredient>
         <ingredient>
-            <quantity>100</quantity>
+            <quantity>409600</quantity>
             <unit>g</unit>
             <iname>Parmesan, freshly grated</iname>
         </ingredient>
