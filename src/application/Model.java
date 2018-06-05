@@ -21,6 +21,7 @@ public class Model {
 	static String section = "default"; //Used with ini get and put methods
 	
 	
+	
 	public static void parseXMLFile(String path) throws Exception {
 		File file = new File(path);
 	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
@@ -143,6 +144,23 @@ public class Model {
 			string = string + (seconds%3600)%60;
 		}
 		return string;
+	}
+	
+	public static void ingredientsQuantityMultiplier(int multiplier) {
+		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
+			if (Model.recipe.getIngredients().getIngredient().get(i).getQuantity().length() > 0) {
+				String string1 = Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())*multiplier);
+				if (string1.endsWith(".0")) {
+					string1 = string1.substring(0, string1.length() - 2);
+				}
+				Model.recipe.getIngredients().getIngredient().get(i).setQuantity(string1);
+			}
+		}
+		String string2 = Double.toString(Double.parseDouble(Model.recipe.getCalories())*multiplier);
+		if (string2.endsWith(".0")) {
+			string2 = string2.substring(0, string2.length() - 2);
+		}
+		Model.recipe.setCalories(string2);
 	}
 }
 

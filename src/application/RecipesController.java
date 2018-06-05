@@ -133,25 +133,25 @@ public class RecipesController implements Initializable {
 		//serving amount menu
 		serving1.setOnAction(event -> {
 			parseXML();
-			ingredientsQuantityMultiplier(1);
+			Model.ingredientsQuantityMultiplier(1);
 		    updateLabels();
 		    servingAmount.setText("Servings: 1");
 		});
 		serving2.setOnAction(event -> {
 			parseXML();
-			ingredientsQuantityMultiplier(2);
+			Model.ingredientsQuantityMultiplier(2);
 		    updateLabels();
 		    servingAmount.setText("Servings: 2");
 		});
 		serving3.setOnAction(event -> {
 			parseXML();
-			ingredientsQuantityMultiplier(3);
+			Model.ingredientsQuantityMultiplier(3);
 		    updateLabels();
 		    servingAmount.setText("Servings: 3");
 		});
 		serving4.setOnAction(event -> {
 			parseXML();
-			ingredientsQuantityMultiplier(4);
+			Model.ingredientsQuantityMultiplier(4);
 		    updateLabels();
 		    servingAmount.setText("Servings: 4");
 		});
@@ -243,22 +243,7 @@ public class RecipesController implements Initializable {
 		rating.setText(ratingString);
 	}
 	
-	private void ingredientsQuantityMultiplier(int multiplier) {
-		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
-			if (Model.recipe.getIngredients().getIngredient().get(i).getQuantity().length() > 0) {
-				String string1 = Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())*multiplier);
-				if (string1.endsWith(".0")) {
-					string1 = string1.substring(0, string1.length() - 2);
-				}
-				Model.recipe.getIngredients().getIngredient().get(i).setQuantity(string1);
-			}
-		}
-		String string2 = Double.toString(Double.parseDouble(Model.recipe.getCalories())*multiplier);
-		if (string2.endsWith(".0")) {
-			string2 = string2.substring(0, string2.length() - 2);
-		}
-		Model.recipe.setCalories(string2);
-	}
+	
 	
 	//ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 	
