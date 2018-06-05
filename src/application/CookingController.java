@@ -80,7 +80,10 @@ public class CookingController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle rb) {
-
+		
+		// label wrapping width
+	    task.setMaxWidth(500);
+		
 		//Algorithm algorithm = new Algorithm(); 
 		//algorithm.calculateTaskSequence();
 		
@@ -125,6 +128,9 @@ public class CookingController implements Initializable {
 		//if first task is attentionRequired == true
 		updateCountdownTimer2();
 		updateButtonVisibility();
+		
+		// remove label identity text
+		countdownLabel.setText("");
 
 		// Continuously updating timeline
 		timeline = new Timeline(
@@ -249,6 +255,7 @@ public class CookingController implements Initializable {
 		timeline.play();
 
 		// clock timeline
+		clock.setText(Model.getTime());
 		int updateFrequency;
 		if (Model.settings.get(Model.section, "clock").equals("hh:mm:ss.sss")) {
 			updateFrequency = 1;
@@ -258,13 +265,13 @@ public class CookingController implements Initializable {
 		timeline2 = new Timeline(
 				new KeyFrame(Duration.millis(updateFrequency), 
 						new EventHandler<ActionEvent>() {
-					@Override public void handle(ActionEvent actionEvent) {
-						// clock update
-						clock.setText(Model.getTime());
-					}
-				}
-						)
-				);
+							@Override public void handle(ActionEvent actionEvent) {
+								// clock update
+								clock.setText(Model.getTime());
+							}
+						}
+				)
+		);
 		timeline2.setCycleCount(Animation.INDEFINITE);
 		timeline2.play();
 	

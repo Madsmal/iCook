@@ -21,9 +21,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.SwipeEvent;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 
 public class RecipesController implements Initializable {
@@ -39,7 +44,8 @@ public class RecipesController implements Initializable {
 	@FXML Label rating;
 	@FXML Label calories;
 	@FXML ImageView RecipeImageView;
-	ScrollPane sp = new ScrollPane();
+	@FXML ScrollPane sp = new ScrollPane();
+	@FXML TextFlow ingredientsTF;
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
@@ -48,6 +54,8 @@ public class RecipesController implements Initializable {
 	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2, serving3, serving4);
 	
 
+	
+	
 
 	// Initialising the listview
 	@FXML 
@@ -72,8 +80,7 @@ public class RecipesController implements Initializable {
 
 		ObservableList<String> data = FXCollections.observableArrayList(recipeLibraryList);
 		listView.setItems(data);
-		
-		
+	    
 
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -119,6 +126,9 @@ public class RecipesController implements Initializable {
 		
 		//selects the first recipe in the listView as default
 		listView.getSelectionModel().select(0);
+		
+		// label wrapping width
+	    ingredients.setMaxWidth(120);
 		
 		//serving amount menu
 		serving1.setOnAction(event -> {
@@ -209,8 +219,6 @@ public class RecipesController implements Initializable {
 		int wtminutes = timeConverterWT.getMinutes();
 		
 		ingredients.setText(ingredientsList);
-		
-		//ingredients.maxWidthProperty().bind(sp.widthProperty());
 
 		title.setText(Model.recipe.getTitle());
 		//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
