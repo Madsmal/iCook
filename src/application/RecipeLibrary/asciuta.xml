@@ -101,7 +101,7 @@ For 4-6 Person(s)
         <task>
             <ID>5</ID>
             <parents>0</parents>
-            <children>0</children>
+            <children>"6","7"</children>
             <time>20</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
@@ -157,7 +157,11 @@ durch die grobe (6 mm) Scheibe des Fleischwolfs der
 BOSCH Küchenmaschine  zu drehen.
 </privateremark>
     <rating>4</rating>
+<<<<<<< HEAD
     <calories>1437696</calories>
+=======
+    <calories>351</calories>
+>>>>>>> cf2e37a586fbb8143a3be98d0cccc48188b25e49
     <fat>0.0</fat>
     <carbohydrates>0.0</carbohydrates>
     <protein>0.0</protein>

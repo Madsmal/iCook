@@ -247,8 +247,8 @@ public class RecipesController implements Initializable {
 	
 	//ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 	
-	/*private calculateFat(float fat) {
-		
-	}*/
+//	private calculateFat(float fat) {
+//		
+//	}
 	
 }
