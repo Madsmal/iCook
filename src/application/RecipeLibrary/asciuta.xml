@@ -101,7 +101,7 @@ For 4-6 Person(s)
         <task>
             <ID>5</ID>
             <parents>0</parents>
-            <children>0</children>
+            <children>"6","7"</children>
             <time>20</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
@@ -156,8 +156,11 @@ Am einfachsten ist es, den Speck und die Zwiebeln
 durch die grobe (6 mm) Scheibe des Fleischwolfs der
 BOSCH Küchenmaschine  zu drehen.
 </privateremark>
-    <rating>1</rating>
+    <rating>4</rating>
     <calories>351</calories>
+    <fat>0.0</fat>
+    <carbohydrates>0.0</carbohydrates>
+    <protein>0.0</protein>
     <duration>
         <totaltime>235</totaltime>
         <worktime>60</worktime>

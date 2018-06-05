@@ -81,8 +81,8 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		//Algorithm algorithm = new Algorithm(); 
-		//algorithm.calculateTaskSequence();
+//		Algorithm algorithm = new Algorithm(); 
+//		algorithm.calculateTaskSequence();
 		
 		//TEMPORARY START
 						taskSequence[0] = 0;
