@@ -80,11 +80,9 @@ public class CookingController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-=======
 		// label wrapping width
 	    task.setMaxWidth(500);
->>>>>>> cf2e37a586fbb8143a3be98d0cccc48188b25e49
+
 		
 		//Algorithm algorithm = new Algorithm(); 
 		//algorithm.calculateTaskSequence();
