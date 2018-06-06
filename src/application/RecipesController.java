@@ -17,10 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-<<<<<<< HEAD
+
 import javafx.scene.control.Button;
-=======
->>>>>>> refs/remotes/origin/master
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
