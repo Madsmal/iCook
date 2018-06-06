@@ -70,6 +70,7 @@ public class CookingController implements Initializable {
 	@FXML Label countdownLabel2;
 	@FXML Label clock;
 	@FXML private ListView<String> listView;
+	@FXML Label taskTitle;
 	
 
 	@FXML ImageView star1;
@@ -115,6 +116,7 @@ public class CookingController implements Initializable {
 						updateCountdownTimer2();
 						updateProgressBar();
 						updateButtonVisibility();
+						updateListView();
 						task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 					}
 				}
@@ -124,11 +126,13 @@ public class CookingController implements Initializable {
 		
 
 		// Default FXML elements values
+		taskTitle.setText("Task " + (currentTask+1));
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 
 		//if first task is attentionRequired == true
 		updateCountdownTimer2();
 		updateButtonVisibility();
+		updateListView();
 		
 		// remove label identity text
 		countdownLabel.setText("");
@@ -194,60 +198,8 @@ public class CookingController implements Initializable {
 							next.setDisable(false);
 						}
 						
-						// listView cells
-						listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-				            @Override
-				            public ListCell<String> call(ListView<String> param) {
-				                return new ListCell<String>() {
-				                    @Override
-				                    protected void updateItem(String item, boolean empty) {
-				                        super.updateItem(item, empty);
-				                        
-				                        //setText and setStyle
-				                        for (int i = 0 ; i < taskSequence.length ; i++) {
-			                        		if (item == Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle()) {
-			                        			if (Model.recipe.tasks.task.get(taskSequence[i]).attentionRequired == false) {
-			                        				boolean timerActivated = false;
-			                        				for (int n = 0 ; n < countdownTimerArray.size() ; n++) {
-			                        					if (Model.recipe.tasks.task.get(taskSequence[i]).getID() == countdownTimerArray.get(n).getID()) {
-			                        						setText(Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
-			                        						if (i == currentTask) {
-								                                setStyle("-fx-control-inner-background: purple;");
-								                            } else {
-								                            	setStyle("-fx-control-inner-background: yellow;");
-								                            }
-			                        						timerActivated = true;
-			                        						break;
-			                        					}
-			                        				}
-			                        				if (timerActivated == false) {
-			                        					setText(item);
-			                        					if (i < currentTask) {
-							                            	setStyle("-fx-control-inner-background: green;");
-							                            } else if (i == currentTask) {
-							                                setStyle("-fx-control-inner-background: purple;");
-							                            } else {
-							                                setStyle("-fx-control-inner-background: red;");
-							                            }
-			                        					break;
-			                        				}
-			                        			} else {
-			                        				setText(item);
-			                        				if (i < currentTask) {
-						                            	setStyle("-fx-control-inner-background: green;");
-						                            } else if (i == currentTask) {
-						                                setStyle("-fx-control-inner-background: purple;");
-						                            } else {
-						                                setStyle("-fx-control-inner-background: red;");
-						                            }
-			                        				break;
-			                        			}
-			                        		}
-			                        	}
-				                    }
-				                };
-				            }
-				        });
+						// listView cells that are continuously updating
+						//updateListView();
 					}
 				}
 						)
@@ -297,9 +249,12 @@ public class CookingController implements Initializable {
 			updateCountdownTimer2();
 			updateProgressBar();
 			updateButtonVisibility();
+			updateListView();
 			if (currentTask != taskSequence.length) {
+				taskTitle.setText("Task " + (currentTask+1));
 				task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 			} else {
+				taskTitle.setText("");
 				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
 			}
 		}
@@ -312,6 +267,8 @@ public class CookingController implements Initializable {
 			updateCountdownTimer2();
 			updateProgressBar();
 			updateButtonVisibility();
+			updateListView();
+			taskTitle.setText("Task " + (currentTask+1));
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 
 		}
@@ -393,13 +350,26 @@ public class CookingController implements Initializable {
 		}
 		// rating star buttons
 		if (currentTask == taskSequence.length) {
+			star1.setManaged(true);
+			star2.setManaged(true);
+			star3.setManaged(true);
+			star4.setManaged(true);
+			star5.setManaged(true);
+			
 			star1.setVisible(true);
 			star2.setVisible(true);
 			star3.setVisible(true);
 			star4.setVisible(true);
 			star5.setVisible(true);
+			
 			updateRating();
 		} else {
+			star1.setManaged(false);
+			star2.setManaged(false);
+			star3.setManaged(false);
+			star4.setManaged(false);
+			star5.setManaged(false);
+			
 			star1.setVisible(false);
 			star2.setVisible(false);
 			star3.setVisible(false);
@@ -409,10 +379,13 @@ public class CookingController implements Initializable {
 		// timer button
 		if (currentTask == taskSequence.length) {
 			timerButton.setVisible(false);
+			timerButton.setManaged(false);
 		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
 			timerButton.setVisible(false);
+			timerButton.setManaged(false);
 		} else if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == false) {
 			timerButton.setVisible(true);
+			timerButton.setManaged(true);
 			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
 				if (countdownTimerArray.get(i).getID() == Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getID()) {
 					timerButton.setText("Delete timer");
@@ -477,7 +450,74 @@ public class CookingController implements Initializable {
 		}
 	}
 
-
+	private void updateListView() {
+		listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        
+                        //setText and setStyle
+                        for (int i = 0 ; i < taskSequence.length ; i++) {
+                    		if (item == Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle()) {
+                    			/*
+                    		}
+                    			if (Model.recipe.tasks.task.get(taskSequence[i]).attentionRequired == false) {
+                    				boolean timerActivated = false;
+                    				for (int n = 0 ; n < countdownTimerArray.size() ; n++) {
+                    					if (Model.recipe.tasks.task.get(taskSequence[i]).getID() == countdownTimerArray.get(n).getID()) {
+                    						if (i == currentTask) {
+				                                //setStyle("-fx-control-inner-background: purple;");
+                    							setText(">> "+(i+1)+". "+Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
+				                            } else {
+				                            	//setStyle("-fx-control-inner-background: yellow;");
+				                            	setText((i+1)+". "+Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
+				                            }
+                    						timerActivated = true;
+                    						break;
+                    					}
+                    				}
+                    				if (timerActivated == false) {
+                    					setText((i+1)+". "+item);
+                    					if (i < currentTask) {
+			                            	//setStyle("-fx-control-inner-background: green;");
+			                            } else if (i == currentTask) {
+			                                //setStyle("-fx-control-inner-background: purple;");
+			                            	setText("> "+(i+1)+". "+item);
+			                            } else {
+			                                //setStyle("-fx-control-inner-background: red;");
+			                            }
+                    					break;
+                    				}
+                    			} else {
+                    				setText((i+1)+". "+item);
+                    				if (i < currentTask) {
+		                            	//setStyle("-fx-control-inner-background: green;");
+		                            } else if (i == currentTask) {
+		                                //setStyle("-fx-control-inner-background: purple;");
+		                            	setText("-> "+(i+1)+". "+item);
+		                            	listView.getFocusModel().focus(i);
+		                            } else {
+		                                //setStyle("-fx-control-inner-background: red;");
+		                            }
+                    				break;
+                    			}
+                    			*/
+                    			if (i != currentTask) {
+                    				setText((i+1)+". "+item);
+	                            } else if (i == currentTask) {
+	                            	setText(">> "+(i+1)+". "+item);
+	                            	//listView.getFocusModel().focus(i);
+	                            }
+                    		}
+                    	}
+                    }
+                };
+            }
+        });
+	}
 
 
 }

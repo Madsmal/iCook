@@ -17,7 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+<<<<<<< HEAD
 import javafx.scene.control.Button;
+=======
+>>>>>>> refs/remotes/origin/master
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -53,8 +56,7 @@ public class RecipesController implements Initializable {
 	@FXML Label calories;
 	@FXML PieChart chart;
 	@FXML ImageView RecipeImageView;
-	@FXML ScrollPane sp = new ScrollPane();
-	@FXML TextFlow ingredientsTF;
+	//@FXML PieChart pieChart;
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
@@ -62,8 +64,9 @@ public class RecipesController implements Initializable {
 	@FXML MenuItem serving4 = new MenuItem("Option 4");
 	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2, serving3, serving4);
 	
-
 	
+	
+
 	
 
 	// Initialising the listview
@@ -72,6 +75,7 @@ public class RecipesController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+
 		// Inserting values into listview
 		File folder = new File("src/application/RecipeLibrary");
 		File[] listOfFiles = folder.listFiles();
@@ -136,8 +140,6 @@ public class RecipesController implements Initializable {
 		//selects the first recipe in the listView as default
 		listView.getSelectionModel().select(0);
 		
-		// label wrapping width
-	    ingredients.setMaxWidth(120);
 		
 		//serving amount menu
 		serving1.setOnAction(event -> {
@@ -250,16 +252,28 @@ public class RecipesController implements Initializable {
 			}
 		}
 		rating.setText(ratingString);
+		
+		//piechart
+		/*
+		ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                new PieChart.Data("Carbohydrates", Model.recipe.getCarbohydrates()),
+                new PieChart.Data("Fat", Model.recipe.getFat()),
+                new PieChart.Data("Protein", Model.recipe.getProtein()));
+        pieChart = new PieChart(pieChartData);
+        pieChart.setTitle("Nutritional distribution");
+        */
 	}
 	
 
 	
 	
+
 //	PieChart pieChart = new PieChart();
 //	PieChart.Data slice1 = new PieChart.Data("Fat", calculateFat());
 //	PieChart.Data slice2 = new PieChart.Data("Carbohydrates", calculateCarbs());
 //	PieChart.Data slice3 = new PieChart.Data("Protein", calculateProtein());
-	
+
 	
 	
 //	public void onCalDistribution(ActionEvent event) throws Exception {
@@ -300,6 +314,7 @@ public class RecipesController implements Initializable {
 //		pChart.setScene(pChartScene);
 //		pChart.show();
 //	}
+
 	
 	public void OnCalDis (ActionEvent event) throws Exception {
 		Parent calories = FXMLLoader.load(getClass().getResource("/application/PieChartView.fxml"));

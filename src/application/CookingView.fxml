@@ -23,52 +23,65 @@
          <content>
             <VBox prefWidth="568.0">
                <children>
-                  <ProgressBar fx:id="pb" prefHeight="29.0" prefWidth="568.0" progress="0.0" />
-                  <HBox prefWidth="200.0">
+                  <VBox minHeight="389.0" prefWidth="568.0">
                      <children>
-                        <Label fx:id="countdownLabel" alignment="TOP_LEFT" prefWidth="477.0" text="countdowntimer" />
-                        <Label fx:id="clock" text="clock" />
+                        <ProgressBar fx:id="pb" prefHeight="29.0" prefWidth="568.0" progress="0.0" />
+                        <HBox prefWidth="200.0">
+                           <children>
+                              <Label fx:id="countdownLabel" alignment="TOP_LEFT" maxWidth="477.0" prefWidth="477.0" text="countdowntimer" />
+                              <Label fx:id="clock" text="clock" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="taskTitle" text="taskTitle">
+                           <padding>
+                              <Insets left="40.0" right="40.0" top="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="task" text="task" wrapText="true">
+                           <padding>
+                              <Insets bottom="20.0" left="40.0" right="40.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="CENTER" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="timerButton" alignment="CENTER" mnemonicParsing="false" onAction="#onStartTimer" prefHeight="51.0" prefWidth="137.0" text="Start timer" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="countdownLabel2" text="countdowntimer2" />
+                        <HBox alignment="CENTER" prefWidth="120.0">
+                           <children>
+                              <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar2" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar3" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar4" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar5" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <Label fx:id="task" text="task" wrapText="true">
-                     <padding>
-                        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
-                     </padding>
-                  </Label>
-                  <Button fx:id="timerButton" alignment="CENTER" mnemonicParsing="false" onAction="#onStartTimer" prefHeight="51.0" prefWidth="137.0" text="Start timer" />
-                  <Label fx:id="countdownLabel2" text="countdowntimer2" />
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="120.0">
-                     <children>
-                        <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar2" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar3" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar4" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar5" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                   <HBox alignment="CENTER" prefWidth="200.0">
                      <children>
                         <Button fx:id="previous" mnemonicParsing="false" onAction="#onPrevious" prefHeight="51.0" prefWidth="137.0" text="Previous">
@@ -86,6 +99,9 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
