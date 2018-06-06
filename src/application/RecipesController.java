@@ -57,7 +57,6 @@ public class RecipesController implements Initializable {
 	
 
 	
-	
 
 	// Initialising the listview
 	@FXML 
@@ -65,6 +64,7 @@ public class RecipesController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+
 		// Inserting values into listview
 		File folder = new File("src/application/RecipeLibrary");
 		File[] listOfFiles = folder.listFiles();
@@ -256,10 +256,6 @@ public class RecipesController implements Initializable {
 	
 	
 	
-	//ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 	
-//	private calculateFat(float fat) {
-//		
-//	}
 	
 }
