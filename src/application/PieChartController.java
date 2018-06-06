@@ -105,7 +105,6 @@ public class PieChartController implements Initializable {
 	                 }
 	                );
 	        }
-		Model.primaryStage.setTitle("Calorie Distribution");
 		Model.primaryStage.show();
 	}
 	

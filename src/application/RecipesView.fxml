@@ -52,14 +52,6 @@
                                     <Insets bottom="5.0" top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="source" text="Source" />
-                              <Label fx:id="calories" text="Calories">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Button mnemonicParsing="false" onAction="#OnCalDis" text="Calorie Distribution" translateY="-10.0" />
-                              <Button mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
                            </children>
                         </HBox>
                         <Separator prefHeight="0.0" />
@@ -109,6 +101,7 @@
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
                                     </Label>
+                                    <Button mnemonicParsing="false" onAction="#OnCalDis" text="Calorie Distribution" translateY="-10.0" />
                                     <Button mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
                                  </children>
                                  <opaqueInsets>
