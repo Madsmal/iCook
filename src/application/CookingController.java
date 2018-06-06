@@ -129,6 +129,7 @@ public class CookingController implements Initializable {
 		//if first task is attentionRequired == true
 		updateCountdownTimer2();
 		updateButtonVisibility();
+		updateListView();
 		
 		// remove label identity text
 		countdownLabel.setText("");
