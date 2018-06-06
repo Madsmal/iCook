@@ -17,8 +17,6 @@ public class Main extends Application {
 		Model.primaryStage = primaryStage;
 		Model.parseIni();
 		
-		//System.out.println(Model.settings.get("happy"));
-		
 		Parent root = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("iCook");

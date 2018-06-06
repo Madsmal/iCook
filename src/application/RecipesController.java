@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -44,14 +45,15 @@ public class RecipesController implements Initializable {
 	@FXML Label rating;
 	@FXML Label calories;
 	@FXML ImageView RecipeImageView;
-	@FXML ScrollPane sp = new ScrollPane();
-	@FXML TextFlow ingredientsTF;
+	//@FXML PieChart pieChart;
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
 	@FXML MenuItem serving3 = new MenuItem("Option 3");
 	@FXML MenuItem serving4 = new MenuItem("Option 4");
 	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2, serving3, serving4);
+	
+	
 	
 
 	
@@ -127,8 +129,6 @@ public class RecipesController implements Initializable {
 		//selects the first recipe in the listView as default
 		listView.getSelectionModel().select(0);
 		
-		// label wrapping width
-	    ingredients.setMaxWidth(120);
 		
 		//serving amount menu
 		serving1.setOnAction(event -> {
@@ -241,6 +241,17 @@ public class RecipesController implements Initializable {
 			}
 		}
 		rating.setText(ratingString);
+		
+		//piechart
+		/*
+		ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                new PieChart.Data("Carbohydrates", Model.recipe.getCarbohydrates()),
+                new PieChart.Data("Fat", Model.recipe.getFat()),
+                new PieChart.Data("Protein", Model.recipe.getProtein()));
+        pieChart = new PieChart(pieChartData);
+        pieChart.setTitle("Nutritional distribution");
+        */
 	}
 	
 	
