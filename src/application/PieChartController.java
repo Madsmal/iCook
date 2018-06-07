@@ -49,7 +49,32 @@ public class PieChartController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		//TODO
+		String fatpr = String.format("%.1f", calculateFat());
+		String carbpr = String.format("%.1f", calculateCarbs());
+		String protpr = String.format("%.1f", calculateProtein());
+		String otherspr = String.format("%.1f",calculateOthers());
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data(fatpr + "% Fat", calculateFat()),
+				new PieChart.Data(carbpr + "% Carbohydrates", calculateCarbs()),
+				new PieChart.Data(protpr + "% Protein", calculateProtein()),
+				new PieChart.Data(otherspr + "Other sources", calculateOthers()));
+		piechart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
+		piechart.setData(pieChartData);
+		
+		for (final PieChart.Data data : piechart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                e -> {
+                    double total = 0;
+                    for (PieChart.Data d : piechart.getData()) {
+                        total += d.getPieValue();
+                    }
+                    String text = String.format("%.1f%%", 100*data.getPieValue()/total) ;
+                    caption.setText(text);
+                 }
+                );
+        }
+		
+		Model.primaryStage.show();
 	}
 	public void onBack (ActionEvent event) throws Exception {
 		Parent home = FXMLLoader.load(getClass().getResource("/application/RecipesView.fxml"));
@@ -85,11 +110,15 @@ public class PieChartController implements Initializable {
 	
 	@FXML
 	public void onCurrentMeal (ActionEvent event) throws Exception {
+		String fatpr = String.format("%.1f", calculateFat());
+		String carbpr = String.format("%.1f", calculateCarbs());
+		String protpr = String.format("%.1f", calculateProtein());
+		String otherspr = String.format("%.1f",calculateOthers());
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Fat", calculateFat()),
-				new PieChart.Data("Carbohydrates", calculateCarbs()),
-				new PieChart.Data("Protein", calculateProtein()),
-				new PieChart.Data("Vitamins, minerals, etc.", calculateOthers()));
+				new PieChart.Data(fatpr + "% Fat", calculateFat()),
+				new PieChart.Data(carbpr + "% Carbohydrates", calculateCarbs()),
+				new PieChart.Data(protpr + "% Protein", calculateProtein()),
+				new PieChart.Data(otherspr + "% Other sources", calculateOthers()));
 		piechart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
 		piechart.setData(pieChartData);
 		
