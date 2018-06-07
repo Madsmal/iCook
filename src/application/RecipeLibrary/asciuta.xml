@@ -9,32 +9,32 @@ For 4-6 Person(s)
 </target>
     <ingredients>
         <ingredient>
-            <quantity>4096000</quantity>
+            <quantity>100</quantity>
             <unit>g</unit>
             <iname>minced meat "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</iname>
         </ingredient>
         <ingredient>
-            <quantity>819200</quantity>
+            <quantity>100</quantity>
             <unit>g</unit>
             <iname>streaky bacon</iname>
         </ingredient>
         <ingredient>
-            <quantity>12288</quantity>
+            <quantity>1</quantity>
             <unit></unit>
             <iname>onion(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>8192</quantity>
+            <quantity>50</quantity>
             <unit></unit>
             <iname>garlic clove(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>4096</quantity>
+            <quantity>20</quantity>
             <unit></unit>
             <iname>can of tomatoes (850 ml)</iname>
         </ingredient>
         <ingredient>
-            <quantity>8192</quantity>
+            <quantity>40</quantity>
             <unit>tablespoon</unit>
             <iname>Tomato paste</iname>
         </ingredient>
@@ -49,12 +49,12 @@ For 4-6 Person(s)
             <iname>Oregano</iname>
         </ingredient>
         <ingredient>
-            <quantity>2048000</quantity>
+            <quantity>1000</quantity>
             <unit>g</unit>
             <iname>Spaghetti</iname>
         </ingredient>
         <ingredient>
-            <quantity>409600</quantity>
+            <quantity>200</quantity>
             <unit>g</unit>
             <iname>Parmesan, freshly grated</iname>
         </ingredient>
@@ -156,8 +156,8 @@ Am einfachsten ist es, den Speck und die Zwiebeln
 durch die grobe (6 mm) Scheibe des Fleischwolfs der
 BOSCH Küchenmaschine  zu drehen.
 </privateremark>
-    <rating>4</rating>
-    <calories>476</calories>
+    <rating>2</rating>
+    <calories>0</calories>
     <fat>7.9</fat>
     <carbohydrates>60.1</carbohydrates>
     <protein>23.8</protein>

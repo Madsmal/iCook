@@ -404,27 +404,37 @@ public class CookingController implements Initializable {
 	public void onStar1(MouseEvent event) throws Exception {
 		Model.recipe.rating = 1;
 		updateRating();
+		Model.ingredientsQuantityMultiplier(1/Model.servingAmount);
 		Model.saveXMLFile();
+		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	public void onStar2(MouseEvent event) throws Exception {
 		Model.recipe.rating = 2;
 		updateRating();
+		Model.ingredientsQuantityMultiplier(1/Model.servingAmount);
 		Model.saveXMLFile();
+		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	public void onStar3(MouseEvent event) throws Exception {
 		Model.recipe.rating = 3;
 		updateRating();
+		Model.ingredientsQuantityMultiplier(1/Model.servingAmount);
 		Model.saveXMLFile();
+		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	public void onStar4(MouseEvent event) throws Exception {
 		Model.recipe.rating = 4;
 		updateRating();
+		Model.ingredientsQuantityMultiplier(1/Model.servingAmount);
 		Model.saveXMLFile();
+		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	public void onStar5(MouseEvent event) throws Exception {
 		Model.recipe.rating = 5;
 		updateRating();
+		Model.ingredientsQuantityMultiplier(1/Model.servingAmount);
 		Model.saveXMLFile();
+		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	private void updateRating() {
 		star1.setImage(starFull);

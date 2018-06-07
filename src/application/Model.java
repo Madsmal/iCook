@@ -22,6 +22,7 @@ public class Model {
 	
 	
 	
+	
 	public static void parseXMLFile(String path) throws Exception {
 		File file = new File(path);
 	    JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
@@ -146,7 +147,8 @@ public class Model {
 		return string;
 	}
 	
-	public static void ingredientsQuantityMultiplier(int multiplier) {
+	static double servingAmount = 1;
+	public static void ingredientsQuantityMultiplier(double multiplier) {
 		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
 			if (Model.recipe.getIngredients().getIngredient().get(i).getQuantity().length() > 0) {
 				String string1 = Double.toString(Double.parseDouble(Model.recipe.getIngredients().getIngredient().get(i).getQuantity())*multiplier);

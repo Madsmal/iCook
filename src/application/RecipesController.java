@@ -54,7 +54,6 @@ public class RecipesController implements Initializable {
 	@FXML Label calories;
 	@FXML PieChart chart;
 	@FXML ImageView RecipeImageView;
-	//@FXML PieChart pieChart;
 	
 	@FXML MenuItem serving1 = new MenuItem("Option 1");
 	@FXML MenuItem serving2 = new MenuItem("Option 2");
@@ -142,24 +141,28 @@ public class RecipesController implements Initializable {
 		//serving amount menu
 		serving1.setOnAction(event -> {
 			parseXML();
+			Model.servingAmount = 1;
 			Model.ingredientsQuantityMultiplier(1);
 		    updateLabels();
 		    servingAmount.setText("Servings: 1");
 		});
 		serving2.setOnAction(event -> {
 			parseXML();
+			Model.servingAmount = 2;
 			Model.ingredientsQuantityMultiplier(2);
 		    updateLabels();
 		    servingAmount.setText("Servings: 2");
 		});
 		serving3.setOnAction(event -> {
 			parseXML();
+			Model.servingAmount = 3;
 			Model.ingredientsQuantityMultiplier(3);
 		    updateLabels();
 		    servingAmount.setText("Servings: 3");
 		});
 		serving4.setOnAction(event -> {
 			parseXML();
+			Model.servingAmount = 4;
 			Model.ingredientsQuantityMultiplier(4);
 		    updateLabels();
 		    servingAmount.setText("Servings: 4");
@@ -189,8 +192,12 @@ public class RecipesController implements Initializable {
 		} 
 	}
 	
-	public void onSwipe(SwipeEvent event) throws Exception {
-		System.out.println("test");
+	public void OnCalDis (ActionEvent event) throws Exception {
+		Parent calories = FXMLLoader.load(getClass().getResource("/application/PieChartView.fxml"));
+		Scene pChart = new Scene(calories);
+		Model.primaryStage.setScene(pChart);		
+		Model.primaryStage.show();
+		
 	}
 
 	// methods
@@ -250,17 +257,6 @@ public class RecipesController implements Initializable {
 			}
 		}
 		rating.setText(ratingString);
-		
-		//piechart
-		/*
-		ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                new PieChart.Data("Carbohydrates", Model.recipe.getCarbohydrates()),
-                new PieChart.Data("Fat", Model.recipe.getFat()),
-                new PieChart.Data("Protein", Model.recipe.getProtein()));
-        pieChart = new PieChart(pieChartData);
-        pieChart.setTitle("Nutritional distribution");
-        */
 	}
 	
 
@@ -314,11 +310,5 @@ public class RecipesController implements Initializable {
 //	}
 
 	
-	public void OnCalDis (ActionEvent event) throws Exception {
-		Parent calories = FXMLLoader.load(getClass().getResource("/application/PieChartView.fxml"));
-		Scene pChart = new Scene(calories);
-		Model.primaryStage.setScene(pChart);		
-		Model.primaryStage.show();
-		
-	}
+	
 }
