@@ -81,10 +81,13 @@ public class CookingController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle rb) {
+		// label wrapping width
+	    task.setMaxWidth(500);
+
 		
 		//Algorithm algorithm = new Algorithm(); 
 		//algorithm.calculateTaskSequence();
-
+		//algorithm.longestPath();
 		
 		//TEMPORARY START
 						taskSequence[0] = 0;
@@ -314,7 +317,7 @@ public class CookingController implements Initializable {
 		}
 	}
 
-	private void updateProgressBar() { //TODO attentionRequired false kun tælle med som det sidste
+	private void updateProgressBar() { //TODO attentionRequired false kun tÃ¦lle med som det sidste
 		timePassed = 0;
 		for (int i = 0 ; i < currentTask ; i++) {
 			timePassed = timePassed + (Model.recipe.tasks.task.get(i).getTime());

@@ -10,12 +10,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -25,11 +28,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.SwipeEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class RecipesController implements Initializable {
@@ -44,6 +52,7 @@ public class RecipesController implements Initializable {
 	@FXML Label source;
 	@FXML Label rating;
 	@FXML Label calories;
+	@FXML PieChart chart;
 	@FXML ImageView RecipeImageView;
 	//@FXML PieChart pieChart;
 	
@@ -254,8 +263,62 @@ public class RecipesController implements Initializable {
         */
 	}
 	
+
 	
 	
+
+//	PieChart pieChart = new PieChart();
+//	PieChart.Data slice1 = new PieChart.Data("Fat", calculateFat());
+//	PieChart.Data slice2 = new PieChart.Data("Carbohydrates", calculateCarbs());
+//	PieChart.Data slice3 = new PieChart.Data("Protein", calculateProtein());
+
 	
 	
+//	public void onCalDistribution(ActionEvent event) throws Exception {
+//		final Stage pChart = new Stage();
+//		pChart.setTitle("Calorie Distribution");
+//		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+//				new PieChart.Data("Fat", calculateFat()),
+//				new PieChart.Data("Carbohydrates", calculateCarbs()),
+//				new PieChart.Data("Protein", calculateProtein()),
+//				new PieChart.Data("Vitamins, minerals, etc.", calculateOthers()));
+//		
+//		final PieChart chart = new PieChart(pieChartData);
+//		chart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
+//		pChart.initModality(Modality.NONE);
+//		pChart.initOwner(Model.primaryStage);
+//		VBox pChartVbox = new VBox(40);
+//		
+//		final Label caption = new Label("");
+//        caption.setTextFill(Color.DARKORANGE);
+//        caption.setStyle("-fx-font: 24 arial;");
+//
+//        for (final PieChart.Data data : chart.getData()) {
+//            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+//                e -> {
+//                    double total = 0;
+//                    for (PieChart.Data d : chart.getData()) {
+//                        total += d.getPieValue();
+//                    }
+//                    caption.setTranslateX(240);
+//                    caption.setTranslateY(5);
+//                    String text = String.format("%.1f%%", 100*data.getPieValue()/total) ;
+//                    caption.setText(text);
+//                 }
+//                );
+//        }
+//		pChartVbox.getChildren().addAll(chart,caption);
+//		Scene pChartScene = new Scene(pChartVbox, 480, 600);
+//		pChart.setScene(pChartScene);
+//		pChart.show();
+//	}
+
+	
+	public void OnCalDis (ActionEvent event) throws Exception {
+		Parent calories = FXMLLoader.load(getClass().getResource("/application/PieChartView.fxml"));
+		Scene pChart = new Scene(calories);
+		Model.primaryStage.setScene(pChart);		
+		Model.primaryStage.show();
+		
+	}
 }

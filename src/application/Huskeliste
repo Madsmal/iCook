@@ -36,6 +36,7 @@ Virker kun med Java 8
 TimerTime - Den tid det tager at starte timeren. Skal det understøttes?
 Fx pensl bollerne med æggehvide og sæt dem ind i ovnen. 
 Hvordan tager vi højde for tiden det tager at pensle bollerne, hvis nu brugeren sætter dem alle ind i en task?
+Opfordr brugeren til at højde for dette i editor
 
 Features:
 - Bedømmelser
@@ -50,7 +51,7 @@ Features:
 - Indkøbsliste, upload til cloudtjeneste
 - Voice recognition
 - Kalorietælling
-- 
+- Import/eksport opskrifter
 
 
 
