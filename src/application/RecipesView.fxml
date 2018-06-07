@@ -33,7 +33,7 @@
                         <Separator prefHeight="0.0" />
                         <HBox prefWidth="468.0">
                            <children>
-                              <Label fx:id="title" prefWidth="450.0" text="Title">
+                              <Label fx:id="title" maxWidth="457.0" prefHeight="35.0" prefWidth="457.0" text="Title" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
