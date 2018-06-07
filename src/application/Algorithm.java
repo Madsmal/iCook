@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -72,13 +73,9 @@ public class Algorithm extends CookingController {
 				
 				//System.out.println("out: " + Model.recipe.tasks.task.get(i+test).ID);
 				tests.add(Model.recipe.tasks.task.get(i+test).ID);
-				
 				//sum = Model.recipe.tasks.task.get(i).time + sum;
 				//System.out.println(sum);
 			}
-
-
-
 			//			if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 			//				System.out.println("id: " + Model.recipe.tasks.task.get(i).ID);
 			//
@@ -97,18 +94,25 @@ public class Algorithm extends CookingController {
 			//				if(ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, i+1)) {
 			//					System.out.println("i: " + Model.recipe.tasks.task.get(i).ID);
 		}
-		System.out.println(tests.size());
-		for(int i = 0; i < tests.size(); i++) {
-			if(tests.get(i+1) == 5) {
-				System.out.println("Stop " + tests.get(i));
+
+		System.out.println(tests);
+		
+		for(int i = 0; i < tests.size(); i++) {		
+			if(tests.get(i) == 6) {
+				System.out.println("End " + tests.get(i));
 				break;
 			}
-			
-			if(tests.get(i+1) - tests.get(i) == 1) {
-				System.out.println("Here " + tests.get(i));
+			else if(tests.get(i+1) - tests.get(i) == 1) {
+				System.out.println("1 diff: " + tests.get(i));
+
+			} else {
+				System.out.println("!1 diff: " + tests.get(i));
+
+				break;
 			}
+			System.out.println(tests);
 		}
-			
+
 
 		// Stream converts List<integer> to int[].
 
