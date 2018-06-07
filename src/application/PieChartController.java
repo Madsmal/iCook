@@ -47,17 +47,25 @@ public class PieChartController implements Initializable {
 	@FXML private PieChart piechart;
 	@FXML private Label caption;
 	
+//	float cals = (float) (Integer.parseInt(Model.recipe.getCalories()));
+	float fat = 9*Model.recipe.getFat();
+	float carbohydrates = 4*Model.recipe.getCarbohydrates();
+	float protein = 4*Model.recipe.getProtein();
+//	float calTotal = fat + carbohydrates + protein;
+//	float calD = cals - calTotal;
+//	float updCarb = 4*Model.recipe.getCarbohydrates() + calD;
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		String fatpr = String.format("%.1f", calculateFat());
-		String carbpr = String.format("%.1f", calculateCarbs());
+		String carbpr = String.format("%.1f", calculateExcessCarbs());
 		String protpr = String.format("%.1f", calculateProtein());
-		String otherspr = String.format("%.1f",calculateOthers());
+		
+		//temporary hack
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data(fatpr + "% Fat", calculateFat()),
-				new PieChart.Data(carbpr + "% Carbohydrates", calculateCarbs()),
-				new PieChart.Data(protpr + "% Protein", calculateProtein()),
-				new PieChart.Data(otherspr + "Other sources", calculateOthers()));
+				new PieChart.Data(carbpr + "% Carbohydrates", calculateExcessCarbs()),
+				new PieChart.Data(protpr + "% Protein", calculateProtein()));
 		piechart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
 		piechart.setData(pieChartData);
 		
@@ -84,41 +92,46 @@ public class PieChartController implements Initializable {
 	}
 	
 	private float calculateFat() {
-		float fat = 9*Model.recipe.getFat();
 		float fatp = (float) ((fat/Integer.parseInt(Model.recipe.getCalories()))) * 100; 
 		return fatp;
 	}
 	
-	private float calculateCarbs() {
-		float carbohydrates = 4*Model.recipe.getCarbohydrates();
-		float carbp = (float) ((carbohydrates/Integer.parseInt(Model.recipe.getCalories())) * 100);
-		return carbp;
-	}
+//	private float calculateCarbs() {
+//		float carbohydrates = 4*Model.recipe.getCarbohydrates();
+//		float carbp = (float) ((carbohydrates/Integer.parseInt(Model.recipe.getCalories())) * 100);
+//		return carbp;
+//	}
 	
 	private float calculateProtein() {
-		float protein = 4*Model.recipe.getProtein();
 		float protp = (float) ((protein/Integer.parseInt(Model.recipe.getCalories())) * 100);
 		return protp;
 	}
 	
-	private float calculateOthers() {
-		int cals = Integer.parseInt(Model.recipe.getCalories());
-		float cfp = calculateFat()+calculateCarbs()+calculateProtein();
-		float others = (float) ((cals-cfp)/cals);
-		return others;
+	private float calculateCalTotal() {
+		float calTotal = fat + carbohydrates + protein;
+		return calTotal;
 	}
+	
+	//temporary hack
+	private float calculateExcessCarbs() {
+		float cals = (float) (Integer.parseInt(Model.recipe.getCalories()));
+		float calD = cals - calculateCalTotal();
+		float exCarbsCal = 4*Model.recipe.getCarbohydrates() + calD;
+		float exCarbs = (exCarbsCal/cals) * 100;
+		return exCarbs;
+	}
+	
 	
 	@FXML
 	public void onCurrentMeal (ActionEvent event) throws Exception {
 		String fatpr = String.format("%.1f", calculateFat());
-		String carbpr = String.format("%.1f", calculateCarbs());
+		String carbpr = String.format("%.1f", calculateExcessCarbs());
 		String protpr = String.format("%.1f", calculateProtein());
-		String otherspr = String.format("%.1f",calculateOthers());
+		
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data(fatpr + "% Fat", calculateFat()),
-				new PieChart.Data(carbpr + "% Carbohydrates", calculateCarbs()),
-				new PieChart.Data(protpr + "% Protein", calculateProtein()),
-				new PieChart.Data(otherspr + "% Other sources", calculateOthers()));
+				new PieChart.Data(carbpr + "% Carbohydrates", calculateExcessCarbs()),
+				new PieChart.Data(protpr + "% Protein", calculateProtein()));
 		piechart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
 		piechart.setData(pieChartData);
 		
