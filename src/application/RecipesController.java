@@ -41,7 +41,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class RecipesController implements Initializable {
-
+	
 	// Defining FXML elements
 	@FXML Label title;
 	@FXML Label totalTime;
