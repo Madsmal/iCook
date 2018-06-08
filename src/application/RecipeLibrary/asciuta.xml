@@ -63,7 +63,7 @@ For 4-6 Person(s)
         <task>
             <ID>1</ID>
             <parents>0</parents>
-            <children>2</children>
+            <children>0</children>
             <time>10</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vestibulum ultricies purus, rutrum malesuada leo posuere id. Fusce mollis tincidunt commodo. Integer erat justo, sodales vel massa ut, congue vehicula mauris. Nullam ut congue massa. Cras et dolor lacinia, aliquet ipsum porttitor, euismod mi. Aliquam tempus molestie purus, ac varius nibh hendrerit congue. Sed suscipit imperdiet nibh, eget porta sem mattis vel. Cras sit amet maximus odio. Nulla lectus arcu, scelerisque nec tellus sed, pharetra maximus lacus. Donec eget tortor nulla. Maecenas scelerisque viverra nibh, quis tempus ipsum. Donec pretium tortor non velit aliquam placerat. Nullam urna ex, interdum ut volutpat vel, condimentum a sem. Aliquam elit quam, auctor vitae nibh at, ullamcorper iaculis elit. Nunc nec odio vitae sapien imperdiet dapibus. Morbi non posuere elit.Nulla lectus risus, pharetra at luctus ut, faucibus quis lectus. Integer lacus urna, facilisis non vehicula non, pharetra ac nisi. Etiam ut risus ante. Nam eleifend maximus lectus, a placerat nulla. In lobortis ac lorem ac blandit. Phasellus nunc justo, posuere vitae auctor scelerisque, tincidunt id turpis. Duis et diam porta, ullamcorper dolor sed, ultricies libero.In convallis, dui ut aliquam ultricies, nisi arcu vulputate sem, id commodo mauris ligula et nisi. Fusce sed enim dapibus, ornare quam fermentum, rutrum leo. Fusce finibus sapien non dapibus pellentesque. Integer condimentum tincidunt odio at tincidunt. Aliquam erat volutpat. Ut id aliquam est, quis efficitur leo. Nunc suscipit, elit vel cursus euismod, purus sem consequat magna, ac euismod ligula orci vitae massa. Proin porttitor eget est eget egestas. Nunc eget ante molestie risus vestibulum venenatis. Quisque porttitor ligula eu egestas luctus.Integer vulputate interdum nunc at egestas. Fusce eget venenatis lectus, a fermentum erat. Cras tincidunt massa ligula, at scelerisque velit posuere sed. Nunc at eros in ex facilisis auctor. Fusce finibus magna orci, ut pulvinar quam viverra sed. Sed sed efficitur turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;Sed turpis nulla, malesuada ac mi at, convallis consequat odio. Suspendisse vulputate neque sit amet ipsum blandit tristique. Pellentesque facilisis lacus ut faucibus imperdiet. Vestibulum euismod arcu quam, sollicitudin convallis diam placerat vel. Vivamus tellus velit, convallis dignissim pellentesque eget, ullamcorper in lectus. Nullam non pulvinar sapien, egestas pulvinar neque. Suspendisse facilisis eros at mollis rhoncus. Vestibulum ac dolor commodo, venenatis sapien vitae, laoreet enim. Vestibulum et tempor dui. Sed commodo dolor sit amet sem mattis, quis suscipit lorem hendrerit. Vestibulum accumsan gravida dolor sit amet cursus. Ut iaculis ullamcorper commodo. Morbi efficitur ac augue vel pretium. Quisque pellentesque massa eget nunc sodales, vitae molestie magna lacinia. Sed varius, purus sollicitudin vestibulum lobortis, massa ligula tempus ipsum, ac eleifend odio arcu vel tortor.</taskString>
@@ -71,8 +71,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>2</ID>
-            <parents>1</parents>
-            <children>3</children>
+            <parents>0</parents>
+            <children>0</children>
             <time>15</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Roast minced meat as well as possible finely divide.</taskString>
@@ -80,8 +80,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>3</ID>
-            <parents>2</parents>
-            <children>4</children>
+            <parents>0</parents>
+            <children>0</children>
             <time>20</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Everything with the tomatoes in a pot, give and add the wine as well as the spices.</taskString>
@@ -89,7 +89,7 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>4</ID>
-            <parents>3</parents>
+            <parents>0</parents>
             <children>0</children>
             <time>120</time>
             <attentionRequired>false</attentionRequired>
@@ -101,7 +101,7 @@ For 4-6 Person(s)
         <task>
             <ID>5</ID>
             <parents>0</parents>
-            <children>6</children>
+            <children>0</children>
             <time>20</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes.</taskString>
@@ -111,8 +111,8 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>6</ID>
-            <parents>5</parents>
-            <children>7</children>
+            <parents>0</parents>
+            <children>0</children>
             <time>10</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Check whether the pasta is done.</taskString>
@@ -122,7 +122,7 @@ For 4-6 Person(s)
         </task>
         <task>
             <ID>7</ID>
-            <parents>6</parents>
+            <parents>0</parents>
             <children>0</children>
             <time>60</time>
             <attentionRequired>true</attentionRequired>
