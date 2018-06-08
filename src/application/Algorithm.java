@@ -23,7 +23,7 @@ public class Algorithm extends CookingController {
 		// Better solution: add elements with no preReg to front of array and make those first.
 		
 		int totalTime = Integer.parseInt(Model.recipe.duration.totaltime);
-		
+
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		
 		
