@@ -90,13 +90,13 @@ public class CookingController implements Initializable {
 		//algorithm.longestPath();
 		
 		//TEMPORARY START
-						taskSequence[0] = 0;
+						taskSequence[0] = 6;
 						taskSequence[1] = 1;
 						taskSequence[2] = 2;
 						taskSequence[3] = 3;
 						taskSequence[4] = 4;
 						taskSequence[5] = 5;
-						taskSequence[6] = 6;
+						taskSequence[6] = 0;
 		//TEMPORARY END
 						
 		// listview
@@ -112,11 +112,13 @@ public class CookingController implements Initializable {
 				for (int i = 0 ; i < taskSequence.length ; i++) {
 					if (newValue.equals(Model.recipe.tasks.task.get(i).getTaskTitle())) {
 						currentTask = i;
+						System.out.println(currentTask);
 						pause.setText("Pause");
 						updateCountdownTimer2();
 						updateProgressBar();
 						updateButtonVisibility();
 						updateListView();
+						setTaskTitle();
 						task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 					}
 				}
@@ -126,7 +128,7 @@ public class CookingController implements Initializable {
 		
 
 		// Default FXML elements values
-		taskTitle.setText("Task " + (currentTask+1));
+		setTaskTitle();
 		task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 
 		//if first task is attentionRequired == true
@@ -183,23 +185,45 @@ public class CookingController implements Initializable {
 						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==false) {
 							countdownLabel2.setText("");
 						} else if (Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==true) {
-							countdownLabel2.setText("Time remaining:\n"+Integer.toString(countdownTimer2.getTimeLeft()));
+							countdownLabel2.setText("Task time: "+Integer.toString(countdownTimer2.getTimeLeft()));
 						}
 
-						// Intermediate-task progress bar update
-						if (currentTask != taskSequence.length && Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true ) {
-							pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+						// Intermediate-task progress bar update TODO fix
+						if (currentTask != taskSequence.length) {
+							if (currentTask == taskSequence.length - 1) {
+								
+								int largestCountdownTimer = 0;
+								int largestCountdownTimerTimePassed = 0;
+								for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+									if (countdownTimerArray.get(i).getTimeLeft() > largestCountdownTimer) {
+										largestCountdownTimer = countdownTimerArray.get(i).getTimeLeft(); 
+										largestCountdownTimerTimePassed = countdownTimerArray.get(i).getTimePassed(); 
+									}
+								}
+								
+								if (Model.recipe.tasks.task.get(taskSequence.length-1).attentionRequired == true) {
+									System.out.print(largestCountdownTimer);
+									System.out.println(" : "+countdownTimer2.getTimeLeft());
+									if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
+										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+									} else {
+										pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+									}
+								} else {
+									pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+								}
+								
+							} else {
+								if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+									pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+								}
+							}
 						}
 
 						// Update 'next' setDisable() value on second last page
-						// TODO Can be moved to alert 'OK' button when it is written to lower resources 
-
 						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
 							next.setDisable(false);
 						}
-						
-						// listView cells that are continuously updating
-						//updateListView();
 					}
 				}
 						)
@@ -251,11 +275,11 @@ public class CookingController implements Initializable {
 			updateButtonVisibility();
 			updateListView();
 			if (currentTask != taskSequence.length) {
-				taskTitle.setText("Task " + (currentTask+1));
+				setTaskTitle();
 				task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 			} else {
-				taskTitle.setText("");
-				task.setText("You have finished cooking "+Model.recipe.getTitle()+"\nEnjoy your meal!");
+				taskTitle.setText("Enjoy your meal!");
+				task.setText("You have finished cooking "+Model.recipe.getTitle());
 			}
 		}
 	}
@@ -268,7 +292,7 @@ public class CookingController implements Initializable {
 			updateProgressBar();
 			updateButtonVisibility();
 			updateListView();
-			taskTitle.setText("Task " + (currentTask+1));
+			setTaskTitle();
 			task.setText(Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getTaskString());
 
 		}
@@ -317,12 +341,18 @@ public class CookingController implements Initializable {
 		}
 	}
 
-	private void updateProgressBar() { //TODO attentionRequired false kun tælle med som det sidste
+	private void updateProgressBar() { 
+		if (currentTask != taskSequence.length) {
 		timePassed = 0;
 		for (int i = 0 ; i < currentTask ; i++) {
-			timePassed = timePassed + (Model.recipe.tasks.task.get(i).getTime());
+			if (Model.recipe.tasks.task.get(i).getAttentionRequired() == true) {
+				timePassed = timePassed + (Model.recipe.tasks.task.get(i).getTime());
+			}
 		}
 		pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+		} else {
+			pb.setProgress(1);
+		}
 	}
 
 	private void updateButtonVisibility() {
@@ -458,6 +488,10 @@ public class CookingController implements Initializable {
 		} else {
 			star5.setImage(starEmpty);
 		}
+	}
+	
+	private void setTaskTitle() {
+		taskTitle.setText("Task " + (currentTask+1)+": "+Model.recipe.tasks.task.get(taskSequence[currentTask]).getTaskTitle());
 	}
 
 	private void updateListView() {
