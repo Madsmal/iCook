@@ -21,10 +21,11 @@ public class Algorithm extends CookingController {
 
 
 		// Better solution: add elements with no preReg to front of array and make those first.
-		int test = 0;
+		
+		int totalTime = Integer.parseInt(Model.recipe.duration.totaltime);
 		
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
-		ArrayList<Integer> tests = new ArrayList<Integer>();
+		
 		
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
@@ -36,6 +37,8 @@ public class Algorithm extends CookingController {
 				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
 						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+					totalTime = totalTime - Model.recipe.tasks.task.get(i).time;
+					// What if totalTime < 0?
 				}
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
@@ -53,6 +56,7 @@ public class Algorithm extends CookingController {
 			}		
 		}
 		System.out.println(sequence);
+		System.out.println(totalTime);
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			//			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
@@ -67,16 +71,6 @@ public class Algorithm extends CookingController {
 			//				sequence.add(0, Model.recipe.tasks.task.get(i).ID);	
 			//			}
 
-			// If a node has a child and that child has a child, then it has to be the index after the node. Note: Last index can't have a child.
-
-			if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+test).children, "0")) { // || 
-				// (!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0") && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0"))) {
-				
-				//System.out.println("out: " + Model.recipe.tasks.task.get(i+test).ID);
-				tests.add(Model.recipe.tasks.task.get(i+test).ID);
-				//sum = Model.recipe.tasks.task.get(i).time + sum;
-				//System.out.println(sum);
-			}
 			//			if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 			//				System.out.println("id: " + Model.recipe.tasks.task.get(i).ID);
 			//
@@ -96,8 +90,25 @@ public class Algorithm extends CookingController {
 			//					System.out.println("i: " + Model.recipe.tasks.task.get(i).ID);
 		}
 
-		//System.out.println(tests);
+		// Stream converts List<integer> to int[].
+
+		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
+		// System.out.println(java.util.Arrays.toString(taskSequence));
+		return taskSequence;
+	} 
+
+	public int[] longestPath() {
+
+		int test = 0;
 		
+		ArrayList<Integer> sequence = new ArrayList<Integer>();
+		ArrayList<Integer> tests = new ArrayList<Integer>();
+		// If a node has a child and that child has a child, then it has to be the index after the node. Note: Last index can't have a child.
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+			if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+test).children, "0")) {
+				tests.add(Model.recipe.tasks.task.get(i+test).ID);
+			}
+		}
 		for(int i = 0; i < tests.size(); i++) {		
 			if(tests.get(i) == Collections.max(tests)) {
 				System.out.println("End " + tests.get(i));
@@ -113,29 +124,7 @@ public class Algorithm extends CookingController {
 			}
 			//System.out.println(tests);
 		}
-
-
-		// Stream converts List<integer> to int[].
-
-		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		// System.out.println(java.util.Arrays.toString(taskSequence));
-		return taskSequence;
-	} 
-
-	public int[] longestPath() {
-
-		ArrayList<Integer> sequence = new ArrayList<Integer>();
-
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") || 
-					(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0") && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0"))) {
-				//				System.out.println("i: " + Model.recipe.tasks.task.get(i).ID);
-				if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
-					System.out.println("id: " + Model.recipe.tasks.task.get(i).ID);
-				}
-			}
-		}
-
+				
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
