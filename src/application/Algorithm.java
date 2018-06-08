@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -95,10 +96,10 @@ public class Algorithm extends CookingController {
 			//					System.out.println("i: " + Model.recipe.tasks.task.get(i).ID);
 		}
 
-		System.out.println(tests);
+		//System.out.println(tests);
 		
 		for(int i = 0; i < tests.size(); i++) {		
-			if(tests.get(i) == 6) {
+			if(tests.get(i) == Collections.max(tests)) {
 				System.out.println("End " + tests.get(i));
 				break;
 			}
@@ -108,9 +109,9 @@ public class Algorithm extends CookingController {
 			} else {
 				System.out.println("!1 diff: " + tests.get(i));
 
-				break;
+				//break;
 			}
-			System.out.println(tests);
+			//System.out.println(tests);
 		}
 
 
