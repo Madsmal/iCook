@@ -76,8 +76,13 @@ public class Algorithm extends CookingController {
 		
 		
 		if(totalTime < 0) {
-			System.out.println("Will fix later ");
+			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
+					totalTime = totalTime +  Model.recipe.tasks.task.get(i).time;
+				}
+			}
 			// Hvis totaltime < 0, returner den samlede tid for de tasks hvor attReq er true
+			// temp fix - will discuss another method for totalTime calculation
 		}
 		
 		
