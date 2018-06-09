@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CookingController">
    <children>
@@ -25,60 +26,70 @@
                <children>
                   <VBox minHeight="389.0" prefWidth="568.0">
                      <children>
-                        <ProgressBar fx:id="pb" prefHeight="29.0" prefWidth="568.0" progress="0.0" />
-                        <HBox prefWidth="200.0">
+                        <VBox minHeight="338.0" prefWidth="568.0">
                            <children>
-                              <Label fx:id="countdownLabel" alignment="TOP_LEFT" maxWidth="477.0" prefWidth="477.0" text="countdowntimer" />
-                              <Label fx:id="clock" text="clock" />
+                              <ProgressBar fx:id="pb" prefHeight="29.0" prefWidth="568.0" progress="0.0" />
+                              <HBox prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="countdownLabel2" prefWidth="229.0" text="countdowntimer2" />
+                                    <Label fx:id="clock" text="clock" wrapText="true" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="countdownLabel" alignment="TOP_LEFT" prefWidth="568.0" text="countdowntimer" wrapText="true" />
+                              <Label fx:id="taskTitle" text="taskTitle" wrapText="true">
+                                 <padding>
+                                    <Insets left="40.0" right="40.0" top="30.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="task" text="task" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="20.0" left="40.0" right="40.0" />
+                                 </padding>
+                              </Label>
+                              <HBox alignment="CENTER" prefWidth="120.0">
+                                 <children>
+                                    <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar2" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar3" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar4" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar5" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <Label fx:id="taskTitle" text="taskTitle">
-                           <padding>
-                              <Insets left="40.0" right="40.0" top="20.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="task" text="task" wrapText="true">
-                           <padding>
-                              <Insets bottom="20.0" left="40.0" right="40.0" />
-                           </padding>
-                        </Label>
+                        </VBox>
                         <HBox alignment="CENTER" prefWidth="200.0">
                            <children>
                               <Button fx:id="timerButton" alignment="CENTER" mnemonicParsing="false" onAction="#onStartTimer" prefHeight="51.0" prefWidth="137.0" text="Start timer" />
                            </children>
-                        </HBox>
-                        <Label fx:id="countdownLabel2" text="countdowntimer2" />
-                        <HBox alignment="CENTER" prefWidth="120.0">
-                           <children>
-                              <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar1" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar2" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets left="5.0" right="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar3" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets left="5.0" right="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar4" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets left="5.0" right="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onStar5" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
