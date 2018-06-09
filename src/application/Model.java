@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
-
 import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
 import javafx.stage.Stage;
 
 import org.ini4j.Ini;
@@ -18,8 +16,8 @@ public class Model {
 	static Recipe recipe;
 	static String parsedFileName;
 	static Ini settings;
-	static String section = "default"; //Used with ini get and put methods
-	
+	static String section = "default"; 
+	static double servingAmount = 1;	
 	
 	
 	
@@ -147,7 +145,6 @@ public class Model {
 		return string;
 	}
 	
-	static double servingAmount = 1;
 	public static void ingredientsQuantityMultiplier(double multiplier) {
 		for (int i = 0 ; i < Model.recipe.getIngredients().getIngredient().size() ; i++) {
 			if (Model.recipe.getIngredients().getIngredient().get(i).getQuantity().length() > 0) {

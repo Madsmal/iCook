@@ -31,11 +31,19 @@
                               <ProgressBar fx:id="pb" prefHeight="29.0" prefWidth="568.0" progress="0.0" />
                               <HBox prefWidth="200.0">
                                  <children>
-                                    <Label fx:id="countdownLabel2" prefWidth="229.0" text="countdowntimer2" />
+                                    <Label fx:id="countdownLabel2" prefHeight="17.0" prefWidth="507.0" text="countdowntimer2">
+                                       <padding>
+                                          <Insets left="240.0" />
+                                       </padding>
+                                    </Label>
                                     <Label fx:id="clock" text="clock" wrapText="true" />
                                  </children>
                               </HBox>
-                              <Label fx:id="countdownLabel" alignment="TOP_LEFT" prefWidth="568.0" text="countdowntimer" wrapText="true" />
+                              <Label fx:id="countdownLabel" alignment="TOP_LEFT" prefWidth="568.0" text="countdowntimer" wrapText="true">
+                                 <padding>
+                                    <Insets left="40.0" top="20.0" />
+                                 </padding>
+                              </Label>
                               <Label fx:id="taskTitle" text="taskTitle" wrapText="true">
                                  <padding>
                                     <Insets left="40.0" right="40.0" top="30.0" />
