@@ -90,13 +90,14 @@ public class CookingController implements Initializable {
 		//algorithm.longestPath();
 		
 		//TEMPORARY START
-						taskSequence[0] = 6;
+	    
+						taskSequence[0] = 0;
 						taskSequence[1] = 1;
 						taskSequence[2] = 2;
-						taskSequence[3] = 3;
+						taskSequence[3] = 6;
 						taskSequence[4] = 4;
 						taskSequence[5] = 5;
-						taskSequence[6] = 0;
+						taskSequence[6] = 3;
 		//TEMPORARY END
 						
 		// listview
@@ -187,7 +188,7 @@ public class CookingController implements Initializable {
 							countdownLabel2.setText("Task time: "+Integer.toString(countdownTimer2.getTimeLeft()));
 						}
 
-						// Intermediate-task progress bar update TODO fix
+						// Intermediate-task progress bar update
 						if (currentTask != taskSequence.length) {
 							if (currentTask == taskSequence.length - 1) {
 								
@@ -200,8 +201,8 @@ public class CookingController implements Initializable {
 									}
 								}
 								
-								if (Model.recipe.tasks.task.get(taskSequence.length-1).attentionRequired == true) {
-									if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
+								if (Model.recipe.tasks.task.get(taskSequence[taskSequence.length-1]).attentionRequired == true) {
+									if (largestCountdownTimerTimePassed > countdownTimer2.getTimeLeft()) {
 										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 									} else {
 										pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
