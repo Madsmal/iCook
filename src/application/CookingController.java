@@ -110,9 +110,8 @@ public class CookingController implements Initializable {
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				for (int i = 0 ; i < taskSequence.length ; i++) {
-					if (newValue.equals(Model.recipe.tasks.task.get(i).getTaskTitle())) {
+					if (newValue.equals(Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle())) {
 						currentTask = i;
-						System.out.println(currentTask);
 						pause.setText("Pause");
 						updateCountdownTimer2();
 						updateProgressBar();
@@ -202,8 +201,6 @@ public class CookingController implements Initializable {
 								}
 								
 								if (Model.recipe.tasks.task.get(taskSequence.length-1).attentionRequired == true) {
-									System.out.print(largestCountdownTimer);
-									System.out.println(" : "+countdownTimer2.getTimeLeft());
 									if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
 										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 									} else {
