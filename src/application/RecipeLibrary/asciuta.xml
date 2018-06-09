@@ -91,7 +91,7 @@ For 4-6 Person(s)
             <ID>4</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>120</time>
+            <time>3600</time>
             <attentionRequired>false</attentionRequired>
             <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
             <timerString>Sauce is simmering</timerString>
@@ -124,7 +124,7 @@ For 4-6 Person(s)
             <ID>7</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>60</time>
+            <time>5</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
             <taskTitle>Serving the dish</taskTitle>
@@ -162,8 +162,8 @@ BOSCH Küchenmaschine  zu drehen.
     <carbohydrates>60.1</carbohydrates>
     <protein>23.8</protein>
     <duration>
-        <totaltime>235</totaltime>
-        <worktime>60</worktime>
+        <totaltime>105</totaltime>
+        <worktime>105</worktime>
     </duration>
     <source>Herbert Fischer</source>
 </recipe>
