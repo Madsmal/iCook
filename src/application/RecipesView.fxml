@@ -22,7 +22,7 @@
             <VBox prefHeight="480.0" prefWidth="233.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onHome" prefHeight="47.0" prefWidth="246.0" stylesheets="@Stylesheets/home.css" text="Home" />
-                  <ListView fx:id="listView" prefHeight="437.0" prefWidth="232.0" stylesheets="@Stylesheets/hideFocus.css" />
+                  <ListView fx:id="listView" fixedCellSize="36.0" prefHeight="437.0" prefWidth="232.0" />
                </children>
             </VBox>
             <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="480.0" prefWidth="568.0">
@@ -67,13 +67,13 @@
                                  <children>
                                     <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Servings: 1">
                                        <items>
-                                          <MenuItem fx:id="serving1" mnemonicParsing="false" text="1 person                     " />
+                                          <MenuItem fx:id="serving1" mnemonicParsing="false" text="1 serving                   " />
                                           <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving2" mnemonicParsing="false" text="2" />
+                                          <MenuItem fx:id="serving2" mnemonicParsing="false" text="2 servings" />
                                           <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving3" mnemonicParsing="false" text="3" />
+                                          <MenuItem fx:id="serving3" mnemonicParsing="false" text="3 servings" />
                                           <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving4" mnemonicParsing="false" text="4" />
+                                          <MenuItem fx:id="serving4" mnemonicParsing="false" text="4 servings" />
                                        </items>
                                        <VBox.margin>
                                           <Insets bottom="10.0" />

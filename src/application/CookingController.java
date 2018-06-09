@@ -1,21 +1,9 @@
 package application;
 
-import java.awt.Toolkit;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.lang.Object;
-import org.apache.commons.*;
-import org.apache.commons.lang3.ArrayUtils;
-
-import javax.xml.bind.JAXB;
-
-import application.Recipe.Tasks;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -504,49 +492,6 @@ public class CookingController implements Initializable {
                         //setText and setStyle
                         for (int i = 0 ; i < taskSequence.length ; i++) {
                     		if (item == Model.recipe.tasks.task.get(taskSequence[i]).getTaskTitle()) {
-                    			/*
-                    		}
-                    			if (Model.recipe.tasks.task.get(taskSequence[i]).attentionRequired == false) {
-                    				boolean timerActivated = false;
-                    				for (int n = 0 ; n < countdownTimerArray.size() ; n++) {
-                    					if (Model.recipe.tasks.task.get(taskSequence[i]).getID() == countdownTimerArray.get(n).getID()) {
-                    						if (i == currentTask) {
-				                                //setStyle("-fx-control-inner-background: purple;");
-                    							setText(">> "+(i+1)+". "+Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
-				                            } else {
-				                            	//setStyle("-fx-control-inner-background: yellow;");
-				                            	setText((i+1)+". "+Model.secondsToCollapsingHHMMSS(countdownTimerArray.get(n).getTimeLeft())+" - "+item);
-				                            }
-                    						timerActivated = true;
-                    						break;
-                    					}
-                    				}
-                    				if (timerActivated == false) {
-                    					setText((i+1)+". "+item);
-                    					if (i < currentTask) {
-			                            	//setStyle("-fx-control-inner-background: green;");
-			                            } else if (i == currentTask) {
-			                                //setStyle("-fx-control-inner-background: purple;");
-			                            	setText("> "+(i+1)+". "+item);
-			                            } else {
-			                                //setStyle("-fx-control-inner-background: red;");
-			                            }
-                    					break;
-                    				}
-                    			} else {
-                    				setText((i+1)+". "+item);
-                    				if (i < currentTask) {
-		                            	//setStyle("-fx-control-inner-background: green;");
-		                            } else if (i == currentTask) {
-		                                //setStyle("-fx-control-inner-background: purple;");
-		                            	setText("-> "+(i+1)+". "+item);
-		                            	listView.getFocusModel().focus(i);
-		                            } else {
-		                                //setStyle("-fx-control-inner-background: red;");
-		                            }
-                    				break;
-                    			}
-                    			*/
                     			if (i != currentTask) {
                     				setText((i+1)+". "+item);
 	                            } else if (i == currentTask) {

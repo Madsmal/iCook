@@ -1,14 +1,10 @@
 package application;
 
-import java.io.File;
 import java.io.IOException;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,7 +14,6 @@ public class Main extends Application {
 		Model.primaryStage = primaryStage;
 		Model.parseIni();
 		
-		
 		Parent root = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("iCook");
@@ -27,7 +22,7 @@ public class Main extends Application {
 	}
 	
 	// Raspberry pi 3 screen resolution 800x480	
-	
+
 	// frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); til at lukke vindue på raspberry.
 		
 	public static void main(String[] args) throws IOException, Exception {
