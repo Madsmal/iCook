@@ -78,7 +78,7 @@ public class Algorithm extends CookingController {
 		return taskSequence;
 	} 
 
-	public int calculateWorktime() {
+	public String calculateWorktime() {
 
 		int workTime = 0;
 
@@ -116,9 +116,10 @@ public class Algorithm extends CookingController {
 		//			}
 		//
 		//		}
-		System.out.println(workTime);
-
-		return workTime;
+		String str1 = Integer.toString(workTime);
+		System.out.println(str1);
+		
+		return str1;
 	}
 
 	public int calculateTotaltime() {
