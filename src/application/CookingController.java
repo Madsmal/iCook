@@ -73,9 +73,10 @@ public class CookingController implements Initializable {
 	    task.setMaxWidth(500);
 
 		
-		Algorithm algorithm = new Algorithm(); 
-		algorithm.calculateTaskSequence();
-		//algorithm.longestPath();
+	    //		Algorithm algorithm = new Algorithm(); 
+	    //		algorithm.calculateTaskSequence();
+	    //		algorithm.calculateWorktime();
+		//		algorithm.longestPath();
 		
 		//TEMPORARY START
 	    

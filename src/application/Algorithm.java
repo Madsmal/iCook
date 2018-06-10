@@ -8,12 +8,10 @@ import org.apache.commons.lang3.ArrayUtils;
 public class Algorithm extends CookingController {
 
 	public int[] calculateTaskSequence() {
-		
-		int totalTime = Integer.parseInt(Model.recipe.duration.totaltime);
 
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		int count = 1;
-		
+
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
@@ -23,19 +21,18 @@ public class Algorithm extends CookingController {
 				count++;
 			}
 		}
-		
+
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
-//			String x = Model.recipe.tasks.task.get(i).children[0];
-//			String[] newChildren = x.replaceAll("\"", "").split(","); 
-//			System.out.println(newChildren.length);
-			
+			//			String x = Model.recipe.tasks.task.get(i).children[0];
+			//			String[] newChildren = x.replaceAll("\"", "").split(","); 
+			//			System.out.println(newChildren.length);
+
 			// Checks if attReq = false and children = 0 and parent = 0 (which means that the node is alone), then it should be moved to front of array to reduce time used. 
 			if(i != Model.recipe.tasks.task.size()-1) {
 				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
 						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-					totalTime = (totalTime - Model.recipe.tasks.task.get(i).time)/60;
 				}
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
@@ -54,15 +51,14 @@ public class Algorithm extends CookingController {
 			}		
 		}
 		System.out.println(sequence);
-		
+
 		// Should this be moved to for-loop above? Look into later (Mads).
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-						if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
-							sequence.remove(i);
-							sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-							totalTime = (totalTime - Model.recipe.tasks.task.get(i).time)/60;
-						}	
+			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
+				sequence.remove(i);
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+			}	
 			// Note: this piece is not necessary. The child shouldn't move ahead in the array - this could be discussed but I decided not to.
 			//			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 			//				System.out.println(Model.recipe.tasks.task.get(i).ID);
@@ -71,20 +67,10 @@ public class Algorithm extends CookingController {
 			//			}
 
 		}
-		
-		
-		if(totalTime < 0) {
-			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
-					totalTime = (totalTime +  Model.recipe.tasks.task.get(i).time)/60;
-				}
-			}
-			// Hvis totaltime < 0, returner den samlede tid for de tasks hvor attReq er true
-			// temp fix - will discuss another method for totalTime calculation
-		}
-		
-		
-		System.out.println(totalTime);
+
+
+
+
 		// Stream converts List<integer> to int[].
 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
@@ -92,10 +78,52 @@ public class Algorithm extends CookingController {
 		return taskSequence;
 	} 
 
+	public double calculateWorktime() {
+
+		double workTime = Integer.parseInt(Model.recipe.duration.totaltime);
+
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+
+			//			String x = Model.recipe.tasks.task.get(i).children[0];
+			//			String[] newChildren = x.replaceAll("\"", "").split(","); 
+			//			System.out.println(newChildren.length);
+
+			// Checks if attReq = false and children = 0 and parent = 0 (which means that the node is alone), then it should be moved to front of array to reduce time used. 
+			if(i != Model.recipe.tasks.task.size()-1) {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
+					workTime = (workTime - Model.recipe.tasks.task.get(i).time)/60;
+				}
+				else {
+				}
+			}
+		}
+
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
+				workTime = (workTime - Model.recipe.tasks.task.get(i).time)/60;
+			}	
+		}
+		// TotalTime = 
+
+		if(workTime < 0) {
+			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
+					workTime = (int) workTime +  Model.recipe.tasks.task.get(i).time;
+					
+				}
+			}
+
+		}
+		System.out.println(workTime);
+
+		return workTime;
+	}
+
 	public int[] longestPath() {
 
 		int test = 0;
-		
+
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		ArrayList<Integer> tests = new ArrayList<Integer>();
 		// If a node has a child and that child has a child, then it has to be the index after the node. Note: Last index can't have a child.
@@ -119,7 +147,7 @@ public class Algorithm extends CookingController {
 			}
 			//System.out.println(tests);
 		}
-		
+
 		//		if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 		//				System.out.println("id: " + Model.recipe.tasks.task.get(i).ID);
 		//
@@ -137,8 +165,8 @@ public class Algorithm extends CookingController {
 		//				}
 		//				if(ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, i+1)) {
 		//					System.out.println("i: " + Model.recipe.tasks.task.get(i).ID);
-		
-		
+
+
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
