@@ -118,11 +118,11 @@ public class Algorithm extends CookingController {
 		//		}
 		String str1 = Integer.toString(workTime);
 		System.out.println(str1);
-		
+
 		return str1;
 	}
 
-	public int calculateTotaltime() {
+	public String calculateTotaltime() {
 
 		int totalTime = 0;
 		int count = 1;
@@ -139,29 +139,49 @@ public class Algorithm extends CookingController {
 					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
 				} 			
 				else if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
+					while (true) {
 						if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")  && 
 								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
 							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+							System.out.println("here " + totalTime);
 							count++;
-					} 
+						} else {
+							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+							break; 
+						} 
+					}
 				} else if (Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
-
-					if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
-							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-						if(Model.recipe.tasks.task.get(i+count+1).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).children, "0") && 
-								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).parents, "0")) {
-							totalTime = Model.recipe.tasks.task.get(i+count).time - Model.recipe.tasks.task.get(i+count+1).time; 
+					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+						if(Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
 							count++;
+							totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+						}	
+						else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+							
+							while (true) {
+								if(Model.recipe.tasks.task.get(i+count+1).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).children, "0") && 
+										!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).parents, "0")) {
+									totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time - Model.recipe.tasks.task.get(i+count+1).time; 
+									count++;
+								} else {
+									totalTime = totalTime - Model.recipe.tasks.task.get(i+count+1).time;
+									break; 
+								} 
+							}
+
+						} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+							System.out.println("DAB ");
+
+							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
 						}
-					} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
-							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-						totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
-					}
-					else {
-						count++;
-						totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
-					}
-					count = 1;
+						else if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")){
+							count++;
+							totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+						}  
 				} 
 
 			}
@@ -186,8 +206,10 @@ public class Algorithm extends CookingController {
 				}			
 			}
 		}
-		System.out.println(totalTime);
-		return totalTime;
+
+		String str1 = Integer.toString(totalTime);
+		System.out.println(str1);
+		return str1;
 	}
 
 
