@@ -189,6 +189,8 @@ public class RecipesController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//Model.recipe.duration.setTotaltime(CalculateTotalTime);
+		//Model.recipe.duration.setTotaltime(CalculateWorkTime);
 	}
 	
 	private void updateLabels() {
