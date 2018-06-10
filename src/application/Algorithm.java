@@ -78,9 +78,9 @@ public class Algorithm extends CookingController {
 		return taskSequence;
 	} 
 
-	public double calculateWorktime() {
+	public int calculateWorktime() {
 
-		double workTime = Integer.parseInt(Model.recipe.duration.totaltime);
+		int workTime = 0;
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
@@ -90,35 +90,105 @@ public class Algorithm extends CookingController {
 
 			// Checks if attReq = false and children = 0 and parent = 0 (which means that the node is alone), then it should be moved to front of array to reduce time used. 
 			if(i != Model.recipe.tasks.task.size()-1) {
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
-						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
-					workTime = (workTime - Model.recipe.tasks.task.get(i).time)/60;
+				if(Model.recipe.tasks.task.get(i).attentionRequired == true) {
+					workTime = workTime + Model.recipe.tasks.task.get(i).time;
 				}
 				else {
+					workTime = workTime + 0;
 				}
+			}
+			else {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == true) {
+					workTime = workTime + Model.recipe.tasks.task.get(i).time;
+				}
+				else {
+					workTime = workTime + 0;
+				}			
 			}
 		}
 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
-				workTime = (workTime - Model.recipe.tasks.task.get(i).time)/60;
-			}	
-		}
-		// TotalTime = 
-
-		if(workTime < 0) {
-			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
-					workTime = (int) workTime +  Model.recipe.tasks.task.get(i).time;
-					
-				}
-			}
-
-		}
+		//		if(workTime < 0) {
+		//			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+		//				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
+		//					workTime = workTime +  Model.recipe.tasks.task.get(i).time;
+		//
+		//				}
+		//			}
+		//
+		//		}
 		System.out.println(workTime);
 
 		return workTime;
 	}
+
+	public int calculateTotaltime() {
+
+		int totalTime = 0;
+		int count = 1;
+
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+
+			//			String x = Model.recipe.tasks.task.get(i).children[0];
+			//			String[] newChildren = x.replaceAll("\"", "").split(","); 
+			//			System.out.println(newChildren.length);
+
+			// Checks if attReq = false and children = 0 and parent = 0 (which means that the node is alone), then it should be moved to front of array to reduce time used. 
+			if(i == 0) {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == true && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
+					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+				} 			
+				else if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
+						if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")  && 
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+							count++;
+					} 
+				} else if (Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
+
+					if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+						if(Model.recipe.tasks.task.get(i+count+1).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).children, "0") && 
+								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).parents, "0")) {
+							totalTime = Model.recipe.tasks.task.get(i+count).time - Model.recipe.tasks.task.get(i+count+1).time; 
+							count++;
+						}
+					} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+						totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+					}
+					else {
+						count++;
+						totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+					}
+					count = 1;
+				} 
+
+			}
+			else if(i != Model.recipe.tasks.task.size() - 1 && i > 0) {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == true && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
+					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+				}
+				else if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+					totalTime = totalTime + 0;
+				}
+			}
+			else {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == true  && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+				}
+				else if (Model.recipe.tasks.task.get(i).attentionRequired == false  && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
+						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
+					totalTime = totalTime + 0;
+				}			
+			}
+		}
+		System.out.println(totalTime);
+		return totalTime;
+	}
+
 
 	public int[] longestPath() {
 
