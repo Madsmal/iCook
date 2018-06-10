@@ -35,7 +35,7 @@ public class Algorithm extends CookingController {
 				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
 						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-					totalTime = totalTime - Model.recipe.tasks.task.get(i).time;
+					totalTime = (totalTime - Model.recipe.tasks.task.get(i).time)/60;
 				}
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
@@ -61,7 +61,7 @@ public class Algorithm extends CookingController {
 						if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
 							sequence.remove(i);
 							sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-							totalTime = totalTime - Model.recipe.tasks.task.get(i).time;
+							totalTime = (totalTime - Model.recipe.tasks.task.get(i).time)/60;
 						}	
 			// Note: this piece is not necessary. The child shouldn't move ahead in the array - this could be discussed but I decided not to.
 			//			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
@@ -76,7 +76,7 @@ public class Algorithm extends CookingController {
 		if(totalTime < 0) {
 			for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 				if (Model.recipe.tasks.task.get(i).attentionRequired == true){
-					totalTime = totalTime +  Model.recipe.tasks.task.get(i).time;
+					totalTime = (totalTime +  Model.recipe.tasks.task.get(i).time)/60;
 				}
 			}
 			// Hvis totaltime < 0, returner den samlede tid for de tasks hvor attReq er true
