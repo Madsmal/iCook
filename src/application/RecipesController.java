@@ -189,8 +189,10 @@ public class RecipesController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Algorithm algorithm = new Algorithm(); 
+		Algorithm algorithm = new Algorithm();
+		algorithm.calculateTaskSequence();
 	    Model.recipe.duration.setWorktime(algorithm.calculateWorktime());
+	    Model.recipe.duration.setTotaltime(algorithm.calculateTotaltime());
 		//Model.recipe.duration.setTotaltime(CalculateTotalTime);
 		//Model.recipe.duration.setTotaltime(CalculateWorkTime);
 	}

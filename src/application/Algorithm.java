@@ -11,7 +11,7 @@ public class Algorithm extends CookingController {
 
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		int count = 1;
-
+		
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
@@ -21,7 +21,7 @@ public class Algorithm extends CookingController {
 				count++;
 			}
 		}
-
+		
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
 			//			String x = Model.recipe.tasks.task.get(i).children[0];
@@ -50,8 +50,8 @@ public class Algorithm extends CookingController {
 
 			}		
 		}
-		System.out.println(sequence);
-
+		
+		//System.out.println(sequence);
 		// Should this be moved to for-loop above? Look into later (Mads).
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
@@ -72,7 +72,7 @@ public class Algorithm extends CookingController {
 
 
 		// Stream converts List<integer> to int[].
-
+		//System.out.println(sequence);
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		// System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
@@ -117,7 +117,7 @@ public class Algorithm extends CookingController {
 		//
 		//		}
 		String str1 = Integer.toString(workTime);
-		System.out.println(str1);
+		//System.out.println(str1);
 
 		return str1;
 	}
@@ -208,7 +208,7 @@ public class Algorithm extends CookingController {
 		}
 
 		String str1 = Integer.toString(totalTime);
-		System.out.println(str1);
+		//System.out.println(str1);
 		return str1;
 	}
 
@@ -261,7 +261,7 @@ public class Algorithm extends CookingController {
 
 
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		System.out.println(java.util.Arrays.toString(taskSequence));
+		//System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
 	}
 
