@@ -68,9 +68,6 @@ public class Algorithm extends CookingController {
 
 		}
 
-
-
-
 		// Stream converts List<integer> to int[].
 		//System.out.println(sequence);
 		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
@@ -143,7 +140,6 @@ public class Algorithm extends CookingController {
 						if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")  && 
 								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
 							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
-							System.out.println("here " + totalTime);
 							count++;
 						} else {
 							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
@@ -173,7 +169,6 @@ public class Algorithm extends CookingController {
 
 						} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
 								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-							System.out.println("DAB ");
 
 							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
 						}
