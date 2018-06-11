@@ -10,6 +10,7 @@ public class Algorithm extends CookingController {
 	public int[] calculateTaskSequence() {
 
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
+		int[] taskSequence = new int[0];
 		int count = 1;
 		
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
@@ -69,11 +70,11 @@ public class Algorithm extends CookingController {
 		}
 
 		// Stream converts List<integer> to int[].
-		//System.out.println(sequence);
-		int[] taskSequence = sequence.stream().mapToInt(i->i).toArray();
+	    taskSequence = sequence.stream().mapToInt(i->i).toArray();
+		//System.out.println(java.util.Arrays.toString(taskSequence));
 		return taskSequence;
 	} 
-
+	
 	public String calculateWorktime() {
 
 		int workTime = 0;
