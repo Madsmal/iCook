@@ -190,7 +190,7 @@ public class RecipesController implements Initializable {
 			e.printStackTrace();
 		}
 		Algorithm algorithm = new Algorithm();
-		algorithm.calculateTaskSequence();
+		//algorithm.calculateTaskSequence();
 	    Model.recipe.duration.setWorktime(algorithm.calculateWorktime());
 	    Model.recipe.duration.setTotaltime(algorithm.calculateTotaltime());
 		//Model.recipe.duration.setTotaltime(CalculateTotalTime);
