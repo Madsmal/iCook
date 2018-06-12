@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-//https://www.thoughts-on-java.org/generate-your-jaxb-classes-in-second/
 /**
  * <p>Java class for anonymous complex type.
  * 
@@ -925,3 +924,8 @@ public class Recipe {
     }
 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/Madsmal/iCook

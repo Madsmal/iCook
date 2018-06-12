@@ -73,19 +73,28 @@ public class CookingController implements Initializable {
 	    task.setMaxWidth(500);
 
 		
-		Algorithm algorithm = new Algorithm(); 
-		algorithm.calculateTaskSequence();
-		//algorithm.longestPath();
+	    		Algorithm algorithm = new Algorithm(); 
+	    		algorithm.calculateTaskSequence();
+        //	    algorithm.calculateWorktime();
+	    //		algorithm.calculateTotaltime();
+		//		algorithm.longestPath();
 		
 		//TEMPORARY START
-	    
-						taskSequence[0] = 0;
-						taskSequence[1] = 1;
-						taskSequence[2] = 2;
-						taskSequence[3] = 6;
-						taskSequence[4] = 4;
-						taskSequence[5] = 5;
-						taskSequence[6] = 3;
+	    		//System.out.println(java.util.Arrays.toString(algorithm.calculateTaskSequence()));
+	    		taskSequence = algorithm.calculateTaskSequence();
+	    		System.out.println(java.util.Arrays.toString(taskSequence));
+	    		int test = 0;
+	    		for(int i = 0; i < taskSequence.length; i++) {
+	    			taskSequence[i] = test;
+	    			test++;
+	    		}
+//						taskSequence[2] = 0;
+//						taskSequence[1] = 1;
+//						taskSequence[0] = 2;
+//						taskSequence[3] = 3;
+//						taskSequence[4] = 4;
+//						taskSequence[5] = 5;
+//						taskSequence[6] = 3;
 		//TEMPORARY END
 						
 		// listview
