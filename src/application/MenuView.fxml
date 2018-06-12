@@ -14,14 +14,14 @@
             <Image url="@Images/cuttingboard1.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="331.0" layoutY="196.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Recipes" />
+      <Button layoutX="331.0" layoutY="185.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Recipes" />
       <Text layoutX="332.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iCook" textAlignment="CENTER" wrappingWidth="136.99999952316284">
          <font>
             <Font name="Pristina" size="77.0" />
          </font>
       </Text>
-      <Button layoutX="331.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
-      <Button layoutX="332.0" layoutY="392.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="35.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
+      <Button layoutX="331.0" layoutY="289.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
+      <Button layoutX="332.0" layoutY="381.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
       <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="26.0" layoutY="25.0" onMouseClicked="#onSettings" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/settings-cog2.png" />

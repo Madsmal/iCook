@@ -22,7 +22,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class RecipesController implements Initializable {
+public class EditRecipeController implements Initializable {
 	
 	// Defining FXML elements
 	@FXML Label title;
@@ -37,15 +37,9 @@ public class RecipesController implements Initializable {
 	@FXML PieChart chart;
 	@FXML ImageView RecipeImageView;
 	
-	@FXML MenuItem serving1 = new MenuItem("Option 1");
-	@FXML MenuItem serving2 = new MenuItem("Option 2");
-	@FXML MenuItem serving3 = new MenuItem("Option 3");
-	@FXML MenuItem serving4 = new MenuItem("Option 4");
-	@FXML MenuButton servingAmount = new MenuButton("Options", null, serving1, serving2, serving3, serving4);
 	
+	public static String selectedName;
 	
-	
-
 	
 
 	// Initialising the listview
@@ -59,7 +53,7 @@ public class RecipesController implements Initializable {
 		File folder = new File("src/application/RecipeLibrary");
 		File[] listOfFiles = folder.listFiles();
 
-		String[] recipeLibraryList = new String[listOfFiles.length-1]; 
+		String[] recipeLibraryList = new String[listOfFiles.length]; 
 
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if (listOfFiles[i].isFile() && !"rezepte.dtd".equals(listOfFiles[i].getName()) ) {
@@ -78,6 +72,8 @@ public class RecipesController implements Initializable {
 		// Action on listView selection
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				selectedName = newValue;
+				
 				
 				Model.parsedFileName = newValue;
 				//parse selected recipe
@@ -119,41 +115,9 @@ public class RecipesController implements Initializable {
 		
 		//selects the first recipe in the listView as default
 		listView.getSelectionModel().select(0);
-		
-		
-		//serving amount menu
-		serving1.setOnAction(event -> {
-			parseXML();
-			Model.servingAmount = 1;
-			Model.ingredientsQuantityMultiplier(1);
-		    updateLabels();
-		    servingAmount.setText("Servings: 1");
-		});
-		serving2.setOnAction(event -> {
-			parseXML();
-			Model.servingAmount = 2;
-			Model.ingredientsQuantityMultiplier(2);
-		    updateLabels();
-		    servingAmount.setText("Servings: 2");
-		});
-		serving3.setOnAction(event -> {
-			parseXML();
-			Model.servingAmount = 3;
-			Model.ingredientsQuantityMultiplier(3);
-		    updateLabels();
-		    servingAmount.setText("Servings: 3");
-		});
-		serving4.setOnAction(event -> {
-			parseXML();
-			Model.servingAmount = 4;
-			Model.ingredientsQuantityMultiplier(4);
-		    updateLabels();
-		    servingAmount.setText("Servings: 4");
-		});
-		
-
+	
 	}
-
+	
 	// Events
 	public void onHome(ActionEvent event) throws Exception {
 		Parent home = FXMLLoader.load(getClass().getResource("/application/MenuView.fxml"));
@@ -175,12 +139,15 @@ public class RecipesController implements Initializable {
 		} 
 	}
 	
-	public void OnCalDis (ActionEvent event) throws Exception {
-		Parent calories = FXMLLoader.load(getClass().getResource("/application/PieChartView.fxml"));
-		Scene pChart = new Scene(calories);
-		Model.primaryStage.setScene(pChart);		
-		Model.primaryStage.show();
+	public void onEditRecipe (ActionEvent event) throws Exception {
 		
+		if(selectedName==null)
+			return;
+		EditorController.editMode = true;
+		Parent addRecipe = FXMLLoader.load(getClass().getResource("/application/AddRecipeView.fxml"));
+		Scene AddRecipe = new Scene(addRecipe);
+		Model.primaryStage.setScene(AddRecipe);
+		Model.primaryStage.show();
 	}
 
 	// methods
