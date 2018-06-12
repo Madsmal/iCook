@@ -69,41 +69,19 @@ public class CookingController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle rb) {
-		// label wrapping width
-	    task.setMaxWidth(500);
 
 		
-	    		Algorithm algorithm = new Algorithm(); 
-	    //		algorithm.calculateTaskSequence();
-        //	    algorithm.calculateWorktime();
-	    //		algorithm.calculateTotaltime();
-		//		algorithm.longestPath();
+		Algorithm algorithm = new Algorithm(); 
+		//System.out.println(java.util.Arrays.toString(algorithm.calculateTaskSequence()));
+		taskSequence = algorithm.calculateTaskSequence();
+		System.out.println(java.util.Arrays.toString(taskSequence));
 		
-		//TEMPORARY START
-	    		//System.out.println(java.util.Arrays.toString(algorithm.calculateTaskSequence()));
-	    		taskSequence = algorithm.calculateTaskSequence();
-	    		System.out.println(java.util.Arrays.toString(taskSequence));
-	    		int test = 0;
-	    		
-	    		// Træk 1 fra taskSequence for hvert index.
-	    		
-	    		for(int i = 0; i < taskSequence.length; i++) {
-	    			
-	    			test++;
-	    			// System.out.println("test " + (test-1));
-	    			// System.out.println("taskSeq " + (taskSequence[i]-1));
-	    			taskSequence[test-1] = taskSequence[i]-1;
-	    			
-	    		}
-	    		
-//						taskSequence[0] = 5;
-//						taskSequence[1] = 4;
-//						taskSequence[2] = 3;
-//						taskSequence[3] = 0;
-//						taskSequence[4] = 1;
-//						taskSequence[5] = 2;
-//						taskSequence[6] = 6;
-		//TEMPORARY END
+		
+		int test = 0;
+		for(int i = 0; i < taskSequence.length; i++) {
+			test++;
+			taskSequence[test-1] = taskSequence[i]-1;
+		}
 						
 		// listview
 		String[] taskSequenceStringArray = new String[taskSequence.length];
@@ -195,30 +173,48 @@ public class CookingController implements Initializable {
 
 						// Intermediate-task progress bar update
 						if (currentTask != taskSequence.length) {
-							if (currentTask == taskSequence.length - 1) {
-								
-								int largestCountdownTimer = 0;
-								int largestCountdownTimerTimePassed = 0;
-								for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
-									if (countdownTimerArray.get(i).getTimeLeft() > largestCountdownTimer) {
-										largestCountdownTimer = countdownTimerArray.get(i).getTimeLeft(); 
-										largestCountdownTimerTimePassed = countdownTimerArray.get(i).getTimePassed(); 
-									}
+							
+							int largestCountdownTimer = 0;
+							int largestCountdownTimerTimePassed = 0;
+							int largestCountdownTimerTotalTime = 0;
+							for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+								if (countdownTimerArray.get(i).getTimeLeft() > largestCountdownTimer) {
+									largestCountdownTimerTotalTime = countdownTimerArray.get(i).getTotalTime(); 
+									largestCountdownTimer = countdownTimerArray.get(i).getTimeLeft(); 
+									largestCountdownTimerTimePassed = countdownTimerArray.get(i).getTimePassed(); 
 								}
-								
+							}
+							
+							double divider;
+							if (Model.recipe.tasks.task.get(taskSequence[currentTask]).attentionRequired == true) {
+								if ((timePassed + countdownTimer2.getTimePassed() + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
+									divider = timePassed + largestCountdownTimerTotalTime;
+								} else {
+									divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
+								}
+							} else {
+								if ((timePassed + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
+									divider = timePassed + largestCountdownTimerTotalTime;
+								} else {
+									divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
+								}
+							}
+							System.out.println((timePassed + largestCountdownTimer)+" >= "+Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+							if (currentTask == taskSequence.length - 1) {	
 								if (Model.recipe.tasks.task.get(taskSequence[taskSequence.length-1]).attentionRequired == true) {
-									if (largestCountdownTimerTimePassed > countdownTimer2.getTimeLeft()) {
-										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+									if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
+										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
+										System.out.println((timePassed + largestCountdownTimerTimePassed) + "/" + divider +"="+((timePassed + largestCountdownTimerTimePassed)/divider));
 									} else {
-										pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+										pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
 									}
 								} else {
-									pb.setProgress((timePassed + largestCountdownTimerTimePassed)/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+									pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
 								}
 								
 							} else {
 								if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
-									pb.setProgress((timePassed + countdownTimer2.getTimePassed())/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
+									pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
 								}
 							}
 						}
@@ -348,8 +344,8 @@ public class CookingController implements Initializable {
 		if (currentTask != taskSequence.length) {
 		timePassed = 0;
 		for (int i = 0 ; i < currentTask ; i++) {
-			if (Model.recipe.tasks.task.get(i).getAttentionRequired() == true) {
-				timePassed = timePassed + (Model.recipe.tasks.task.get(i).getTime());
+			if (Model.recipe.tasks.task.get(taskSequence[i]).getAttentionRequired() == true) {
+				timePassed = timePassed + (Model.recipe.tasks.task.get(taskSequence[i]).getTime());
 			}
 		}
 		pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
