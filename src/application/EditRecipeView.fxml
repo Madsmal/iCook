@@ -8,6 +8,8 @@
 <AnchorPane prefHeight="480.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="application.EditRecipeController">
    <children>
       <ListView fx:id="listView" fixedCellSize="36.0" layoutX="10.0" layoutY="10.0" prefHeight="437.0" prefWidth="232.0" />
-      <Button layoutX="592.0" layoutY="152.0" mnemonicParsing="false" onAction="#onEditRecipe" text="Edit" />
+      <Button layoutX="672.0" layoutY="267.0" mnemonicParsing="false" onAction="#onEditRecipe" prefHeight="46.0" prefWidth="123.0" text="Edit" />
+      <Button layoutX="672.0" layoutY="369.0" mnemonicParsing="false" onAction="#onBackToEditor" prefHeight="46.0" prefWidth="123.0" text="Back to editor" />
+      <Button layoutX="672.0" layoutY="427.0" mnemonicParsing="false" onAction="#onExit" prefHeight="46.0" prefWidth="123.0" text="Back to main menu" />
    </children>
 </AnchorPane>
