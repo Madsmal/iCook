@@ -172,52 +172,7 @@ public class CookingController implements Initializable {
 						}
 
 						// Intermediate-task progress bar update
-						if (currentTask != taskSequence.length) {
-							
-							int largestCountdownTimer = 0;
-							int largestCountdownTimerTimePassed = 0;
-							int largestCountdownTimerTotalTime = 0;
-							for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
-								if (countdownTimerArray.get(i).getTimeLeft() > largestCountdownTimer) {
-									largestCountdownTimerTotalTime = countdownTimerArray.get(i).getTotalTime(); 
-									largestCountdownTimer = countdownTimerArray.get(i).getTimeLeft(); 
-									largestCountdownTimerTimePassed = countdownTimerArray.get(i).getTimePassed(); 
-								}
-							}
-							
-							double divider;
-							if (Model.recipe.tasks.task.get(taskSequence[currentTask]).attentionRequired == true) {
-								if ((timePassed + countdownTimer2.getTimePassed() + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
-									divider = timePassed + largestCountdownTimerTotalTime;
-								} else {
-									divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
-								}
-							} else {
-								if ((timePassed + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
-									divider = timePassed + largestCountdownTimerTotalTime;
-								} else {
-									divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
-								}
-							}
-							System.out.println((timePassed + largestCountdownTimer)+" >= "+Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
-							if (currentTask == taskSequence.length - 1) {	
-								if (Model.recipe.tasks.task.get(taskSequence[taskSequence.length-1]).attentionRequired == true) {
-									if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
-										pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
-										System.out.println((timePassed + largestCountdownTimerTimePassed) + "/" + divider +"="+((timePassed + largestCountdownTimerTimePassed)/divider));
-									} else {
-										pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
-									}
-								} else {
-									pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
-								}
-								
-							} else {
-								if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
-									pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
-								}
-							}
-						}
+						updateIntermediateProgressBar();
 
 						// Update 'next' setDisable() value on second last page
 						if (currentTask == taskSequence.length - 1 && countdownTimerArray.isEmpty()) {
@@ -351,6 +306,55 @@ public class CookingController implements Initializable {
 		pb.setProgress(timePassed/Double.parseDouble(Model.recipe.getDuration().getTotaltime()));
 		} else {
 			pb.setProgress(1);
+		}
+		updateIntermediateProgressBar();
+	}
+	
+	private void updateIntermediateProgressBar() {
+		if (currentTask != taskSequence.length) {
+			
+			int largestCountdownTimer = 0;
+			int largestCountdownTimerTimePassed = 0;
+			int largestCountdownTimerTotalTime = 0;
+			for (int i = 0 ; i < countdownTimerArray.size() ; i++) {
+				if (countdownTimerArray.get(i).getTimeLeft() > largestCountdownTimer) {
+					largestCountdownTimerTotalTime = countdownTimerArray.get(i).getTotalTime(); 
+					largestCountdownTimer = countdownTimerArray.get(i).getTimeLeft(); 
+					largestCountdownTimerTimePassed = countdownTimerArray.get(i).getTimePassed(); 
+				}
+			}
+			
+			double divider;
+			if (Model.recipe.tasks.task.get(taskSequence[currentTask]).attentionRequired == true) {
+				if ((timePassed + countdownTimer2.getTimePassed() + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
+					divider = timePassed + largestCountdownTimerTotalTime;
+				} else {
+					divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
+				}
+			} else {
+				if ((timePassed + largestCountdownTimer) > Double.parseDouble(Model.recipe.getDuration().getTotaltime())) {
+					divider = timePassed + largestCountdownTimerTotalTime;
+				} else {
+					divider = Double.parseDouble(Model.recipe.getDuration().getTotaltime());
+				}
+			}
+			
+			if (currentTask == taskSequence.length - 1) {	
+				if (Model.recipe.tasks.task.get(taskSequence[taskSequence.length-1]).attentionRequired == true) {
+					if (largestCountdownTimer > countdownTimer2.getTimeLeft()) {
+						pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
+					} else {
+						pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
+					}
+				} else {
+					pb.setProgress((timePassed + largestCountdownTimerTimePassed)/divider);
+				}
+				
+			} else {
+				if (Model.recipe.getTasks().getTask().get(taskSequence[currentTask]).getAttentionRequired() == true) {
+					pb.setProgress((timePassed + countdownTimer2.getTimePassed())/divider);
+				}
+			}
 		}
 	}
 
