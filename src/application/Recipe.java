@@ -924,8 +924,3 @@ public class Recipe {
     }
 
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> branch 'master' of https://github.com/Madsmal/iCook
