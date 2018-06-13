@@ -16,10 +16,14 @@ public class Algorithm extends CookingController {
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 			if(Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
-				if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
-					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				if(i+count == Model.recipe.tasks.task.size()) {
+					break;
 				}
-				count++;
+				else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
+					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+					count++;
+				} 
+				
 			}
 		}
 		
