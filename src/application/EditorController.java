@@ -129,7 +129,6 @@ public class EditorController implements Initializable {
 		rec.setIngredients(new Recipe.Ingredients());
 		for(IngredientUI ui : ingredientUIs) {
 			Recipe.Ingredients.Ingredient ingredient = new Recipe.Ingredients.Ingredient();
-			//ingredient.set
 			ingredient.setIname(ui.getiName().getText());
 			ingredient.setQuantity(ui.getQuantity().getText());
 			ingredient.setUnit(ui.getUnit().getText());
@@ -149,7 +148,9 @@ public class EditorController implements Initializable {
 				continue;
 			taskStringList.add(taskString);
 			Recipe.Tasks.Task task = new Recipe.Tasks.Task();
-			boolean att = ui.getAttention().getSelectionModel().selectedIndexProperty().get()== 0 ? true : false; 
+			boolean att = ui.getAttention().getSelectionModel().selectedIndexProperty().get()== 0 ? true : false;
+			//timerButton.setVisible(false);
+			//timerButton.setManaged(false);
 			task.setTaskTitle(ui.getTaskTitle().getText());
 			task.setAlertString(ui.getAlertString().getText());
 			task.setAttentionRequired(att);
@@ -173,7 +174,6 @@ public class EditorController implements Initializable {
 			} else {
 				Model.parseXMLFile(path);
 				Recipe r = Model.recipe;
-				//rec.setStartdate(r.getStartdate());
 				Date now = new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY");
 			
