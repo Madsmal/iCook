@@ -97,6 +97,7 @@ public class RecipesController implements Initializable {
 				File fileGIF = new File("src/application/RecipeImages/" + newValue + ".gif");
 				File fileBMP = new File("src/application/RecipeImages/" + newValue + ".bmp");
 				File fileJPG = new File("src/application/RecipeImages/" + newValue + ".jpg");
+				File missingPicture = new File("src/application/Images/questionMark.jpg");
 
 				Image image = null;
 				if (filePNG.exists()) {
@@ -110,6 +111,7 @@ public class RecipesController implements Initializable {
 				} else if (fileJPG.exists()) {
 					image = new Image(fileJPG.toURI().toString());
 				} else {
+					image = new Image(missingPicture.toURI().toString());
 					System.out.println("ERROR: The recipe \""+newValue+"\" is missing an associated image");
 				}
 

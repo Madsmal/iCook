@@ -59,4 +59,7 @@ public class CountdownTimer {
 		return timePassed;
 	}
 	
+	public int getTotalTime() {
+		return totalTime;
+	}
 }
