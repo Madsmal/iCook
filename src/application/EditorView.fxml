@@ -15,9 +15,9 @@
                   <Image url="@Images/cuttingboard2.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="293.0" layoutY="125.0" mnemonicParsing="false" onAction="#onAddRecipe" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Add recipe" />
-            <Button layoutX="293.0" layoutY="214.0" mnemonicParsing="false" onAction="#onEditRecipe" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Edit or delete recipe" />
-            <Button layoutX="293.0" layoutY="300.0" mnemonicParsing="false" onAction="#onExit" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Back to Main Menu" />
+            <Button layoutX="317.0" layoutY="127.0" mnemonicParsing="false" onAction="#onAddRecipe" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Add recipe" />
+            <Button layoutX="317.0" layoutY="216.0" mnemonicParsing="false" onAction="#onEditRecipe" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Edit or delete recipe" />
+            <Button layoutX="317.0" layoutY="302.0" mnemonicParsing="false" onAction="#onExit" prefHeight="52.0" prefWidth="167.0" stylesheets="@Stylesheets/home.css" text="Back to Main Menu" />
          </children>
       </AnchorPane>
    </children>
