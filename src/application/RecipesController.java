@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -56,10 +57,9 @@ public class RecipesController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Inserting values into listview
-		File folder = new File("src/application/RecipeLibrary");
-		File[] listOfFiles = folder.listFiles();
+		File[] listOfFiles = finder("src/application/RecipeLibrary");
 
-		String[] recipeLibraryList = new String[listOfFiles.length-1]; 
+		String[] recipeLibraryList = new String[listOfFiles.length]; 
 
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if (listOfFiles[i].isFile() && !"rezepte.dtd".equals(listOfFiles[i].getName()) ) {
@@ -155,6 +155,17 @@ public class RecipesController implements Initializable {
 		
 
 	}
+	
+	//finds all files with .xml extension which solves the null element issue in listview
+		public File[] finder( String dirName){
+	        File dir = new File(dirName);
+
+	        return dir.listFiles(new FilenameFilter() { 
+	                 public boolean accept(File dir, String filename)
+	                      { return filename.endsWith(".xml"); }
+	        } );
+
+	    }
 
 	// Events
 	public void onHome(ActionEvent event) throws Exception {
