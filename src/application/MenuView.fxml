@@ -13,7 +13,7 @@
          </image>
       </ImageView>
       <Button layoutX="331.0" layoutY="185.0" mnemonicParsing="false" onAction="#onRecipes" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Recipes" />
-      <Button layoutX="331.0" layoutY="289.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
+      <Button layoutX="332.0" layoutY="285.0" mnemonicParsing="false" onAction="#onEditor" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Editor" />
       <Button layoutX="332.0" layoutY="381.0" mnemonicParsing="false" onAction="#onExit" onTouchReleased="#onExit" prefHeight="52.0" prefWidth="137.0" stylesheets="@Stylesheets/home.css" text="Quit" />
       <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="26.0" layoutY="25.0" onMouseClicked="#onSettings" pickOnBounds="true" preserveRatio="true">
          <image>

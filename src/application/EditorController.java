@@ -1,3 +1,7 @@
+/**
+ * @author Saadman Haq s160081
+ */
+
 package application;
 
 import java.io.File;
@@ -33,17 +37,17 @@ import javafx.stage.Stage;
 
 
 public class EditorController implements Initializable {
-	@FXML private TextField filenameText;
 	@FXML private TextField titleText;
 	private byte recipeCount = 0;
-	private final String STORAGE = "src/application/RecipeLibrary/store";
 	@FXML private TextField sourceText;
 	@FXML private TextField startdateText;
 	@FXML private TextField fatText;
 	@FXML private TextField carbsText;
 	@FXML private TextField proteinText;
+	@FXML private TextField caloriesText;
 	@FXML private TextField totaltimeText;
 	@FXML private TextField worktimeText;
+	@FXML private TextField ratingText;
 	@FXML private VBox ingBox;
 	@FXML private VBox taskBox;
 	
@@ -61,28 +65,36 @@ public class EditorController implements Initializable {
 		loadEditFile();		
 	}
 	
-	
+	//make changes to existing recipe (except title)
 	private void loadEditFile() {
-		if(editMode){
+		if(editMode) {
 			editFileName = "src/application/RecipeLibrary/"+EditRecipeController.selectedName+".xml";
-			filenameText.setEditable(false);
+			
 			try {
 				Model.parseXMLFile(editFileName);
 				Recipe rec = Model.recipe;
 				Recipe.Duration recd = rec.getDuration();
 				titleText.setText(rec.getTitle());
-				filenameText.setText(EditRecipeController.selectedName);
+				titleText.setEditable(false);
+				//filenameText.setText(EditRecipeController.selectedName);
 				sourceText.setText(rec.getSource());
 				startdateText.setText(rec.getStartdate());
 				fatText.setText(""+rec.getFat());
 				carbsText.setText(""+rec.getCarbohydrates());
 				proteinText.setText(""+rec.getProtein());
+				caloriesText.setText(rec.getCalories());
+				ratingText.setText(""+rec.getRating());
 				totaltimeText.setText(recd.getTotaltime());
 				worktimeText.setText(recd.getWorktime());
 				
 				List<Recipe.Ingredients.Ingredient> ing = rec.getIngredients().ingredient;
 				for(Recipe.Ingredients.Ingredient e : ing) {
 					addIngredient(e.iname, e.quantity, e.unit);
+				}
+				
+				List<Recipe.Tasks.Task> tk = rec.getTasks().task;
+				for(Recipe.Tasks.Task s : tk) {
+					addTask(""+s.time, s.taskString, s.taskTitle, s.timerString, s.alertString);
 				}
 				
 			} catch (Exception e) {
@@ -101,13 +113,17 @@ public class EditorController implements Initializable {
 		rec.setTitle(titleText.getText());
 		rec.setID(++recipeCount);
 		rec.setSource(sourceText.getText());
+		rec.setStartdate(startdateText.getText());
 		rec.setFat(Float.parseFloat(fatText.getText()));
 		rec.setCarbohydrates(Float.parseFloat(carbsText.getText()));
 		rec.setProtein(Float.parseFloat(proteinText.getText()));
-		rec.setDuration(new Recipe.Duration());
+		rec.setCalories(caloriesText.getText());
+		rec.setRating(Integer.parseInt(ratingText.getText()));
+		
 		Recipe.Duration t = new Recipe.Duration();
 		t.setTotaltime(totaltimeText.getText());
 		t.setWorktime(worktimeText.getText());
+		rec.setDuration(t);
 		
 		
 		rec.setIngredients(new Recipe.Ingredients());
@@ -124,14 +140,14 @@ public class EditorController implements Initializable {
 		
 		rec.setTasks(new Recipe.Tasks());
 		int taskId = 1;
-//		List<String> taskStringList = new ArrayList<String>();
+		List<String> taskStringList = new ArrayList<String>();
 		
 		
 		for(TaskUI ui : taskUIs) {
 			String taskString = ui.getTaskString().getText();
-//			if(taskStringList.contains(taskString))
-//				continue;
-//			taskStringList.add(taskString);
+			if(taskStringList.contains(taskString))
+				continue;
+			taskStringList.add(taskString);
 			Recipe.Tasks.Task task = new Recipe.Tasks.Task();
 			boolean att = ui.getAttention().getSelectionModel().selectedIndexProperty().get()== 0 ? true : false; 
 			task.setTaskTitle(ui.getTaskTitle().getText());
@@ -147,9 +163,7 @@ public class EditorController implements Initializable {
 		
 			taskId++;
 		}
-		
-		
-		String path = "src/application/RecipeLibrary/" + filenameText.getText() + ".xml";
+		String path = "src/application/RecipeLibrary/" + titleText.getText() + ".xml";
 		
 		try {
 			File file = new File(path);
@@ -172,17 +186,9 @@ public class EditorController implements Initializable {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(rec, file);
 			
-			
-			
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
-	}
-
-	
-	public void handle(ActionEvent event) throws Exception {
-//		Recipe r = new Recipe();
-//		r.setIngredients(new ArrayList<Ingredient>);
 	}
 	
 	public void onAddRecipe (ActionEvent event) throws Exception {
@@ -229,7 +235,7 @@ public class EditorController implements Initializable {
 	}
 	
 	private void addIngredient(String name, String q, String uni) {
-		TextField iName = new TextField(name), quan =new TextField(q),unit = new TextField(uni) ;
+		TextField iName = new TextField(name), quan = new TextField(q),unit = new TextField(uni) ;
 		iName.setPromptText("Enter ingredient name");
 		quan.setPromptText("Enter ingredient quantity");
 		unit.setPromptText("Enter ingredient unit");
@@ -243,14 +249,41 @@ public class EditorController implements Initializable {
 	
 	int taskCounter = 1;
 	public void addTaskToUI (ActionEvent event) throws Exception {
-		TextField time = new TextField();
-		TextArea taskString = new TextArea();
-		TextField taskTitle = new TextField();
-		TextField timerString = new TextField();
-		TextField alertString = new TextField();
+		addTask("","","","","");
+//		TextField time = new TextField();
+//		TextArea taskString = new TextArea();
+//		TextField taskTitle = new TextField();
+//		TextField timerString = new TextField();
+//		TextField alertString = new TextField();
+//		
+//		ComboBox<String> attention = new ComboBox<String>();
+//		attention.getItems().add("True");
+//		attention.getItems().add("False");
+//		
+//		time.setPromptText("Enter amount of time for task");
+//		taskString.setPromptText("Describe action of task");
+//		taskTitle.setPromptText("Give the task a title");
+//		timerString.setPromptText("(Optional) Timer title for when you start your timer");
+//		alertString.setPromptText("(Optional) Alert message for when timer runs out");
+//		
+//		taskBox.setSpacing(20);
+//		taskBox.getChildren().addAll(new Label("Task "+ taskCounter), time, taskString, 
+//				taskTitle, timerString, alertString,attention);
+//		taskCounter++;
+//		
+//		taskUIs.add(new TaskUI(time, taskString, taskTitle, alertString, timerString, attention));
+	}
+	
+	private void addTask(String tim, String ts, String tt, String tstr, String astr) {
+		TextField time = new TextField(tim);
+		TextArea taskString = new TextArea(ts);
+		TextField taskTitle = new TextField(tt);
+		TextField timerString = new TextField(tstr);
+		TextField alertString = new TextField(astr);
+		
 		ComboBox<String> attention = new ComboBox<String>();
-		attention.getItems().add("True");
-		attention.getItems().add("False");
+		attention.getItems().add("This task requires my full attention");
+		attention.getItems().add("This task does not require my full attention");
 		
 		time.setPromptText("Enter amount of time for task");
 		taskString.setPromptText("Describe action of task");
@@ -263,8 +296,9 @@ public class EditorController implements Initializable {
 				taskTitle, timerString, alertString,attention);
 		taskCounter++;
 		
-		
+		taskUIs.add(new TaskUI(time, taskString, taskTitle, alertString, timerString, attention));
 	}
+
 	
 	
 	private class IngredientUI{
@@ -297,21 +331,17 @@ public class EditorController implements Initializable {
 		private TextField time;
 		private TextArea taskString;
 		private TextField taskTitle;
-		private TextField parents;
-		private TextField children;
 		private TextField alertString;
 		private TextField timerString;
 		private ComboBox attention;
 		
 		
 		public TaskUI(TextField time, TextArea taskString, TextField taskTitle, TextField alertString,
-				TextField timerString, TextField parents, TextField children, ComboBox attention) {
+				TextField timerString, ComboBox attention) {
 			super();
 			this.time = time;
 			this.taskString = taskString;
 			this.taskTitle = taskTitle;
-			this.parents = parents;
-			this.children = children;
 			this.alertString = alertString;
 			this.timerString = timerString;
 			this.attention = attention;
@@ -327,14 +357,6 @@ public class EditorController implements Initializable {
 		
 		public TextField getTaskTitle() {
 			return taskTitle;
-		}
-		
-		public TextField getParents() {
-			return parents;
-		}
-		
-		public TextField getChildren() {
-			return children;
 		}
 		
 		public TextField getAlertString() {

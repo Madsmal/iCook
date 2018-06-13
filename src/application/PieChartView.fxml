@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PieChartController">
    <children>
-      <Button layoutX="599.0" layoutY="368.0" mnemonicParsing="false" onAction="#onWeightLoss" text="Weight loss diet" />
-      <Button layoutX="100.0" layoutY="368.0" mnemonicParsing="false" onAction="#onBalancedDiet" text="Healthy balanced diet" />
-      <Button layoutX="348.0" layoutY="368.0" mnemonicParsing="false" onAction="#onMuscleGain" text="Muscle gain diet" />
-      <Button layoutX="349.0" layoutY="419.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="102.0" text="Back to recipes" />
+      <Button layoutX="610.0" layoutY="341.0" mnemonicParsing="false" onAction="#onWeightLoss" prefHeight="41.0" prefWidth="175.0" stylesheets="@Stylesheets/home.css" text="Weight loss diet" />
+      <Button layoutX="610.0" layoutY="219.0" mnemonicParsing="false" onAction="#onBalancedDiet" stylesheets="@Stylesheets/home.css" text="Healthy balanced diet" />
+      <Button layoutX="610.0" layoutY="282.0" mnemonicParsing="false" onAction="#onMuscleGain" prefHeight="41.0" prefWidth="175.0" stylesheets="@Stylesheets/home.css" text="Muscle gain diet" />
+      <Button layoutX="610.0" layoutY="398.0" mnemonicParsing="false" onAction="#onBack" prefHeight="41.0" prefWidth="175.0" stylesheets="@Stylesheets/home.css" text="Back to recipes" />
       <PieChart fx:id="piechart" layoutX="150.0" layoutY="14.0" prefHeight="339.0" prefWidth="500.0" AnchorPane.bottomAnchor="126.66666666666669" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="14.0" />
-      <Button layoutX="18.0" layoutY="56.0" mnemonicParsing="false" onAction="#onCurrentMeal" text="Current meal" />
+      <Button layoutX="610.0" layoutY="163.0" mnemonicParsing="false" onAction="#onCurrentMeal" prefHeight="41.0" prefWidth="175.0" stylesheets="@Stylesheets/home.css" text="Current meal" />
       <Label fx:id="caption" layoutX="686.0" layoutY="60.0" prefHeight="41.0" prefWidth="77.0">
          <font>
             <Font size="16.0" />

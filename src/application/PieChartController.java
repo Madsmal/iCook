@@ -1,3 +1,7 @@
+/**
+ * @author Saadman Haq s160081
+ */
+
 package application;
 
 import java.net.URL;
@@ -19,13 +23,9 @@ public class PieChartController implements Initializable {
 	@FXML private PieChart piechart;
 	@FXML private Label caption;
 	
-//	float cals = (float) (Integer.parseInt(Model.recipe.getCalories()));
 	float fat = 9*Model.recipe.getFat();
 	float carbohydrates = 4*Model.recipe.getCarbohydrates();
 	float protein = 4*Model.recipe.getProtein();
-//	float calTotal = fat + carbohydrates + protein;
-//	float calD = cals - calTotal;
-//	float updCarb = 4*Model.recipe.getCarbohydrates() + calD;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
