@@ -74,7 +74,7 @@ public class CookingController implements Initializable {
 		Algorithm algorithm = new Algorithm(); 
 		//System.out.println(java.util.Arrays.toString(algorithm.calculateTaskSequence()));
 		taskSequence = algorithm.calculateTaskSequence();
-		System.out.println(java.util.Arrays.toString(taskSequence));
+		// System.out.println(java.util.Arrays.toString(taskSequence));
 		
 		
 		int test = 0;
