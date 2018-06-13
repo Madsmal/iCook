@@ -21,6 +21,7 @@ import javax.xml.bind.Marshaller;
 
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -152,12 +153,13 @@ public class EditorController implements Initializable {
 			//timerButton.setVisible(false);
 			//timerButton.setManaged(false);
 			task.setTaskTitle(ui.getTaskTitle().getText());
-			task.setAlertString(ui.getAlertString().getText());
 			task.setAttentionRequired(att);
 			task.setTaskString(taskString);
 			task.setTime(Integer.parseInt(ui.getTime().getText()));
-			task.setTimerString(ui.getTimerString().getText());
-			
+			if(!att) {
+				task.setAlertString(ui.getAlertString().getText());
+				task.setTimerString(ui.getTimerString().getText());
+			}
 			
 			task.setID(taskId);
 			rec.tasks.getTask().add(task);
@@ -250,28 +252,6 @@ public class EditorController implements Initializable {
 	int taskCounter = 1;
 	public void addTaskToUI (ActionEvent event) throws Exception {
 		addTask("","","","","");
-//		TextField time = new TextField();
-//		TextArea taskString = new TextArea();
-//		TextField taskTitle = new TextField();
-//		TextField timerString = new TextField();
-//		TextField alertString = new TextField();
-//		
-//		ComboBox<String> attention = new ComboBox<String>();
-//		attention.getItems().add("True");
-//		attention.getItems().add("False");
-//		
-//		time.setPromptText("Enter amount of time for task");
-//		taskString.setPromptText("Describe action of task");
-//		taskTitle.setPromptText("Give the task a title");
-//		timerString.setPromptText("(Optional) Timer title for when you start your timer");
-//		alertString.setPromptText("(Optional) Alert message for when timer runs out");
-//		
-//		taskBox.setSpacing(20);
-//		taskBox.getChildren().addAll(new Label("Task "+ taskCounter), time, taskString, 
-//				taskTitle, timerString, alertString,attention);
-//		taskCounter++;
-//		
-//		taskUIs.add(new TaskUI(time, taskString, taskTitle, alertString, timerString, attention));
 	}
 	
 	private void addTask(String tim, String ts, String tt, String tstr, String astr) {
@@ -280,20 +260,36 @@ public class EditorController implements Initializable {
 		TextField taskTitle = new TextField(tt);
 		TextField timerString = new TextField(tstr);
 		TextField alertString = new TextField(astr);
+
 		
 		ComboBox<String> attention = new ComboBox<String>();
 		attention.getItems().add("This task requires my full attention");
 		attention.getItems().add("This task does not require my full attention");
 		
+		VBox componentHolder = new VBox(20, time, taskString, 
+				taskTitle, timerString, alertString,attention);
+		
+		attention.valueProperty().addListener((ChangeListener) (arg0, arg1, arg2) -> {
+			if(attention.selectionModelProperty().get().getSelectedIndex()==0) {
+				componentHolder.getChildren().removeAll(timerString, alertString);
+			}else {
+				if(!taskBox.getChildren().contains(alertString)) {
+					componentHolder.getChildren().add(3, timerString);
+					componentHolder.getChildren().add(4, alertString);
+				}
+			}
+		});	
+		
+		attention.selectionModelProperty().get().select(0);
+		
 		time.setPromptText("Enter amount of time for task");
 		taskString.setPromptText("Describe action of task");
 		taskTitle.setPromptText("Give the task a title");
-		timerString.setPromptText("(Optional) Timer title for when you start your timer");
-		alertString.setPromptText("(Optional) Alert message for when timer runs out");
+		timerString.setPromptText("Give your timer a title");
+		alertString.setPromptText("Enter an alert message");
 		
 		taskBox.setSpacing(20);
-		taskBox.getChildren().addAll(new Label("Task "+ taskCounter), time, taskString, 
-				taskTitle, timerString, alertString,attention);
+		taskBox.getChildren().addAll(new Label("Task "+ taskCounter), componentHolder);
 		taskCounter++;
 		
 		taskUIs.add(new TaskUI(time, taskString, taskTitle, alertString, timerString, attention));
