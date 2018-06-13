@@ -12,21 +12,9 @@ public class Algorithm extends CookingController {
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		int[] taskSequence = new int[0];
 		int count = 1;
-		
+
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if(Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
-				if(i+count == Model.recipe.tasks.task.size()) {
-					break;
-				}
-				else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
-					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-					count++;
-				} 
-				
-			}
-		}
-		
+
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
 			//			String x = Model.recipe.tasks.task.get(i).children[0];
@@ -40,6 +28,7 @@ public class Algorithm extends CookingController {
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 				}
 				else {
+
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
 				}
 			}
@@ -55,12 +44,9 @@ public class Algorithm extends CookingController {
 
 			}		
 		}
-		
-		//System.out.println(sequence);
-		// Should this be moved to for-loop above? Look into later (Mads).
-		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
+		// sequence constructed. 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {	
+			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
 				sequence.remove(i);
 				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 			}	
@@ -73,13 +59,51 @@ public class Algorithm extends CookingController {
 
 		}
 
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") 
+					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+				// Should be added to front of array. Since it's a false node with children
+				// Print 3 og 5
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				sequence.remove(Model.recipe.tasks.task.get(i).ID);
+				
+				
+//				while (true) {
+//					if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+//							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, Integer.toString(i))) {
+//						System.out.println("SIS " + Model.recipe.tasks.task.get(i+count).ID);
+//						count++;
+//							if (!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && Model.recipe.tasks.task.get((i+count)+1).attentionRequired == true) {
+//								System.out.println("SISsss " + Model.recipe.tasks.task.get(i).ID);
+//							}
+//						
+//					} else { 
+//						break; 
+//						}
+//				}
+				if(i+count == Model.recipe.tasks.task.size()) {
+					break;
+				}
+				else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
+					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+					count++;
+				} 
+
+			}
+		}
+
+		//System.out.println(sequence);
+		// Should this be moved to for-loop above? Look into later (Mads).
+		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
+
+
 		// Stream converts List<integer> to int[].
-	    taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		//System.out.println(java.util.Arrays.toString(taskSequence));
-	    
+		taskSequence = sequence.stream().mapToInt(i->i).toArray();
+		System.out.println(java.util.Arrays.toString(taskSequence));
+
 		return taskSequence;
 	} 
-	
+
 	public String calculateWorktime() {
 
 		int workTime = 0;
@@ -153,35 +177,35 @@ public class Algorithm extends CookingController {
 					}
 				} else if (Model.recipe.tasks.task.get(i).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
 					totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
-						if(Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
-								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-							count++;
-							totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
-						}	
-						else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
-								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-							
-							while (true) {
-								if(Model.recipe.tasks.task.get(i+count+1).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).children, "0") && 
-										!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).parents, "0")) {
-									totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time - Model.recipe.tasks.task.get(i+count+1).time; 
-									count++;
-								} else {
-									totalTime = totalTime - Model.recipe.tasks.task.get(i+count+1).time;
-									break; 
-								} 
-							}
+					if(Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+						count++;
+						totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+					}	
+					else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
 
-						} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
-								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
-
-							totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+						while (true) {
+							if(Model.recipe.tasks.task.get(i+count+1).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).children, "0") && 
+									!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count+1).parents, "0")) {
+								totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time - Model.recipe.tasks.task.get(i+count+1).time; 
+								count++;
+							} else {
+								totalTime = totalTime - Model.recipe.tasks.task.get(i+count+1).time;
+								break; 
+							} 
 						}
-						else if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
-								!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")){
-							count++;
-							totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
-						}  
+
+					} else if (Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") &&
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")) {
+
+						totalTime = totalTime + Model.recipe.tasks.task.get(i+count).time;
+					}
+					else if (Model.recipe.tasks.task.get(i+count).attentionRequired == true && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, "0")){
+						count++;
+						totalTime = totalTime + Model.recipe.tasks.task.get(i).time;
+					}  
 				} 
 
 			}
