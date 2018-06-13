@@ -1,96 +1,98 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE cookbook SYSTEM "rezepte.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <recipe>
-<title>Lorem ipsum</title>
-<ID>36</ID>
-<startdate>09.04.2018</startdate>
-<changedate>11.04.2018</changedate>
-<target>
-Für 4-6 Personen (für 6-10 als Vorspeise)
-</target>
-<ingredients>
-<ingredient>
-<quantity>500</quantity>
-<unit>pcs</unit>
-<iname>dolor</iname>
-</ingredient>
-<ingredient>
-<quantity>2</quantity>
-<unit>kg</unit>
-<iname>sit</iname>
-</ingredient>
-<ingredient>
-<quantity>5</quantity>
-<unit></unit>
-<iname>amet</iname>
-</ingredient>
-<ingredient>
-<quantity>1.5</quantity>
-<unit></unit>
-<iname>consectetur</iname>
-</ingredient>
-<ingredient>
-<quantity>12</quantity>
-<unit></unit>
-<iname>adipiscing</iname>
-</ingredient>
-<ingredient>
-<quantity>3</quantity>
-<unit>EL</unit>
-<iname>elit</iname>
-</ingredient>
-<ingredient>
-<quantity></quantity>
-<unit></unit>
-<iname>sed</iname>
-</ingredient>
-<ingredient>
-<quantity></quantity>
-<unit></unit>
-<iname>do</iname>
-</ingredient>
-<ingredient>
-<quantity>250</quantity>
-<unit>mg</unit>
-<iname>eiusmod</iname>
-</ingredient>
-
-</ingredients>
-<preparation>
-Den Speck und die Zwiebeln fein würfeln 
-und anbraten, aber nicht bräunen. Das 
-Hackfleisch ebenfalls anbraten und dabei möglichst
-fein zerteilen. Alles mit den Tomaten in einen Topf
-geben und den Wein sowie die Gewürze hinzufügen. 
-Mindestens 1 h, besser 2 h, sanft köcheln lassen
-und dabei gelegentlich umrühren.
-Die Sauce muß dicklich werden, aber nicht fest. 
-Die Nudeln in 2-3 l Salzwasser circa 8-12 min kochen.
-Entweder getrennt servieren oder die Sauce mit den
-abgegossenen Nudeln mischen. Dazu den Parmesan reichen.
-</preparation>
-<variation>
-Feingehackte Paprika und Möhren zugeben. 
-</variation>
-<remark>
-Wenn kein Speck verwendet wird, sollte man möglichst 
-Hackfleisch <quote>halb und halb</quote> oder reines Schweinehack
-verwenden, weil das Gericht dann herzhafter und saftiger wird.
-</remark>
-<privateremark>
-Am einfachsten ist es, den Speck und die Zwiebeln
-durch die grobe (6 mm) Scheibe des Fleischwolfs der
-BOSCH Küchenmaschine  zu drehen.
-</privateremark>
-<rating>4</rating>
-    <calories>600</calories>
-    <fat>9.9</fat>
-    <carbohydrates>63.1</carbohydrates>
-    <protein>33.8</protein>
-<duration>
-	<totaltime>80</totaltime>
-	<worktime>20</worktime>
-
-</duration>
-<source>Erik Nikolajsen</source>
+    <title>Meat sauce</title>
+    <ID>1</ID>
+    <startdate>12.04.2014</startdate>
+    <ingredients>
+        <ingredient>
+            <quantity>500</quantity>
+            <unit>g</unit>
+            <iname>beef</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1</quantity>
+            <unit></unit>
+            <iname>onion</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1</quantity>
+            <unit></unit>
+            <iname>mushroom</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2</quantity>
+            <unit></unit>
+            <iname>garlic</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2</quantity>
+            <unit>cans</unit>
+            <iname>tomatoes</iname>
+        </ingredient>
+    </ingredients>
+    <tasks>
+        <task>
+            <ID>1</ID>
+            <time>40</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Add the tomatoes to the pot.</taskString>
+            <taskTitle>Preparing</taskTitle>
+            <parents>0</parents>
+            <children>0</children>
+        </task>
+        <task>
+            <ID>2</ID>
+            <time>300</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Oil up the pot and turn on the heat. When warm enough put the meat in and roast it till brown.</taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle>Roasting</taskTitle>
+            <parents>0</parents>
+            <children>0</children>
+        </task>
+        <task>
+            <ID>3</ID>
+            <time>600</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Add the mushrooms and onions to the pot.</taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle>Add onions and shrooms</taskTitle>
+            <parents>0</parents>
+            <children>0</children>
+        </task>
+        <task>
+            <ID>4</ID>
+            <time>5</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Chop some onions and mushrooms.</taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle>Add tomatoes</taskTitle>
+            <parents>0</parents>
+            <children>0</children>
+        </task>
+        <task>
+            <ID>5</ID>
+            <time>60</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Let the meat sauce simmer for 10 mins before serving. </taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle>Serving</taskTitle>
+            <parents>0</parents>
+            <children>0</children>
+        </task>
+    </tasks>
+    <rating>3</rating>
+    <calories>456</calories>
+    <fat>23.2</fat>
+    <carbohydrates>40.2</carbohydrates>
+    <protein>21.4</protein>
+    <duration>
+        <totaltime>35</totaltime>
+        <worktime>10</worktime>
+    </duration>
+    <source>BBC</source>
 </recipe>
