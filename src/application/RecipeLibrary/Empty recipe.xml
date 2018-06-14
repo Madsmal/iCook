@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recipe>
+    <title></title>
+    <ID></ID>
+    <startdate></startdate>
+    <ingredients>
+    </ingredients>
+    <tasks>
+    </tasks>
+    <rating></rating>
+    <calories></calories>
+    <fat></fat>
+    <carbohydrates></carbohydrates>
+    <protein></protein>
+    <duration>
+        <totaltime></totaltime>
+        <worktime></worktime>
+    </duration>
+    <source></source>
+</recipe>
