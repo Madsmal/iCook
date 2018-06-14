@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recipe>
+    <title>Chocolate Cake</title>
+    <ID>38</ID>
+    <startdate>07.07.2008</startdate>
+    <changedate></changedate>
+    <target>6 persons</target>
+    <ingredients>
+        <ingredient>
+            <quantity>3</quantity>
+            <unit>tbsp</unit>
+            <iname>Cocoa</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>125</quantity>
+            <unit>g</unit>
+            <iname>Wheat flour</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>150</quantity>
+            <unit>g</unit>
+            <iname>Sugar</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>0.5</quantity>
+            <unit>tbsp</unit>
+            <iname>Baking soda</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>0.5</quantity>
+            <unit>tbsp</unit>
+            <iname>Baking powder</iname>
+        </ingredient>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname>Salt</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1</quantity>
+            <unit></unit>
+            <iname>Egg</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>75</quantity>
+            <unit>g</unit>
+            <iname>Butter</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1.25</quantity>
+            <unit>dl.</unit>
+            <iname>Water</iname>
+        </ingredient>
+    </ingredients>
+    <tasks>
+        <task>
+            <ID>1</ID>
+            <parents>2</parents>
+            <children>3</children>
+            <time>300</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Mix the egg, melted butter and water in a bowl and whip with mixer</taskString>
+            <taskTitle>Mix ingredients</taskTitle>
+        </task>
+        <task>
+            <ID>2</ID>
+            <parents>0</parents>
+            <children>2</children>
+            <time>250</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Melt the butter in a pot</taskString>
+            <taskTitle>Melt butter</taskTitle>
+        </task>
+        <task>
+            <ID>3</ID>
+            <parents>1</parents>
+            <children>5</children>
+            <time>120</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Pour the dough in a baking pan and insert into the oven</taskString>
+            <taskTitle>Pour the dough</taskTitle>
+        </task>
+        <task>
+            <ID>4</ID>
+            <parents>0</parents>
+            <children>0</children>
+            <time>600</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Preheat the oven at 170°C</taskString>
+            <taskTitle>Preheat oven</taskTitle>
+        </task>
+        <task>
+            <ID>5</ID>
+            <parents>3</parents>
+            <children>0</children>
+            <time>2100</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Bake in the oven for 35 minutes</taskString>
+            <timerString>Cake is baking.</timerString>
+            <alertString>Your cake is done.</alertString>
+            <taskTitle>Bake</taskTitle>
+        </task>
+    </tasks>
+    <preparation></preparation>
+    <variation>Add finely chopped peppers and carrots.</variation>
+    <remark>
+The cake should not be baked too much, it should be a bit soggy in the middle. 
+</remark>
+    <privateremark></privateremark>
+    <rating>5</rating>
+    <calories>322</calories>
+    <fat>12.3</fat>
+    <carbohydrates>49.9</carbohydrates>
+    <protein>3.9</protein>
+    <duration>
+        <totaltime></totaltime>
+        <worktime></worktime>
+    </duration>
+    <source>dk-kogebogen</source>
+</recipe>
