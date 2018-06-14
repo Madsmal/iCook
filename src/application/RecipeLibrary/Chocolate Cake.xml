@@ -87,6 +87,8 @@
             <time>600</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Preheat the oven at 170°C</taskString>
+            <timerString>Oven is heating.</timerString>
+            <alertString>Oven is ready for baking.</alertString>
             <taskTitle>Preheat oven</taskTitle>
         </task>
         <task>
