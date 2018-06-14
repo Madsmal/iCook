@@ -15,10 +15,10 @@
          <children>
             <TextField fx:id="titleText" prefHeight="25.0" prefWidth="40.0" promptText="Enter title of recipe" translateY="60.0" />
             <TextField fx:id="sourceText" prefHeight="25.0" prefWidth="40.0" promptText="Enter source of recipe" translateY="75.0" />
-            <TextField fx:id="startdateText" prefHeight="25.0" prefWidth="40.0" promptText="DD.MM.YYY" translateY="90.0" />
-            <TextField fx:id="fatText" prefHeight="25.0" prefWidth="40.0" promptText="Enter fat in grams" translateY="100.0" />
-            <TextField fx:id="carbsText" prefHeight="25.0" prefWidth="40.0" promptText="Enter carbohydrates in grams" translateY="110.0" />
-            <TextField fx:id="proteinText" prefHeight="25.0" prefWidth="40.0" promptText="Enter protein in grams" translateY="120.0" />
+            <TextField fx:id="startdateText" prefHeight="25.0" prefWidth="40.0" promptText="When was the recipe first made?" translateY="90.0" />
+            <TextField fx:id="fatText" prefHeight="25.0" prefWidth="40.0" promptText="Enter fat in grams, e.g. 8.0" translateY="100.0" />
+            <TextField fx:id="carbsText" prefHeight="25.0" prefWidth="40.0" promptText="Enter carbs in grams, e.g. 45.6" translateY="110.0" />
+            <TextField fx:id="proteinText" prefHeight="25.0" prefWidth="40.0" promptText="Enter protein in grams, e.g. 23.4" translateY="120.0" />
             <TextField fx:id="caloriesText" prefHeight="25.0" prefWidth="40.0" promptText="Enter total amount of calories" translateY="130.0" />
             <TextField fx:id="ratingText" prefHeight="25.0" prefWidth="40.0" promptText="Set initial rating, 1-5" translateY="145.0" />
          </children>
