@@ -171,6 +171,12 @@ public class EditorController implements Initializable {
 		t.setWorktime("");
 		rec.setDuration(t);
 		
+		if(rec.getChangedate() == null) {
+			Date now = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY");
+		
+			rec.setChangedate(sdf.format(now));
+		}
 		
 		rec.setIngredients(new Recipe.Ingredients());
 		for(IngredientUI ui : ingredientUIs) {
