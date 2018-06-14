@@ -470,7 +470,11 @@ public class CookingController implements Initializable {
 		Model.ingredientsQuantityMultiplier(Model.servingAmount);
 	}
 	private void updateRating() {
-		star1.setImage(starFull);
+		if (Model.recipe.rating >= 1) {
+			star1.setImage(starFull);
+		} else {
+			star1.setImage(starEmpty);
+		}
 		if (Model.recipe.rating >= 2) {
 			star2.setImage(starFull);
 		} else {
