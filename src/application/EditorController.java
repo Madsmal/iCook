@@ -87,8 +87,6 @@ public class EditorController implements Initializable {
 				proteinText.setText(""+rec.getProtein());
 				caloriesText.setText(rec.getCalories());
 				ratingText.setText(""+rec.getRating());
-				totaltimeText.setText(recd.getTotaltime());
-				worktimeText.setText(recd.getWorktime());
 				
 				List<Recipe.Ingredients.Ingredient> ing = rec.getIngredients().ingredient;
 				for(Recipe.Ingredients.Ingredient e : ing) {
