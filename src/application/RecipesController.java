@@ -242,7 +242,11 @@ public class RecipesController implements Initializable {
 		totalTime.setText("Total time: " + formattedTimeTT);
 		worktime.setText("Work time: " + formattedTimeWT);
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
-		changedate.setText("Change date: " + Model.recipe.getChangedate());
+		if (Model.recipe.getChangedate() != null) {
+			changedate.setText("Change date: " + Model.recipe.getChangedate());
+		} else {
+			changedate.setText("");
+		}
 		source.setText("Source: " + Model.recipe.getSource());
 		calories.setText("Calories: " + Model.recipe.getCalories() + " kcal");
 		
