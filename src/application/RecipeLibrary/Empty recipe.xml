@@ -3,9 +3,27 @@
     <title></title>
     <ID></ID>
     <startdate></startdate>
+    <changedate></changedate>
+    <target></target>
     <ingredients>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname></iname>
+        </ingredient>
     </ingredients>
     <tasks>
+        <task>
+            <ID></ID>
+            <parents></parents>
+            <children></children>
+            <time></time>
+            <attentionRequired></attentionRequired>
+            <taskString></taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle></taskTitle>
+        </task>
     </tasks>
     <rating></rating>
     <calories></calories>
