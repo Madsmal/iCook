@@ -33,6 +33,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -110,6 +112,49 @@ public class EditorController implements Initializable {
 	//Recipe.Ingredients ingredients = new Recipe.Ingredients();
 	//save information from textfields to xml file
 	public void saveToXMLFile() throws Exception {
+		
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Missing input in some required field");
+		String error = "";
+		
+		if(titleText.getText().isEmpty()) {
+			error += "Missing input in field: Title. Please enter a title before saving the recipe\n";
+		}
+		
+		if(sourceText.getText().isEmpty()) {
+			error+="Missing input in field: Source. Please enter who made the recipe before saving it\n";
+		} 
+		
+		if(startdateText.getText().isEmpty()) {
+			error+="Missing input in field: Start date. Please enter the date of when the recipe was first made\n";
+		} 
+		
+		if(fatText.getText().isEmpty()) {
+			error += "Missing input in field: Fat. Please enter the total amount of fat in the recipe\n";
+		}
+		
+		if(carbsText.getText().isEmpty()) {
+			error += "Missing input in field: Carbs. Please enter the total amount of carbohydrate in the recipe\n";
+		}
+		
+		if(proteinText.getText().isEmpty()) {
+			error += "Missing input in field: Protein. Please enter the total amount of protein in the recipe\n";
+		} 
+		
+		if(caloriesText.getText().isEmpty()) {
+			error += "Missing input in field: Calories. Please enter the total amount of calories in the recipe\n";
+		} 
+		
+		if(ratingText.getText().isEmpty()) {
+			error+="Missing input in field: Rating. Please enter your initial rating of the recipe\n";
+		} 
+		
+		if(!error.isEmpty()) {
+			alert.setContentText(error);
+			alert.show();
+			return;
+		}
+		
 		Recipe rec = new Recipe();
 		rec.setTitle(titleText.getText());
 		rec.setID(++recipeCount);
@@ -122,8 +167,8 @@ public class EditorController implements Initializable {
 		rec.setRating(Integer.parseInt(ratingText.getText()));
 		
 		Recipe.Duration t = new Recipe.Duration();
-		t.setTotaltime(totaltimeText.getText());
-		t.setWorktime(worktimeText.getText());
+		t.setTotaltime("");
+		t.setWorktime("");
 		rec.setDuration(t);
 		
 		
@@ -168,6 +213,8 @@ public class EditorController implements Initializable {
 		}
 		String path = "src/application/RecipeLibrary/" + titleText.getText() + ".xml";
 		
+		
+
 		try {
 			File file = new File(path);
 			if(!file.exists()) {
@@ -260,7 +307,8 @@ public class EditorController implements Initializable {
 		TextField taskTitle = new TextField(tt);
 		TextField timerString = new TextField(tstr);
 		TextField alertString = new TextField(astr);
-
+		
+		taskString.setWrapText(true);
 		
 		ComboBox<String> attention = new ComboBox<String>();
 		attention.getItems().add("This task requires my full attention");

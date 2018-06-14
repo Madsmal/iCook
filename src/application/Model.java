@@ -72,22 +72,29 @@ public class Model {
         return clock;
 	}
 	
-	private int hours;
-	private int minutes;
 	
-	public void convertMinToHHMM(String totalMinutes) {
-		this.hours = Integer.parseInt(totalMinutes)/60;
-		this.minutes = Integer.parseInt(totalMinutes)-hours*60;
-		
+	public static String formatSeconds(String timeInSeconds) {
+	    int hours = Integer.parseInt(timeInSeconds) / 3600;
+	    int secondsLeft = Integer.parseInt(timeInSeconds) - hours * 3600;
+	    int minutes = secondsLeft / 60;
+	    int seconds = secondsLeft - minutes * 60;
+
+	    String formattedTime = "";
+	    if (hours < 10)
+	        formattedTime += "0";
+	    formattedTime += hours + ":";
+
+	    if (minutes < 10)
+	        formattedTime += "0";
+	    formattedTime += minutes + ":";
+
+	    if (seconds < 10)
+	        formattedTime += "0";
+	    formattedTime += seconds ;
+
+	    return formattedTime;
 	}
 	
-	public int getHours() {
-		return this.hours;
-	}
-	
-	public int getMinutes() {
-		return this.minutes;
-	}
 	
 	public static String secondsToHHMMSS(int seconds) {
 		String string = "";

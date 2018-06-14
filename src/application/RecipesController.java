@@ -226,23 +226,27 @@ public class RecipesController implements Initializable {
 		
 		Model timeConverterTT = new Model();
 		
-		timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
-		int tthours = timeConverterTT.getHours();
-		int ttminutes = timeConverterTT.getMinutes();
+//		timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
+//		int tthours = timeConverterTT.getHours();
+//		int ttminutes = timeConverterTT.getMinutes();
+		String formattedTimeTT = timeConverterTT.formatSeconds(Model.recipe.getDuration().getTotaltime());
 		
 		Model timeConverterWT = new Model();
-		timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
-
-		int wthours = timeConverterWT.getHours();
-		int wtminutes = timeConverterWT.getMinutes();
+//		timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
+//
+//		int wthours = timeConverterWT.getHours();
+//		int wtminutes = timeConverterWT.getMinutes();
+		String formattedTimeWT = timeConverterWT.formatSeconds(Model.recipe.getDuration().getWorktime());
 		
 		ingredients.setText(ingredientsList);
 
 		title.setText(Model.recipe.getTitle());
 		//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
-		totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
+		//totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
+		totalTime.setText("Total time: " + formattedTimeTT);
 		//worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
-		worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
+		//worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
+		worktime.setText("Work time: " + formattedTimeWT);
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
 		changedate.setText("Change date: " + Model.recipe.getChangedate());
 		source.setText("Source: " + Model.recipe.getSource());
