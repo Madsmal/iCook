@@ -65,7 +65,7 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
                               <VBox prefWidth="288.0">
                                  <children>
-                                    <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Servings: 1">
+                                    <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="40.0" prefWidth="129.0" text="Servings: 1">
                                        <items>
                                           <MenuItem fx:id="serving1" mnemonicParsing="false" text="1 serving                   " />
                                           <SeparatorMenuItem mnemonicParsing="false" />

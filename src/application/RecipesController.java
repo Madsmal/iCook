@@ -114,7 +114,7 @@ public class RecipesController implements Initializable {
 					image = new Image(missingPicture.toURI().toString());
 					System.out.println("ERROR: The recipe \""+newValue+"\" is missing an associated image");
 				}
-
+				
 				RecipeImageView.setImage(image);
 			}
 		});
@@ -207,8 +207,6 @@ public class RecipesController implements Initializable {
 		algorithm.calculateTaskSequence();
 	    Model.recipe.duration.setWorktime(algorithm.calculateWorktime());
 	    Model.recipe.duration.setTotaltime(algorithm.calculateTotaltime());
-		//Model.recipe.duration.setTotaltime(CalculateTotalTime);
-		//Model.recipe.duration.setTotaltime(CalculateWorkTime);
 	}
 	
 	private void updateLabels() {
@@ -241,11 +239,7 @@ public class RecipesController implements Initializable {
 		ingredients.setText(ingredientsList);
 
 		title.setText(Model.recipe.getTitle());
-		//totalTime.setText("Total Time: " + Model.recipe.getDuration().getTotaltime());
-		//totalTime.setText("Total time: " + tthours + "h " + ttminutes + "m");
 		totalTime.setText("Total time: " + formattedTimeTT);
-		//worktime.setText("Work time: " + Model.recipe.getDuration().getWorktime());
-		//worktime.setText("Work time: " + wthours + "h " + wtminutes + "m");
 		worktime.setText("Work time: " + formattedTimeWT);
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
 		changedate.setText("Change date: " + Model.recipe.getChangedate());
@@ -264,56 +258,6 @@ public class RecipesController implements Initializable {
 		}
 		rating.setText(ratingString);
 	}
-	
-
-	
-	
-
-//	PieChart pieChart = new PieChart();
-//	PieChart.Data slice1 = new PieChart.Data("Fat", calculateFat());
-//	PieChart.Data slice2 = new PieChart.Data("Carbohydrates", calculateCarbs());
-//	PieChart.Data slice3 = new PieChart.Data("Protein", calculateProtein());
-
-	
-	
-//	public void onCalDistribution(ActionEvent event) throws Exception {
-//		final Stage pChart = new Stage();
-//		pChart.setTitle("Calorie Distribution");
-//		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-//				new PieChart.Data("Fat", calculateFat()),
-//				new PieChart.Data("Carbohydrates", calculateCarbs()),
-//				new PieChart.Data("Protein", calculateProtein()),
-//				new PieChart.Data("Vitamins, minerals, etc.", calculateOthers()));
-//		
-//		final PieChart chart = new PieChart(pieChartData);
-//		chart.setTitle("Calorie Distribution for " + Model.recipe.getTitle());
-//		pChart.initModality(Modality.NONE);
-//		pChart.initOwner(Model.primaryStage);
-//		VBox pChartVbox = new VBox(40);
-//		
-//		final Label caption = new Label("");
-//        caption.setTextFill(Color.DARKORANGE);
-//        caption.setStyle("-fx-font: 24 arial;");
-//
-//        for (final PieChart.Data data : chart.getData()) {
-//            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
-//                e -> {
-//                    double total = 0;
-//                    for (PieChart.Data d : chart.getData()) {
-//                        total += d.getPieValue();
-//                    }
-//                    caption.setTranslateX(240);
-//                    caption.setTranslateY(5);
-//                    String text = String.format("%.1f%%", 100*data.getPieValue()/total) ;
-//                    caption.setText(text);
-//                 }
-//                );
-//        }
-//		pChartVbox.getChildren().addAll(chart,caption);
-//		Scene pChartScene = new Scene(pChartVbox, 480, 600);
-//		pChart.setScene(pChartScene);
-//		pChart.show();
-//	}
 
 	
 	
