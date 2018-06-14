@@ -11,7 +11,7 @@ public class Algorithm extends CookingController {
 
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		int[] taskSequence = new int[0];
-		int count = 1;
+	//	int count = 1;
 
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
 
