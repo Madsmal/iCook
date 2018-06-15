@@ -367,18 +367,9 @@ public class CookingController implements Initializable {
 	
 	private int[] hc(int[] arr) {
 		if (Model.parsedFileName.equals("Fried pork belly with parsley sauce")) {
-			arr[0]=2;
-			arr[1]=3;
-			arr[2]=1;
-			arr[3]=4;
-			arr[4]=5;
-			arr[5]=6;
+			arr[0]=2;arr[1]=3;arr[2]=1;arr[3]=4;arr[4]=5;arr[5]=6;
 		} else if (Model.parsedFileName.equals("Chocolate Cake")) {
-			arr[0]=4;
-			arr[1]=2;
-			arr[2]=1;
-			arr[3]=3;
-			arr[4]=5;
+			arr[0]=4;arr[1]=2;arr[2]=1;arr[3]=3;arr[4]=5;
 		}
 		return arr;
 	}
