@@ -21,7 +21,7 @@
          <children>
             <VBox prefHeight="480.0" prefWidth="233.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onHome" prefHeight="47.0" prefWidth="246.0" stylesheets="@Stylesheets/home.css" text="Home" />
+                  <Button mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="246.0" stylesheets="@Stylesheets/home.css" text="Home" />
                   <ListView fx:id="listView" fixedCellSize="36.0" prefHeight="437.0" prefWidth="232.0" />
                </children>
             </VBox>
@@ -29,7 +29,7 @@
                <content>
                   <VBox prefWidth="568.0">
                      <children>
-                        <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" pickOnBounds="true" smooth="false" />
+                        <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" pickOnBounds="true" />
                         <Separator prefHeight="0.0" />
                         <HBox prefWidth="468.0">
                            <children>
