@@ -168,7 +168,7 @@ public class CookingController implements Initializable {
 						if (currentTask == taskSequence.length || Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==false) {
 							countdownLabel2.setText("");
 						} else if (Model.recipe.tasks.getTask().get(taskSequence[currentTask]).attentionRequired==true) {
-							countdownLabel2.setText("Task time: "+Integer.toString(countdownTimer2.getTimeLeft()));
+							countdownLabel2.setText("Task time: "+Model.secondsToCollapsingHHMMSS(countdownTimer2.getTimeLeft()));
 						}
 
 						// Intermediate-task progress bar update
