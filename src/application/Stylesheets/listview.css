@@ -12,7 +12,6 @@
     -fx-text-fill: white;
 }
 
-.list-view { -fx-focus-color: transparent; }
 
 .list-view { 
 	-fx-background-color: #f6e8c3;

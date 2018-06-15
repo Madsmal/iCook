@@ -27,7 +27,7 @@
             </VBox>
             <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="480.0" prefWidth="568.0">
                <content>
-                  <VBox prefWidth="568.0" style="-fx-focus-color: transparent;" stylesheets="@Stylesheets/removefocus.css">
+                  <VBox prefWidth="568.0" stylesheets="@Stylesheets/removefocus.css">
                      <children>
                         <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" pickOnBounds="true" />
                         <Separator prefHeight="0.0" />
@@ -65,24 +65,32 @@
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
                               <VBox prefWidth="288.0">
                                  <children>
-                                    <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="40.0" prefWidth="129.0" text="Servings: 1">
-                                       <items>
-                                          <MenuItem fx:id="serving1" mnemonicParsing="false" text="1 serving                   " />
-                                          <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving2" mnemonicParsing="false" text="2 servings" />
-                                          <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving3" mnemonicParsing="false" text="3 servings" />
-                                          <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="serving4" mnemonicParsing="false" text="4 servings" />
-                                       </items>
+                                    <HBox prefHeight="40.0" prefWidth="200.0">
+                                       <children>
+                                          <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="40.0" prefWidth="129.0" text="Servings: 1">
+                                             <items>
+                                                <MenuItem fx:id="serving1" mnemonicParsing="false" text="1 serving               " />
+                                                <SeparatorMenuItem mnemonicParsing="false" />
+                                                <MenuItem fx:id="serving2" mnemonicParsing="false" text="2 servings" />
+                                                <SeparatorMenuItem mnemonicParsing="false" />
+                                                <MenuItem fx:id="serving3" mnemonicParsing="false" text="3 servings" />
+                                                <SeparatorMenuItem mnemonicParsing="false" />
+                                                <MenuItem fx:id="serving4" mnemonicParsing="false" text="4 servings" />
+                                             </items>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </MenuButton>
+                                          <Button mnemonicParsing="false" onAction="#OnCalDis" prefHeight="40.0" prefWidth="129.0" text="Nutrition" />
+                                       </children>
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
-                                    </MenuButton>
+                                    </HBox>
                                     <Label fx:id="totalTime" text="Total time" wrapText="true" />
                                     <Label fx:id="worktime" text="Work time" wrapText="true">
                                        <VBox.margin>
-                                          <Insets bottom="20.0" />
+                                          <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
                                     <Label fx:id="changedate" text="Change date" wrapText="true">
@@ -93,16 +101,19 @@
                                     <Label fx:id="startdate" text="Start date" wrapText="true" />
                                     <Label fx:id="source" text="Source" wrapText="true">
                                        <VBox.margin>
-                                          <Insets bottom="20.0" />
+                                          <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
                                     <Label fx:id="calories" text="Calories" wrapText="true">
                                        <VBox.margin>
-                                          <Insets bottom="20.0" />
+                                          <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Button mnemonicParsing="false" onAction="#OnCalDis" stylesheets="@Stylesheets/home.css" text="Calorie Distribution" translateY="-10.0" />
-                                    <Button mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start" />
+                                    <Button mnemonicParsing="false" onAction="#onStart" prefHeight="66.0" prefWidth="169.0" stylesheets="@Stylesheets/knap.css" text="Start">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Button>
                                  </children>
                                  <opaqueInsets>
                                     <Insets />
