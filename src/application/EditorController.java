@@ -238,6 +238,9 @@ public class EditorController implements Initializable {
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(rec, file);
+			Alert alert1 = new Alert(AlertType.INFORMATION);
+			alert1.setContentText("Your recipe has been saved.");
+			alert1.show();
 			
 		} catch (JAXBException e) {
 			e.printStackTrace();
