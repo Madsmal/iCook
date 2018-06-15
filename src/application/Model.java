@@ -73,29 +73,6 @@ public class Model {
 	}
 	
 	
-	public static String formatSeconds(String timeInSeconds) {
-	    int hours = Integer.parseInt(timeInSeconds) / 3600;
-	    int secondsLeft = Integer.parseInt(timeInSeconds) - hours * 3600;
-	    int minutes = secondsLeft / 60;
-	    int seconds = secondsLeft - minutes * 60;
-
-	    String formattedTime = "";
-	    if (hours < 10)
-	        formattedTime += "0";
-	    formattedTime += hours + ":";
-
-	    if (minutes < 10)
-	        formattedTime += "0";
-	    formattedTime += minutes + ":";
-
-	    if (seconds < 10)
-	        formattedTime += "0";
-	    formattedTime += seconds ;
-
-	    return formattedTime;
-	}
-	
-	
 	public static String secondsToHHMMSS(int seconds) {
 		String string = "";
 		if (Integer.toString(seconds/3600).length() >= 2) {
