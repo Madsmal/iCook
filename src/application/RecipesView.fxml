@@ -22,15 +22,16 @@
             <VBox prefHeight="480.0" prefWidth="233.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onHome" prefHeight="51.0" prefWidth="246.0" stylesheets="@Stylesheets/home.css" text="Home" />
-                  <ListView fx:id="listView" fixedCellSize="36.0" prefHeight="437.0" prefWidth="232.0" />
+                  <ListView fx:id="listView" fixedCellSize="36.0" prefHeight="437.0" prefWidth="232.0" stylesheets="@Stylesheets/removefocus.css" />
                </children>
             </VBox>
             <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="480.0" prefWidth="568.0">
                <content>
-                  <VBox prefWidth="568.0">
+                  <VBox prefWidth="568.0" style="-fx-focus-color: transparent;" stylesheets="@Stylesheets/removefocus.css">
                      <children>
                         <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" pickOnBounds="true" />
-                        <HBox prefWidth="468.0" style="-fx-background-color: #d8b365;">
+                        <Separator prefHeight="0.0" />
+                        <HBox prefWidth="468.0">
                            <children>
                               <Label fx:id="title" maxWidth="457.0" prefHeight="35.0" prefWidth="457.0" text="Title" wrapText="true">
                                  <font>
@@ -53,14 +54,15 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox prefWidth="568.0" style="-fx-background-color: #f6e8c3;">
+                        <Separator prefHeight="0.0" />
+                        <HBox prefWidth="568.0">
                            <children>
                               <Label fx:id="ingredients" alignment="TOP_LEFT" prefWidth="284.0" text="Ingredients" wrapText="true">
                                  <padding>
                                     <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #f6e8c3; -fx-border-width: 0; -fx-border-style: solid; -fx-background-size: 0;" />
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
                               <VBox prefWidth="288.0">
                                  <children>
                                     <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="40.0" prefWidth="129.0" text="Servings: 1">
