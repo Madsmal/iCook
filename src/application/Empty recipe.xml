@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recipe>
+    <title></title>
+    <ID></ID>
+    <startdate></startdate>
+    <changedate></changedate>
+    <ingredients>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname></iname>
+        </ingredient>
+    </ingredients>
+    <tasks>
+        <task>
+            <ID></ID>
+            <parents></parents>
+            <children></children>
+            <time></time>
+            <attentionRequired></attentionRequired>
+            <taskString></taskString>
+            <timerString></timerString>
+            <alertString></alertString>
+            <taskTitle></taskTitle>
+        </task>
+    </tasks>
+    <rating></rating>
+    <calories></calories>
+    <fat></fat>
+    <carbohydrates></carbohydrates>
+    <protein></protein>
+    <duration>
+        <totaltime></totaltime>
+        <worktime></worktime>
+    </duration>
+    <source></source>
+</recipe>
