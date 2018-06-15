@@ -1,3 +1,7 @@
+/**
+ * @author Erik Nikolajsen s144382
+ */
+
 package application;
 
 import java.io.File;

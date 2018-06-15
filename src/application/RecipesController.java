@@ -1,3 +1,8 @@
+/**
+ * @author Erik Nikolajsen s144382
+ */
+
+
 package application;
 
 import java.io.File;
@@ -235,6 +240,9 @@ public class RecipesController implements Initializable {
 		title.setText(Model.recipe.getTitle());
 		totalTime.setText("Total time: " + formattedTimeTT);
 		worktime.setText("Work time: " + formattedTimeWT);
+		
+		//totalTime.setText("Total time: " + Model.secondsToCollapsingHHMMSS(Integer.parseInt(Model.recipe.duration.getTotaltime())));
+		//worktime.setText("Work time: " + Model.secondsToCollapsingHHMMSS(Integer.parseInt(Model.recipe.duration.getWorktime())));
 		startdate.setText("Start date: " + Model.recipe.getStartdate());
 		if (Model.recipe.getChangedate() != null && Model.recipe.getChangedate().isEmpty() == false) {
 			changedate.setVisible(true);
