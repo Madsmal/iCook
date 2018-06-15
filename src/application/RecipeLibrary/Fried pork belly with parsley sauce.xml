@@ -5,52 +5,40 @@
     <startdate>20-11-2014</startdate>
     <changedate></changedate>
     <ingredients>
-		<ingredient>
+        <ingredient>
             <quantity>150</quantity>
             <unit>g</unit>
             <iname>pork belly</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity>0.5</quantity>
             <unit>tbsp</unit>
             <iname>wheat flour</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity>0.88</quantity>
             <unit>dl</unit>
             <iname>wholde milk</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity>2.5</quantity>
             <unit>g</unit>
             <iname>butter</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity>250</quantity>
             <unit>g</unit>
             <iname>potatoes</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity></quantity>
             <unit></unit>
             <iname>fresh parsley</iname>
         </ingredient>
-		
-		<ingredient>
+        <ingredient>
             <quantity></quantity>
             <unit></unit>
             <iname>salt</iname>
-			
-			<ingredient>
-            <quantity></quantity>
-            <unit></unit>
-            <iname>pepper</iname>
-        </ingredient>
         </ingredient>
     </ingredients>
     <tasks>
@@ -65,8 +53,7 @@
             <alertString></alertString>
             <taskTitle>Prepare the pork belly</taskTitle>
         </task>
-		
-		<task>
+        <task>
             <ID>2</ID>
             <parents>0</parents>
             <children>3</children>
@@ -77,8 +64,7 @@
             <alertString></alertString>
             <taskTitle>Prepare potatoes</taskTitle>
         </task>
-		
-		<task>
+        <task>
             <ID>3</ID>
             <parents>2</parents>
             <children>6</children>
@@ -89,8 +75,7 @@
             <alertString>The potatoes have finished boiling. Drain the water from the pot, and let the potatoes dry in the pot with the lid off.</alertString>
             <taskTitle>Boil potatoes</taskTitle>
         </task>
-		
-		<task>
+        <task>
             <ID>4</ID>
             <parents>0</parents>
             <children>6</children>
@@ -101,8 +86,7 @@
             <alertString></alertString>
             <taskTitle>Sauce</taskTitle>
         </task>
-		
-		<task>
+        <task>
             <ID>5</ID>
             <parents>1</parents>
             <children>6</children>
@@ -113,8 +97,7 @@
             <alertString></alertString>
             <taskTitle>Grill the pork belly</taskTitle>
         </task>
-		
-		<task>
+        <task>
             <ID>6</ID>
             <parents>5,4,3</parents>
             <children>0</children>
@@ -125,16 +108,15 @@
             <alertString></alertString>
             <taskTitle>Serve</taskTitle>
         </task>
-		
     </tasks>
-    <rating>5</rating>
+    <rating>4</rating>
     <calories>647</calories>
-    <fat>40</fat>
+    <fat>40.0</fat>
     <carbohydrates>42.5</carbohydrates>
-    <protein>30</protein>
+    <protein>30.0</protein>
     <duration>
-        <totaltime></totaltime>
-        <worktime></worktime>
+        <totaltime>1860</totaltime>
+        <worktime>1860</worktime>
     </duration>
     <source>Erik Nikolajsen</source>
 </recipe>
