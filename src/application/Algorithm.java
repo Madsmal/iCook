@@ -94,7 +94,6 @@ public class Algorithm extends CookingController {
 //		}
 
 		//System.out.println(sequence);
-		// Should this be moved to for-loop above? Look into later (Mads).
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
 
 
