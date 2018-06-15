@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <recipe>
-    <title>Grilled pork belly with parsley sauce</title>
+    <title>Fried pork belly with parsley sauce</title>
     <ID>42</ID>
     <startdate>20-11-2014</startdate>
     <changedate></changedate>
@@ -56,7 +56,7 @@
     <tasks>
         <task>
             <ID>1</ID>
-            <parents></parents>
+            <parents>0</parents>
             <children>5</children>
             <time>240</time>
             <attentionRequired>true</attentionRequired>
@@ -68,7 +68,7 @@
 		
 		<task>
             <ID>2</ID>
-            <parents></parents>
+            <parents>0</parents>
             <children>3</children>
             <time>300</time>
             <attentionRequired>true</attentionRequired>
@@ -92,7 +92,7 @@
 		
 		<task>
             <ID>4</ID>
-            <parents></parents>
+            <parents>0</parents>
             <children>6</children>
             <time>600</time>
             <attentionRequired>true</attentionRequired>
@@ -117,7 +117,7 @@
 		<task>
             <ID>6</ID>
             <parents>5,4,3</parents>
-            <children></children>
+            <children>0</children>
             <time>120</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Serve the potatoes and pork with the parsley sauce drizzled over and a sprinkling of extra parsley.</taskString>
