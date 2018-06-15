@@ -30,8 +30,7 @@
                   <VBox prefWidth="568.0">
                      <children>
                         <ImageView fx:id="RecipeImageView" fitHeight="175.0" fitWidth="568.0" pickOnBounds="true" />
-                        <Separator prefHeight="0.0" />
-                        <HBox prefWidth="468.0">
+                        <HBox prefWidth="468.0" style="-fx-background-color: #d8b365;">
                            <children>
                               <Label fx:id="title" maxWidth="457.0" prefHeight="35.0" prefWidth="457.0" text="Title" wrapText="true">
                                  <font>
@@ -54,15 +53,14 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Separator prefHeight="0.0" />
-                        <HBox prefWidth="568.0">
+                        <HBox prefWidth="568.0" style="-fx-background-color: #f6e8c3;">
                            <children>
                               <Label fx:id="ingredients" alignment="TOP_LEFT" prefWidth="284.0" text="Ingredients" wrapText="true">
                                  <padding>
                                     <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #f6e8c3; -fx-border-width: 0; -fx-border-style: solid; -fx-background-size: 0;" />
                               <VBox prefWidth="288.0">
                                  <children>
                                     <MenuButton fx:id="servingAmount" mnemonicParsing="false" prefHeight="40.0" prefWidth="129.0" text="Servings: 1">
