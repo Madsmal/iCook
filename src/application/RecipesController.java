@@ -223,18 +223,12 @@ public class RecipesController implements Initializable {
 		}
 		
 		Model timeConverterTT = new Model();
-		
-//		timeConverterTT.convertMinToHHMM(Model.recipe.getDuration().getTotaltime());
-//		int tthours = timeConverterTT.getHours();
-//		int ttminutes = timeConverterTT.getMinutes();
-		String formattedTimeTT = timeConverterTT.formatSeconds(Model.recipe.getDuration().getTotaltime());
+		String formattedTimeTT = 
+				timeConverterTT.secondsToHHMMSS(Integer.parseInt(Model.recipe.getDuration().getTotaltime()));
 		
 		Model timeConverterWT = new Model();
-//		timeConverterWT.convertMinToHHMM(Model.recipe.getDuration().getWorktime());
-//
-//		int wthours = timeConverterWT.getHours();
-//		int wtminutes = timeConverterWT.getMinutes();
-		String formattedTimeWT = timeConverterWT.formatSeconds(Model.recipe.getDuration().getWorktime());
+		String formattedTimeWT = 
+				timeConverterWT.secondsToHHMMSS(Integer.parseInt(Model.recipe.getDuration().getWorktime()));
 		
 		ingredients.setText(ingredientsList);
 

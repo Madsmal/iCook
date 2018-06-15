@@ -76,7 +76,6 @@ public class EditorController implements Initializable {
 			try {
 				Model.parseXMLFile(editFileName);
 				Recipe rec = Model.recipe;
-				Recipe.Duration recd = rec.getDuration();
 				titleText.setText(rec.getTitle());
 				titleText.setEditable(false);
 				//filenameText.setText(EditRecipeController.selectedName);
