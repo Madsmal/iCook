@@ -85,7 +85,7 @@ public class PieChartController implements Initializable {
 	}
 	
 	//temporary hack
-	private float calculateExcessCarbs() {
+	public float calculateExcessCarbs() {
 		float cals = (float) (Integer.parseInt(Model.recipe.getCalories()));
 		float calD = cals - calculateCalTotal();
 		float exCarbsCal = 4*Model.recipe.getCarbohydrates() + calD;
