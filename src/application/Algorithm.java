@@ -1,3 +1,8 @@
+/**
+ * @author Mads Malmskov s153013
+ */
+
+
 package application;
 
 import java.util.ArrayList;

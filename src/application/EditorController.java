@@ -78,7 +78,6 @@ public class EditorController implements Initializable {
 				Recipe rec = Model.recipe;
 				titleText.setText(rec.getTitle());
 				titleText.setEditable(false);
-				//filenameText.setText(EditRecipeController.selectedName);
 				sourceText.setText(rec.getSource());
 				startdateText.setText(rec.getStartdate());
 				fatText.setText(""+rec.getFat());
@@ -198,8 +197,6 @@ public class EditorController implements Initializable {
 			taskStringList.add(taskString);
 			Recipe.Tasks.Task task = new Recipe.Tasks.Task();
 			boolean att = ui.getAttention().getSelectionModel().selectedIndexProperty().get()== 0 ? true : false;
-			//timerButton.setVisible(false);
-			//timerButton.setManaged(false);
 			task.setTaskTitle(ui.getTaskTitle().getText());
 			task.setAttentionRequired(att);
 			task.setTaskString(taskString);

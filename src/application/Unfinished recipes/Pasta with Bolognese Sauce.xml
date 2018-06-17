@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recipe>
+    <title>Pasta with Bolognese Sauce</title>
+    <ID>36</ID>
+    <startdate>01.01.1995</startdate>
+    <changedate>04.08.1997</changedate>
+    <target>4-6 persons</target>
+    <ingredients>
+        <ingredient>
+            <quantity>1000</quantity>
+            <unit>g</unit>
+            <iname>Minced meat</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>200</quantity>
+            <unit>g</unit>
+            <iname>Bacon</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2-3</quantity>
+            <unit></unit>
+            <iname>onion(s)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2-3</quantity>
+            <unit></unit>
+            <iname>garlic clove(s)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>1</quantity>
+            <unit></unit>
+            <iname>can of tomatoes (850 ml)</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>2</quantity>
+            <unit>tablespoon</unit>
+            <iname>Tomato paste</iname>
+        </ingredient>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname>Salt, Pepper</iname>
+        </ingredient>
+        <ingredient>
+            <quantity></quantity>
+            <unit></unit>
+            <iname>Oregano</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>500-750</quantity>
+            <unit>g</unit>
+            <iname>Spaghetti</iname>
+        </ingredient>
+        <ingredient>
+            <quantity>100</quantity>
+            <unit>g</unit>
+            <iname>Parmesan, freshly grated</iname>
+        </ingredient>
+    </ingredients>
+    <tasks>
+        <task>
+            <ID>1</ID>
+            <parents>0</parents>
+            <children>0</children>
+            <time>300</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Finely dice the bacon and onions and saute, but not brown.</taskString>
+            <taskTitle>Bacon and onions</taskTitle>
+        </task>
+        <task>
+            <ID>2</ID>
+            <parents>0</parents>
+            <children>0</children>
+            <time>300</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Roast minced meat as well as possible finely divide.</taskString>
+            <taskTitle>Roast minced meat.</taskTitle>
+        </task>
+        <task>
+            <ID>3</ID>
+            <parents>2</parents>
+            <children>0</children>
+            <time>150</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Add all in a pot and add wine as well as the spices. </taskString>
+            <taskTitle>Add everything to pot</taskTitle>
+        </task>
+        <task>
+            <ID>4</ID>
+            <parents>0</parents>
+            <children>6</children>
+            <time>500</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes</taskString>
+            <timerString>Pasta cooking.</timerString>
+            <alertString>You're done cooking pasta.</alertString>
+            <taskTitle>Done cooking.</taskTitle>
+        </task>
+        <task>
+            <ID>5</ID>
+            <parents>4</parents>
+            <children>6</children>
+            <time>3600</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>At least 1 h, better 2 h, simmer gently stirring occasionally. The sauce must be thick, but not firm.</taskString>
+            <timerString>Sauce is simmering</timerString>
+            <alertString>Your sauce is done.</alertString>
+            <taskTitle>Simmer</taskTitle>
+        </task>
+        <task>
+            <ID>6</ID>
+            <parents>4</parents>
+            <children>0</children>
+            <time>10</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Check whether the pasta is done.</taskString>
+            <timerString></timerString>
+            <alertString>Check whether the pasta is done.</alertString>
+            <taskTitle>Check if pasta is done</taskTitle>
+        </task>
+        <task>
+            <ID>7</ID>
+            <parents>0</parents>
+            <children>0</children>
+            <time>0</time>
+            <attentionRequired>true</attentionRequired>
+            <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
+            <taskTitle>Serving the dish</taskTitle>
+        </task>
+    </tasks>
+    <preparation></preparation>
+    <variation>Add finely chopped peppers and carrots.</variation>
+    <remark>
+If no bacon is used, one should if possible use minced meat (half pork and half veal) or pure pork as the dish will be heartier and juicier.
+
+</remark>
+    <privateremark></privateremark>
+    <rating>4</rating>
+    <calories>476</calories>
+    <fat>7.9</fat>
+    <carbohydrates>60.1</carbohydrates>
+    <protein>23.8</protein>
+    <duration>
+        <totaltime></totaltime>
+        <worktime></worktime>
+    </duration>
+    <source>Herbert Fischer</source>
+</recipe>

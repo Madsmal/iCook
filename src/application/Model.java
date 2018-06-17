@@ -1,3 +1,7 @@
+/**
+ * @author Erik Nikolajsen s144382
+ */
+
 package application;
 
 import java.io.File;
@@ -70,29 +74,6 @@ public class Model {
         }
         
         return clock;
-	}
-	
-	
-	public static String formatSeconds(String timeInSeconds) {
-	    int hours = Integer.parseInt(timeInSeconds) / 3600;
-	    int secondsLeft = Integer.parseInt(timeInSeconds) - hours * 3600;
-	    int minutes = secondsLeft / 60;
-	    int seconds = secondsLeft - minutes * 60;
-
-	    String formattedTime = "";
-	    if (hours < 10)
-	        formattedTime += "0";
-	    formattedTime += hours + ":";
-
-	    if (minutes < 10)
-	        formattedTime += "0";
-	    formattedTime += minutes + ":";
-
-	    if (seconds < 10)
-	        formattedTime += "0";
-	    formattedTime += seconds ;
-
-	    return formattedTime;
 	}
 	
 	

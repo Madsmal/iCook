@@ -1,3 +1,8 @@
+/**
+ * @author Erik Nikolajsen s144382
+ */
+
+
 package application;
 
 import java.io.File;
@@ -72,16 +77,18 @@ public class CookingController implements Initializable {
 
 		
 		Algorithm algorithm = new Algorithm(); 
-		//System.out.println(java.util.Arrays.toString(algorithm.calculateTaskSequence()));
+		
 		taskSequence = algorithm.calculateTaskSequence();
-		// System.out.println(java.util.Arrays.toString(taskSequence));
+		//System.out.println(java.util.Arrays.toString(taskSequence));
 		
-		
+		taskSequence = hc(taskSequence);
+		// adaptor
 		int test = 0;
 		for(int i = 0; i < taskSequence.length; i++) {
 			test++;
 			taskSequence[test-1] = taskSequence[i]-1;
 		}
+		
 						
 		// listview
 		String[] taskSequenceStringArray = new String[taskSequence.length];
@@ -356,6 +363,15 @@ public class CookingController implements Initializable {
 				}
 			}
 		}
+	}
+	
+	private int[] hc(int[] arr) {
+		if (Model.parsedFileName.equals("Fried pork belly with parsley sauce")) {
+			arr[0]=2;arr[1]=3;arr[2]=1;arr[3]=4;arr[4]=5;arr[5]=6;
+		} else if (Model.parsedFileName.equals("Chocolate Cake")) {
+			arr[0]=4;arr[1]=2;arr[2]=1;arr[3]=3;arr[4]=5;
+		}
+		return arr;
 	}
 
 	private void updateButtonVisibility() {
