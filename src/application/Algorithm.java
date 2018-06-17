@@ -50,8 +50,25 @@ public class Algorithm extends CookingController {
 			}		
 		}
 		// sequence constructed. 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {		
+			int test = i-1;
 			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
+				if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents,"0")){
+					System.out.println("Skip " + ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, i-2));  
+					while (true) {
+						if(Model.recipe.tasks.task.get(i-test).attentionRequired == true /*&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, i-test) */) {
+							System.out.println("Scoop");
+							if(i-test == 0) {
+								break;
+							}
+							System.out.println("Children " + java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
+							System.out.println("Here " + Model.recipe.tasks.task.get(i).ID);
+							System.out.println("Here2 " + Model.recipe.tasks.task.get(i-test).ID);
+							break;
+						} else { test--; }
+					}
+					
+				}
 				sequence.remove(i);
 				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 			}	
@@ -64,14 +81,13 @@ public class Algorithm extends CookingController {
 
 		}
 
-//		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-//			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") 
-//					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
+			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") 
+					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 //				// Should be added to front of array. Since it's a false node with children
 //				// Print 3 og 5
-//				System.out.println(Model.recipe.tasks.task.get(i).ID);
-//				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-//				sequence.remove(Model.recipe.tasks.task.get(i).ID);
+				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				sequence.remove(Model.recipe.tasks.task.get(i).ID);
 //				
 //				
 ////				while (true) {
@@ -95,8 +111,8 @@ public class Algorithm extends CookingController {
 //					count++;
 //				} 
 //
-//			}
-//		}
+			}
+		}
 
 		//System.out.println(sequence);
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
@@ -104,7 +120,7 @@ public class Algorithm extends CookingController {
 
 		// Stream converts List<integer> to int[].
 		taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		//System.out.println(java.util.Arrays.toString(taskSequence));
+		System.out.println(java.util.Arrays.toString(taskSequence));
 
 		return taskSequence;
 	} 
