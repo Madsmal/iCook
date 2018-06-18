@@ -6,22 +6,32 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Algorithm extends CookingController {
 
+	
+
+
 	public int[] calculateTaskSequence() {
 
 		ArrayList<Integer> sequence = new ArrayList<Integer>();
 		int[] taskSequence = new int[0];
-	//	int count = 1;
 
 		// Checks if attReq = true and if it has children where attReq = false. If true then move to front of array. 
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
 
+			int test = i-1;
 			//			String x = Model.recipe.tasks.task.get(i).children[0];
 			//			String[] newChildren = x.replaceAll("\"", "").split(","); 
 			//			System.out.println(newChildren.length);
@@ -31,93 +41,110 @@ public class Algorithm extends CookingController {
 				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
 						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")){
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				} 
+				else if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
+					sequence.add(0,  Model.recipe.tasks.task.get(i).ID);
+					
+					if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents,"0")){
+						while (true) {
+							if(Model.recipe.tasks.task.get(i-test).attentionRequired == true && Arrays.asList(Model.recipe.tasks.task.get(i-test).children).contains(Integer.toString(Model.recipe.tasks.task.get(i).ID))) {
+								sequence.add(Model.recipe.tasks.task.get(i).ID);	
+								
+							} else { 
+								test--; 
+							}
+							
+							break;
+						}
+					} 
+					
+					
 				}
 				else {
-
 					sequence.add(Model.recipe.tasks.task.get(i).ID);	
 				}
+				
 			}
 			else {
 				// Checks for the same as before but with last index in array.
-				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") &&
-						ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+				if(Model.recipe.tasks.task.get(i).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
 					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 				}
 				else {
 					sequence.add(Model.recipe.tasks.task.get(i).ID);
 				}
 
-			}		
+			}
+			
 		}
 		// sequence constructed. 
-		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {		
-			int test = i-1;
-			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
-				if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents,"0")){
-					System.out.println("Skip " + ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, i-2));  
-					while (true) {
-						if(Model.recipe.tasks.task.get(i-test).attentionRequired == true /*&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, i-test) */) {
-							System.out.println("Scoop");
-							if(i-test == 0) {
-								break;
-							}
-							System.out.println("Children " + java.util.Arrays.toString(Model.recipe.tasks.task.get(i).children));
-							System.out.println("Here " + Model.recipe.tasks.task.get(i).ID);
-							System.out.println("Here2 " + Model.recipe.tasks.task.get(i-test).ID);
-							break;
-						} else { test--; }
-					}
-					
-				}
-				sequence.remove(i);
-				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-			}	
-			// Note: this piece is not necessary. The child shouldn't move ahead in the array - this could be discussed but I decided not to.
-			//			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
-			//				System.out.println(Model.recipe.tasks.task.get(i).ID);
-			//				sequence.remove(i);
-			//				sequence.add(0, Model.recipe.tasks.task.get(i).ID);	
-			//			}
+		//		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {		
+		//			int test = i-1;
+		//			if (Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0")) {
+		//				if(!ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents,"0")){
+		//					// ID = 4 && parents = 2
+		//					while (true) {
+		//						if(Model.recipe.tasks.task.get(i-test).attentionRequired == true && Arrays.asList(Model.recipe.tasks.task.get(i-test).children).contains(Integer.toString(Model.recipe.tasks.task.get(i).ID))) {
+		//							System.out.println(sequence);
+		//							System.out.println("Scoop " + Model.recipe.tasks.task.get(i).ID);
+		//							sequence.remove(Model.recipe.tasks.task.get(i).ID);
+		//							sequence.add(Model.recipe.tasks.task.get(i-test).ID, Model.recipe.tasks.task.get(i).ID);
+		//							System.out.println("after " + sequence);
+		//						} else { 
+		//							test--; 
+		//							}
+		//						break;
+		//					}
+		//				}
+		//				sequence.remove(i);
+		//				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+		//			}	
+		//		}
+		// Note: this piece is not necessary. The child shouldn't move ahead in the array - this could be discussed but I decided not to.
+		//			 if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+		//				System.out.println(Model.recipe.tasks.task.get(i).ID);
+		//				sequence.remove(i);
+		//				sequence.add(0, Model.recipe.tasks.task.get(i).ID);	
+		//			}
 
-		}
+
 
 		for(int i = 0; i < Model.recipe.tasks.task.size(); i++) {
-			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") 
-					&& ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
-//				// Should be added to front of array. Since it's a false node with children
-//				// Print 3 og 5
+			if(Model.recipe.tasks.task.get(i).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i).children, "0") && ArrayUtils.contains(Model.recipe.tasks.task.get(i).parents, "0")) {
+				//				// Should be added to front of array. Since it's a false node with children
+				//				// Print 3 og 5
 				sequence.add(0, Model.recipe.tasks.task.get(i).ID);
 				sequence.remove(Model.recipe.tasks.task.get(i).ID);
-//				
-//				
-////				while (true) {
-////					if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
-////							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, Integer.toString(i))) {
-////						System.out.println("SIS " + Model.recipe.tasks.task.get(i+count).ID);
-////						count++;
-////							if (!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && Model.recipe.tasks.task.get((i+count)+1).attentionRequired == true) {
-////								System.out.println("SISsss " + Model.recipe.tasks.task.get(i).ID);
-////							}
-////						
-////					} else { 
-////						break; 
-////						}
-////				}
-//				if(i+count == Model.recipe.tasks.task.size()) {
-//					break;
-//				}
-//				else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
-//					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
-//					count++;
-//				} 
-//
+				//				
+				//				
+				////				while (true) {
+				////					if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && !ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && 
+				////							!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).parents, Integer.toString(i))) {
+				////						System.out.println("SIS " + Model.recipe.tasks.task.get(i+count).ID);
+				////						count++;
+				////							if (!ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0") && Model.recipe.tasks.task.get((i+count)+1).attentionRequired == true) {
+				////								System.out.println("SISsss " + Model.recipe.tasks.task.get(i).ID);
+				////							}
+				////						
+				////					} else { 
+				////						break; 
+				////						}
+				////				}
+				//				if(i+count == Model.recipe.tasks.task.size()) {
+				//					break;
+				//				}
+				//				else if(Model.recipe.tasks.task.get(i+count).attentionRequired == false && ArrayUtils.contains(Model.recipe.tasks.task.get(i+count).children, "0")) {
+				//					sequence.add(0, Model.recipe.tasks.task.get(i).ID);
+				//					count++;
+				//				} 
+				//
 			}
 		}
 
 		//System.out.println(sequence);
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
-
-
+		sequence.remove(Integer.valueOf(4));
+		
 		// Stream converts List<integer> to int[].
 		taskSequence = sequence.stream().mapToInt(i->i).toArray();
 		System.out.println(java.util.Arrays.toString(taskSequence));
