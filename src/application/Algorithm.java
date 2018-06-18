@@ -147,7 +147,7 @@ public class Algorithm extends CookingController {
 		
 		// Stream converts List<integer> to int[].
 		taskSequence = sequence.stream().mapToInt(i->i).toArray();
-		System.out.println(java.util.Arrays.toString(taskSequence));
+		//System.out.println(java.util.Arrays.toString(taskSequence));
 
 		return taskSequence;
 	} 
