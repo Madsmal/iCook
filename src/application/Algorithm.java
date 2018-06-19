@@ -143,7 +143,7 @@ public class Algorithm extends CookingController {
 
 		//System.out.println(sequence);
 		// Checks if element has a child and attReq is false. If that's the case then it should have a higher priority than other elements. 
-		sequence.remove(Integer.valueOf(4));
+		//sequence.remove(Integer.valueOf(4));
 		
 		// Stream converts List<integer> to int[].
 		taskSequence = sequence.stream().mapToInt(i->i).toArray();
