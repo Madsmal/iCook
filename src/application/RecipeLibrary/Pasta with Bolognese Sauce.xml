@@ -122,7 +122,7 @@
             <ID>7</ID>
             <parents>0</parents>
             <children>0</children>
-            <time>0</time>
+            <time>60</time>
             <attentionRequired>true</attentionRequired>
             <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
             <taskTitle>Serving the dish</taskTitle>

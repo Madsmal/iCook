@@ -43,6 +43,17 @@
     </ingredients>
     <tasks>
         <task>
+            <ID>3</ID>
+            <parents>2</parents>
+            <children>6</children>
+            <time>15</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Boil the potatoes for 15 minutes or untill tender when tested with a skewer.</taskString>
+            <timerString>Boiling potatoes</timerString>
+            <alertString>The potatoes have finished boiling. Drain the water from the pot, and let the potatoes dry in the pot with the lid off.</alertString>
+            <taskTitle>Boil potatoes</taskTitle>
+        </task>
+        <task>
             <ID>1</ID>
             <parents>0</parents>
             <children>5</children>
@@ -63,17 +74,6 @@
             <timerString></timerString>
             <alertString></alertString>
             <taskTitle>Prepare potatoes</taskTitle>
-        </task>
-        <task>
-            <ID>3</ID>
-            <parents>2</parents>
-            <children>6</children>
-            <time>15</time>
-            <attentionRequired>false</attentionRequired>
-            <taskString>Boil the potatoes for 15 minutes or untill tender when tested with a skewer.</taskString>
-            <timerString>Boiling potatoes</timerString>
-            <alertString>The potatoes have finished boiling. Drain the water from the pot, and let the potatoes dry in the pot with the lid off.</alertString>
-            <taskTitle>Boil potatoes</taskTitle>
         </task>
         <task>
             <ID>4</ID>
@@ -103,7 +103,7 @@
             <children>0</children>
             <time>80</time>
             <attentionRequired>true</attentionRequired>
-            <taskString>Serve the potatoes and pork with the parsley sauce drizzled over and a sprinkling of extra parsley.</taskString>
+            <taskString>Serve the potatoes and pork with the parsley sauce drizzled over and a sprinkling of extra parsley. \n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rutrum a diam ac rutrum. Duis et posuere magna. Suspendisse tristique diam libero. Morbi tortor velit, molestie non diam quis, sagittis venenatis nunc. Nulla facilisi. Donec justo mi, lacinia pretium faucibus nec, porta non lectus. Ut tempor massa sed nisl euismod, vel ultrices est accumsan. Ut in urna tempor neque blandit mattis at eget felis. Vivamus nunc mauris, vehicula id facilisis in, viverra id turpis. Sed sit amet eros sit amet massa luctus aliquet. Vestibulum fermentum aliquam fringilla.Mauris et libero ut arcu tincidunt luctus. Nam feugiat luctus sapien, id feugiat felis accumsan ac. Aenean enim turpis, rhoncus sed iaculis et, hendrerit sed massa. Nulla ac dolor vel tortor laoreet vestibulum. Vivamus ullamcorper justo in mi pretium, id varius risus elementum. In id ullamcorper odio. Proin ultrices pharetra ligula in auctor. Curabitur interdum varius velit, ut blandit leo. Nam quis dictum turpis. Aenean elementum lacinia sapien, vitae finibus risus luctus id. Nam eu tincidunt orci. Maecenas in nunc sit amet erat imperdiet pulvinar. Vestibulum vel mauris dignissim, lobortis dui nec, sodales ex.Integer faucibus orci eu massa ullamcorper, ac dignissim magna accumsan. Ut rutrum lorem et eleifend dictum. Phasellus quis pellentesque leo. Suspendisse purus ipsum, suscipit ac lectus sit amet, ultricies facilisis enim. Integer eget risus convallis turpis maximus finibus in sit amet ligula. Nulla facilisi. Vestibulum vel justo fringilla, ornare dui ac, pretium risus. Cras quis justo sit amet nisl consequat venenatis in nec nibh. Phasellus commodo pulvinar neque et semper. Nullam eu enim in purus imperdiet tempus nec sed nunc. Vivamus eget orci vel nulla congue euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis quis sollicitudin nisi.Morbi sagittis felis finibus dolor porttitor, eget finibus velit fermentum. Duis at neque dolor. Sed euismod pretium rutrum. Duis vel nunc quis ante lacinia suscipit id eget lacus. Nunc in posuere diam. Cras fermentum dictum purus, non vestibulum turpis. Ut vitae erat tempus, finibus massa a, semper elit. Nullam magna massa, fringilla ac sodales nec, facilisis eget neque. Pellentesque est odio, rutrum eget feugiat ac, vulputate sed felis. Etiam laoreet id nulla quis malesuada. Aliquam vitae ornare nulla. Maecenas in ipsum orci. Fusce commodo blandit facilisis.Pellentesque varius eros sit amet nisi ultricies, eget gravida tellus porta. Praesent tincidunt vehicula orci. Pellentesque tristique tortor eu commodo lacinia. Mauris dapibus luctus ex, ut dignissim diam lacinia ut. Aliquam ullamcorper ante a sem dignissim varius. Duis quis hendrerit neque, quis sodales nisl. Nullam ullamcorper nisl ac egestas posuere. Vivamus vitae iaculis eros. Praesent vitae nulla commodo, condimentum dolor vel, sollicitudin quam. Sed accumsan dui nec massa vehicula, id ornare nisl pretium. Ut mattis, ante quis pellentesque sagittis, justo lorem rutrum eros, eget tempus magna enim at tortor.</taskString>
             <timerString></timerString>
             <alertString></alertString>
             <taskTitle>Serve</taskTitle>
