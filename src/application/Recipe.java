@@ -771,7 +771,7 @@ public class Recipe {
             "alertString",
             "taskTitle"
         })
-    	public static class Task {
+    	public static class Task implements Comparable<Task> {
         	
     		@XmlElement(required = true)
             protected int ID;
@@ -863,6 +863,17 @@ public class Recipe {
             public void setTaskTitle(String taskTitle) {
             	this.taskTitle = taskTitle;
             }
+
+			@Override
+			public int compareTo(Task o) {
+				if(attentionRequired && o.attentionRequired)
+					return ID - o.ID;
+				if(!attentionRequired && !o.attentionRequired)
+					return ID - o.ID;
+				if(!attentionRequired)
+					return -1;
+				return 1;
+			}
         }
     }
 
