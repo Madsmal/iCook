@@ -221,6 +221,9 @@ public class RecipesController implements Initializable {
 		} else if (Model.parsedFileName.equals("Chocolate Cake")) {
 			Model.recipe.duration.setWorktime("670");
 		    Model.recipe.duration.setTotaltime("2770");
+		} else if (Model.parsedFileName.equals("Fried pork belly with parsley sauce - demo")) {
+			Model.recipe.duration.setWorktime("195");
+		    Model.recipe.duration.setTotaltime("195");
 		}
 	}
 	

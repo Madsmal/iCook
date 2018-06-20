@@ -17,19 +17,19 @@
             <iname>Bacon</iname>
         </ingredient>
         <ingredient>
-            <quantity>2-3</quantity>
+            <quantity>2</quantity>
             <unit></unit>
             <iname>onion(s)</iname>
         </ingredient>
         <ingredient>
-            <quantity>2-3</quantity>
+            <quantity>2</quantity>
             <unit></unit>
             <iname>garlic clove(s)</iname>
         </ingredient>
         <ingredient>
             <quantity>1</quantity>
             <unit></unit>
-            <iname>can of tomatoes (850 ml)</iname>
+            <iname>can of tomatoes</iname>
         </ingredient>
         <ingredient>
             <quantity>2</quantity>
@@ -47,7 +47,7 @@
             <iname>Oregano</iname>
         </ingredient>
         <ingredient>
-            <quantity>500-750</quantity>
+            <quantity>600</quantity>
             <unit>g</unit>
             <iname>Spaghetti</iname>
         </ingredient>

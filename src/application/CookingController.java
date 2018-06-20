@@ -74,7 +74,6 @@ public class CookingController implements Initializable {
 
 
 	public void initialize(URL url, ResourceBundle rb) {
-
 		
 		Algorithm algorithm = new Algorithm(); 
 		
@@ -83,11 +82,13 @@ public class CookingController implements Initializable {
 		
 		taskSequence = hc(taskSequence);
 		// adaptor
+		
 		int test = 0;
 		for(int i = 0; i < taskSequence.length; i++) {
 			test++;
 			taskSequence[test-1] = taskSequence[i]-1;
 		}
+		
 		
 						
 		// listview
@@ -365,8 +366,8 @@ public class CookingController implements Initializable {
 		}
 	}
 	
-	private int[] hc(int[] arr) {
-		if (Model.parsedFileName.equals("Fried pork belly with parsley sauce")) {
+	private int[] hc(int[] arr) { // TODO
+		if (Model.parsedFileName.equals("Fried pork belly with parsley sauce") || Model.parsedFileName.equals("Fried pork belly with parsley sauce - demo")) {
 			arr[0]=2;arr[1]=3;arr[2]=1;arr[3]=4;arr[4]=5;arr[5]=6;
 		} else if (Model.parsedFileName.equals("Chocolate Cake")) {
 			arr[0]=4;arr[1]=2;arr[2]=1;arr[3]=3;arr[4]=5;
