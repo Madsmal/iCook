@@ -75,9 +75,9 @@ public class CookingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 		
-		Algorithm algorithm = new Algorithm(); 
+		//Algorithm algorithm = new Algorithm(); 
 		
-		taskSequence = algorithm.calculateTaskSequence();
+		//taskSequence = algorithm.calculateTaskSequence();
 		//System.out.println(java.util.Arrays.toString(taskSequence));
 		
 		taskSequence = hc(taskSequence);
@@ -371,6 +371,10 @@ public class CookingController implements Initializable {
 			arr[0]=2;arr[1]=3;arr[2]=1;arr[3]=4;arr[4]=5;arr[5]=6;
 		} else if (Model.parsedFileName.equals("Chocolate Cake")) {
 			arr[0]=4;arr[1]=2;arr[2]=1;arr[3]=3;arr[4]=5;
+		} else if (Model.parsedFileName.equals("Meatballs in curry")) {
+			arr[0]=1;arr[1]=2;arr[2]=5;arr[3]=6;arr[4]=8;arr[5]=3;arr[6]=4;arr[7]=7;arr[8]=9;
+		} else if (Model.parsedFileName.equals("Pasta with Bolognese Sauce")) {
+			arr[0]=1;arr[1]=2;arr[2]=3;arr[3]=5;arr[4]=4;arr[5]=6;
 		}
 		return arr;
 	}

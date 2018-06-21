@@ -73,7 +73,7 @@
             <children>0</children>
             <time>300</time>
             <attentionRequired>true</attentionRequired>
-            <taskString>Roast minced meat as well as possible finely divide.</taskString>
+            <taskString>Roast minced meat as well as possible - finely divide.</taskString>
             <taskTitle>Roast minced meat.</taskTitle>
         </task>
         <task>
@@ -91,7 +91,7 @@
             <children>6</children>
             <time>500</time>
             <attentionRequired>false</attentionRequired>
-            <taskString>Cook the pasta in 2-3 l salted water for about 8-12 minutes</taskString>
+            <taskString>Cook the pasta in 2-3 l salted water for about 10 minutes</taskString>
             <timerString>Pasta cooking.</timerString>
             <alertString>You're done cooking pasta.</alertString>
             <taskTitle>Done cooking.</taskTitle>
@@ -109,22 +109,11 @@
         </task>
         <task>
             <ID>6</ID>
-            <parents>4</parents>
-            <children>0</children>
-            <time>10</time>
-            <attentionRequired>false</attentionRequired>
-            <taskString>Check whether the pasta is done.</taskString>
-            <timerString></timerString>
-            <alertString>Check whether the pasta is done.</alertString>
-            <taskTitle>Check if pasta is done</taskTitle>
-        </task>
-        <task>
-            <ID>7</ID>
             <parents>0</parents>
             <children>0</children>
             <time>60</time>
             <attentionRequired>true</attentionRequired>
-            <taskString>Either serve separately or the sauce with the mix the poured pasta. Serve the parmesan.</taskString>
+            <taskString>Either serve separately or mix the sauce with the  pasta. Serve the parmesan.</taskString>
             <taskTitle>Serving the dish</taskTitle>
         </task>
     </tasks>

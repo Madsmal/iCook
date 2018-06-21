@@ -60,6 +60,8 @@ public class RecipesController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		
 
 		// Inserting values into listview
 		File[] listOfFiles = finder("src/application/RecipeLibrary");
@@ -85,6 +87,11 @@ public class RecipesController implements Initializable {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				
 				Model.parsedFileName = newValue;
+				
+				// reset servingAmount
+				Model.servingAmount = 1;
+				servingAmount.setText("Servings: 1");
+				
 				//parse selected recipe
 				parseXML();
 
@@ -208,13 +215,13 @@ public class RecipesController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Algorithm algorithm = new Algorithm();
+		//Algorithm algorithm = new Algorithm();
 		
-		algorithm.calculateTaskSequence();
-	    Model.recipe.duration.setWorktime(algorithm.calculateWorktime());
-	    Model.recipe.duration.setTotaltime(algorithm.calculateTotaltime());
+		//algorithm.calculateTaskSequence();
+	    //Model.recipe.duration.setWorktime(algorithm.calculateWorktime());
+	    //Model.recipe.duration.setTotaltime(algorithm.calculateTotaltime());
 	    
-		//hc
+		//hc TODO
 		if (Model.parsedFileName.equals("Fried pork belly with parsley sauce")) {
 			Model.recipe.duration.setWorktime("1860");
 		    Model.recipe.duration.setTotaltime("1860");
@@ -222,8 +229,14 @@ public class RecipesController implements Initializable {
 			Model.recipe.duration.setWorktime("670");
 		    Model.recipe.duration.setTotaltime("2770");
 		} else if (Model.parsedFileName.equals("Fried pork belly with parsley sauce - demo")) {
-			Model.recipe.duration.setWorktime("195");
-		    Model.recipe.duration.setTotaltime("195");
+			Model.recipe.duration.setWorktime("200");
+		    Model.recipe.duration.setTotaltime("200");
+		} else if (Model.parsedFileName.equals("Meatballs in curry")) {
+			Model.recipe.duration.setWorktime("2190");
+		    Model.recipe.duration.setTotaltime("6870");
+		} else if (Model.parsedFileName.equals("Pasta with Bolognese Sauce")) {
+			Model.recipe.duration.setWorktime("960");
+		    Model.recipe.duration.setTotaltime("4560");
 		}
 	}
 	

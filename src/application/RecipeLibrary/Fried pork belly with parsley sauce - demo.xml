@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <recipe>
-    <title>Fried pork belly with parsley sauce</title>
+    <title>Fried pork belly with parsley sauce - demo</title>
     <ID>42</ID>
     <startdate>20-11-2014</startdate>
     <changedate></changedate>
     <ingredients>
         <ingredient>
-            <quantity>75</quantity>
+            <quantity>150</quantity>
             <unit>g</unit>
             <iname>pork belly</iname>
         </ingredient>
         <ingredient>
-            <quantity>0.25</quantity>
+            <quantity>0.5</quantity>
             <unit>tbsp</unit>
             <iname>wheat flour</iname>
         </ingredient>
         <ingredient>
-            <quantity>0.44</quantity>
+            <quantity>0.88</quantity>
             <unit>dl</unit>
-            <iname>wholde milk</iname>
+            <iname>whole milk</iname>
         </ingredient>
         <ingredient>
-            <quantity>1.25</quantity>
+            <quantity>2.5</quantity>
             <unit>g</unit>
             <iname>butter</iname>
         </ingredient>
         <ingredient>
-            <quantity>125</quantity>
+            <quantity>250</quantity>
             <unit>g</unit>
             <iname>potatoes</iname>
         </ingredient>
@@ -46,7 +46,7 @@
             <ID>3</ID>
             <parents>2</parents>
             <children>6</children>
-            <time>15</time>
+            <time>20</time>
             <attentionRequired>false</attentionRequired>
             <taskString>Boil the potatoes for 15 minutes or untill tender when tested with a skewer.</taskString>
             <timerString>Boiling potatoes</timerString>
@@ -110,7 +110,7 @@
         </task>
     </tasks>
     <rating>3</rating>
-    <calories>323.5</calories>
+    <calories>647</calories>
     <fat>40.0</fat>
     <carbohydrates>42.5</carbohydrates>
     <protein>30.0</protein>
