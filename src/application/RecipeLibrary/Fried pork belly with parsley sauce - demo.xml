@@ -43,17 +43,6 @@
     </ingredients>
     <tasks>
         <task>
-            <ID>3</ID>
-            <parents>2</parents>
-            <children>6</children>
-            <time>20</time>
-            <attentionRequired>false</attentionRequired>
-            <taskString>Boil the potatoes for 15 minutes or untill tender when tested with a skewer.</taskString>
-            <timerString>Boiling potatoes</timerString>
-            <alertString>The potatoes have finished boiling. Drain the water from the pot, and let the potatoes dry in the pot with the lid off.</alertString>
-            <taskTitle>Boil potatoes</taskTitle>
-        </task>
-        <task>
             <ID>1</ID>
             <parents>0</parents>
             <children>5</children>
@@ -74,6 +63,17 @@
             <timerString></timerString>
             <alertString></alertString>
             <taskTitle>Prepare potatoes</taskTitle>
+        </task>
+        <task>
+            <ID>3</ID>
+            <parents>2</parents>
+            <children>6</children>
+            <time>20</time>
+            <attentionRequired>false</attentionRequired>
+            <taskString>Boil the potatoes for 15 minutes or untill tender when tested with a skewer.</taskString>
+            <timerString>Boiling potatoes</timerString>
+            <alertString>The potatoes have finished boiling. Drain the water from the pot, and let the potatoes dry in the pot with the lid off.</alertString>
+            <taskTitle>Boil potatoes</taskTitle>
         </task>
         <task>
             <ID>4</ID>
